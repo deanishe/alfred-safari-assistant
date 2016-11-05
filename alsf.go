@@ -6,11 +6,11 @@
 // Created on 2016-05-30
 //
 
-// TODO: Fix maxResults: it currently only takes effect if there's a query
-// TODO: Open Bookmark in Private Mode
-// TODO: Duplicate tab
-// TODO: Duplicate tab in Private Mode
-// TODO: Open URL in Chrome etc.
+// TODO: Other Actions… for URLs (bookmarks)
+// TODO: Bookmarklets
+// TODO: Script: Open Bookmark/URL in Private Mode
+// TODO: Script: Duplicate tab
+// TODO: Script: Open URL in Chrome etc.
 // TODO: iCloud tabs (~/Library/SyncedPreferences/com.apple.Safari.plist)
 
 package main // import "gogs.deanishe.net/deanishe/alfred-safari"
@@ -24,13 +24,11 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
-	"sort"
 	"strings"
 	"time"
 
 	"github.com/juju/deputy"
 	"gogs.deanishe.net/deanishe/awgo"
-	"gogs.deanishe.net/deanishe/awgo/fuzzy"
 	"gogs.deanishe.net/deanishe/go-safari"
 	"gopkg.in/alecthomas/kingpin.v2"
 )
@@ -40,6 +38,17 @@ const (
 	defaultMaxResults  = "100"
 	defaultMinScore    = "30"
 	defaultMaxCacheAge = "5s"
+)
+
+// Icons
+var (
+	IconActive      = &aw.Icon{Value: "active.png"}
+	IconDefault     = &aw.Icon{Value: "icon.png"}
+	IconReadingList = &aw.Icon{Value: "reading-list.png"}
+	IconBookmark    = &aw.Icon{Value: "com.apple.safari.bookmark", Type: "filetype"}
+	IconFolder      = &aw.Icon{Value: "public.folder", Type: "filetype"}
+	IconUp          = &aw.Icon{Value: "up.png"}
+	IconHome        = &aw.Icon{Value: "home.png"}
 )
 
 var (
@@ -64,7 +73,7 @@ var (
 	maxResults   int
 
 	// Workflow stuff
-	wf           *workflow.Workflow
+	wf           *aw.Workflow
 	tabCachePath string
 	scriptDirs   []string
 
@@ -76,7 +85,7 @@ func init() {
 
 	safari.DefaultOptions.IgnoreBookmarklets = true
 
-	wf = workflow.NewWorkflow(nil)
+	wf = aw.NewWorkflow(nil)
 	tabCachePath = filepath.Join(wf.CacheDir(), "tabs.json")
 	scriptDirs = []string{
 		filepath.Join(wf.Dir(), "scripts", "tab"),
@@ -173,63 +182,6 @@ func urlKeywords(URL string) string {
 	return h
 }
 
-// fuzzyActions makes Action fuzzy sortable.
-type fuzzyActions []Actionable
-
-// fuzzy.Interface
-func (a fuzzyActions) Len() int              { return len(a) }
-func (a fuzzyActions) Less(i, j int) bool    { return a[i].Title() < a[j].Title() }
-func (a fuzzyActions) Swap(i, j int)         { a[i], a[j] = a[j], a[i] }
-func (a fuzzyActions) Keywords(i int) string { return a[i].Title() }
-
-// fuzzyBookmarks makes safari.Bookmark fuzzy sortable.
-type fuzzyBookmarks []*safari.Bookmark
-
-// fuzzy.Interface
-func (b fuzzyBookmarks) Len() int           { return len(b) }
-func (b fuzzyBookmarks) Less(i, j int) bool { return b[i].Title < b[j].Title }
-func (b fuzzyBookmarks) Swap(i, j int)      { b[i], b[j] = b[j], b[i] }
-func (b fuzzyBookmarks) Keywords(i int) string {
-	return fmt.Sprintf("%s %s", b[i].Title, urlKeywords(b[i].URL))
-}
-
-// fuzzyFolders makes safari.Folder fuzzy sortable.
-type fuzzyFolders []*safari.Folder
-
-// fuzzy.Interface
-func (f fuzzyFolders) Len() int              { return len(f) }
-func (f fuzzyFolders) Less(i, j int) bool    { return f[i].Title < f[j].Title }
-func (f fuzzyFolders) Swap(i, j int)         { f[i], f[j] = f[j], f[i] }
-func (f fuzzyFolders) Keywords(i int) string { return f[i].Title }
-
-// fuzzyTabs makes safari.Tab fuzzy sortable.
-type fuzzyTabs []*safari.Tab
-
-// fuzzy.Interface
-func (t fuzzyTabs) Len() int           { return len(t) }
-func (t fuzzyTabs) Less(i, j int) bool { return t[i].Title < t[j].Title }
-func (t fuzzyTabs) Swap(i, j int)      { t[i], t[j] = t[j], t[i] }
-func (t fuzzyTabs) Keywords(i int) string {
-	kw := fmt.Sprintf("%s %s", t[i].Title, urlKeywords(t[i].URL))
-	log.Printf("kw=%v", kw)
-	return kw
-}
-
-// fuzzyProxy allows Bookmarks and Folders to be sorted together
-type fuzzyProxy struct {
-	uid      string
-	keywords string
-}
-
-// fuzzyProxies allows Bookmarks and Folders to be sorted together
-type fuzzyProxies []*fuzzyProxy
-
-// fuzzy.Interface
-func (f fuzzyProxies) Len() int              { return len(f) }
-func (f fuzzyProxies) Less(i, j int) bool    { return f[i].keywords < f[j].keywords }
-func (f fuzzyProxies) Swap(i, j int)         { f[i], f[j] = f[j], f[i] }
-func (f fuzzyProxies) Keywords(i int) string { return f[i].keywords }
-
 // loadWindows returns a list of Safari windows and caches the results for a few seconds.
 func loadWindows() ([]*safari.Window, error) {
 
@@ -270,7 +222,7 @@ func loadWindows() ([]*safari.Window, error) {
 	if err := ioutil.WriteFile(tabCachePath, data, 0600); err != nil {
 		return nil, err
 	}
-	log.Printf("Saved tab list: %s", workflow.ShortenPath(tabCachePath))
+	log.Printf("Saved tab list: %s", aw.ShortenPath(tabCachePath))
 
 	return wins, nil
 }
@@ -300,24 +252,6 @@ func openURL(URL string) error {
 	return nil
 }
 
-// removeBookmarklets returns slice bookmarks with any bookmarklets removed.
-// Bookmarklets are any Bookmarks whose URLs start with "javascript:".
-//
-// TODO: Run bookmarklets in the current browser tab
-// func removeBookmarklets(bookmarks []*safari.Bookmark) []*safari.Bookmark {
-// 	r := []*safari.Bookmark{}
-// 	i := 0
-// 	for _, bm := range bookmarks {
-// 		if !strings.HasPrefix(bm.URL, "javascript:") {
-// 			r = append(r, bm)
-// 		} else {
-// 			i++
-// 		}
-// 	}
-//
-// 	return r
-// }
-
 // doActivate activates the specified window (and tab).
 func doActivate() error {
 
@@ -339,7 +273,7 @@ func doOpen() error {
 	log.Printf("Searching for %v ...", uid)
 
 	if bm := safari.BookmarkForUID(uid); bm != nil {
-		log.Printf("Opening \"%s\" (%s) ...", bm.Title, bm.URL)
+		log.Printf("Opening \"%s\" (%s) ...", bm.Title(), bm.URL)
 		return openURL(bm.URL)
 	}
 
@@ -348,7 +282,7 @@ func doOpen() error {
 		errs := []error{}
 
 		for _, bm := range f.Bookmarks {
-			log.Printf("Opening \"%s\" (%s) ...", bm.Title, bm.URL)
+			log.Printf("Opening \"%s\" (%s) ...", bm.Title(), bm.URL)
 			if err := openURL(bm.URL); err != nil {
 				log.Printf("Error opening bookmark: %v", err)
 				errs = append(errs, err)
@@ -375,73 +309,59 @@ func doTabs() error {
 		return err
 	}
 
-	tabs := fuzzyTabs{}
 	for _, w := range wins {
 		for _, t := range w.Tabs {
-			tabs = append(tabs, t)
+
+			it := wf.NewItem(t.Title).
+				Subtitle(t.URL).
+				Valid(true).
+				SortKey(fmt.Sprintf("%s %s", t.Title, urlKeywords(t.URL)))
+
+			if t.Active {
+				it.Icon(IconActive)
+			} else {
+				it.Icon(IconDefault)
+			}
+
+			it.Var("ALSF_WINDOW", fmt.Sprintf("%d", t.WindowIndex)).
+				Var("ALSF_TAB", fmt.Sprintf("%d", t.Index)).
+				Var("ALSF_URL", t.URL).
+				Var("action", "activate")
+
+			it.NewModifier("cmd").
+				Subtitle("Other actions…").
+				Var("action", "actions")
+
+			// m := it.NewModifier("cmd")
+			// m.SetSubtitle("Close tab")
+			// m.SetVar("action", "close")
+
+			// m = it.NewModifier("shift")
+			// m.SetSubtitle("Close other tab(s)")
+			// m.SetVar("ALSF_RIGHT", "1")
+			// m.SetVar("ALSF_LEFT", "1")
+			// m.SetVar("action", "close")
+
+			// m = it.NewModifier("ctrl")
+			// m.SetSubtitle("Close tab(s) to the left")
+			// m.SetVar("ALSF_LEFT", "1")
+			// m.SetVar("action", "close")
+
+			// m = it.NewModifier("alt")
+			// m.SetSubtitle("Close tab(s) to the right")
+			// m.SetVar("ALSF_RIGHT", "1")
+			// m.SetVar("action", "close")
+
 		}
 	}
-	log.Printf("%d tabs", len(tabs))
 
 	if query != "" {
-		scores := fuzzy.Sort(tabs, query)
-		for i, s := range scores {
-			if s < minimumScore {
-				tabs = tabs[:i]
-				break
-			}
-			log.Printf("[%0.1f] %s", s, tabs[i].Title)
-
-		}
-		log.Printf("%d tabs match `%s`", len(tabs), query)
+		res := wf.Filter(query)
+		log.Printf("%d results for `%s`", len(res), query)
 	}
-
-	if len(tabs) == 0 {
+	if wf.IsEmpty() {
 		wf.Warn("No tabs found", "Try a different query?")
 		return nil
-	}
-
-	for _, t := range tabs {
-
-		it := wf.NewItem(t.Title)
-		it.Subtitle = t.URL
-		it.Valid = true
-
-		if t.Active {
-			it.SetIcon("active.png", "")
-		} else {
-			it.SetIcon("icon.png", "")
-		}
-
-		it.SetVar("ALSF_WINDOW", fmt.Sprintf("%d", t.WindowIndex))
-		it.SetVar("ALSF_TAB", fmt.Sprintf("%d", t.Index))
-		it.SetVar("action", "activate")
-
-		m := it.NewModifier("cmd")
-		m.SetSubtitle("Other actions…")
-		m.SetVar("ALSF_INDEX", fmt.Sprintf("%02dx%02d", t.WindowIndex, t.Index))
-		m.SetVar("action", "actions")
-
-		// m := it.NewModifier("cmd")
-		// m.SetSubtitle("Close tab")
-		// m.SetVar("action", "close")
-
-		// m = it.NewModifier("shift")
-		// m.SetSubtitle("Close other tab(s)")
-		// m.SetVar("ALSF_RIGHT", "1")
-		// m.SetVar("ALSF_LEFT", "1")
-		// m.SetVar("action", "close")
-
-		// m = it.NewModifier("ctrl")
-		// m.SetSubtitle("Close tab(s) to the left")
-		// m.SetVar("ALSF_LEFT", "1")
-		// m.SetVar("action", "close")
-
-		// m = it.NewModifier("alt")
-		// m.SetSubtitle("Close tab(s) to the right")
-		// m.SetVar("ALSF_RIGHT", "1")
-		// m.SetVar("action", "close")
-
 	}
 	wf.SendFeedback()
 
@@ -449,26 +369,24 @@ func doTabs() error {
 }
 
 // bookmarkItem returns a feedback Item for Safari Bookmark.
-func bookmarkItem(bm *safari.Bookmark) *workflow.Item {
+func bookmarkItem(bm *safari.Bookmark) *aw.Item {
 
-	it := wf.NewItem(bm.Title)
-
-	it.Subtitle = bm.URL
-	it.Arg = bm.URL
-	it.UID = bm.UID
-	it.Valid = true
-
-	it.Copytext = bm.URL
-	it.Largetext = bm.Preview
+	it := wf.NewItem(bm.Title()).
+		Subtitle(bm.URL).
+		Arg(bm.URL).
+		UID(bm.UID()).
+		Valid(true).
+		Copytext(bm.URL).
+		Largetype(bm.Preview)
 
 	if bm.InReadingList() {
-		it.SetIcon("reading-list.png", "")
+		it.Icon(IconReadingList)
 	} else {
-		it.SetIcon("com.apple.safari.bookmark", "filetype")
+		it.Icon(IconBookmark)
 	}
 
-	it.SetVar("ALSF_UID", bm.UID)
-	it.SetVar("action", "open")
+	it.Var("ALSF_UID", bm.UID()).
+		Var("action", "open")
 
 	return it
 }
@@ -477,43 +395,43 @@ func bookmarkItem(bm *safari.Bookmark) *workflow.Item {
 func folderSubtitle(f *safari.Folder) string {
 	s := []string{}
 	for _, f2 := range f.Ancestors {
-		s = append(s, f2.Title)
+		s = append(s, f2.Title())
 	}
 	return strings.Join(s, " / ")
 }
 
 // folderTitle generates a title for a Folder.
 func folderTitle(f *safari.Folder) string {
-	return fmt.Sprintf("%s (%d bookmarks)", f.Title, len(f.Bookmarks))
+	return fmt.Sprintf("%s (%d bookmarks)", f.Title(), len(f.Bookmarks))
 }
 
 // folderItem returns a feedback Item for Safari Folder.
-func folderItem(f *safari.Folder) *workflow.Item {
+func folderItem(f *safari.Folder) *aw.Item {
 
-	it := wf.NewItem(folderTitle(f))
-	it.Subtitle = folderSubtitle(f)
-	it.SetIcon("public.folder", "filetype")
+	it := wf.NewItem(folderTitle(f)).
+		Subtitle(folderSubtitle(f)).
+		Icon(IconFolder)
 
 	// Make folder actionable if it isn't empty
 	if len(f.Bookmarks)+len(f.Folders) > 0 {
-		it.Valid = true
-		it.SetVar("ALSF_UID", f.UID)
+		it.Valid(true).
+			Var("ALSF_UID", f.UID())
 
 		// Allow opening folder if it contains bookmarks
 		m := it.NewModifier("cmd")
 
 		if len(f.Bookmarks) > 0 {
 
-			m.SetSubtitle(fmt.Sprintf("Open %d bookmark(s)", len(f.Bookmarks)))
+			m.Subtitle(fmt.Sprintf("Open %d bookmark(s)", len(f.Bookmarks)))
 			// m.SetVar("open_bookmark", "1")
-			m.SetVar("action", "open")
+			m.Var("action", "open")
 
 		} else {
-			m.SetValid(false)
+			m.Valid(false)
 		}
 		// Default only
 		// it.SetVar("browse_folder", "1")
-		it.SetVar("action", "browse")
+		it.Var("action", "browse")
 	}
 
 	return it
@@ -525,37 +443,45 @@ func doFolders() error {
 	log.Printf("query=%s", query)
 
 	sf := safari.Folders()
-	ff := make(fuzzyFolders, len(sf))
+	// ff := make(fuzzyFolders, len(sf))
 
-	for i, f := range sf {
-		ff[i] = f
+	// for i, f := range sf {
+	// 	ff[i] = f
+	// }
+
+	// if query != "" {
+	// 	scores := fuzzy.Sort(ff, query)
+	// 	for i, s := range scores {
+	// 		if s < minimumScore {
+	// 			ff = ff[:i]
+	// 			break
+	// 		}
+	// 		if i == maxResults {
+	// 			log.Printf("Reached max. results (%d)", maxResults)
+	// 			ff = ff[:i]
+	// 			break
+	// 		}
+	// 	}
+	// 	log.Printf("%d folders match \"%s\"", len(ff), query)
+	// }
+
+	// if len(ff) == 0 {
+	// 	wf.Warn("No folders found", "Try a different query?")
+	// 	return nil
+	// }
+
+	// Send results
+	// log.Printf("Sending %d results to Alfred ...", len(ff))
+	for _, f := range sf {
+		folderItem(f)
 	}
 
 	if query != "" {
-		scores := fuzzy.Sort(ff, query)
-		for i, s := range scores {
-			if s < minimumScore {
-				ff = ff[:i]
-				break
-			}
-			if i == maxResults {
-				log.Printf("Reached max. results (%d)", maxResults)
-				ff = ff[:i]
-				break
-			}
-		}
-		log.Printf("%d folders match \"%s\"", len(ff), query)
+		res := wf.Filter(query)
+		log.Printf("%d folders match `%s`", len(res), query)
 	}
-
-	if len(ff) == 0 {
+	if wf.IsEmpty() {
 		wf.Warn("No folders found", "Try a different query?")
-		return nil
-	}
-
-	// Send results
-	log.Printf("Sending %d results to Alfred ...", len(ff))
-	for _, f := range ff {
-		folderItem(f)
 	}
 
 	wf.SendFeedback()
@@ -575,7 +501,7 @@ func doBrowse() error {
 		return fmt.Errorf("No folder found with UID: %s", uid)
 	}
 
-	log.Printf("%d folders, %d bookmarks in \"%s\"", len(f.Folders), len(f.Bookmarks), f.Title)
+	log.Printf("%d folders, %d bookmarks in \"%s\"", len(f.Folders), len(f.Bookmarks), f.Title())
 
 	// ----------------------------------------------------------------
 	// Show "Back" options if query is empty
@@ -585,83 +511,63 @@ func doBrowse() error {
 
 			p := f.Ancestors[len(f.Ancestors)-1]
 
-			it := wf.NewItem(fmt.Sprintf("Up to \"%s\"", p.Title))
-			it.SetIcon("up.png", "")
-			it.Valid = true
-			it.SetVar("ALSF_UID", p.UID)
+			it := wf.NewItem(fmt.Sprintf("Up to \"%s\"", p.Title())).
+				Icon(IconUp).
+				Valid(true).
+				Var("ALSF_UID", p.UID())
 
 			// Alternate action: Go to All Folders
-			m := it.NewModifier("cmd")
-			m.SetSubtitle("Go back to All Folders")
-			// m.SetVar("back_to_root", "1")
-			m.SetVar("action", "top")
+			it.NewModifier("cmd").
+				Subtitle("Go back to All Folders").
+				Var("action", "top")
 
 			// Default only
-			it.SetVar("action", "browse")
+			it.Var("action", "browse")
 			// it.SetVar("browse_folder", "1")
 		} else if uid != "" { // One of the top-level items, e.g. Favorites
-			it := wf.NewItem("Back to All Folders")
-			it.Valid = true
-			it.SetIcon("home.png", "")
-			// it.SetVar("back_to_root", "1")
-			it.SetVar("action", "top")
+			wf.NewItem("Back to All Folders").
+				Valid(true).
+				Icon(IconHome).
+				Var("action", "top")
 		}
 	}
 
 	// ----------------------------------------------------------------
 	// Sort Folders and Bookmarks
-
-	proxies := fuzzyProxies{}
-	fMap := map[string]*safari.Folder{}
-	bMap := map[string]*safari.Bookmark{}
+	items := []safari.Item{}
+	tmap := map[string]string{}
 
 	for _, f2 := range f.Folders {
-		fMap[f2.UID] = f2
-		proxies = append(proxies, &fuzzyProxy{f2.UID, f2.Title})
+		// fMap[f2.UID] = f2
+		tmap[f2.UID()] = "f"
+		// proxies = append(proxies, &fuzzyProxy{f2.UID, f2.Title})
+		items = append(items, f2)
 	}
 	for _, bm := range f.Bookmarks {
-		bMap[bm.UID] = bm
-		proxies = append(proxies, &fuzzyProxy{bm.UID, bm.Title})
+		// bMap[bm.UID] = bm
+		tmap[bm.UID()] = "b"
+		// proxies = append(proxies, &fuzzyProxy{bm.UID, bm.Title})
+		items = append(items, bm)
 	}
+	log.Printf("%d items in folder `%s`", len(items), f.Title())
 
-	if query != "" { // Do fuzzy sort
-		scores := fuzzy.Sort(proxies, query)
-		for i, s := range scores {
-			if s < minimumScore {
-				proxies = proxies[:i]
-				break
-			}
-			log.Printf("[%0.1f] %s", s, proxies[i].keywords)
-
-			if i == maxResults {
-				log.Printf("Reached max. results (%d)", maxResults)
-				proxies = proxies[:i]
-				break
-			}
-		}
-	} else { // Sort by title anyway
-		sort.Sort(proxies)
-	}
-
-	// ----------------------------------------------------------------
-	// Output results
-
-	if len(proxies) == 0 {
-		wf.Warn("No bookmarks or folders found", "Try a different query?")
-		return nil
-	}
-
-	log.Printf("Sending %d results to Alfred...", len(proxies))
-
-	for _, p := range proxies {
-
-		if f, ok := fMap[p.uid]; ok {
-			folderItem(f)
+	for _, it := range items {
+		if bm, ok := it.(*safari.Bookmark); ok {
+			bookmarkItem(bm)
+		} else if f2, ok := it.(*safari.Folder); ok {
+			folderItem(f2)
 		} else {
-			bookmarkItem(bMap[p.uid])
+			log.Printf("Could't cast item: %v", it)
 		}
 	}
+	if query != "" {
+		res := wf.Filter(query)
+		log.Printf("%d results for `%s`", len(res), query)
+	} else {
+		// TODO: sort items
+	}
 
+	wf.WarnEmpty("No bookmarks or folders found", "Try a different query?")
 	wf.SendFeedback()
 
 	return nil
@@ -674,43 +580,19 @@ func filterBookmarks(bookmarks []*safari.Bookmark) error {
 
 	log.Printf("Loaded %d bookmarks", len(bookmarks))
 
-	bms := make(fuzzyBookmarks, len(bookmarks))
-	for i, bm := range bookmarks {
-		bms[i] = bm
-	}
-
-	if query != "" {
-		// log.Printf("Searching %d bookmarks for \"%s\" ...", len(bms), query)
-		scores := fuzzy.Sort(bms, query)
-		for i, s := range scores {
-			if s < minimumScore {
-				bms = bms[:i]
-				break
-			}
-			log.Printf("[%0.1f] %s", s, bms[i].Title)
-
-			if i == maxResults {
-				log.Printf("Reached max. results (%d)", maxResults)
-				bms = bms[:i]
-				break
-			}
-		}
-
-		log.Printf("%d bookmark(s) matching \"%s\"", len(bms), query)
-
-	}
-
-	if len(bms) == 0 {
-		wf.Warn("No bookmarks found", "Try a different query?")
-		return nil
-	}
-
-	// Display results
-	log.Printf("Sending %d results to Alfred ...", len(bms))
-	for _, bm := range bms {
+	for _, bm := range bookmarks {
 		bookmarkItem(bm)
 	}
 
+	if query != "" {
+		res := wf.Filter(query)
+		log.Printf("%d bookmarks for `%s`", len(res), query)
+		for i, r := range res {
+			log.Printf("#%02d %5.2f `%s`", i+1, r.Score, r.SortKey)
+		}
+	}
+
+	wf.WarnEmpty("No bookmarks found", "Try a different query?")
 	wf.SendFeedback()
 	return nil
 }
@@ -768,11 +650,16 @@ func doTabAction() error {
 	log.Printf("window=%d, tab=%d, action=%s", window, tab, action)
 
 	LoadScripts(scriptDirs...)
-
-	a := TabAction(action)
-	if a == nil {
-		return fmt.Errorf("Unknown action : %s", action)
+	var ta TabActionable
+	var ua URLActionable
+	ta = TabAction(action)
+	if ta == nil {
+		ua = URLAction(action)
+		if ua == nil {
+			return fmt.Errorf("Unknown action : %s", action)
+		}
 	}
+	// log.Printf("action=%v", a)
 	wins, err := loadWindows()
 	if err != nil {
 		return err
@@ -781,7 +668,14 @@ func doTabAction() error {
 		if w.Index == window {
 			for _, t := range w.Tabs {
 				if t.Index == tab {
-					return a.Run(t)
+					if ta != nil {
+						return ta.Run(t)
+					}
+					u, err := url.Parse(t.URL)
+					if err != nil {
+						return err
+					}
+					return ua.Run(u)
 				}
 			}
 		}
@@ -793,63 +687,34 @@ func doTabAction() error {
 func listActions(actions []Actionable) error {
 	log.Printf("query=%s", query)
 
-	acts := make(fuzzyActions, len(actions))
-	for i, a := range actions {
-		acts[i] = a
+	for _, a := range actions {
+		it := wf.NewItem(a.Title()).
+			Arg(a.Title()).
+			Icon(a.Icon()).
+			Valid(true).
+			Var("ALSF_ACTION", a.Title())
+
+		if _, ok := a.(TabActionable); ok {
+			it.Var("ACTION_TYPE", "tab")
+		} else if _, ok := a.(URLActionable); ok {
+			it.Var("ACTION_TYPE", "url")
+		}
 	}
 
 	if query != "" {
-		scores := fuzzy.Sort(acts, query)
-		for i, s := range scores {
-			if s < minimumScore {
-				acts = acts[:i]
-				break
-			}
-			log.Printf("[%0.1f] %s", s, acts[i].Title())
-
-			if i == maxResults {
-				log.Printf("Reached max. results (%d)", maxResults)
-				acts = acts[:i]
-				break
-			}
-		}
-
-		log.Printf("%d action(s) matching \"%s\"", len(acts), query)
-
+		res := wf.Filter(query)
+		log.Printf("%d actions for `%s`", len(res), query)
 	}
-
-	if len(acts) == 0 {
-		wf.Warn("No actions found", "Try a different query?")
-		return nil
-	}
-
-	for _, a := range acts {
-
-		it := wf.NewItem(a.Title())
-		it.Arg = a.Title()
-		it.SetIcon(a.Icon(), a.IconType())
-		it.Valid = true
-		it.SetVar("ALSF_ACTION", a.Title())
-
-		if _, ok := a.(TabActionable); ok {
-			it.SetVar("ACTION_TYPE", "tab")
-			it.SetVar("ALSF_WINDOW", fmt.Sprintf("%d", window))
-			it.SetVar("ALSF_TAB", fmt.Sprintf("%d", tab))
-		} else {
-			it.SetVar("ACTION_TYPE", "url")
-			it.SetVar("ALSF_URL", actionURL.String())
-		}
-
-	}
+	wf.WarnEmpty("No actions found", "Try a different query?")
 	wf.SendFeedback()
 	return nil
 }
 
 func doListURLActions() error {
 	LoadScripts(scriptDirs...)
-
-	acts := make([]Actionable, len(URLActions()))
-	for i, a := range URLActions() {
+	ua := URLActions()
+	acts := make([]Actionable, len(ua))
+	for i, a := range ua {
 		acts[i] = a
 	}
 	return listActions(acts)
@@ -857,37 +722,33 @@ func doListURLActions() error {
 
 func doListTabActions() error {
 	LoadScripts(scriptDirs...)
-
-	acts := make([]Actionable, len(TabActions()))
-	for i, a := range TabActions() {
-		acts[i] = a
+	acts := []Actionable{}
+	for _, a := range TabActions() {
+		acts = append(acts, a)
+	}
+	for _, a := range URLActions() {
+		acts = append(acts, a)
 	}
 	return listActions(acts)
 }
 
 // doCurrentTab outputs workflow variables for the current tab.
 func doCurrentTab() error {
-	wins, err := loadWindows()
+	tab, err := safari.ActiveTab()
+	if err != nil {
+		return fmt.Errorf("Couldn't get active tab: %s", err)
+	}
+	log.Printf("%v", tab)
+	av := aw.NewArgVars()
+	av.Var("ALSF_WINDOW", "1").
+		Var("ALSF_TAB", fmt.Sprintf("%d", tab.Index)).
+		Var("ALSF_URL", tab.URL)
+
+	s, err := av.String()
 	if err != nil {
 		return err
-	}
-	if len(wins) == 0 {
-		return fmt.Errorf("No windows.")
 	}
 
-	vs := &workflow.VarSet{}
-	vs.Var("ALSF_WINDOW", "1")
-	// Find active tab
-	for _, w := range wins {
-		if w.Index == 1 {
-			vs.Var("ALSF_TAB", fmt.Sprintf("%d", w.ActiveTab))
-			break
-		}
-	}
-	s, err := vs.String()
-	if err != nil {
-		return err
-	}
 	_, err = fmt.Println(s)
 	return err
 }
@@ -908,6 +769,7 @@ func run() {
 	if err != nil {
 		wf.FatalError(err)
 	}
+	wf.MaxResults = maxResults
 
 	switch cmd {
 
@@ -942,6 +804,7 @@ func run() {
 		err = doURLAction()
 
 	case tabActCmd.FullCommand():
+		wf.TextErrors = true
 		err = doTabAction()
 
 	case lstTabActCmd.FullCommand():
@@ -949,6 +812,7 @@ func run() {
 
 	case lstURLActCmd.FullCommand():
 		err = doListURLActions()
+
 	case currCmd.FullCommand():
 		err = doCurrentTab()
 

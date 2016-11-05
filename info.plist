@@ -65,6 +65,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>0F73EBCE-EE02-4D0B-B9B9-26849B69515E</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>7C54C90F-515A-4665-91A3-BE55DB63C25E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>126AB834-9B99-4FE4-BC12-6F1D96BFCE72</key>
 		<array>
 			<dict>
@@ -78,11 +91,24 @@
 				<false/>
 			</dict>
 		</array>
+		<key>1C9AC767-AC40-4CD6-A0C9-5D7E10196EC0</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>323EA158-3C85-45C9-8702-F4750AD40233</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>1CC27177-DF0A-4468-B358-54AB7047DB95</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>4B1FC8AB-FB4E-4913-AC9D-61C7A685FC15</string>
+				<string>F033671B-391D-4E9D-A71C-55CC1AA3E22A</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -108,7 +134,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>26C82666-6D63-4B0E-8484-504DAFEC0F3D</string>
+				<string>A2E2F0E6-CDE8-4871-87F8-56EBF3533B5C</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -121,7 +147,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>323EA158-3C85-45C9-8702-F4750AD40233</string>
+				<string>1C9AC767-AC40-4CD6-A0C9-5D7E10196EC0</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -156,19 +182,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>3CF1B4A3-E41E-4595-90FC-1F9967F639AE</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>382EA310-BC65-42FA-9B9B-CD962F883D3A</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>466AFEF0-E98B-42D1-9FD4-1162CB62C42E</key>
 		<array>
 			<dict>
@@ -182,8 +195,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>4B1FC8AB-FB4E-4913-AC9D-61C7A685FC15</key>
-		<array/>
 		<key>5FD5E746-B22D-44E1-89BC-ED2617F9BB7B</key>
 		<array>
 			<dict>
@@ -201,7 +212,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>F861E910-A2F3-44E8-82AE-4902F8554614</string>
+				<string>721AAE10-9173-47C9-98B0-B673CFBD37B2</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -240,16 +251,6 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>355FC482-950D-4155-9A8E-45EDCFDB4EC4</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<true/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
 				<string>82BC0606-4BCC-4911-9978-E7A709993015</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -258,12 +259,22 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>355FC482-950D-4155-9A8E-45EDCFDB4EC4</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<true/>
+			</dict>
 		</array>
 		<key>82BC0606-4BCC-4911-9978-E7A709993015</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>9ED9555B-B2D7-4699-BCB3-81A68BE1DFDB</string>
+				<string>DFD6581C-387E-4A1C-AC01-FFF039871345</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -276,7 +287,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>B83619CD-E5B4-413A-BCA2-7D90E588686D</string>
+				<string>41723B25-4411-4D15-811C-6EB22BF8E347</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -328,7 +339,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>D0F1B29A-5F9E-46E6-A24A-DE683B8693C8</string>
+				<string>971D7A70-415F-420A-9DCD-C8B80F0ECD41</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -355,32 +366,6 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>971D7A70-415F-420A-9DCD-C8B80F0ECD41</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>D0F1B29A-5F9E-46E6-A24A-DE683B8693C8</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>971D7A70-415F-420A-9DCD-C8B80F0ECD41</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>D6C1131D-CCB2-4B03-BF7C-EEFEAA606A79</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>126AB834-9B99-4FE4-BC12-6F1D96BFCE72</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -438,19 +423,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>DB60E56C-5D2B-4C6C-A704-37F12D7C2ED7</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>76F03F1E-15FC-4B9D-9B00-98F12EF5B136</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>DE1C9785-A59F-4478-99BD-09A9CE0B38AD</key>
 		<array>
 			<dict>
@@ -464,24 +436,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>E0BAD7E8-5962-41B2-B671-C6A2286CA193</key>
+		<key>DFD6581C-387E-4A1C-AC01-FFF039871345</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>D94FFE88-0A1C-49FE-9F45-8DDAAEECD0C8</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>F861E910-A2F3-44E8-82AE-4902F8554614</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>721AAE10-9173-47C9-98B0-B673CFBD37B2</string>
+				<string>9ED9555B-B2D7-4699-BCB3-81A68BE1DFDB</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -521,6 +480,10 @@
 				<integer>0</integer>
 				<key>argument</key>
 				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
 				<key>hotkey</key>
 				<integer>0</integer>
 				<key>hotmod</key>
@@ -644,63 +607,21 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>on run(argv)
-	set theWin to system attribute "ALSF_WINDOW"
-	set theTab to system attribute "ALSF_TAB"
-	set theIndex to system attribute "ALSF_INDEX"
-
-	log "theWin=" &amp; theWin &amp; ", theTab=" &amp; theTab &amp; ", theIndex=" &amp; theIndex
-
-	tell application "Alfred 3"
-		run trigger "tab-actions" in workflow "net.deanishe.alfred.safari" with argument theIndex
-	end tell
-
-end run</string>
+				<string># The window/tab to activate are specified via workflow/environment variables
+./alsf activate</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
 				<string></string>
 				<key>type</key>
-				<integer>6</integer>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>26C82666-6D63-4B0E-8484-504DAFEC0F3D</string>
+			<string>9ED9555B-B2D7-4699-BCB3-81A68BE1DFDB</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>triggerid</key>
-				<string>history</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.trigger.external</string>
-			<key>uid</key>
-			<string>D6C1131D-CCB2-4B03-BF7C-EEFEAA606A79</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>inputstring</key>
-				<string>{var:action}</string>
-				<key>matchcasesensitive</key>
-				<true/>
-				<key>matchmode</key>
-				<integer>0</integer>
-				<key>matchstring</key>
-				<string>actions</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.filter</string>
-			<key>uid</key>
-			<string>355FC482-950D-4155-9A8E-45EDCFDB4EC4</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -752,6 +673,10 @@ end run</string>
 				<integer>0</integer>
 				<key>argument</key>
 				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
 				<key>hotkey</key>
 				<integer>0</integer>
 				<key>hotmod</key>
@@ -779,33 +704,6 @@ end run</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string># Simulate ESC keypress to close Alfred
-/usr/bin/osascript -e 'tell application "System Events" to key code 53'
-
-# The window/tab to activate are specified via workflow/environment variables
-./alsf activate</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>9ED9555B-B2D7-4699-BCB3-81A68BE1DFDB</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>inputstring</key>
 				<string>{var:action}</string>
 				<key>matchcasesensitive</key>
@@ -823,15 +721,105 @@ end run</string>
 			<integer>1</integer>
 		</dict>
 		<dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.hidealfred</string>
+			<key>uid</key>
+			<string>DFD6581C-387E-4A1C-AC01-FFF039871345</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>tab-actions</string>
+				<key>passinputasargument</key>
+				<false/>
+				<key>passvariables</key>
+				<true/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>A2E2F0E6-CDE8-4871-87F8-56EBF3533B5C</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
 			<key>config</key>
 			<dict>
 				<key>triggerid</key>
-				<string>tab</string>
+				<string>tab-actions</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.trigger.external</string>
 			<key>uid</key>
-			<string>DB60E56C-5D2B-4C6C-A704-37F12D7C2ED7</string>
+			<string>AE42EE07-31E3-4A76-AAB3-D99D72B36731</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>inputstring</key>
+				<string>{var:action}</string>
+				<key>matchcasesensitive</key>
+				<true/>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>matchstring</key>
+				<string>actions</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.filter</string>
+			<key>uid</key>
+			<string>355FC482-950D-4155-9A8E-45EDCFDB4EC4</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>./alsf active-tab</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>C00F9AA1-44BD-45E3-96D5-C839C7C995E7</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<true/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>ERROR</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>7C54C90F-515A-4665-91A3-BE55DB63C25E</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -884,53 +872,6 @@ end run</string>
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>q=$1
-IFS='x' read -ra NUMS &lt;&lt;&lt; "$q"
-
-cat &lt;&lt;EOS
-{"alfredworkflow": {
-		"variables": {
-			"ALSF_WINDOW": "${NUMS[0]}",
-			"ALSF_TAB": "${NUMS[1]}",
-		}
-	}
-}
-EOS</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>D0F1B29A-5F9E-46E6-A24A-DE683B8693C8</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>triggerid</key>
-				<string>tab-actions</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.trigger.external</string>
-			<key>uid</key>
-			<string>AE42EE07-31E3-4A76-AAB3-D99D72B36731</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
 				<string>./alsf action tab</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
@@ -943,6 +884,41 @@ EOS</string>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>0F73EBCE-EE02-4D0B-B9B9-26849B69515E</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>17</integer>
+				<key>hotmod</key>
+				<integer>1835008</integer>
+				<key>hotstring</key>
+				<string>T</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedApps</key>
+				<array>
+					<string>com.apple.Safari</string>
+				</array>
+				<key>relatedAppsMode</key>
+				<integer>1</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>AB66037D-D172-4C1D-B8A2-CC0CF9CF8E0E</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -995,60 +971,10 @@ variables={allvars}
 				<integer>0</integer>
 				<key>argument</key>
 				<integer>0</integer>
-				<key>hotkey</key>
-				<integer>17</integer>
-				<key>hotmod</key>
-				<integer>1835008</integer>
-				<key>hotstring</key>
-				<string>T</string>
-				<key>leftcursor</key>
+				<key>focusedappvariable</key>
 				<false/>
-				<key>modsmode</key>
-				<integer>0</integer>
-				<key>relatedApps</key>
-				<array>
-					<string>com.apple.Safari</string>
-				</array>
-				<key>relatedAppsMode</key>
-				<integer>1</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.trigger.hotkey</string>
-			<key>uid</key>
-			<string>AB66037D-D172-4C1D-B8A2-CC0CF9CF8E0E</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>./alsf active-tab</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
+				<key>focusedappvariablename</key>
 				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>C00F9AA1-44BD-45E3-96D5-C839C7C995E7</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>action</key>
-				<integer>0</integer>
-				<key>argument</key>
-				<integer>0</integer>
 				<key>hotkey</key>
 				<integer>0</integer>
 				<key>hotmod</key>
@@ -1119,19 +1045,6 @@ variables={allvars}
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>triggerid</key>
-				<string>bookmarks</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.trigger.external</string>
-			<key>uid</key>
-			<string>3CF1B4A3-E41E-4595-90FC-1F9967F639AE</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>argumenttype</key>
@@ -1179,6 +1092,10 @@ variables={allvars}
 				<integer>0</integer>
 				<key>argument</key>
 				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
 				<key>hotkey</key>
 				<integer>0</integer>
 				<key>hotmod</key>
@@ -1202,19 +1119,6 @@ variables={allvars}
 			<string>3810E7C3-8090-4111-AECE-F78625F2C81E</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>triggerid</key>
-				<string>reading-list</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.trigger.external</string>
-			<key>uid</key>
-			<string>E0BAD7E8-5962-41B2-B671-C6A2286CA193</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1297,6 +1201,14 @@ variables={allvars}
 			<integer>2</integer>
 		</dict>
 		<dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.hidealfred</string>
+			<key>uid</key>
+			<string>1C9AC767-AC40-4CD6-A0C9-5D7E10196EC0</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
 			<key>config</key>
 			<dict>
 				<key>argument</key>
@@ -1320,31 +1232,6 @@ variables={allvars}
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>68</integer>
-				<key>script</key>
-				<string>tell application "Alfred 3"
-	run trigger "browse-folder" in workflow "net.deanishe.alfred.safari" with argument (system attribute "ALSF_UID")
-end tell</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>6</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>4B1FC8AB-FB4E-4913-AC9D-61C7A685FC15</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>triggerid</key>
 				<string>open-uid</string>
 			</dict>
@@ -1352,6 +1239,43 @@ end tell</string>
 			<string>alfred.workflow.trigger.external</string>
 			<key>uid</key>
 			<string>FA5F16AF-40C3-4EC6-9F70-32B47E4A5BBC</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>variables</key>
+				<dict>
+					<key>ALSF_UID</key>
+					<string>{query}</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>466AFEF0-E98B-42D1-9FD4-1162CB62C42E</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>browse-folder</string>
+				<key>passinputasargument</key>
+				<false/>
+				<key>passvariables</key>
+				<true/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>F033671B-391D-4E9D-A71C-55CC1AA3E22A</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1379,24 +1303,6 @@ variables={allvars}
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argument</key>
-				<string></string>
-				<key>variables</key>
-				<dict>
-					<key>ALSF_UID</key>
-					<string>{query}</string>
-				</dict>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.argument</string>
-			<key>uid</key>
-			<string>466AFEF0-E98B-42D1-9FD4-1162CB62C42E</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>inputstring</key>
 				<string>{var:action}</string>
 				<key>matchcasesensitive</key>
@@ -1410,25 +1316,6 @@ variables={allvars}
 			<string>alfred.workflow.utility.filter</string>
 			<key>uid</key>
 			<string>AB1538F1-21FC-4175-8A7D-FFB65F43A455</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>inputstring</key>
-				<string>{var:action}</string>
-				<key>matchcasesensitive</key>
-				<true/>
-				<key>matchmode</key>
-				<integer>0</integer>
-				<key>matchstring</key>
-				<string>browse</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.filter</string>
-			<key>uid</key>
-			<string>BC0EC6A3-641B-48C5-B785-620943E268EF</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1490,30 +1377,6 @@ variables={allvars}
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>68</integer>
-				<key>script</key>
-				<string>--tell application "Alfred 3" to search "bmf "
-tell application "Alfred 3" to run trigger "all-folders" in workflow "net.deanishe.alfred.safari"</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>6</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>B83619CD-E5B4-413A-BCA2-7D90E588686D</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>argument</key>
 				<string>.
 /--- BROWSE OR OPEN ---\
@@ -1535,18 +1398,38 @@ variables={allvars}
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argument</key>
-				<string></string>
-				<key>variables</key>
-				<dict>
-					<key>ALSF_UID</key>
-					<string>{query}</string>
-				</dict>
+				<key>inputstring</key>
+				<string>{var:action}</string>
+				<key>matchcasesensitive</key>
+				<true/>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>matchstring</key>
+				<string>browse</string>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.utility.argument</string>
+			<string>alfred.workflow.utility.filter</string>
 			<key>uid</key>
-			<string>F861E910-A2F3-44E8-82AE-4902F8554614</string>
+			<string>BC0EC6A3-641B-48C5-B785-620943E268EF</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>all-folders</string>
+				<key>passinputasargument</key>
+				<false/>
+				<key>passvariables</key>
+				<false/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>41723B25-4411-4D15-811C-6EB22BF8E347</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1598,7 +1481,7 @@ variables={allvars}
 		<key>0004C2F0-8ED4-4380-8E22-92343D79C9F6</key>
 		<dict>
 			<key>xpos</key>
-			<integer>1030</integer>
+			<integer>730</integer>
 			<key>ypos</key>
 			<integer>550</integer>
 		</dict>
@@ -1609,23 +1492,23 @@ variables={allvars}
 			<key>note</key>
 			<string>View Safari tabs</string>
 			<key>xpos</key>
-			<integer>50</integer>
+			<integer>40</integer>
 			<key>ypos</key>
-			<integer>350</integer>
+			<integer>200</integer>
 		</dict>
 		<key>0F1CFAC5-E975-422B-9C4D-BA2F38FA3062</key>
 		<dict>
 			<key>xpos</key>
-			<integer>550</integer>
+			<integer>390</integer>
 			<key>ypos</key>
-			<integer>1890</integer>
+			<integer>1450</integer>
 		</dict>
 		<key>0F73EBCE-EE02-4D0B-B9B9-26849B69515E</key>
 		<dict>
 			<key>note</key>
 			<string>Run tab action</string>
 			<key>xpos</key>
-			<integer>1110</integer>
+			<integer>810</integer>
 			<key>ypos</key>
 			<integer>520</integer>
 		</dict>
@@ -1636,29 +1519,27 @@ variables={allvars}
 			<key>note</key>
 			<string>Safari History</string>
 			<key>xpos</key>
-			<integer>240</integer>
+			<integer>230</integer>
 			<key>ypos</key>
 			<integer>40</integer>
+		</dict>
+		<key>1C9AC767-AC40-4CD6-A0C9-5D7E10196EC0</key>
+		<dict>
+			<key>note</key>
+			<string>Hide Alfred</string>
+			<key>xpos</key>
+			<integer>720</integer>
+			<key>ypos</key>
+			<integer>1060</integer>
 		</dict>
 		<key>1CC27177-DF0A-4468-B358-54AB7047DB95</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>5</integer>
 			<key>xpos</key>
-			<integer>800</integer>
+			<integer>710</integer>
 			<key>ypos</key>
-			<integer>1670</integer>
-		</dict>
-		<key>26C82666-6D63-4B0E-8484-504DAFEC0F3D</key>
-		<dict>
-			<key>colorindex</key>
-			<integer>3</integer>
-			<key>note</key>
-			<string>Show all available tab actions via 'tab-actions' External Trigger</string>
-			<key>xpos</key>
-			<integer>560</integer>
-			<key>ypos</key>
-			<integer>200</integer>
+			<integer>1320</integer>
 		</dict>
 		<key>323EA158-3C85-45C9-8702-F4750AD40233</key>
 		<dict>
@@ -1667,9 +1548,9 @@ variables={allvars}
 			<key>note</key>
 			<string>Open specified bookmark/folder</string>
 			<key>xpos</key>
-			<integer>880</integer>
+			<integer>810</integer>
 			<key>ypos</key>
-			<integer>1470</integer>
+			<integer>1030</integer>
 		</dict>
 		<key>329B5936-B26C-49BC-8ED1-53A0E11D913B</key>
 		<dict>
@@ -1678,9 +1559,9 @@ variables={allvars}
 			<key>note</key>
 			<string>View Safari bookmarks</string>
 			<key>xpos</key>
-			<integer>50</integer>
+			<integer>30</integer>
 			<key>ypos</key>
-			<integer>830</integer>
+			<integer>700</integer>
 		</dict>
 		<key>355FC482-950D-4155-9A8E-45EDCFDB4EC4</key>
 		<dict>
@@ -1691,16 +1572,16 @@ variables={allvars}
 			<key>xpos</key>
 			<integer>460</integer>
 			<key>ypos</key>
-			<integer>230</integer>
+			<integer>380</integer>
 		</dict>
 		<key>356B391D-D91D-46CD-82B9-B30A76C9ADEF</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>8</integer>
 			<key>xpos</key>
-			<integer>800</integer>
+			<integer>640</integer>
 			<key>ypos</key>
-			<integer>1500</integer>
+			<integer>1060</integer>
 		</dict>
 		<key>3810E7C3-8090-4111-AECE-F78625F2C81E</key>
 		<dict>
@@ -1709,9 +1590,9 @@ variables={allvars}
 			<key>note</key>
 			<string>View Safari Reading List</string>
 			<key>xpos</key>
-			<integer>50</integer>
+			<integer>30</integer>
 			<key>ypos</key>
-			<integer>1150</integer>
+			<integer>870</integer>
 		</dict>
 		<key>382EA310-BC65-42FA-9B9B-CD962F883D3A</key>
 		<dict>
@@ -1720,56 +1601,45 @@ variables={allvars}
 			<key>note</key>
 			<string>Search and open Bookmarks</string>
 			<key>xpos</key>
-			<integer>240</integer>
+			<integer>210</integer>
 			<key>ypos</key>
-			<integer>830</integer>
+			<integer>700</integer>
 		</dict>
-		<key>3CF1B4A3-E41E-4595-90FC-1F9967F639AE</key>
+		<key>41723B25-4411-4D15-811C-6EB22BF8E347</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>3</integer>
+			<key>note</key>
+			<string>Show all folders</string>
 			<key>xpos</key>
-			<integer>50</integer>
+			<integer>710</integer>
 			<key>ypos</key>
-			<integer>1000</integer>
+			<integer>1530</integer>
 		</dict>
 		<key>466AFEF0-E98B-42D1-9FD4-1162CB62C42E</key>
 		<dict>
 			<key>note</key>
 			<string>Set UID variable from {query}</string>
 			<key>xpos</key>
-			<integer>250</integer>
+			<integer>230</integer>
 			<key>ypos</key>
-			<integer>1690</integer>
-		</dict>
-		<key>4B1FC8AB-FB4E-4913-AC9D-61C7A685FC15</key>
-		<dict>
-			<key>colorindex</key>
-			<integer>5</integer>
-			<key>note</key>
-			<string>Browse bookmark folder
-
-This calls the Script Filter below via the "browse-folder" External Trigger to the left</string>
-			<key>xpos</key>
-			<integer>880</integer>
-			<key>ypos</key>
-			<integer>1640</integer>
+			<integer>1250</integer>
 		</dict>
 		<key>5FD5E746-B22D-44E1-89BC-ED2617F9BB7B</key>
 		<dict>
 			<key>note</key>
 			<string>Re-entry point for self and the "browse-folder" External Trigger below</string>
 			<key>xpos</key>
-			<integer>50</integer>
+			<integer>30</integer>
 			<key>ypos</key>
-			<integer>1470</integer>
+			<integer>1030</integer>
 		</dict>
 		<key>65A23B83-8C51-40A7-AA28-9E37BC98EAE8</key>
 		<dict>
-			<key>note</key>
-			<string>Called with a UID by the Run Script action above</string>
 			<key>xpos</key>
-			<integer>50</integer>
+			<integer>30</integer>
 			<key>ypos</key>
-			<integer>1860</integer>
+			<integer>1420</integer>
 		</dict>
 		<key>6610C516-6069-4841-AE4A-418E00E6E59E</key>
 		<dict>
@@ -1778,9 +1648,9 @@ This calls the Script Filter below via the "browse-folder" External Trigger to t
 			<key>note</key>
 			<string>action == top</string>
 			<key>xpos</key>
-			<integer>680</integer>
+			<integer>520</integer>
 			<key>ypos</key>
-			<integer>1920</integer>
+			<integer>1560</integer>
 		</dict>
 		<key>721AAE10-9173-47C9-98B0-B673CFBD37B2</key>
 		<dict>
@@ -1789,9 +1659,9 @@ This calls the Script Filter below via the "browse-folder" External Trigger to t
 
 Filter within a specific bookmarks folder</string>
 			<key>xpos</key>
-			<integer>370</integer>
+			<integer>210</integer>
 			<key>ypos</key>
-			<integer>1860</integer>
+			<integer>1420</integer>
 		</dict>
 		<key>76F03F1E-15FC-4B9D-9B00-98F12EF5B136</key>
 		<dict>
@@ -1800,9 +1670,16 @@ Filter within a specific bookmarks folder</string>
 			<key>note</key>
 			<string>Search and manipulate Tabs</string>
 			<key>xpos</key>
-			<integer>240</integer>
+			<integer>230</integer>
 			<key>ypos</key>
-			<integer>350</integer>
+			<integer>200</integer>
+		</dict>
+		<key>7C54C90F-515A-4665-91A3-BE55DB63C25E</key>
+		<dict>
+			<key>xpos</key>
+			<integer>980</integer>
+			<key>ypos</key>
+			<integer>520</integer>
 		</dict>
 		<key>82BC0606-4BCC-4911-9978-E7A709993015</key>
 		<dict>
@@ -1813,16 +1690,16 @@ Filter within a specific bookmarks folder</string>
 			<key>xpos</key>
 			<integer>460</integer>
 			<key>ypos</key>
-			<integer>400</integer>
+			<integer>230</integer>
 		</dict>
 		<key>84DB3789-346A-4833-A576-49CEE1C8EF04</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>3</integer>
 			<key>xpos</key>
-			<integer>800</integer>
+			<integer>630</integer>
 			<key>ypos</key>
-			<integer>1920</integer>
+			<integer>1560</integer>
 		</dict>
 		<key>8BE3416B-FFFF-446A-B831-F3BE52EAF45C</key>
 		<dict>
@@ -1834,7 +1711,7 @@ Filter within a specific bookmarks folder</string>
 		<key>971D7A70-415F-420A-9DCD-C8B80F0ECD41</key>
 		<dict>
 			<key>xpos</key>
-			<integer>790</integer>
+			<integer>460</integer>
 			<key>ypos</key>
 			<integer>550</integer>
 		</dict>
@@ -1845,9 +1722,20 @@ Filter within a specific bookmarks folder</string>
 			<key>note</key>
 			<string>Activate tab</string>
 			<key>xpos</key>
+			<integer>700</integer>
+			<key>ypos</key>
+			<integer>200</integer>
+		</dict>
+		<key>A2E2F0E6-CDE8-4871-87F8-56EBF3533B5C</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>3</integer>
+			<key>note</key>
+			<string>Show available Tab Actions</string>
+			<key>xpos</key>
 			<integer>560</integer>
 			<key>ypos</key>
-			<integer>370</integer>
+			<integer>350</integer>
 		</dict>
 		<key>AB1538F1-21FC-4175-8A7D-FFB65F43A455</key>
 		<dict>
@@ -1856,36 +1744,25 @@ Filter within a specific bookmarks folder</string>
 			<key>note</key>
 			<string>action == open</string>
 			<key>xpos</key>
-			<integer>680</integer>
+			<integer>520</integer>
 			<key>ypos</key>
-			<integer>1710</integer>
+			<integer>1350</integer>
 		</dict>
 		<key>AB66037D-D172-4C1D-B8A2-CC0CF9CF8E0E</key>
 		<dict>
 			<key>note</key>
 			<string>Show Actions for current tab</string>
 			<key>xpos</key>
-			<integer>50</integer>
+			<integer>30</integer>
 			<key>ypos</key>
-			<integer>670</integer>
+			<integer>520</integer>
 		</dict>
 		<key>AE42EE07-31E3-4A76-AAB3-D99D72B36731</key>
 		<dict>
 			<key>xpos</key>
-			<integer>430</integer>
+			<integer>30</integer>
 			<key>ypos</key>
-			<integer>520</integer>
-		</dict>
-		<key>B83619CD-E5B4-413A-BCA2-7D90E588686D</key>
-		<dict>
-			<key>colorindex</key>
-			<integer>3</integer>
-			<key>note</key>
-			<string>Calls "all-folders" External Trigger above to go back to All Folders view</string>
-			<key>xpos</key>
-			<integer>880</integer>
-			<key>ypos</key>
-			<integer>1890</integer>
+			<integer>370</integer>
 		</dict>
 		<key>BC0EC6A3-641B-48C5-B785-620943E268EF</key>
 		<dict>
@@ -1894,34 +1771,18 @@ Filter within a specific bookmarks folder</string>
 			<key>note</key>
 			<string>action == browse</string>
 			<key>xpos</key>
-			<integer>680</integer>
+			<integer>520</integer>
 			<key>ypos</key>
-			<integer>1810</integer>
+			<integer>1450</integer>
 		</dict>
 		<key>C00F9AA1-44BD-45E3-96D5-C839C7C995E7</key>
 		<dict>
 			<key>note</key>
 			<string>Set window and tab variables to current active tab</string>
 			<key>xpos</key>
-			<integer>610</integer>
-			<key>ypos</key>
-			<integer>690</integer>
-		</dict>
-		<key>D0F1B29A-5F9E-46E6-A24A-DE683B8693C8</key>
-		<dict>
-			<key>note</key>
-			<string>Parse input and set window and tab variables</string>
-			<key>xpos</key>
-			<integer>610</integer>
+			<integer>210</integer>
 			<key>ypos</key>
 			<integer>520</integer>
-		</dict>
-		<key>D6C1131D-CCB2-4B03-BF7C-EEFEAA606A79</key>
-		<dict>
-			<key>xpos</key>
-			<integer>50</integer>
-			<key>ypos</key>
-			<integer>200</integer>
 		</dict>
 		<key>D6E84120-6093-469C-AEA6-F458A1F1F3BC</key>
 		<dict>
@@ -1930,7 +1791,7 @@ Filter within a specific bookmarks folder</string>
 			<key>note</key>
 			<string>View Safari history</string>
 			<key>xpos</key>
-			<integer>50</integer>
+			<integer>40</integer>
 			<key>ypos</key>
 			<integer>40</integer>
 		</dict>
@@ -1943,9 +1804,9 @@ Filter within a specific bookmarks folder</string>
 
 Filter all bookmark folders</string>
 			<key>xpos</key>
-			<integer>240</integer>
+			<integer>210</integer>
 			<key>ypos</key>
-			<integer>1470</integer>
+			<integer>1030</integer>
 		</dict>
 		<key>D94FFE88-0A1C-49FE-9F45-8DDAAEECD0C8</key>
 		<dict>
@@ -1954,41 +1815,40 @@ Filter all bookmark folders</string>
 			<key>note</key>
 			<string>Search and open Reading List bookmarks</string>
 			<key>xpos</key>
-			<integer>240</integer>
+			<integer>210</integer>
 			<key>ypos</key>
-			<integer>1150</integer>
-		</dict>
-		<key>DB60E56C-5D2B-4C6C-A704-37F12D7C2ED7</key>
-		<dict>
-			<key>xpos</key>
-			<integer>50</integer>
-			<key>ypos</key>
-			<integer>520</integer>
+			<integer>870</integer>
 		</dict>
 		<key>DE1C9785-A59F-4478-99BD-09A9CE0B38AD</key>
 		<dict>
 			<key>note</key>
 			<string>Filter tab actions</string>
 			<key>xpos</key>
-			<integer>860</integer>
+			<integer>560</integer>
 			<key>ypos</key>
 			<integer>520</integer>
 		</dict>
-		<key>E0BAD7E8-5962-41B2-B671-C6A2286CA193</key>
+		<key>DFD6581C-387E-4A1C-AC01-FFF039871345</key>
 		<dict>
-			<key>xpos</key>
-			<integer>50</integer>
-			<key>ypos</key>
-			<integer>1320</integer>
-		</dict>
-		<key>F861E910-A2F3-44E8-82AE-4902F8554614</key>
-		<dict>
+			<key>colorindex</key>
+			<integer>9</integer>
 			<key>note</key>
-			<string>Set UID environment variable</string>
+			<string>Hide Alfred</string>
 			<key>xpos</key>
-			<integer>250</integer>
+			<integer>590</integer>
 			<key>ypos</key>
-			<integer>1890</integer>
+			<integer>230</integer>
+		</dict>
+		<key>F033671B-391D-4E9D-A71C-55CC1AA3E22A</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>5</integer>
+			<key>note</key>
+			<string>Browser bookmark folder</string>
+			<key>xpos</key>
+			<integer>790</integer>
+			<key>ypos</key>
+			<integer>1290</integer>
 		</dict>
 		<key>FA5F16AF-40C3-4EC6-9F70-32B47E4A5BBC</key>
 		<dict>
@@ -1996,15 +1856,15 @@ Filter all bookmark folders</string>
 			<string>Re-entry point for XYZ
 Opens a bookmark or all bookmarks within a folder</string>
 			<key>xpos</key>
-			<integer>50</integer>
+			<integer>30</integer>
 			<key>ypos</key>
-			<integer>1660</integer>
+			<integer>1220</integer>
 		</dict>
 	</dict>
 	<key>variables</key>
 	<dict>
 		<key>ALSF_MAX_CACHE</key>
-		<string>5s</string>
+		<string>10s</string>
 		<key>ALSF_MIN_SCORE</key>
 		<string>10</string>
 	</dict>

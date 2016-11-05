@@ -21,10 +21,20 @@ import (
 )
 
 var (
+	iconTab = &aw.Icon{Value: "tab.png"}
+)
+
+var (
 	tabActions []TabActionable
 	urlActions []URLActionable
-	scriptExts = []string{".scpt", ".sh", ".bash", ".zsh"}
-	iconExts   = []string{".png", ".icns", ".jpg", ".jpeg", ".gif"}
+	// Extensions of files that need to be run via /usr/bin/osascript
+	osaExts = map[string]bool{
+		".scpt":        true,
+		".js":          true,
+		".applescript": true,
+		".scptd":       true,
+	}
+	iconExts = []string{".png", ".icns", ".jpg", ".jpeg", ".gif"}
 )
 
 func init() {
@@ -84,8 +94,7 @@ func TabAction(title string) TabActionable {
 // Actionable is a base interface for tab/URL actions.
 type Actionable interface {
 	Title() string
-	Icon() string
-	IconType() string
+	Icon() *aw.Icon
 }
 
 // TabActionable is an action that can be performed on a tab.
@@ -97,13 +106,12 @@ type TabActionable interface {
 // URLActionable is an action that can be performed on a URL.
 type URLActionable interface {
 	Actionable
-	Run(u *url.URL) error
+	Run(url *url.URL) error
 }
 
 type baseTabAction struct{}
 
-func (a *baseTabAction) Icon() string     { return "tab.png" }
-func (a *baseTabAction) IconType() string { return "" }
+func (a *baseTabAction) Icon() *aw.Icon { return iconTab }
 
 type closeTab struct {
 	baseTabAction
@@ -153,8 +161,7 @@ func (a *closeWindow) Run(t *safari.Tab) error { return safari.CloseWin(t.Window
 
 type baseURLAction struct{}
 
-func (a *baseURLAction) Icon() string     { return workflow.IconWeb.Value }
-func (a *baseURLAction) IconType() string { return workflow.IconWeb.Type }
+func (a *baseURLAction) Icon() *aw.Icon { return aw.IconWeb }
 
 type openURLAction struct {
 	baseURLAction
@@ -170,29 +177,31 @@ func (a *openURLAction) Run(u *url.URL) error {
 // getIcon returns icon and icon type for script path. It looks for
 // an icon file sharing the same basename (i.e. only the extension differs).
 // Otherwise it returns the script's own icon.
-func getIcon(p string) (icon, iconType string) {
+func getIcon(p, typ string) *aw.Icon {
 	x := filepath.Ext(p)
 	r := p[0 : len(p)-len(x)]
 	for _, x := range iconExts {
 		ip := r + x
 		if _, err := os.Stat(ip); err == nil {
-			return ip, ""
+			return &aw.Icon{Value: ip, Type: ""}
 		}
 	}
-	return p, "fileicon"
+	if typ == "url" {
+		return aw.IconWeb
+	}
+	return IconDefault
 }
 
 // script wraps a script's path and icon details.
 type script struct {
-	Path     string
-	Icon     string
-	IconType string
+	Path string
+	Icon *aw.Icon
 }
 
 // newScript initialises a new script.
-func newScript(p string) *script {
-	i, t := getIcon(p)
-	return &script{p, i, t}
+func newScript(p, typ string) *script {
+	i := getIcon(p, typ)
+	return &script{p, i}
 }
 
 // scriptRunner is a base struct for running scripts.
@@ -202,15 +211,28 @@ type scriptRunner struct {
 
 // Implement Actionable.
 func (a *scriptRunner) Title() string {
-	fn := filepath.Base(a.Script.Path)
-	return fn[0 : len(fn)-len(filepath.Ext(fn))-1]
+	return scriptTitle(a.Script.Path)
 }
-func (a *scriptRunner) Icon() string     { return a.Script.Icon }
-func (a *scriptRunner) IconType() string { return a.Script.IconType }
+func (a *scriptRunner) Icon() *aw.Icon { return a.Script.Icon }
 
 // run runs a command line script.
 func (a *scriptRunner) run(args ...string) error {
-	cmd := exec.Command(a.Script.Path, args...)
+	var cmd *exec.Cmd
+	sargs := []string{}
+	if isExecutable(a.Script.Path) {
+		cmd = exec.Command(a.Script.Path, args...)
+	} else if isOSAScript(a.Script.Path) {
+		ext := filepath.Ext(a.Script.Path)
+		if ext == ".js" {
+			sargs = append(sargs, "-l", "JavaScript")
+		}
+		sargs = append(sargs, a.Script.Path)
+		sargs = append(sargs, args...)
+		cmd = exec.Command("/usr/bin/osascript", sargs...)
+	} else {
+		return fmt.Errorf("Don't know how to run script: %s", a.Script.Path)
+	}
+	log.Printf("%v", cmd)
 	return cmd.Run()
 }
 
@@ -239,7 +261,6 @@ func LoadScripts(dirs ...string) error {
 	errs := []error{}
 
 	for _, dp := range dirs {
-
 		err := filepath.Walk(dp, func(p string, info os.FileInfo, err error) error {
 			if err != nil {
 				return err
@@ -248,23 +269,19 @@ func LoadScripts(dirs ...string) error {
 				return nil
 			}
 
-			ext := filepath.Ext(p)
-			for _, x := range scriptExts {
-				if ext == x {
-					s := newScript(p)
-					log.Printf("Script : %v", s)
-
-					// Type is based on parent directory
-					switch filepath.Base(dp) {
-
-					case "tab":
-						Register(&tabRunner{scriptRunner{s}})
-					case "url":
-						Register(&urlRunner{scriptRunner{s}})
-					default:
-						log.Printf("Invalid action type : %s", filepath.Base(dp))
-
-					}
+			typ := filepath.Base(dp)
+			if isOSAScript(p) || isExecutable(p) {
+				// Type is based on parent directory
+				s := newScript(p, typ)
+				switch typ {
+				case "tab":
+					Register(&tabRunner{scriptRunner{s}})
+					log.Printf("Tab Script `%s` from `%s`", scriptTitle(p), p)
+				case "url":
+					Register(&urlRunner{scriptRunner{s}})
+					log.Printf("URL Script `%s` from `%s`", scriptTitle(p), p)
+					// default:
+					// 	log.Printf("I (%s) : %s", filepath.Base(dp))
 				}
 			}
 			return nil
@@ -279,4 +296,27 @@ func LoadScripts(dirs ...string) error {
 		return errs[0]
 	}
 	return nil
+}
+
+// scriptTitle returns the basename of a path without the extension.
+func scriptTitle(p string) string {
+	fn := filepath.Base(p)
+	return fn[0 : len(fn)-len(filepath.Ext(fn))]
+}
+
+// isOSAScript returns true if script should be run with /usr/bin/osascript.
+func isOSAScript(p string) bool {
+	x := filepath.Ext(p)
+	return osaExts[x] == true
+}
+
+// isExecutable return true if the executable bit is set on script.
+func isExecutable(p string) bool {
+	info, err := os.Stat(p)
+	if err != nil {
+		log.Printf("Couldn't stat file (%s): %s", err, p)
+		return false
+	}
+	perms := uint32(info.Mode().Perm())
+	return perms&0111 != 0
 }
