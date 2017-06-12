@@ -16,8 +16,8 @@ import (
 	"os/exec"
 	"path/filepath"
 
-	"gogs.deanishe.net/deanishe/awgo"
-	"gogs.deanishe.net/deanishe/go-safari"
+	"git.deanishe.net/deanishe/awgo"
+	"git.deanishe.net/deanishe/go-safari"
 )
 
 var (

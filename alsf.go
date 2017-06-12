@@ -9,10 +9,11 @@
 // TODO: Other Actions… for URLs (bookmarks)
 // TODO: Allow user to configure URL/tab actions for other modifiers
 // TODO: Bookmarklets
+// TODO: URL actions for history items
 // TODO: Script: Open Bookmark/URL in Private Mode
 // TODO: iCloud tabs (~/Library/SyncedPreferences/com.apple.Safari.plist)
 
-package main // import "gogs.deanishe.net/deanishe/alfred-safari"
+package main // import "git.deanishe.net/deanishe/alfred-safari"
 
 import (
 	"encoding/json"
@@ -26,9 +27,9 @@ import (
 	"strings"
 	"time"
 
+	"git.deanishe.net/deanishe/awgo"
+	"git.deanishe.net/deanishe/go-safari"
 	"github.com/juju/deputy"
-	"gogs.deanishe.net/deanishe/awgo"
-	"gogs.deanishe.net/deanishe/go-safari"
 	"gopkg.in/alecthomas/kingpin.v2"
 )
 

@@ -79,7 +79,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>7C54C90F-515A-4665-91A3-BE55DB63C25E</string>
+				<string>269544DC-8CA1-4B79-B8F9-EB9EF78FD416</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -1165,6 +1165,41 @@ variables={allvars}
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>0</integer>
+				<key>hotmod</key>
+				<integer>0</integer>
+				<key>hotstring</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedApps</key>
+				<array>
+					<string>com.apple.Safari</string>
+				</array>
+				<key>relatedAppsMode</key>
+				<integer>1</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>329B5936-B26C-49BC-8ED1-53A0E11D913B</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>argumenttype</key>
@@ -1202,41 +1237,6 @@ variables={allvars}
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>382EA310-BC65-42FA-9B9B-CD962F883D3A</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>action</key>
-				<integer>0</integer>
-				<key>argument</key>
-				<integer>0</integer>
-				<key>focusedappvariable</key>
-				<false/>
-				<key>focusedappvariablename</key>
-				<string></string>
-				<key>hotkey</key>
-				<integer>0</integer>
-				<key>hotmod</key>
-				<integer>0</integer>
-				<key>hotstring</key>
-				<string></string>
-				<key>leftcursor</key>
-				<false/>
-				<key>modsmode</key>
-				<integer>0</integer>
-				<key>relatedApps</key>
-				<array>
-					<string>com.apple.Safari</string>
-				</array>
-				<key>relatedAppsMode</key>
-				<integer>1</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.trigger.hotkey</string>
-			<key>uid</key>
-			<string>329B5936-B26C-49BC-8ED1-53A0E11D913B</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -1732,27 +1732,6 @@ variables={allvars}
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<true/>
-				<key>removeextension</key>
-				<false/>
-				<key>text</key>
-				<string>{query}</string>
-				<key>title</key>
-				<string>ERROR</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>269544DC-8CA1-4B79-B8F9-EB9EF78FD416</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>argumenttype</key>
@@ -1851,13 +1830,21 @@ variables={allvars}
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>triggerid</key>
-				<string>tab-actions</string>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<true/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>ERROR</string>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.trigger.external</string>
+			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
-			<string>AE42EE07-31E3-4A76-AAB3-D99D72B36731</string>
+			<string>269544DC-8CA1-4B79-B8F9-EB9EF78FD416</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1928,21 +1915,13 @@ variables={allvars}
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<true/>
-				<key>removeextension</key>
-				<false/>
-				<key>text</key>
-				<string>{query}</string>
-				<key>title</key>
-				<string>ERROR</string>
+				<key>triggerid</key>
+				<string>tab-actions</string>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
+			<string>alfred.workflow.trigger.external</string>
 			<key>uid</key>
-			<string>7C54C90F-515A-4665-91A3-BE55DB63C25E</string>
+			<string>AE42EE07-31E3-4A76-AAB3-D99D72B36731</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -2064,9 +2043,9 @@ variables={allvars}
 			<key>colorindex</key>
 			<integer>3</integer>
 			<key>xpos</key>
-			<integer>710</integer>
+			<integer>460</integer>
 			<key>ypos</key>
-			<integer>2080</integer>
+			<integer>1930</integer>
 		</dict>
 		<key>052405D0-212B-42D3-9E79-C4310040EAF6</key>
 		<dict>
@@ -2095,9 +2074,9 @@ variables={allvars}
 			<key>note</key>
 			<string>Run tab action</string>
 			<key>xpos</key>
-			<integer>790</integer>
+			<integer>540</integer>
 			<key>ypos</key>
-			<integer>2050</integer>
+			<integer>1900</integer>
 		</dict>
 		<key>126AB834-9B99-4FE4-BC12-6F1D96BFCE72</key>
 		<dict>
@@ -2130,7 +2109,7 @@ variables={allvars}
 			<key>xpos</key>
 			<integer>330</integer>
 			<key>ypos</key>
-			<integer>2260</integer>
+			<integer>2080</integer>
 		</dict>
 		<key>1CC27177-DF0A-4468-B358-54AB7047DB95</key>
 		<dict>
@@ -2143,12 +2122,10 @@ variables={allvars}
 		</dict>
 		<key>269544DC-8CA1-4B79-B8F9-EB9EF78FD416</key>
 		<dict>
-			<key>colorindex</key>
-			<integer>2</integer>
 			<key>xpos</key>
-			<integer>700</integer>
+			<integer>750</integer>
 			<key>ypos</key>
-			<integer>1750</integer>
+			<integer>1820</integer>
 		</dict>
 		<key>28484670-F0F8-45A1-BE66-2414CD285135</key>
 		<dict>
@@ -2190,7 +2167,7 @@ variables={allvars}
 			<key>xpos</key>
 			<integer>430</integer>
 			<key>ypos</key>
-			<integer>2230</integer>
+			<integer>2050</integer>
 		</dict>
 		<key>329B5936-B26C-49BC-8ED1-53A0E11D913B</key>
 		<dict>
@@ -2221,7 +2198,7 @@ variables={allvars}
 			<key>xpos</key>
 			<integer>230</integer>
 			<key>ypos</key>
-			<integer>2260</integer>
+			<integer>2080</integer>
 		</dict>
 		<key>3810E7C3-8090-4111-AECE-F78625F2C81E</key>
 		<dict>
@@ -2292,9 +2269,9 @@ variables={allvars}
 		<key>579B46DD-D411-485F-947D-8B7C9126549E</key>
 		<dict>
 			<key>colorindex</key>
-			<integer>8</integer>
+			<integer>11</integer>
 			<key>xpos</key>
-			<integer>610</integer>
+			<integer>600</integer>
 			<key>ypos</key>
 			<integer>540</integer>
 		</dict>
@@ -2376,7 +2353,7 @@ variables={allvars}
 
 Filter within a specific bookmarks folder</string>
 			<key>xpos</key>
-			<integer>300</integer>
+			<integer>280</integer>
 			<key>ypos</key>
 			<integer>1050</integer>
 		</dict>
@@ -2410,15 +2387,6 @@ Filter within a specific bookmarks folder</string>
 			<integer>700</integer>
 			<key>ypos</key>
 			<integer>650</integer>
-		</dict>
-		<key>7C54C90F-515A-4665-91A3-BE55DB63C25E</key>
-		<dict>
-			<key>colorindex</key>
-			<integer>3</integer>
-			<key>xpos</key>
-			<integer>960</integer>
-			<key>ypos</key>
-			<integer>2050</integer>
 		</dict>
 		<key>7F3CB6EC-EC81-4581-9828-E8B16977D72D</key>
 		<dict>
@@ -2472,9 +2440,9 @@ Filter within a specific bookmarks folder</string>
 			<key>colorindex</key>
 			<integer>3</integer>
 			<key>xpos</key>
-			<integer>460</integer>
+			<integer>220</integer>
 			<key>ypos</key>
-			<integer>2080</integer>
+			<integer>1930</integer>
 		</dict>
 		<key>98504B87-6B7B-48FB-B26F-23AA8CC22AFE</key>
 		<dict>
@@ -2600,9 +2568,9 @@ Filter all bookmark folders</string>
 			<key>note</key>
 			<string>Filter tab actions</string>
 			<key>xpos</key>
-			<integer>540</integer>
+			<integer>300</integer>
 			<key>ypos</key>
-			<integer>2050</integer>
+			<integer>1900</integer>
 		</dict>
 		<key>DFD6581C-387E-4A1C-AC01-FFF039871345</key>
 		<dict>
@@ -2627,7 +2595,7 @@ Filter all bookmark folders</string>
 		<key>E1234DFD-ECAC-43B7-B745-895441AE9D51</key>
 		<dict>
 			<key>colorindex</key>
-			<integer>8</integer>
+			<integer>11</integer>
 			<key>xpos</key>
 			<integer>700</integer>
 			<key>ypos</key>
@@ -2654,7 +2622,7 @@ Opens a bookmark or all bookmarks within a folder</string>
 			<key>xpos</key>
 			<integer>50</integer>
 			<key>ypos</key>
-			<integer>2230</integer>
+			<integer>2050</integer>
 		</dict>
 	</dict>
 	<key>variables</key>
