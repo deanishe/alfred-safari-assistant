@@ -1,0 +1,29 @@
+# Icons from webfonts via http://icons.deanishe.net
+#
+# Script bin/icons reads this file and downloads the
+# specified icons to src/icons
+#
+# filename        font name     colour    icon name
+
+# Workflow icons
+icon			  fontawesome   00A1DE    compass
+update-available  material      F8AC30    cloud-download
+
+# Types
+bookmark          fontawesome   00A1DE    bookmark
+folder            fontawesome   00A1DE    folder
+bookmarklet       fontawesome   00A1DE    asterisk
+url               fontawesome   00A1DE    globe
+reading-list      elusive       00A1DE    glasses
+tab				  octicons      00A1DE    browser
+tab-active 		  octicons      FFB200    browser
+
+# Navigation
+home              fontawesome   C92441    home
+up                fontawesome   C92441    arrow-circle-up
+error             elusive       CA0022    error-alt
+warning           fontawesome   F8AC30    warning
+
+# Script icons
+private           elusive       CA0022    eye-close
+

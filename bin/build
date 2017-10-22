@@ -2,7 +2,8 @@
 
 # Path to this script's directory (i.e. workflow root)
 here="$( cd "$( dirname "$0" )"; pwd )"
-builddir="${here}/build"
+root="$( cd "$here/../"; pwd )"
+builddir="${root}/build"
 
 devmode=1
 runtests=0
@@ -64,10 +65,10 @@ while getopts ":dfht" opt; do
 done
 shift $((OPTIND-1))
 
-test -z "$here" && { log "Couldn't find workflow directory"; exit 1 }
+test -z "$root" && { log "Couldn't find workflow directory"; exit 1 }
 
 
-pushd "$here" &> /dev/null
+pushd "$root" &> /dev/null
 # -------------------------------------------------------
 # Run unit tests
 test "$runtests" -eq 1 && {
@@ -82,7 +83,7 @@ test -d "${builddir}" && { log "Cleaning build directory ..."; cleanup }
 log "Building executable(s) ..."
 go build -v -o ./alsf .
 zipname="$( ./alsf distname 2>/dev/null )"
-outpath="${here}/${zipname}"
+outpath="${root}/${zipname}"
 
 log "Hardlinking assets to build directory ..."
 # mkdir -vp "$builddir"

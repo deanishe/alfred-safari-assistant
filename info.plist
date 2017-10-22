@@ -153,6 +153,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>28FFC9A0-33E0-416F-AE04-58EF662D1C03</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>D09FFBBC-0405-4F55-BC74-5B34AA873FB1</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<true/>
+			</dict>
+		</array>
 		<key>2B2FA0E3-4771-4FA3-B9E9-AFF6CF4B768F</key>
 		<array>
 			<dict>
@@ -516,6 +529,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>AEEA665B-2053-4555-8563-3F22B7063C98</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>28FFC9A0-33E0-416F-AE04-58EF662D1C03</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>B398AB9B-2F47-4DE0-92B9-C726B8765DEC</key>
 		<array>
 			<dict>
@@ -578,7 +604,7 @@
 				<key>modifiersubtext</key>
 				<string></string>
 				<key>vitoclose</key>
-				<false/>
+				<true/>
 			</dict>
 			<dict>
 				<key>destinationuid</key>
@@ -659,6 +685,8 @@
 			<dict>
 				<key>anchorfields</key>
 				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>daterange</key>
@@ -926,6 +954,10 @@ variables={allvars}
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>escaping</key>
@@ -1063,6 +1095,10 @@ variables={allvars}
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>escaping</key>
@@ -1202,6 +1238,10 @@ variables={allvars}
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>escaping</key>
@@ -1271,7 +1311,7 @@ variables={allvars}
 			<key>type</key>
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
-			<string>3810E7C3-8090-4111-AECE-F78625F2C81E</string>
+			<string>AEEA665B-2053-4555-8563-3F22B7063C98</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -1299,6 +1339,113 @@ variables={allvars}
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>bml</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Loading bookmarklets…</string>
+				<key>script</key>
+				<string>./alsf bookmarklets -q "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Search and run Safari bookmarklets</string>
+				<key>title</key>
+				<string>Safari Bookmarklets</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>28FFC9A0-33E0-416F-AE04-58EF662D1C03</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>.
+/--- DISPATCH IN ---\
+query={query}
+variables={allvars}
+\-------------------/</string>
+				<key>cleardebuggertext</key>
+				<false/>
+				<key>processoutputs</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.debug</string>
+			<key>uid</key>
+			<string>D09FFBBC-0405-4F55-BC74-5B34AA873FB1</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>0</integer>
+				<key>hotmod</key>
+				<integer>0</integer>
+				<key>hotstring</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedApps</key>
+				<array>
+					<string>com.apple.Safari</string>
+				</array>
+				<key>relatedAppsMode</key>
+				<integer>1</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>3810E7C3-8090-4111-AECE-F78625F2C81E</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>escaping</key>
@@ -1340,29 +1487,12 @@ variables={allvars}
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argument</key>
-				<string>.
-/--- DISPATCH IN ---\
-query={query}
-variables={allvars}
-\-------------------/</string>
-				<key>cleardebuggertext</key>
-				<false/>
-				<key>processoutputs</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.debug</string>
-			<key>uid</key>
-			<string>D09FFBBC-0405-4F55-BC74-5B34AA873FB1</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>escaping</key>
@@ -1734,6 +1864,10 @@ variables={allvars}
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>escaping</key>
@@ -1747,7 +1881,7 @@ variables={allvars}
 				<key>queuemode</key>
 				<integer>1</integer>
 				<key>runningsubtext</key>
-				<string>Loading URL actions…</string>
+				<string></string>
 				<key>script</key>
 				<string>echo "arse!" &gt;/dev/stderr
 
@@ -1757,9 +1891,9 @@ variables={allvars}
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string>Perform URL Actions</string>
+				<string></string>
 				<key>title</key>
-				<string>URL Actions</string>
+				<string></string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -1853,6 +1987,10 @@ variables={allvars}
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>escaping</key>
@@ -1866,7 +2004,7 @@ variables={allvars}
 				<key>queuemode</key>
 				<integer>1</integer>
 				<key>runningsubtext</key>
-				<string>Loading tab actions…</string>
+				<string></string>
 				<key>script</key>
 				<string>./alsf actions tab -q "$1"</string>
 				<key>scriptargtype</key>
@@ -1874,9 +2012,9 @@ variables={allvars}
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string>Perform Tab Actions</string>
+				<string></string>
 				<key>title</key>
-				<string>Tab Actions</string>
+				<string></string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -2035,7 +2173,15 @@ variables={allvars}
 		</dict>
 	</array>
 	<key>readme</key>
-	<string></string>
+	<string>Safari Assistant
+================
+
+Search &amp; open bookmarks; run bookmarklets; activate &amp; close tabs.
+
+Configuration
+-------------
+
+`ALSF_INCLUDE_BOOKMARKLETS`: Set to `1` to include bookmarklets in the default bookmark search.</string>
 	<key>uidata</key>
 	<dict>
 		<key>0004C2F0-8ED4-4380-8E22-92343D79C9F6</key>
@@ -2043,9 +2189,9 @@ variables={allvars}
 			<key>colorindex</key>
 			<integer>3</integer>
 			<key>xpos</key>
-			<integer>460</integer>
+			<integer>470</integer>
 			<key>ypos</key>
-			<integer>1930</integer>
+			<integer>2200</integer>
 		</dict>
 		<key>052405D0-212B-42D3-9E79-C4310040EAF6</key>
 		<dict>
@@ -2056,16 +2202,16 @@ variables={allvars}
 			<key>xpos</key>
 			<integer>40</integer>
 			<key>ypos</key>
-			<integer>360</integer>
+			<integer>390</integer>
 		</dict>
 		<key>0F1CFAC5-E975-422B-9C4D-BA2F38FA3062</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>4</integer>
 			<key>xpos</key>
-			<integer>250</integer>
+			<integer>220</integer>
 			<key>ypos</key>
-			<integer>1410</integer>
+			<integer>1660</integer>
 		</dict>
 		<key>0F73EBCE-EE02-4D0B-B9B9-26849B69515E</key>
 		<dict>
@@ -2074,9 +2220,9 @@ variables={allvars}
 			<key>note</key>
 			<string>Run tab action</string>
 			<key>xpos</key>
-			<integer>540</integer>
+			<integer>550</integer>
 			<key>ypos</key>
-			<integer>1900</integer>
+			<integer>2170</integer>
 		</dict>
 		<key>126AB834-9B99-4FE4-BC12-6F1D96BFCE72</key>
 		<dict>
@@ -2098,7 +2244,7 @@ variables={allvars}
 			<key>xpos</key>
 			<integer>40</integer>
 			<key>ypos</key>
-			<integer>190</integer>
+			<integer>200</integer>
 		</dict>
 		<key>1C9AC767-AC40-4CD6-A0C9-5D7E10196EC0</key>
 		<dict>
@@ -2107,9 +2253,9 @@ variables={allvars}
 			<key>note</key>
 			<string>Hide Alfred</string>
 			<key>xpos</key>
-			<integer>330</integer>
+			<integer>350</integer>
 			<key>ypos</key>
-			<integer>2080</integer>
+			<integer>2360</integer>
 		</dict>
 		<key>1CC27177-DF0A-4468-B358-54AB7047DB95</key>
 		<dict>
@@ -2118,14 +2264,14 @@ variables={allvars}
 			<key>xpos</key>
 			<integer>620</integer>
 			<key>ypos</key>
-			<integer>1180</integer>
+			<integer>1420</integer>
 		</dict>
 		<key>269544DC-8CA1-4B79-B8F9-EB9EF78FD416</key>
 		<dict>
 			<key>xpos</key>
-			<integer>750</integer>
+			<integer>760</integer>
 			<key>ypos</key>
-			<integer>1820</integer>
+			<integer>2080</integer>
 		</dict>
 		<key>28484670-F0F8-45A1-BE66-2414CD285135</key>
 		<dict>
@@ -2136,7 +2282,18 @@ variables={allvars}
 			<key>xpos</key>
 			<integer>520</integer>
 			<key>ypos</key>
-			<integer>1330</integer>
+			<integer>1570</integer>
+		</dict>
+		<key>28FFC9A0-33E0-416F-AE04-58EF662D1C03</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>8</integer>
+			<key>note</key>
+			<string>Search and run bookmarklets</string>
+			<key>xpos</key>
+			<integer>220</integer>
+			<key>ypos</key>
+			<integer>950</integer>
 		</dict>
 		<key>2B2FA0E3-4771-4FA3-B9E9-AFF6CF4B768F</key>
 		<dict>
@@ -2145,18 +2302,18 @@ variables={allvars}
 			<key>note</key>
 			<string>Show URL actions</string>
 			<key>xpos</key>
-			<integer>50</integer>
+			<integer>40</integer>
 			<key>ypos</key>
-			<integer>1750</integer>
+			<integer>2010</integer>
 		</dict>
 		<key>30F1BD1C-1746-40D0-931B-37818C793463</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>5</integer>
 			<key>xpos</key>
-			<integer>200</integer>
+			<integer>220</integer>
 			<key>ypos</key>
-			<integer>1080</integer>
+			<integer>1320</integer>
 		</dict>
 		<key>323EA158-3C85-45C9-8702-F4750AD40233</key>
 		<dict>
@@ -2165,9 +2322,9 @@ variables={allvars}
 			<key>note</key>
 			<string>Open specified bookmark/folder</string>
 			<key>xpos</key>
-			<integer>430</integer>
+			<integer>550</integer>
 			<key>ypos</key>
-			<integer>2050</integer>
+			<integer>2330</integer>
 		</dict>
 		<key>329B5936-B26C-49BC-8ED1-53A0E11D913B</key>
 		<dict>
@@ -2178,7 +2335,7 @@ variables={allvars}
 			<key>xpos</key>
 			<integer>40</integer>
 			<key>ypos</key>
-			<integer>720</integer>
+			<integer>780</integer>
 		</dict>
 		<key>355FC482-950D-4155-9A8E-45EDCFDB4EC4</key>
 		<dict>
@@ -2189,7 +2346,7 @@ variables={allvars}
 			<key>xpos</key>
 			<integer>460</integer>
 			<key>ypos</key>
-			<integer>280</integer>
+			<integer>290</integer>
 		</dict>
 		<key>356B391D-D91D-46CD-82B9-B30A76C9ADEF</key>
 		<dict>
@@ -2198,7 +2355,7 @@ variables={allvars}
 			<key>xpos</key>
 			<integer>230</integer>
 			<key>ypos</key>
-			<integer>2080</integer>
+			<integer>2360</integer>
 		</dict>
 		<key>3810E7C3-8090-4111-AECE-F78625F2C81E</key>
 		<dict>
@@ -2209,7 +2366,7 @@ variables={allvars}
 			<key>xpos</key>
 			<integer>40</integer>
 			<key>ypos</key>
-			<integer>890</integer>
+			<integer>1120</integer>
 		</dict>
 		<key>382EA310-BC65-42FA-9B9B-CD962F883D3A</key>
 		<dict>
@@ -2220,7 +2377,7 @@ variables={allvars}
 			<key>xpos</key>
 			<integer>220</integer>
 			<key>ypos</key>
-			<integer>720</integer>
+			<integer>780</integer>
 		</dict>
 		<key>4054C8DB-767E-43E2-853B-99AF76AF8C67</key>
 		<dict>
@@ -2231,7 +2388,7 @@ variables={allvars}
 			<key>xpos</key>
 			<integer>220</integer>
 			<key>ypos</key>
-			<integer>190</integer>
+			<integer>200</integer>
 		</dict>
 		<key>41723B25-4411-4D15-811C-6EB22BF8E347</key>
 		<dict>
@@ -2242,7 +2399,7 @@ variables={allvars}
 			<key>xpos</key>
 			<integer>700</integer>
 			<key>ypos</key>
-			<integer>1600</integer>
+			<integer>1840</integer>
 		</dict>
 		<key>4656D4A5-52B8-4F43-A053-7169E9260FF4</key>
 		<dict>
@@ -2251,9 +2408,9 @@ variables={allvars}
 			<key>note</key>
 			<string>Run URL action</string>
 			<key>xpos</key>
-			<integer>540</integer>
+			<integer>550</integer>
 			<key>ypos</key>
-			<integer>1750</integer>
+			<integer>2010</integer>
 		</dict>
 		<key>568D7820-F839-4E7A-B5B7-9C2D7DC0515B</key>
 		<dict>
@@ -2262,18 +2419,18 @@ variables={allvars}
 			<key>note</key>
 			<string>Filter URL actions</string>
 			<key>xpos</key>
-			<integer>300</integer>
+			<integer>310</integer>
 			<key>ypos</key>
-			<integer>1750</integer>
+			<integer>2010</integer>
 		</dict>
 		<key>579B46DD-D411-485F-947D-8B7C9126549E</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>11</integer>
 			<key>xpos</key>
-			<integer>600</integer>
+			<integer>590</integer>
 			<key>ypos</key>
-			<integer>540</integer>
+			<integer>600</integer>
 		</dict>
 		<key>5AC563A6-AD3A-4740-942F-24C0BCD5468E</key>
 		<dict>
@@ -2284,7 +2441,7 @@ variables={allvars}
 			<key>xpos</key>
 			<integer>700</integer>
 			<key>ypos</key>
-			<integer>1450</integer>
+			<integer>1690</integer>
 		</dict>
 		<key>5D3D14E4-F4AE-4F8E-8B98-ADA2FF5AE651</key>
 		<dict>
@@ -2293,7 +2450,7 @@ variables={allvars}
 			<key>xpos</key>
 			<integer>620</integer>
 			<key>ypos</key>
-			<integer>1480</integer>
+			<integer>1720</integer>
 		</dict>
 		<key>5FD5E746-B22D-44E1-89BC-ED2617F9BB7B</key>
 		<dict>
@@ -2304,7 +2461,7 @@ variables={allvars}
 			<key>xpos</key>
 			<integer>40</integer>
 			<key>ypos</key>
-			<integer>510</integer>
+			<integer>570</integer>
 		</dict>
 		<key>653E20AF-BF4B-43A1-911F-56F8F4C5A8F2</key>
 		<dict>
@@ -2313,7 +2470,7 @@ variables={allvars}
 			<key>xpos</key>
 			<integer>590</integer>
 			<key>ypos</key>
-			<integer>220</integer>
+			<integer>230</integer>
 		</dict>
 		<key>65A23B83-8C51-40A7-AA28-9E37BC98EAE8</key>
 		<dict>
@@ -2322,7 +2479,7 @@ variables={allvars}
 			<key>xpos</key>
 			<integer>40</integer>
 			<key>ypos</key>
-			<integer>1050</integer>
+			<integer>1290</integer>
 		</dict>
 		<key>6610C516-6069-4841-AE4A-418E00E6E59E</key>
 		<dict>
@@ -2333,16 +2490,16 @@ variables={allvars}
 			<key>xpos</key>
 			<integer>520</integer>
 			<key>ypos</key>
-			<integer>1630</integer>
+			<integer>1870</integer>
 		</dict>
 		<key>70ADDBDC-3466-471F-8FC0-0D08CBB6639C</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>5</integer>
 			<key>xpos</key>
-			<integer>610</integer>
+			<integer>590</integer>
 			<key>ypos</key>
-			<integer>680</integer>
+			<integer>740</integer>
 		</dict>
 		<key>721AAE10-9173-47C9-98B0-B673CFBD37B2</key>
 		<dict>
@@ -2353,9 +2510,9 @@ variables={allvars}
 
 Filter within a specific bookmarks folder</string>
 			<key>xpos</key>
-			<integer>280</integer>
+			<integer>310</integer>
 			<key>ypos</key>
-			<integer>1050</integer>
+			<integer>1290</integer>
 		</dict>
 		<key>76F03F1E-15FC-4B9D-9B00-98F12EF5B136</key>
 		<dict>
@@ -2366,7 +2523,7 @@ Filter within a specific bookmarks folder</string>
 			<key>xpos</key>
 			<integer>220</integer>
 			<key>ypos</key>
-			<integer>360</integer>
+			<integer>390</integer>
 		</dict>
 		<key>79A1CFFD-2081-4E25-A0FA-35AD64B6648C</key>
 		<dict>
@@ -2377,7 +2534,7 @@ Filter within a specific bookmarks folder</string>
 			<key>xpos</key>
 			<integer>700</integer>
 			<key>ypos</key>
-			<integer>1300</integer>
+			<integer>1540</integer>
 		</dict>
 		<key>7A20C945-1F59-4C0C-8694-F37BF0F52D5B</key>
 		<dict>
@@ -2386,16 +2543,16 @@ Filter within a specific bookmarks folder</string>
 			<key>xpos</key>
 			<integer>700</integer>
 			<key>ypos</key>
-			<integer>650</integer>
+			<integer>710</integer>
 		</dict>
 		<key>7F3CB6EC-EC81-4581-9828-E8B16977D72D</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>2</integer>
 			<key>xpos</key>
-			<integer>220</integer>
+			<integer>230</integer>
 			<key>ypos</key>
-			<integer>1780</integer>
+			<integer>2040</integer>
 		</dict>
 		<key>82BC0606-4BCC-4911-9978-E7A709993015</key>
 		<dict>
@@ -2406,7 +2563,7 @@ Filter within a specific bookmarks folder</string>
 			<key>xpos</key>
 			<integer>460</integer>
 			<key>ypos</key>
-			<integer>390</integer>
+			<integer>420</integer>
 		</dict>
 		<key>84DB3789-346A-4833-A576-49CEE1C8EF04</key>
 		<dict>
@@ -2415,14 +2572,14 @@ Filter within a specific bookmarks folder</string>
 			<key>xpos</key>
 			<integer>620</integer>
 			<key>ypos</key>
-			<integer>1630</integer>
+			<integer>1870</integer>
 		</dict>
 		<key>8BE3416B-FFFF-446A-B831-F3BE52EAF45C</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>7</integer>
 			<key>xpos</key>
-			<integer>430</integer>
+			<integer>420</integer>
 			<key>ypos</key>
 			<integer>40</integer>
 		</dict>
@@ -2431,18 +2588,18 @@ Filter within a specific bookmarks folder</string>
 			<key>colorindex</key>
 			<integer>2</integer>
 			<key>xpos</key>
-			<integer>460</integer>
+			<integer>470</integer>
 			<key>ypos</key>
-			<integer>1780</integer>
+			<integer>2040</integer>
 		</dict>
 		<key>971D7A70-415F-420A-9DCD-C8B80F0ECD41</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>3</integer>
 			<key>xpos</key>
-			<integer>220</integer>
+			<integer>230</integer>
 			<key>ypos</key>
-			<integer>1930</integer>
+			<integer>2200</integer>
 		</dict>
 		<key>98504B87-6B7B-48FB-B26F-23AA8CC22AFE</key>
 		<dict>
@@ -2451,7 +2608,7 @@ Filter within a specific bookmarks folder</string>
 			<key>xpos</key>
 			<integer>40</integer>
 			<key>ypos</key>
-			<integer>1380</integer>
+			<integer>1630</integer>
 		</dict>
 		<key>9ED9555B-B2D7-4699-BCB3-81A68BE1DFDB</key>
 		<dict>
@@ -2462,7 +2619,7 @@ Filter within a specific bookmarks folder</string>
 			<key>xpos</key>
 			<integer>700</integer>
 			<key>ypos</key>
-			<integer>360</integer>
+			<integer>390</integer>
 		</dict>
 		<key>A2E2F0E6-CDE8-4871-87F8-56EBF3533B5C</key>
 		<dict>
@@ -2473,7 +2630,7 @@ Filter within a specific bookmarks folder</string>
 			<key>xpos</key>
 			<integer>700</integer>
 			<key>ypos</key>
-			<integer>190</integer>
+			<integer>200</integer>
 		</dict>
 		<key>AB1538F1-21FC-4175-8A7D-FFB65F43A455</key>
 		<dict>
@@ -2484,7 +2641,7 @@ Filter within a specific bookmarks folder</string>
 			<key>xpos</key>
 			<integer>520</integer>
 			<key>ypos</key>
-			<integer>1480</integer>
+			<integer>1720</integer>
 		</dict>
 		<key>AE42EE07-31E3-4A76-AAB3-D99D72B36731</key>
 		<dict>
@@ -2493,9 +2650,20 @@ Filter within a specific bookmarks folder</string>
 			<key>note</key>
 			<string>Show tab actions</string>
 			<key>xpos</key>
-			<integer>50</integer>
+			<integer>40</integer>
 			<key>ypos</key>
-			<integer>1900</integer>
+			<integer>2170</integer>
+		</dict>
+		<key>AEEA665B-2053-4555-8563-3F22B7063C98</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>8</integer>
+			<key>note</key>
+			<string>View Safari Bookmarklets</string>
+			<key>xpos</key>
+			<integer>40</integer>
+			<key>ypos</key>
+			<integer>950</integer>
 		</dict>
 		<key>B398AB9B-2F47-4DE0-92B9-C726B8765DEC</key>
 		<dict>
@@ -2504,7 +2672,7 @@ Filter within a specific bookmarks folder</string>
 			<key>xpos</key>
 			<integer>620</integer>
 			<key>ypos</key>
-			<integer>1330</integer>
+			<integer>1570</integer>
 		</dict>
 		<key>BC0EC6A3-641B-48C5-B785-620943E268EF</key>
 		<dict>
@@ -2515,16 +2683,16 @@ Filter within a specific bookmarks folder</string>
 			<key>xpos</key>
 			<integer>520</integer>
 			<key>ypos</key>
-			<integer>1180</integer>
+			<integer>1420</integer>
 		</dict>
 		<key>D09FFBBC-0405-4F55-BC74-5B34AA873FB1</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>4</integer>
 			<key>xpos</key>
-			<integer>600</integer>
+			<integer>590</integer>
 			<key>ypos</key>
-			<integer>920</integer>
+			<integer>980</integer>
 		</dict>
 		<key>D6E84120-6093-469C-AEA6-F458A1F1F3BC</key>
 		<dict>
@@ -2548,7 +2716,7 @@ Filter all bookmark folders</string>
 			<key>xpos</key>
 			<integer>220</integer>
 			<key>ypos</key>
-			<integer>510</integer>
+			<integer>570</integer>
 		</dict>
 		<key>D94FFE88-0A1C-49FE-9F45-8DDAAEECD0C8</key>
 		<dict>
@@ -2559,7 +2727,7 @@ Filter all bookmark folders</string>
 			<key>xpos</key>
 			<integer>220</integer>
 			<key>ypos</key>
-			<integer>890</integer>
+			<integer>1120</integer>
 		</dict>
 		<key>DE1C9785-A59F-4478-99BD-09A9CE0B38AD</key>
 		<dict>
@@ -2568,9 +2736,9 @@ Filter all bookmark folders</string>
 			<key>note</key>
 			<string>Filter tab actions</string>
 			<key>xpos</key>
-			<integer>300</integer>
+			<integer>310</integer>
 			<key>ypos</key>
-			<integer>1900</integer>
+			<integer>2170</integer>
 		</dict>
 		<key>DFD6581C-387E-4A1C-AC01-FFF039871345</key>
 		<dict>
@@ -2581,7 +2749,7 @@ Filter all bookmark folders</string>
 			<key>xpos</key>
 			<integer>590</integer>
 			<key>ypos</key>
-			<integer>390</integer>
+			<integer>420</integer>
 		</dict>
 		<key>E0D1CB9F-58AC-4D9D-8BA4-D57859953296</key>
 		<dict>
@@ -2590,7 +2758,7 @@ Filter all bookmark folders</string>
 			<key>xpos</key>
 			<integer>700</integer>
 			<key>ypos</key>
-			<integer>890</integer>
+			<integer>950</integer>
 		</dict>
 		<key>E1234DFD-ECAC-43B7-B745-895441AE9D51</key>
 		<dict>
@@ -2599,7 +2767,7 @@ Filter all bookmark folders</string>
 			<key>xpos</key>
 			<integer>700</integer>
 			<key>ypos</key>
-			<integer>510</integer>
+			<integer>570</integer>
 		</dict>
 		<key>F033671B-391D-4E9D-A71C-55CC1AA3E22A</key>
 		<dict>
@@ -2610,30 +2778,27 @@ Filter all bookmark folders</string>
 			<key>xpos</key>
 			<integer>700</integer>
 			<key>ypos</key>
-			<integer>1150</integer>
+			<integer>1390</integer>
 		</dict>
 		<key>FA5F16AF-40C3-4EC6-9F70-32B47E4A5BBC</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>11</integer>
 			<key>note</key>
-			<string>Re-entry point for XYZ
-Opens a bookmark or all bookmarks within a folder</string>
+			<string>Opens a bookmark or all bookmarks within a folder</string>
 			<key>xpos</key>
-			<integer>50</integer>
+			<integer>40</integer>
 			<key>ypos</key>
-			<integer>2050</integer>
+			<integer>2330</integer>
 		</dict>
 	</dict>
 	<key>variables</key>
 	<dict>
-		<key>ALSF_MAX_CACHE</key>
-		<string>10s</string>
-		<key>ALSF_MIN_SCORE</key>
-		<string>10</string>
+		<key>ALSF_INCLUDE_BOOKMARKLETS</key>
+		<string>0</string>
 	</dict>
 	<key>version</key>
-	<string>0.1.0</string>
+	<string>0.1.2</string>
 	<key>webaddress</key>
 	<string></string>
 </dict>

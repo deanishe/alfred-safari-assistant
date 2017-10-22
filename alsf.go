@@ -6,49 +6,47 @@
 // Created on 2016-05-30
 //
 
-// TODO: Other Actions… for URLs (bookmarks)
 // TODO: Allow user to configure URL/tab actions for other modifiers
-// TODO: Bookmarklets
 // TODO: URL actions for history items
 // TODO: Script: Open Bookmark/URL in Private Mode
 // TODO: iCloud tabs (~/Library/SyncedPreferences/com.apple.Safari.plist)
 
-package main // import "git.deanishe.net/deanishe/alfred-safari"
+package main // import "git.deanishe.net/deanishe/alfred-safari-assistant"
 
 import (
-	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"net/url"
-	"os"
 	"os/exec"
 	"path/filepath"
 	"strings"
-	"time"
 
-	"git.deanishe.net/deanishe/awgo"
 	"git.deanishe.net/deanishe/go-safari"
+	"github.com/deanishe/awgo"
+	"github.com/deanishe/awgo/util"
 	"github.com/juju/deputy"
 	"gopkg.in/alecthomas/kingpin.v2"
 )
 
 // Defaults for Kingpin flags
 const (
-	defaultMaxResults  = "100"
-	defaultMinScore    = "30"
-	defaultMaxCacheAge = "5s"
+	defaultMaxResults = "100"
 )
 
 // Icons
 var (
-	IconActive      = &aw.Icon{Value: "active.png"}
 	IconDefault     = &aw.Icon{Value: "icon.png"}
-	IconReadingList = &aw.Icon{Value: "reading-list.png"}
-	IconBookmark    = &aw.Icon{Value: "com.apple.safari.bookmark", Type: "filetype"}
-	IconFolder      = &aw.Icon{Value: "public.folder", Type: "filetype"}
-	IconUp          = &aw.Icon{Value: "up.png"}
-	IconHome        = &aw.Icon{Value: "home.png"}
+	IconTab         = &aw.Icon{Value: "icons/tab.png"}
+	IconActive      = &aw.Icon{Value: "icons/tab-active.png"}
+	IconReadingList = &aw.Icon{Value: "icons/reading-list.png"}
+	IconBookmark    = &aw.Icon{Value: "icons/bookmark.png"}
+	IconBookmarklet = &aw.Icon{Value: "icons/bookmarklet.png"}
+	IconURL         = &aw.Icon{Value: "icons/url.png"}
+	IconFolder      = &aw.Icon{Value: "icons/folder.png"}
+	IconUp          = &aw.Icon{Value: "icons/up.png"}
+	IconHome        = &aw.Icon{Value: "icons/home.png"}
+	IconWarning     = &aw.Icon{Value: "icons/warning.png"}
+	// IconError       = &aw.Icon{Value: "icons/error.png"}
 )
 
 var (
@@ -56,26 +54,25 @@ var (
 	app *kingpin.Application
 
 	// Application commands
-	activateCmd, filterBookmarksCmd, filterFolderCmd, closeCmd        *kingpin.CmdClause
-	filterAllFoldersCmd, openCmd, filterReadingListCmd, filterTabsCmd *kingpin.CmdClause
-	distnameCmd, runActionCmd, runTabActionCmd, runURLActionCmd       *kingpin.CmdClause
-	filterActionsCmd, filterTabActionsCmd, filterURLActionsCmd        *kingpin.CmdClause
-	activeTabCmd                                                      *kingpin.CmdClause
+	activateCmd, filterBookmarksCmd, filterBookmarkletsCmd      *kingpin.CmdClause
+	filterFolderCmd, filterAllFoldersCmd, filterReadingListCmd  *kingpin.CmdClause
+	openCmd, closeCmd, filterTabsCmd                            *kingpin.CmdClause
+	distnameCmd, runActionCmd, runTabActionCmd, runURLActionCmd *kingpin.CmdClause
+	filterActionsCmd, filterTabActionsCmd, filterURLActionsCmd  *kingpin.CmdClause
+	activeTabCmd                                                *kingpin.CmdClause
 
 	// Script options (populated by Kingpin application)
-	query        string
-	left, right  bool
-	window, tab  int
-	action, uid  string
-	actionURL    *url.URL
-	minimumScore float64
-	maxCacheAge  time.Duration
-	maxResults   int
+	query               string
+	left, right         bool
+	window, tab         int
+	action, uid         string
+	includeBookmarklets bool
+	actionURL           *url.URL
+	maxResults          int
 
 	// Workflow stuff
-	wf           *aw.Workflow
-	tabCachePath string
-	scriptDirs   []string
+	wf         *aw.Workflow
+	scriptDirs []string
 
 	urlKillWords = []string{"www.", ".com", ".net", ".org", ".co.uk"}
 )
@@ -83,10 +80,12 @@ var (
 // Mostly sets up kingpin commands
 func init() {
 
-	safari.DefaultOptions.IgnoreBookmarklets = true
+	// safari.Configure(safari.IgnoreBookmarklets(true))
+	// Override default icons
+	// aw.IconError = IconError
+	aw.IconWarning = IconWarning
 
-	wf = aw.NewWorkflow(nil)
-	tabCachePath = filepath.Join(wf.CacheDir(), "tabs.json")
+	wf = aw.New()
 	scriptDirs = []string{
 		filepath.Join(wf.Dir(), "scripts", "tab"),
 		filepath.Join(wf.Dir(), "scripts", "url"),
@@ -110,7 +109,7 @@ func init() {
 	runTabActionCmd = runActionCmd.Command("tab", "Run a tab action.").Alias("t")
 	runURLActionCmd = runActionCmd.Command("url", "Run a URL action.").Alias("u")
 	// Common URL options
-	for _, cmd := range []*kingpin.CmdClause{runURLActionCmd, filterURLActionsCmd} {
+	for _, cmd := range []*kingpin.CmdClause{runURLActionCmd, filterURLActionsCmd, filterTabActionsCmd} {
 		cmd.Flag("url", "URL to action.").Short('u').Required().URLVar(&actionURL)
 	}
 	// Common action options
@@ -147,19 +146,22 @@ func init() {
 	// ---------------------------------------------------------------
 	// Commands using query etc.
 	filterBookmarksCmd = app.Command("bookmarks", "Filter your bookmarks.").Alias("b")
+	filterBookmarkletsCmd = app.Command("bookmarklets", "Filter your bookmarklets.").Alias("B")
 	filterAllFoldersCmd = app.Command("folders", "Filter your bookmark folders.").Alias("f")
 	filterReadingListCmd = app.Command("reading-list", "Filter your Reading List.").Alias("r")
 	filterTabsCmd = app.Command("tabs", "Filter your tabs.").Alias("t")
 	// Common options
-	for _, cmd := range []*kingpin.CmdClause{filterBookmarksCmd, filterFolderCmd, filterAllFoldersCmd, filterReadingListCmd, filterTabsCmd, filterTabActionsCmd, filterURLActionsCmd} {
+	for _, cmd := range []*kingpin.CmdClause{
+		filterBookmarksCmd, filterBookmarkletsCmd, filterFolderCmd, filterAllFoldersCmd,
+		filterReadingListCmd, filterTabsCmd, filterTabActionsCmd, filterURLActionsCmd,
+	} {
 		cmd.Flag("query", "Search query.").Short('q').StringVar(&query)
 		cmd.Flag("max-results", "Maximum number of results to send to Alfred.").
 			Short('r').Default(defaultMaxResults).IntVar(&maxResults)
-		cmd.Flag("min-score", "Minimum score for search matches.").
-			Short('s').Default(defaultMinScore).Float64Var(&minimumScore)
 	}
-	filterTabsCmd.Flag("max-cache", "Maximum time to cache tab list for.").
-		Short('c').Default(defaultMaxCacheAge).DurationVar(&maxCacheAge)
+
+	filterBookmarksCmd.Flag("include-bookmarklets", "Include bookmarklets with bookmarks").
+		BoolVar(&includeBookmarklets)
 
 	// ---------------------------------------------------------------
 	// Other commands
@@ -188,11 +190,13 @@ func doOpen() error {
 		return nil
 	}
 
-	invalidateCache()
-
 	log.Printf("Searching for %v ...", uid)
 
 	if bm := safari.BookmarkForUID(uid); bm != nil {
+		if bm.IsBookmarklet() {
+			log.Printf("Executing bookmarklet \"%s\" ...", bm.Title())
+			return runBookmarklet(bm.URL)
+		}
 		log.Printf("Opening \"%s\" (%s) ...", bm.Title(), bm.URL)
 		return openURL(bm.URL)
 	}
@@ -235,12 +239,12 @@ func doFilterTabs() error {
 			it := wf.NewItem(t.Title).
 				Subtitle(t.URL).
 				Valid(true).
-				SortKey(fmt.Sprintf("%s %s", t.Title, urlKeywords(t.URL)))
+				Match(fmt.Sprintf("%s %s", t.Title, urlKeywords(t.URL)))
 
 			if t.Active {
 				it.Icon(IconActive)
 			} else {
-				it.Icon(IconDefault)
+				it.Icon(IconTab)
 			}
 
 			it.Var("ALSF_WINDOW", fmt.Sprintf("%d", t.WindowIndex)).
@@ -259,10 +263,7 @@ func doFilterTabs() error {
 		res := wf.Filter(query)
 		log.Printf("%d results for `%s`", len(res), query)
 	}
-	if wf.IsEmpty() {
-		wf.Warn("No tabs found", "Try a different query?")
-		return nil
-	}
+	wf.WarnEmpty("No tabs found", "Try a different query?")
 	wf.SendFeedback()
 
 	return nil
@@ -369,8 +370,22 @@ func doFilterFolder() error {
 	return nil
 }
 
-// Filter bookmarks and outputs Alfred results.
-func doFilterBookmarks() error { return filterBookmarks(safari.Bookmarks()) }
+// Filter bookmarks and output Alfred results.
+func doFilterBookmarks() error {
+	return filterBookmarks(safari.FilterBookmarks(func(bm *safari.Bookmark) bool {
+		if includeBookmarklets {
+			return true
+		}
+		return !bm.IsBookmarklet()
+	}))
+}
+
+// Filter bookmarklets and output Alfred results.
+func doFilterBookmarklets() error {
+	return filterBookmarks(safari.FilterBookmarks(func(bm *safari.Bookmark) bool {
+		return bm.IsBookmarklet()
+	}))
+}
 
 // Filter Safari's Reading List and sends results to Alfred.
 func doFilterReadingList() error { return filterBookmarks(safari.ReadingList().Bookmarks) }
@@ -402,8 +417,6 @@ func filterBookmarks(bookmarks []*safari.Bookmark) error {
 // doClose closes the specified tab(s).
 // TODO: Activate tab after closing to left or right?
 func doClose() error {
-
-	invalidateCache()
 
 	if !left && !right { // Close current tab
 		log.Printf("Closing tab %d of window %d ...", tab, window)
@@ -452,14 +465,22 @@ func doURLAction() error {
 	return a.Run(actionURL)
 }
 
+// doFilterTabActions is a Script Filter for tab actions.
 func doFilterTabActions() error {
+
+	log.Printf("url=%s, scheme=%s", actionURL, actionURL.Scheme)
+
 	LoadScripts(scriptDirs...)
 	acts := []Actionable{}
 	for _, a := range TabActions() {
 		acts = append(acts, a)
 	}
-	for _, a := range URLActions() {
-		acts = append(acts, a)
+
+	// No URL actions for favorites:// and bookmarks:// etc.
+	if actionURL.Scheme == "http" || actionURL.Scheme == "https" {
+		for _, a := range URLActions() {
+			acts = append(acts, a)
+		}
 	}
 	return listActions(acts)
 }
@@ -525,7 +546,7 @@ func doCurrentTab() error {
 
 // doDistname prints the filename of the .alfredworkflow file to STDOUT.
 func doDistname() error {
-	fmt.Println(strings.Replace(
+	fmt.Print(strings.Replace(
 		fmt.Sprintf("%s %s.alfredworkflow", wf.Name(), wf.Version()),
 		" ", "-", -1))
 	return nil
@@ -547,56 +568,19 @@ func urlKeywords(URL string) string {
 	return h
 }
 
-// loadWindows returns a list of Safari windows and caches the results for a few seconds.
+// loadWindows returns a list of Safari windows and caches them for the duration of the session.
 func loadWindows() ([]*safari.Window, error) {
 
-	// Return cached data if they exist and are fresh enough
-	if fi, err := os.Stat(tabCachePath); err == nil {
+	var wins []*safari.Window
 
-		age := time.Since(fi.ModTime())
-		if age <= maxCacheAge {
-
-			data, err := ioutil.ReadFile(tabCachePath)
-			if err != nil {
-				return nil, err
-			}
-
-			wins := []*safari.Window{}
-			if err := json.Unmarshal(data, &wins); err != nil {
-				return nil, err
-			}
-
-			log.Printf("Loaded tab list from cache (%v old)", age)
-
-			return wins, nil
-		}
-
-		log.Printf("Cache expired (%v > %v)", age, maxCacheAge)
+	getWins := func() (interface{}, error) {
+		return safari.Windows()
 	}
 
-	wins, err := safari.Windows()
-	if err != nil {
+	if err := wf.Session.LoadOrStoreJSON("windows", 0, getWins, &wins); err != nil {
 		return nil, err
 	}
-
-	// Cache data
-	data, err := json.MarshalIndent(wins, "", "  ")
-	if err != nil {
-		return nil, err
-	}
-	if err := ioutil.WriteFile(tabCachePath, data, 0600); err != nil {
-		return nil, err
-	}
-	log.Printf("Saved tab list: %s", aw.ShortenPath(tabCachePath))
-
 	return wins, nil
-}
-
-// invalidateCache deletes the cached tab list. Call when opening/closing tabs.
-func invalidateCache() {
-	if err := os.Remove(tabCachePath); err != nil {
-		log.Printf("Error removing cached tab list: %v", err)
-	}
 }
 
 // openURL opens URL in user's default browser.
@@ -617,6 +601,23 @@ func openURL(URL string) error {
 	return nil
 }
 
+// runBookmarklet executes a bookmarklet in the current tab.
+func runBookmarklet(URL string) error {
+	tab, err := safari.ActiveTab()
+	if err != nil {
+		return err
+	}
+	// Extract JavaScript from URL
+	js, err := url.PathUnescape(URL[11:])
+	if err != nil {
+		return err
+	}
+
+	log.Printf("tab=%#v", tab)
+	log.Printf("JS=%s", js)
+	return tab.RunJS(js)
+}
+
 // listActions sends a list of actions to Alfred.
 func listActions(actions []Actionable) error {
 	log.Printf("query=%s", query)
@@ -625,6 +626,7 @@ func listActions(actions []Actionable) error {
 		it := wf.NewItem(a.Title()).
 			Arg(a.Title()).
 			Icon(a.Icon()).
+			Copytext(a.Title()).
 			Valid(true).
 			Var("ALSF_ACTION", a.Title())
 
@@ -649,20 +651,32 @@ func bookmarkItem(bm *safari.Bookmark) *aw.Item {
 
 	it := wf.NewItem(bm.Title()).
 		Subtitle(bm.URL).
-		Arg(bm.URL).
 		UID(bm.UID()).
 		Valid(true).
 		Copytext(bm.URL).
-		Largetype(bm.Preview).
 		Var("ALSF_UID", bm.UID()).
 		Var("ALSF_URL", bm.URL).
 		Var("action", "open")
 
-	it.NewModifier("cmd").
-		Subtitle("Other actions…").
-		Var("action", "actions")
+	if bm.IsBookmarklet() {
+		it.Copytext("bkm:" + bm.UID())
+	}
 
 	if bm.InReadingList() {
+		it.Largetype(bm.Preview)
+	}
+
+	// Set actions
+	if !bm.IsBookmarklet() {
+		it.NewModifier("cmd").
+			Subtitle("Other actions…").
+			Var("action", "actions")
+	}
+
+	// Icon
+	if bm.IsBookmarklet() {
+		it.Icon(IconBookmarklet)
+	} else if bm.InReadingList() {
 		it.Icon(IconReadingList)
 	} else {
 		it.Icon(IconBookmark)
@@ -725,6 +739,10 @@ func run() {
 	}
 	wf.MaxResults = maxResults
 
+	// Create user script directories
+	util.MustExist(filepath.Join(wf.DataDir(), "scripts", "tab"))
+	util.MustExist(filepath.Join(wf.DataDir(), "scripts", "url"))
+
 	switch cmd {
 
 	case activateCmd.FullCommand():
@@ -732,6 +750,9 @@ func run() {
 
 	case filterBookmarksCmd.FullCommand():
 		err = doFilterBookmarks()
+
+	case filterBookmarkletsCmd.FullCommand():
+		err = doFilterBookmarklets()
 
 	case filterFolderCmd.FullCommand():
 		err = doFilterFolder()

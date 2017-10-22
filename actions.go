@@ -16,17 +16,13 @@ import (
 	"os/exec"
 	"path/filepath"
 
-	"git.deanishe.net/deanishe/awgo"
 	"git.deanishe.net/deanishe/go-safari"
+	"github.com/deanishe/awgo"
 )
 
 var (
-	iconTab = &aw.Icon{Value: "tab.png"}
-)
-
-var (
-	tabActions []TabActionable
-	urlActions []URLActionable
+	tabActions map[string]TabActionable
+	urlActions map[string]URLActionable
 	// Extensions of files that need to be run via /usr/bin/osascript
 	osaExts = map[string]bool{
 		".scpt":        true,
@@ -38,33 +34,48 @@ var (
 )
 
 func init() {
-	tabActions = []TabActionable{
+	tabActions = map[string]TabActionable{}
+	urlActions = map[string]URLActionable{}
+	// Built-in actions
+	for _, a := range []Actionable{
 		&closeTab{},
 		&closeTabsLeft{},
 		&closeTabsRight{},
 		&closeTabsOther{},
 		&closeWindow{},
-	}
-	urlActions = []URLActionable{
 		&openURLAction{},
+	} {
+		if err := Register(a); err != nil {
+			panic(err)
+		}
 	}
 }
 
 // Register an action.
 func Register(action Actionable) error {
 	if a, ok := action.(TabActionable); ok {
-		tabActions = append(tabActions, a)
+		tabActions[a.Title()] = a
 		return nil
 	}
 	if a, ok := action.(URLActionable); ok {
-		urlActions = append(urlActions, a)
+		urlActions[a.Title()] = a
 		return nil
 	}
 	return fmt.Errorf("Unknown action type : %+v", action)
 }
 
 // URLActions returns registered URLActions
-func URLActions() []URLActionable { return urlActions }
+func URLActions() []URLActionable {
+	var (
+		i    int
+		acts = make([]URLActionable, len(urlActions))
+	)
+	for _, a := range urlActions {
+		acts[i] = a
+		i++
+	}
+	return acts
+}
 
 // URLAction returns the first registered URLActionable with the matching title.
 func URLAction(title string) URLActionable {
@@ -78,7 +89,17 @@ func URLAction(title string) URLActionable {
 }
 
 // TabActions returns registered TabActions
-func TabActions() []TabActionable { return tabActions }
+func TabActions() []TabActionable {
+	var (
+		i    int
+		acts = make([]TabActionable, len(tabActions))
+	)
+	for _, a := range tabActions {
+		acts[i] = a
+		i++
+	}
+	return acts
+}
 
 // TabAction returns the first registered TabActionable with the matching title.
 func TabAction(title string) TabActionable {
@@ -111,7 +132,7 @@ type URLActionable interface {
 
 type baseTabAction struct{}
 
-func (a *baseTabAction) Icon() *aw.Icon { return iconTab }
+func (a *baseTabAction) Icon() *aw.Icon { return IconTab }
 
 type closeTab struct {
 	baseTabAction
@@ -161,7 +182,7 @@ func (a *closeWindow) Run(t *safari.Tab) error { return safari.CloseWin(t.Window
 
 type baseURLAction struct{}
 
-func (a *baseURLAction) Icon() *aw.Icon { return aw.IconWeb }
+func (a *baseURLAction) Icon() *aw.Icon { return IconURL }
 
 type openURLAction struct {
 	baseURLAction
@@ -183,13 +204,17 @@ func getIcon(p, typ string) *aw.Icon {
 	for _, x := range iconExts {
 		ip := r + x
 		if _, err := os.Stat(ip); err == nil {
-			return &aw.Icon{Value: ip, Type: ""}
+			return &aw.Icon{Value: ip}
 		}
 	}
-	if typ == "url" {
-		return aw.IconWeb
+	switch typ {
+	case "url":
+		return IconURL
+	case "tab":
+		return IconTab
+	default:
+		return IconDefault
 	}
-	return IconDefault
 }
 
 // script wraps a script's path and icon details.
