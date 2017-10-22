@@ -31,7 +31,7 @@ function activateIfNotFrontmost() {
 function openPrivate(url) {
   activateIfNotFrontmost()
   se.keystroke('n', {using: ['command down', 'shift down']})
-  delay(1.2)
+  delay(1.5)
   var doc = safari.windows[0].document
   doc.url = url
 }

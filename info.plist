@@ -6,11 +6,24 @@
 	<string>net.deanishe.alfred.safari</string>
 	<key>connections</key>
 	<dict>
-		<key>0004C2F0-8ED4-4380-8E22-92343D79C9F6</key>
+		<key>010D3C06-D67F-4E4B-98A4-4EE5CE5EBFE2</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>0F73EBCE-EE02-4D0B-B9B9-26849B69515E</string>
+				<string>23B78D1A-5E3A-4F49-B517-60BB4542189A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>0380DE17-734F-47D8-8D4B-C9D499F0A82B</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>7D7286B3-5B8D-48F6-AC86-9A27D83EF3A2</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -24,6 +37,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>76F03F1E-15FC-4B9D-9B00-98F12EF5B136</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>0A9A6198-DB8E-4F73-90F3-12A2A96C018D</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>269544DC-8CA1-4B79-B8F9-EB9EF78FD416</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -74,12 +100,75 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>B660BEDA-95EA-4AA3-98C5-82ACB3DB1319</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>E173AA90-52DB-457C-94A2-77A17258ED5D</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>E157FBA9-1D2B-413A-A321-3DCD07AF51CA</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>1E460E54-AE7A-4040-8B7A-B7A6A0A47268</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>0380DE17-734F-47D8-8D4B-C9D499F0A82B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
 		</array>
-		<key>0F73EBCE-EE02-4D0B-B9B9-26849B69515E</key>
+		<key>0F8110E8-8871-42C6-9C45-BDB6A320370B</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>269544DC-8CA1-4B79-B8F9-EB9EF78FD416</string>
+				<string>6AD034BA-6776-460D-A548-5134AA48BF23</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>1138EA0F-2809-48B0-9298-241D356FFB79</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>7573F326-F8C0-43DD-A33F-13188EC76588</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -132,6 +221,32 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>F033671B-391D-4E9D-A71C-55CC1AA3E22A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>1E460E54-AE7A-4040-8B7A-B7A6A0A47268</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>010D3C06-D67F-4E4B-98A4-4EE5CE5EBFE2</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>23B78D1A-5E3A-4F49-B517-60BB4542189A</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>7B947B9D-BCCE-40AD-8F10-614A4F627F0D</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -205,19 +320,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>355FC482-950D-4155-9A8E-45EDCFDB4EC4</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>653E20AF-BF4B-43A1-911F-56F8F4C5A8F2</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>356B391D-D91D-46CD-82B9-B30A76C9ADEF</key>
 		<array>
 			<dict>
@@ -270,11 +372,37 @@
 				<false/>
 			</dict>
 		</array>
-		<key>4656D4A5-52B8-4F43-A053-7169E9260FF4</key>
+		<key>425A464A-92AD-487B-815B-EEF3F783B7DE</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>269544DC-8CA1-4B79-B8F9-EB9EF78FD416</string>
+				<string>0A9A6198-DB8E-4F73-90F3-12A2A96C018D</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>42D01BD0-03F3-4E8E-B75C-79ABA3D025F2</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>953F68B0-09F5-4763-B07F-920B65C3D25A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>531FEF57-7248-4CB7-B93D-1B1195CC3EF3</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>425A464A-92AD-487B-815B-EEF3F783B7DE</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -287,7 +415,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>8F80E004-3374-4B03-B484-73536F7F3BDB</string>
+				<string>E87B43A8-2AA2-4DCF-AE39-689352ECA442</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -376,6 +504,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>6AD034BA-6776-460D-A548-5134AA48BF23</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>269544DC-8CA1-4B79-B8F9-EB9EF78FD416</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>70ADDBDC-3466-471F-8FC0-0D08CBB6639C</key>
 		<array>
 			<dict>
@@ -402,11 +543,37 @@
 				<true/>
 			</dict>
 		</array>
+		<key>7573F326-F8C0-43DD-A33F-13188EC76588</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>7619DB99-62C5-4D27-BC76-AB6ACB0E54DE</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>7619DB99-62C5-4D27-BC76-AB6ACB0E54DE</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>269544DC-8CA1-4B79-B8F9-EB9EF78FD416</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>76F03F1E-15FC-4B9D-9B00-98F12EF5B136</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>355FC482-950D-4155-9A8E-45EDCFDB4EC4</string>
+				<string>B1A997B1-7D24-4D2A-9B0C-7F926BA979A3</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -414,9 +581,12 @@
 				<key>vitoclose</key>
 				<true/>
 			</dict>
+		</array>
+		<key>7D7286B3-5B8D-48F6-AC86-9A27D83EF3A2</key>
+		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>82BC0606-4BCC-4911-9978-E7A709993015</string>
+				<string>8C141BD4-3D04-4F7B-AB36-11A7A615F20B</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -438,19 +608,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>82BC0606-4BCC-4911-9978-E7A709993015</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>DFD6581C-387E-4A1C-AC01-FFF039871345</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>84DB3789-346A-4833-A576-49CEE1C8EF04</key>
 		<array>
 			<dict>
@@ -464,11 +621,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>8F80E004-3374-4B03-B484-73536F7F3BDB</key>
+		<key>8C141BD4-3D04-4F7B-AB36-11A7A615F20B</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>4656D4A5-52B8-4F43-A053-7169E9260FF4</string>
+				<string>7341F452-292A-430A-B133-FF905D045454</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -495,6 +652,32 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>0F1CFAC5-E975-422B-9C4D-BA2F38FA3062</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>A44FC9A2-6ED7-4F7F-A33E-9621496E4EFE</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>0F8110E8-8871-42C6-9C45-BDB6A320370B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>A8F5D575-3439-4D7A-A074-013B7C9F7BAF</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>CDDA2051-6A68-46D9-8012-2263FE755D8D</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -542,6 +725,8 @@
 				<false/>
 			</dict>
 		</array>
+		<key>B1A997B1-7D24-4D2A-9B0C-7F926BA979A3</key>
+		<array/>
 		<key>B398AB9B-2F47-4DE0-92B9-C726B8765DEC</key>
 		<array>
 			<dict>
@@ -555,11 +740,50 @@
 				<false/>
 			</dict>
 		</array>
+		<key>B660BEDA-95EA-4AA3-98C5-82ACB3DB1319</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>DC250584-B71B-4F56-8D5F-CBC8F6BEA5C7</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>BA115AD6-EFBB-46E5-9DFA-E842BEF68AC4</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C2686AF6-DE0A-4293-A60B-106F60AADF0F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>BC0EC6A3-641B-48C5-B785-620943E268EF</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>1CC27177-DF0A-4468-B358-54AB7047DB95</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>CDDA2051-6A68-46D9-8012-2263FE755D8D</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>CF062854-129C-46B6-99DF-EBADF8E50876</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -630,11 +854,11 @@
 				<true/>
 			</dict>
 		</array>
-		<key>DE1C9785-A59F-4478-99BD-09A9CE0B38AD</key>
+		<key>DB50908D-263A-4D0F-AF65-7762566F8EE7</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>0004C2F0-8ED4-4380-8E22-92343D79C9F6</string>
+				<string>DD67856C-3F95-4359-A679-FB3B5112D537</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -643,11 +867,89 @@
 				<false/>
 			</dict>
 		</array>
-		<key>DFD6581C-387E-4A1C-AC01-FFF039871345</key>
+		<key>DC250584-B71B-4F56-8D5F-CBC8F6BEA5C7</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>9ED9555B-B2D7-4699-BCB3-81A68BE1DFDB</string>
+				<string>BA115AD6-EFBB-46E5-9DFA-E842BEF68AC4</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>DD67856C-3F95-4359-A679-FB3B5112D537</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E0ED9E3A-4E43-4FB3-94DD-7116FE5A5052</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>DE1C9785-A59F-4478-99BD-09A9CE0B38AD</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E87B43A8-2AA2-4DCF-AE39-689352ECA442</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>E0ED9E3A-4E43-4FB3-94DD-7116FE5A5052</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>269544DC-8CA1-4B79-B8F9-EB9EF78FD416</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>E157FBA9-1D2B-413A-A321-3DCD07AF51CA</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>A8F5D575-3439-4D7A-A074-013B7C9F7BAF</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>E173AA90-52DB-457C-94A2-77A17258ED5D</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>42D01BD0-03F3-4E8E-B75C-79ABA3D025F2</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>E87B43A8-2AA2-4DCF-AE39-689352ECA442</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>F7AFF063-9507-4241-BC62-E3EA1CAC28AA</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -909,49 +1211,6 @@ variables={allvars}
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>inputstring</key>
-				<string>{var:action}</string>
-				<key>matchcasesensitive</key>
-				<true/>
-				<key>matchmode</key>
-				<integer>0</integer>
-				<key>matchstring</key>
-				<string>actions</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.filter</string>
-			<key>uid</key>
-			<string>355FC482-950D-4155-9A8E-45EDCFDB4EC4</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string># The window/tab to activate are specified via workflow/environment variables
-./alsf activate</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>9ED9555B-B2D7-4699-BCB3-81A68BE1DFDB</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -999,6 +1258,25 @@ variables={allvars}
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>externaltriggerid</key>
+				<string>dispatch</string>
+				<key>passinputasargument</key>
+				<true/>
+				<key>passvariables</key>
+				<true/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>B1A997B1-7D24-4D2A-9B0C-7F926BA979A3</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -1030,33 +1308,6 @@ variables={allvars}
 			<string>052405D0-212B-42D3-9E79-C4310040EAF6</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>inputstring</key>
-				<string>{var:action}</string>
-				<key>matchcasesensitive</key>
-				<true/>
-				<key>matchmode</key>
-				<integer>0</integer>
-				<key>matchstring</key>
-				<string>activate</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.filter</string>
-			<key>uid</key>
-			<string>82BC0606-4BCC-4911-9978-E7A709993015</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.hidealfred</string>
-			<key>uid</key>
-			<string>DFD6581C-387E-4A1C-AC01-FFF039871345</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1687,40 +1938,6 @@ variables={allvars}
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>triggerid</key>
-				<string>dispatch</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.trigger.external</string>
-			<key>uid</key>
-			<string>98504B87-6B7B-48FB-B26F-23AA8CC22AFE</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argument</key>
-				<string>.
-/--- DISPATCH OUT ---\
-query={query}
-variables={allvars}
-\--------------------/</string>
-				<key>cleardebuggertext</key>
-				<false/>
-				<key>processoutputs</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.debug</string>
-			<key>uid</key>
-			<string>0F1CFAC5-E975-422B-9C4D-BA2F38FA3062</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>externaltriggerid</key>
 				<string>open-uid</string>
 				<key>passinputasargument</key>
@@ -1799,6 +2016,19 @@ variables={allvars}
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>triggerid</key>
+				<string>dispatch</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.external</string>
+			<key>uid</key>
+			<string>98504B87-6B7B-48FB-B26F-23AA8CC22AFE</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argument</key>
 				<string>.
 /------ ALL FOLDERS IN ------\
@@ -1814,6 +2044,27 @@ variables={allvars}
 			<string>alfred.workflow.utility.debug</string>
 			<key>uid</key>
 			<string>84DB3789-346A-4833-A576-49CEE1C8EF04</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>.
+/--- DISPATCH OUT ---\
+query={query}
+variables={allvars}
+\--------------------/</string>
+				<key>cleardebuggertext</key>
+				<false/>
+				<key>processoutputs</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.debug</string>
+			<key>uid</key>
+			<string>0F1CFAC5-E975-422B-9C4D-BA2F38FA3062</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1839,6 +2090,404 @@ variables={allvars}
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>externaltriggerid</key>
+				<string>url-action</string>
+				<key>passinputasargument</key>
+				<true/>
+				<key>passvariables</key>
+				<true/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>C2686AF6-DE0A-4293-A60B-106F60AADF0F</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>inputstring</key>
+				<string>{var:action}</string>
+				<key>matchcasesensitive</key>
+				<true/>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>matchstring</key>
+				<string>url-action</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.filter</string>
+			<key>uid</key>
+			<string>B660BEDA-95EA-4AA3-98C5-82ACB3DB1319</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.hidealfred</string>
+			<key>uid</key>
+			<string>BA115AD6-EFBB-46E5-9DFA-E842BEF68AC4</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>.
+/------ URL ACTION IN ------\
+query={query}
+variables={allvars}
+\---------------------------/</string>
+				<key>cleardebuggertext</key>
+				<false/>
+				<key>processoutputs</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.debug</string>
+			<key>uid</key>
+			<string>DC250584-B71B-4F56-8D5F-CBC8F6BEA5C7</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>tab-actions</string>
+				<key>passinputasargument</key>
+				<true/>
+				<key>passvariables</key>
+				<true/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>953F68B0-09F5-4763-B07F-920B65C3D25A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>inputstring</key>
+				<string>{var:action}</string>
+				<key>matchcasesensitive</key>
+				<true/>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>matchstring</key>
+				<string>tab-actions</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.filter</string>
+			<key>uid</key>
+			<string>E173AA90-52DB-457C-94A2-77A17258ED5D</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>.
+/------ TAB ACTIONS IN ------\
+query={query}
+variables={allvars}
+\----------------------------/</string>
+				<key>cleardebuggertext</key>
+				<false/>
+				<key>processoutputs</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.debug</string>
+			<key>uid</key>
+			<string>42D01BD0-03F3-4E8E-B75C-79ABA3D025F2</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>activate</string>
+				<key>passinputasargument</key>
+				<true/>
+				<key>passvariables</key>
+				<true/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>CF062854-129C-46B6-99DF-EBADF8E50876</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.hidealfred</string>
+			<key>uid</key>
+			<string>CDDA2051-6A68-46D9-8012-2263FE755D8D</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>inputstring</key>
+				<string>{var:action}</string>
+				<key>matchcasesensitive</key>
+				<true/>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>matchstring</key>
+				<string>activate</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.filter</string>
+			<key>uid</key>
+			<string>E157FBA9-1D2B-413A-A321-3DCD07AF51CA</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>.
+/------ ACTIVATE IN ------\
+query={query}
+variables={allvars}
+\-------------------------/</string>
+				<key>cleardebuggertext</key>
+				<false/>
+				<key>processoutputs</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.debug</string>
+			<key>uid</key>
+			<string>A8F5D575-3439-4D7A-A074-013B7C9F7BAF</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>tab-action</string>
+				<key>passinputasargument</key>
+				<true/>
+				<key>passvariables</key>
+				<true/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>7B947B9D-BCCE-40AD-8F10-614A4F627F0D</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.hidealfred</string>
+			<key>uid</key>
+			<string>23B78D1A-5E3A-4F49-B517-60BB4542189A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>.
+/------ TAB ACTION IN ------\
+query={query}
+variables={allvars}
+\---------------------------/</string>
+				<key>cleardebuggertext</key>
+				<false/>
+				<key>processoutputs</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.debug</string>
+			<key>uid</key>
+			<string>010D3C06-D67F-4E4B-98A4-4EE5CE5EBFE2</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>inputstring</key>
+				<string>{var:action}</string>
+				<key>matchcasesensitive</key>
+				<true/>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>matchstring</key>
+				<string>tab-action</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.filter</string>
+			<key>uid</key>
+			<string>1E460E54-AE7A-4040-8B7A-B7A6A0A47268</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>bookmarklet</string>
+				<key>passinputasargument</key>
+				<true/>
+				<key>passvariables</key>
+				<true/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>7341F452-292A-430A-B133-FF905D045454</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>inputstring</key>
+				<string>{var:action}</string>
+				<key>matchcasesensitive</key>
+				<true/>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>matchstring</key>
+				<string>bookmarklet</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.filter</string>
+			<key>uid</key>
+			<string>0380DE17-734F-47D8-8D4B-C9D499F0A82B</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.hidealfred</string>
+			<key>uid</key>
+			<string>8C141BD4-3D04-4F7B-AB36-11A7A615F20B</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>.
+/------ BOOKMARKLET IN ------\
+query={query}
+variables={allvars}
+\----------------------------/</string>
+				<key>cleardebuggertext</key>
+				<false/>
+				<key>processoutputs</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.debug</string>
+			<key>uid</key>
+			<string>7D7286B3-5B8D-48F6-AC86-9A27D83EF3A2</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string># The window/tab to activate are specified via workflow/environment variables
+./alsf activate</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>0A9A6198-DB8E-4F73-90F3-12A2A96C018D</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>triggerid</key>
+				<string>activate</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.external</string>
+			<key>uid</key>
+			<string>531FEF57-7248-4CB7-B93D-1B1195CC3EF3</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>.
+/--- ACTIVATE TAB ---\
+query={query}
+variables={allvars}
+\--------------------/</string>
+				<key>cleardebuggertext</key>
+				<false/>
+				<key>processoutputs</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.debug</string>
+			<key>uid</key>
+			<string>425A464A-92AD-487B-815B-EEF3F783B7DE</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>triggerid</key>
+				<string>url-action</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.external</string>
+			<key>uid</key>
+			<string>A44FC9A2-6ED7-4F7F-A33E-9621496E4EFE</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
@@ -1855,9 +2504,165 @@ variables={allvars}
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>4656D4A5-52B8-4F43-A053-7169E9260FF4</string>
+			<string>6AD034BA-6776-460D-A548-5134AA48BF23</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>.
+/--- RUN URL ACTION ---\
+query={query}
+variables={allvars}
+\----------------------/</string>
+				<key>cleardebuggertext</key>
+				<false/>
+				<key>processoutputs</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.debug</string>
+			<key>uid</key>
+			<string>0F8110E8-8871-42C6-9C45-BDB6A320370B</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<true/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>ERROR</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>269544DC-8CA1-4B79-B8F9-EB9EF78FD416</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>triggerid</key>
+				<string>tab-action</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.external</string>
+			<key>uid</key>
+			<string>DB50908D-263A-4D0F-AF65-7762566F8EE7</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>./alsf action tab</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>E0ED9E3A-4E43-4FB3-94DD-7116FE5A5052</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>.
+/---- RUN TAB ACTION ----\
+query={query}
+variables={allvars}
+\------------------------/</string>
+				<key>cleardebuggertext</key>
+				<false/>
+				<key>processoutputs</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.debug</string>
+			<key>uid</key>
+			<string>DD67856C-3F95-4359-A679-FB3B5112D537</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>triggerid</key>
+				<string>bookmarklet</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.external</string>
+			<key>uid</key>
+			<string>1138EA0F-2809-48B0-9298-241D356FFB79</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>./alsf action tab</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>7619DB99-62C5-4D27-BC76-AB6ACB0E54DE</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>.
+/---- RUN BOOKMARKLET ----\
+query={query}
+variables={allvars}
+\-------------------------/</string>
+				<key>cleardebuggertext</key>
+				<false/>
+				<key>processoutputs</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.debug</string>
+			<key>uid</key>
+			<string>7573F326-F8C0-43DD-A33F-13188EC76588</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1883,9 +2688,7 @@ variables={allvars}
 				<key>runningsubtext</key>
 				<string></string>
 				<key>script</key>
-				<string>echo "arse!" &gt;/dev/stderr
-
-./alsf actions url -q "$1"</string>
+				<string>./alsf actions url -q "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -1924,27 +2727,6 @@ variables={allvars}
 			<dict>
 				<key>argument</key>
 				<string>.
-/--- RUN URL ACTION ---\
-query={query}
-variables={allvars}
-\----------------------/</string>
-				<key>cleardebuggertext</key>
-				<false/>
-				<key>processoutputs</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.debug</string>
-			<key>uid</key>
-			<string>8F80E004-3374-4B03-B484-73536F7F3BDB</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argument</key>
-				<string>.
 /--- URL ACTIONS OUT ---\
 query={query}
 variables={allvars}
@@ -1964,21 +2746,40 @@ variables={allvars}
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
+				<key>externaltriggerid</key>
+				<string>dispatch</string>
+				<key>passinputasargument</key>
 				<true/>
-				<key>removeextension</key>
-				<false/>
-				<key>text</key>
-				<string>{query}</string>
-				<key>title</key>
-				<string>ERROR</string>
+				<key>passvariables</key>
+				<true/>
+				<key>workflowbundleid</key>
+				<string>self</string>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
+			<string>alfred.workflow.output.callexternaltrigger</string>
 			<key>uid</key>
-			<string>269544DC-8CA1-4B79-B8F9-EB9EF78FD416</string>
+			<string>F7AFF063-9507-4241-BC62-E3EA1CAC28AA</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>.
+/--- DISPATCH IN ---\
+query={query}
+variables={allvars}
+\-------------------/</string>
+				<key>cleardebuggertext</key>
+				<false/>
+				<key>processoutputs</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.debug</string>
+			<key>uid</key>
+			<string>E87B43A8-2AA2-4DCF-AE39-689352ECA442</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -2030,29 +2831,6 @@ variables={allvars}
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>./alsf action tab</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>0F73EBCE-EE02-4D0B-B9B9-26849B69515E</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>triggerid</key>
 				<string>tab-actions</string>
 			</dict>
@@ -2081,27 +2859,6 @@ variables={allvars}
 			<string>alfred.workflow.utility.debug</string>
 			<key>uid</key>
 			<string>971D7A70-415F-420A-9DCD-C8B80F0ECD41</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argument</key>
-				<string>.
-/-- RUN TAB ACTION --\
-query={query}
-variables={allvars}
-\--------------------/</string>
-				<key>cleardebuggertext</key>
-				<false/>
-				<key>processoutputs</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.debug</string>
-			<key>uid</key>
-			<string>0004C2F0-8ED4-4380-8E22-92343D79C9F6</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -2181,17 +2938,36 @@ Search &amp; open bookmarks; run bookmarklets; activate &amp; close tabs.
 Configuration
 -------------
 
-`ALSF_INCLUDE_BOOKMARKLETS`: Set to `1` to include bookmarklets in the default bookmark search.</string>
+`ALSF_INCLUDE_BOOKMARKLETS`: Set to `1` to include bookmarklets in the default bookmark search.
+
+`ALSF_TAB_*`: Bind an action (script)/bookmarklet to a modifier key. Use MOD+↩ to run this action/bookmarklet on a tab.
+
+For a script, use the name (minus extension). For a bookmarklet, use `bkm:UID` where `UID` is the UID of the bookmarklet.
+
+In either case, use ⌘C on a script/bookmarklet to copy the appropriate value to the clipboard.
+
+`ALSF_URL_*`: Bind an action (script) to a modifier key. Use MOD+↩ to run this action on a bookmark.</string>
 	<key>uidata</key>
 	<dict>
-		<key>0004C2F0-8ED4-4380-8E22-92343D79C9F6</key>
+		<key>010D3C06-D67F-4E4B-98A4-4EE5CE5EBFE2</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>3</integer>
 			<key>xpos</key>
-			<integer>470</integer>
+			<integer>620</integer>
 			<key>ypos</key>
-			<integer>2200</integer>
+			<integer>2500</integer>
+		</dict>
+		<key>0380DE17-734F-47D8-8D4B-C9D499F0A82B</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>7</integer>
+			<key>note</key>
+			<string>action == bookmarklet</string>
+			<key>xpos</key>
+			<integer>520</integer>
+			<key>ypos</key>
+			<integer>2660</integer>
 		</dict>
 		<key>052405D0-212B-42D3-9E79-C4310040EAF6</key>
 		<dict>
@@ -2204,25 +2980,45 @@ Configuration
 			<key>ypos</key>
 			<integer>390</integer>
 		</dict>
+		<key>0A9A6198-DB8E-4F73-90F3-12A2A96C018D</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>9</integer>
+			<key>note</key>
+			<string>Activate tab</string>
+			<key>xpos</key>
+			<integer>310</integer>
+			<key>ypos</key>
+			<integer>2990</integer>
+		</dict>
 		<key>0F1CFAC5-E975-422B-9C4D-BA2F38FA3062</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>4</integer>
 			<key>xpos</key>
-			<integer>220</integer>
+			<integer>230</integer>
 			<key>ypos</key>
-			<integer>1660</integer>
+			<integer>1870</integer>
 		</dict>
-		<key>0F73EBCE-EE02-4D0B-B9B9-26849B69515E</key>
+		<key>0F8110E8-8871-42C6-9C45-BDB6A320370B</key>
 		<dict>
 			<key>colorindex</key>
-			<integer>3</integer>
-			<key>note</key>
-			<string>Run tab action</string>
+			<integer>6</integer>
 			<key>xpos</key>
-			<integer>550</integer>
+			<integer>230</integer>
 			<key>ypos</key>
-			<integer>2170</integer>
+			<integer>3180</integer>
+		</dict>
+		<key>1138EA0F-2809-48B0-9298-241D356FFB79</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>7</integer>
+			<key>note</key>
+			<string>Run a bookmarklet</string>
+			<key>xpos</key>
+			<integer>40</integer>
+			<key>ypos</key>
+			<integer>3470</integer>
 		</dict>
 		<key>126AB834-9B99-4FE4-BC12-6F1D96BFCE72</key>
 		<dict>
@@ -2255,7 +3051,7 @@ Configuration
 			<key>xpos</key>
 			<integer>350</integer>
 			<key>ypos</key>
-			<integer>2360</integer>
+			<integer>3970</integer>
 		</dict>
 		<key>1CC27177-DF0A-4468-B358-54AB7047DB95</key>
 		<dict>
@@ -2266,12 +3062,32 @@ Configuration
 			<key>ypos</key>
 			<integer>1420</integer>
 		</dict>
+		<key>1E460E54-AE7A-4040-8B7A-B7A6A0A47268</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>3</integer>
+			<key>note</key>
+			<string>action == tab-action</string>
+			<key>xpos</key>
+			<integer>520</integer>
+			<key>ypos</key>
+			<integer>2500</integer>
+		</dict>
+		<key>23B78D1A-5E3A-4F49-B517-60BB4542189A</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>3</integer>
+			<key>xpos</key>
+			<integer>720</integer>
+			<key>ypos</key>
+			<integer>2500</integer>
+		</dict>
 		<key>269544DC-8CA1-4B79-B8F9-EB9EF78FD416</key>
 		<dict>
 			<key>xpos</key>
-			<integer>760</integer>
+			<integer>700</integer>
 			<key>ypos</key>
-			<integer>2080</integer>
+			<integer>3230</integer>
 		</dict>
 		<key>28484670-F0F8-45A1-BE66-2414CD285135</key>
 		<dict>
@@ -2304,7 +3120,7 @@ Configuration
 			<key>xpos</key>
 			<integer>40</integer>
 			<key>ypos</key>
-			<integer>2010</integer>
+			<integer>3630</integer>
 		</dict>
 		<key>30F1BD1C-1746-40D0-931B-37818C793463</key>
 		<dict>
@@ -2324,7 +3140,7 @@ Configuration
 			<key>xpos</key>
 			<integer>550</integer>
 			<key>ypos</key>
-			<integer>2330</integer>
+			<integer>3940</integer>
 		</dict>
 		<key>329B5936-B26C-49BC-8ED1-53A0E11D913B</key>
 		<dict>
@@ -2337,17 +3153,6 @@ Configuration
 			<key>ypos</key>
 			<integer>780</integer>
 		</dict>
-		<key>355FC482-950D-4155-9A8E-45EDCFDB4EC4</key>
-		<dict>
-			<key>colorindex</key>
-			<integer>3</integer>
-			<key>note</key>
-			<string>action == actions</string>
-			<key>xpos</key>
-			<integer>460</integer>
-			<key>ypos</key>
-			<integer>290</integer>
-		</dict>
 		<key>356B391D-D91D-46CD-82B9-B30A76C9ADEF</key>
 		<dict>
 			<key>colorindex</key>
@@ -2355,7 +3160,7 @@ Configuration
 			<key>xpos</key>
 			<integer>230</integer>
 			<key>ypos</key>
-			<integer>2360</integer>
+			<integer>3970</integer>
 		</dict>
 		<key>3810E7C3-8090-4111-AECE-F78625F2C81E</key>
 		<dict>
@@ -2397,20 +3202,38 @@ Configuration
 			<key>note</key>
 			<string>Show all folders</string>
 			<key>xpos</key>
-			<integer>700</integer>
+			<integer>820</integer>
 			<key>ypos</key>
 			<integer>1840</integer>
 		</dict>
-		<key>4656D4A5-52B8-4F43-A053-7169E9260FF4</key>
+		<key>425A464A-92AD-487B-815B-EEF3F783B7DE</key>
 		<dict>
 			<key>colorindex</key>
-			<integer>2</integer>
-			<key>note</key>
-			<string>Run URL action</string>
+			<integer>9</integer>
 			<key>xpos</key>
-			<integer>550</integer>
+			<integer>230</integer>
 			<key>ypos</key>
-			<integer>2010</integer>
+			<integer>3020</integer>
+		</dict>
+		<key>42D01BD0-03F3-4E8E-B75C-79ABA3D025F2</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>3</integer>
+			<key>xpos</key>
+			<integer>620</integer>
+			<key>ypos</key>
+			<integer>2180</integer>
+		</dict>
+		<key>531FEF57-7248-4CB7-B93D-1B1195CC3EF3</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>9</integer>
+			<key>note</key>
+			<string>Activate tab</string>
+			<key>xpos</key>
+			<integer>40</integer>
+			<key>ypos</key>
+			<integer>2990</integer>
 		</dict>
 		<key>568D7820-F839-4E7A-B5B7-9C2D7DC0515B</key>
 		<dict>
@@ -2421,7 +3244,7 @@ Configuration
 			<key>xpos</key>
 			<integer>310</integer>
 			<key>ypos</key>
-			<integer>2010</integer>
+			<integer>3630</integer>
 		</dict>
 		<key>579B46DD-D411-485F-947D-8B7C9126549E</key>
 		<dict>
@@ -2439,7 +3262,7 @@ Configuration
 			<key>note</key>
 			<string>Open folder/bookmark</string>
 			<key>xpos</key>
-			<integer>700</integer>
+			<integer>820</integer>
 			<key>ypos</key>
 			<integer>1690</integer>
 		</dict>
@@ -2468,7 +3291,7 @@ Configuration
 			<key>colorindex</key>
 			<integer>3</integer>
 			<key>xpos</key>
-			<integer>590</integer>
+			<integer>400</integer>
 			<key>ypos</key>
 			<integer>230</integer>
 		</dict>
@@ -2492,6 +3315,17 @@ Configuration
 			<key>ypos</key>
 			<integer>1870</integer>
 		</dict>
+		<key>6AD034BA-6776-460D-A548-5134AA48BF23</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>6</integer>
+			<key>note</key>
+			<string>Run URL action</string>
+			<key>xpos</key>
+			<integer>310</integer>
+			<key>ypos</key>
+			<integer>3150</integer>
+		</dict>
 		<key>70ADDBDC-3466-471F-8FC0-0D08CBB6639C</key>
 		<dict>
 			<key>colorindex</key>
@@ -2514,6 +3348,37 @@ Filter within a specific bookmarks folder</string>
 			<key>ypos</key>
 			<integer>1290</integer>
 		</dict>
+		<key>7341F452-292A-430A-B133-FF905D045454</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>7</integer>
+			<key>note</key>
+			<string>Run a bookmarklet</string>
+			<key>xpos</key>
+			<integer>820</integer>
+			<key>ypos</key>
+			<integer>2630</integer>
+		</dict>
+		<key>7573F326-F8C0-43DD-A33F-13188EC76588</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>7</integer>
+			<key>xpos</key>
+			<integer>230</integer>
+			<key>ypos</key>
+			<integer>3500</integer>
+		</dict>
+		<key>7619DB99-62C5-4D27-BC76-AB6ACB0E54DE</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>7</integer>
+			<key>note</key>
+			<string>Run bookmarlet</string>
+			<key>xpos</key>
+			<integer>310</integer>
+			<key>ypos</key>
+			<integer>3470</integer>
+		</dict>
 		<key>76F03F1E-15FC-4B9D-9B00-98F12EF5B136</key>
 		<dict>
 			<key>colorindex</key>
@@ -2532,7 +3397,7 @@ Filter within a specific bookmarks folder</string>
 			<key>note</key>
 			<string>URL actions</string>
 			<key>xpos</key>
-			<integer>700</integer>
+			<integer>820</integer>
 			<key>ypos</key>
 			<integer>1540</integer>
 		</dict>
@@ -2545,6 +3410,26 @@ Filter within a specific bookmarks folder</string>
 			<key>ypos</key>
 			<integer>710</integer>
 		</dict>
+		<key>7B947B9D-BCCE-40AD-8F10-614A4F627F0D</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>3</integer>
+			<key>note</key>
+			<string>Run a tab action</string>
+			<key>xpos</key>
+			<integer>820</integer>
+			<key>ypos</key>
+			<integer>2470</integer>
+		</dict>
+		<key>7D7286B3-5B8D-48F6-AC86-9A27D83EF3A2</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>7</integer>
+			<key>xpos</key>
+			<integer>620</integer>
+			<key>ypos</key>
+			<integer>2660</integer>
+		</dict>
 		<key>7F3CB6EC-EC81-4581-9828-E8B16977D72D</key>
 		<dict>
 			<key>colorindex</key>
@@ -2552,18 +3437,7 @@ Filter within a specific bookmarks folder</string>
 			<key>xpos</key>
 			<integer>230</integer>
 			<key>ypos</key>
-			<integer>2040</integer>
-		</dict>
-		<key>82BC0606-4BCC-4911-9978-E7A709993015</key>
-		<dict>
-			<key>colorindex</key>
-			<integer>9</integer>
-			<key>note</key>
-			<string>action == activate</string>
-			<key>xpos</key>
-			<integer>460</integer>
-			<key>ypos</key>
-			<integer>420</integer>
+			<integer>3660</integer>
 		</dict>
 		<key>84DB3789-346A-4833-A576-49CEE1C8EF04</key>
 		<dict>
@@ -2583,14 +3457,25 @@ Filter within a specific bookmarks folder</string>
 			<key>ypos</key>
 			<integer>40</integer>
 		</dict>
-		<key>8F80E004-3374-4B03-B484-73536F7F3BDB</key>
+		<key>8C141BD4-3D04-4F7B-AB36-11A7A615F20B</key>
 		<dict>
 			<key>colorindex</key>
-			<integer>2</integer>
+			<integer>7</integer>
 			<key>xpos</key>
-			<integer>470</integer>
+			<integer>720</integer>
 			<key>ypos</key>
-			<integer>2040</integer>
+			<integer>2660</integer>
+		</dict>
+		<key>953F68B0-09F5-4763-B07F-920B65C3D25A</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>3</integer>
+			<key>note</key>
+			<string>Search tab actions</string>
+			<key>xpos</key>
+			<integer>820</integer>
+			<key>ypos</key>
+			<integer>2150</integer>
 		</dict>
 		<key>971D7A70-415F-420A-9DCD-C8B80F0ECD41</key>
 		<dict>
@@ -2599,27 +3484,16 @@ Filter within a specific bookmarks folder</string>
 			<key>xpos</key>
 			<integer>230</integer>
 			<key>ypos</key>
-			<integer>2200</integer>
+			<integer>3820</integer>
 		</dict>
 		<key>98504B87-6B7B-48FB-B26F-23AA8CC22AFE</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>4</integer>
 			<key>xpos</key>
-			<integer>40</integer>
+			<integer>50</integer>
 			<key>ypos</key>
-			<integer>1630</integer>
-		</dict>
-		<key>9ED9555B-B2D7-4699-BCB3-81A68BE1DFDB</key>
-		<dict>
-			<key>colorindex</key>
-			<integer>9</integer>
-			<key>note</key>
-			<string>Activate tab</string>
-			<key>xpos</key>
-			<integer>700</integer>
-			<key>ypos</key>
-			<integer>390</integer>
+			<integer>1840</integer>
 		</dict>
 		<key>A2E2F0E6-CDE8-4871-87F8-56EBF3533B5C</key>
 		<dict>
@@ -2628,9 +3502,29 @@ Filter within a specific bookmarks folder</string>
 			<key>note</key>
 			<string>Show available Tab Actions</string>
 			<key>xpos</key>
-			<integer>700</integer>
+			<integer>500</integer>
 			<key>ypos</key>
 			<integer>200</integer>
+		</dict>
+		<key>A44FC9A2-6ED7-4F7F-A33E-9621496E4EFE</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>6</integer>
+			<key>note</key>
+			<string>Run a URL action</string>
+			<key>xpos</key>
+			<integer>40</integer>
+			<key>ypos</key>
+			<integer>3150</integer>
+		</dict>
+		<key>A8F5D575-3439-4D7A-A074-013B7C9F7BAF</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>9</integer>
+			<key>xpos</key>
+			<integer>620</integer>
+			<key>ypos</key>
+			<integer>2340</integer>
 		</dict>
 		<key>AB1538F1-21FC-4175-8A7D-FFB65F43A455</key>
 		<dict>
@@ -2652,7 +3546,7 @@ Filter within a specific bookmarks folder</string>
 			<key>xpos</key>
 			<integer>40</integer>
 			<key>ypos</key>
-			<integer>2170</integer>
+			<integer>3790</integer>
 		</dict>
 		<key>AEEA665B-2053-4555-8563-3F22B7063C98</key>
 		<dict>
@@ -2665,6 +3559,15 @@ Filter within a specific bookmarks folder</string>
 			<key>ypos</key>
 			<integer>950</integer>
 		</dict>
+		<key>B1A997B1-7D24-4D2A-9B0C-7F926BA979A3</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>9</integer>
+			<key>xpos</key>
+			<integer>500</integer>
+			<key>ypos</key>
+			<integer>390</integer>
+		</dict>
 		<key>B398AB9B-2F47-4DE0-92B9-C726B8765DEC</key>
 		<dict>
 			<key>colorindex</key>
@@ -2673,6 +3576,26 @@ Filter within a specific bookmarks folder</string>
 			<integer>620</integer>
 			<key>ypos</key>
 			<integer>1570</integer>
+		</dict>
+		<key>B660BEDA-95EA-4AA3-98C5-82ACB3DB1319</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>6</integer>
+			<key>note</key>
+			<string>action == url-action</string>
+			<key>xpos</key>
+			<integer>520</integer>
+			<key>ypos</key>
+			<integer>2020</integer>
+		</dict>
+		<key>BA115AD6-EFBB-46E5-9DFA-E842BEF68AC4</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>6</integer>
+			<key>xpos</key>
+			<integer>720</integer>
+			<key>ypos</key>
+			<integer>2020</integer>
 		</dict>
 		<key>BC0EC6A3-641B-48C5-B785-620943E268EF</key>
 		<dict>
@@ -2684,6 +3607,37 @@ Filter within a specific bookmarks folder</string>
 			<integer>520</integer>
 			<key>ypos</key>
 			<integer>1420</integer>
+		</dict>
+		<key>C2686AF6-DE0A-4293-A60B-106F60AADF0F</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>6</integer>
+			<key>note</key>
+			<string>Run a URL action</string>
+			<key>xpos</key>
+			<integer>820</integer>
+			<key>ypos</key>
+			<integer>1990</integer>
+		</dict>
+		<key>CDDA2051-6A68-46D9-8012-2263FE755D8D</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>9</integer>
+			<key>xpos</key>
+			<integer>720</integer>
+			<key>ypos</key>
+			<integer>2340</integer>
+		</dict>
+		<key>CF062854-129C-46B6-99DF-EBADF8E50876</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>9</integer>
+			<key>note</key>
+			<string>Activate tab</string>
+			<key>xpos</key>
+			<integer>820</integer>
+			<key>ypos</key>
+			<integer>2310</integer>
 		</dict>
 		<key>D09FFBBC-0405-4F55-BC74-5B34AA873FB1</key>
 		<dict>
@@ -2729,6 +3683,35 @@ Filter all bookmark folders</string>
 			<key>ypos</key>
 			<integer>1120</integer>
 		</dict>
+		<key>DB50908D-263A-4D0F-AF65-7762566F8EE7</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>3</integer>
+			<key>note</key>
+			<string>Run a tab action</string>
+			<key>xpos</key>
+			<integer>40</integer>
+			<key>ypos</key>
+			<integer>3310</integer>
+		</dict>
+		<key>DC250584-B71B-4F56-8D5F-CBC8F6BEA5C7</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>6</integer>
+			<key>xpos</key>
+			<integer>620</integer>
+			<key>ypos</key>
+			<integer>2020</integer>
+		</dict>
+		<key>DD67856C-3F95-4359-A679-FB3B5112D537</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>3</integer>
+			<key>xpos</key>
+			<integer>230</integer>
+			<key>ypos</key>
+			<integer>3340</integer>
+		</dict>
 		<key>DE1C9785-A59F-4478-99BD-09A9CE0B38AD</key>
 		<dict>
 			<key>colorindex</key>
@@ -2738,18 +3721,7 @@ Filter all bookmark folders</string>
 			<key>xpos</key>
 			<integer>310</integer>
 			<key>ypos</key>
-			<integer>2170</integer>
-		</dict>
-		<key>DFD6581C-387E-4A1C-AC01-FFF039871345</key>
-		<dict>
-			<key>colorindex</key>
-			<integer>9</integer>
-			<key>note</key>
-			<string>Hide Alfred</string>
-			<key>xpos</key>
-			<integer>590</integer>
-			<key>ypos</key>
-			<integer>420</integer>
+			<integer>3790</integer>
 		</dict>
 		<key>E0D1CB9F-58AC-4D9D-8BA4-D57859953296</key>
 		<dict>
@@ -2760,6 +3732,17 @@ Filter all bookmark folders</string>
 			<key>ypos</key>
 			<integer>950</integer>
 		</dict>
+		<key>E0ED9E3A-4E43-4FB3-94DD-7116FE5A5052</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>3</integer>
+			<key>note</key>
+			<string>Run tab action</string>
+			<key>xpos</key>
+			<integer>310</integer>
+			<key>ypos</key>
+			<integer>3310</integer>
+		</dict>
 		<key>E1234DFD-ECAC-43B7-B745-895441AE9D51</key>
 		<dict>
 			<key>colorindex</key>
@@ -2769,6 +3752,37 @@ Filter all bookmark folders</string>
 			<key>ypos</key>
 			<integer>570</integer>
 		</dict>
+		<key>E157FBA9-1D2B-413A-A321-3DCD07AF51CA</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>9</integer>
+			<key>note</key>
+			<string>action == activate</string>
+			<key>xpos</key>
+			<integer>520</integer>
+			<key>ypos</key>
+			<integer>2340</integer>
+		</dict>
+		<key>E173AA90-52DB-457C-94A2-77A17258ED5D</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>3</integer>
+			<key>note</key>
+			<string>action == tab-actions</string>
+			<key>xpos</key>
+			<integer>520</integer>
+			<key>ypos</key>
+			<integer>2180</integer>
+		</dict>
+		<key>E87B43A8-2AA2-4DCF-AE39-689352ECA442</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>4</integer>
+			<key>xpos</key>
+			<integer>580</integer>
+			<key>ypos</key>
+			<integer>3750</integer>
+		</dict>
 		<key>F033671B-391D-4E9D-A71C-55CC1AA3E22A</key>
 		<dict>
 			<key>colorindex</key>
@@ -2776,9 +3790,18 @@ Filter all bookmark folders</string>
 			<key>note</key>
 			<string>Browse bookmark folder</string>
 			<key>xpos</key>
-			<integer>700</integer>
+			<integer>820</integer>
 			<key>ypos</key>
 			<integer>1390</integer>
+		</dict>
+		<key>F7AFF063-9507-4241-BC62-E3EA1CAC28AA</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>4</integer>
+			<key>xpos</key>
+			<integer>700</integer>
+			<key>ypos</key>
+			<integer>3720</integer>
 		</dict>
 		<key>FA5F16AF-40C3-4EC6-9F70-32B47E4A5BBC</key>
 		<dict>
@@ -2789,16 +3812,32 @@ Filter all bookmark folders</string>
 			<key>xpos</key>
 			<integer>40</integer>
 			<key>ypos</key>
-			<integer>2330</integer>
+			<integer>3940</integer>
 		</dict>
 	</dict>
 	<key>variables</key>
 	<dict>
+		<key>ALSF_BKM_CTRL</key>
+		<string>Open in Chrome</string>
+		<key>ALSF_BKM_FN</key>
+		<string>Open in Private Window</string>
+		<key>ALSF_BKM_OPT</key>
+		<string>Open in Firefox</string>
+		<key>ALSF_BKM_SHIFT</key>
+		<string></string>
 		<key>ALSF_INCLUDE_BOOKMARKLETS</key>
 		<string>0</string>
+		<key>ALSF_TAB_CTRL</key>
+		<string>Close Tabs to Left</string>
+		<key>ALSF_TAB_FN</key>
+		<string>Open in Private Window</string>
+		<key>ALSF_TAB_OPT</key>
+		<string>Close Tabs to Right</string>
+		<key>ALSF_TAB_SHIFT</key>
+		<string></string>
 	</dict>
 	<key>version</key>
-	<string>0.1.2</string>
+	<string>0.2</string>
 	<key>webaddress</key>
 	<string></string>
 </dict>

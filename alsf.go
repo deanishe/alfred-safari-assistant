@@ -62,13 +62,17 @@ var (
 	activeTabCmd                                                *kingpin.CmdClause
 
 	// Script options (populated by Kingpin application)
-	query               string
-	left, right         bool
-	window, tab         int
-	action, uid         string
-	includeBookmarklets bool
-	actionURL           *url.URL
-	maxResults          int
+	query                       string
+	left, right                 bool
+	winIdx, tabIdx              int
+	action, actionType, uid     string
+	includeBookmarklets         bool
+	actionURL                   *url.URL
+	maxResults                  int
+	tabActionOpt, tabActionCtrl string
+	tabActionFn, tabActionShift string
+	bkmActionOpt, bkmActionCtrl string
+	bkmActionFn, bkmActionShift string
 
 	// Workflow stuff
 	wf         *aw.Workflow
@@ -117,6 +121,8 @@ func init() {
 		cmd.Flag("action", "Action name.").Short('a').PlaceHolder("NAME").Required().StringVar(&action)
 	}
 
+	runTabActionCmd.Flag("action-type", "Action type.").PlaceHolder("TYPE").Required().StringVar(&actionType)
+
 	// ---------------------------------------------------------------
 	// Commands using window and tab
 	activateCmd = app.Command("activate", "Active a specific window or tab.").Alias("a")
@@ -125,9 +131,9 @@ func init() {
 	// Common options
 	for _, cmd := range []*kingpin.CmdClause{activateCmd, closeCmd, runTabActionCmd, filterTabActionsCmd} {
 		cmd.Flag("window", "Window number.").
-			Short('w').Default("1").IntVar(&window)
+			Short('w').Default("1").IntVar(&winIdx)
 		cmd.Flag("tab", "Tab number.").
-			Short('t').Required().IntVar(&tab)
+			Short('t').Required().IntVar(&tabIdx)
 	}
 	closeCmd.Flag("left", "Close tab(s) to left of specified tab.").
 		Short('l').BoolVar(&left)
@@ -160,8 +166,40 @@ func init() {
 			Short('r').Default(defaultMaxResults).IntVar(&maxResults)
 	}
 
-	filterBookmarksCmd.Flag("include-bookmarklets", "Include bookmarklets with bookmarks").
+	// ---------------------------------------------------------------
+	// Options set via workflow configuration sheet
+	filterBookmarksCmd.Flag("include-bookmarklets", "Include bookmarklets with bookmarks.").
 		BoolVar(&includeBookmarklets)
+
+	for _, cmd := range []*kingpin.CmdClause{filterBookmarksCmd, filterReadingListCmd} {
+
+		// Alternate URL actions
+		cmd.Flag("bkm-ctrl", "Action to run for CTRL key.").
+			PlaceHolder("SCRIPT_NAME").
+			StringVar(&bkmActionCtrl)
+		cmd.Flag("bkm-opt", "Action to run for OPT (ALT) key.").
+			PlaceHolder("SCRIPT_NAME").
+			StringVar(&bkmActionOpt)
+		cmd.Flag("bkm-fn", "Action to run for FN key.").
+			PlaceHolder("SCRIPT_NAME").
+			StringVar(&bkmActionFn)
+		cmd.Flag("bkm-shift", "Action to run for SHIFT key.").
+			PlaceHolder("SCRIPT_NAME").
+			StringVar(&bkmActionShift)
+	}
+	// Alternate tab actions
+	filterTabsCmd.Flag("tab-ctrl", "Action/bookmarklet to run for CTRL key.").
+		PlaceHolder("SCRIPT_NAME").
+		StringVar(&tabActionCtrl)
+	filterTabsCmd.Flag("tab-opt", "Action/bookmarklet to run for OPT (ALT) key.").
+		PlaceHolder("SCRIPT_NAME").
+		StringVar(&tabActionOpt)
+	filterTabsCmd.Flag("tab-fn", "Action/bookmarklet to run for FN key").
+		PlaceHolder("SCRIPT_NAME").
+		StringVar(&tabActionFn)
+	filterTabsCmd.Flag("tab-shift", "Action/bookmarklet to run for SHIFT key.").
+		PlaceHolder("SCRIPT_NAME").
+		StringVar(&tabActionShift)
 
 	// ---------------------------------------------------------------
 	// Other commands
@@ -173,273 +211,6 @@ func init() {
 
 // --------------------------------------------------------------------
 // Actions
-
-// Activate the specified window (and tab).
-func doActivate() error {
-
-	log.Printf("Activating %dx%d", window, tab)
-
-	return safari.ActivateTab(window, tab)
-}
-
-// Open the bookmark(s)/folder(s) with the specified UIDs.
-func doOpen() error {
-
-	if uid == "" {
-		log.Println("No UID specified")
-		return nil
-	}
-
-	log.Printf("Searching for %v ...", uid)
-
-	if bm := safari.BookmarkForUID(uid); bm != nil {
-		if bm.IsBookmarklet() {
-			log.Printf("Executing bookmarklet \"%s\" ...", bm.Title())
-			return runBookmarklet(bm.URL)
-		}
-		log.Printf("Opening \"%s\" (%s) ...", bm.Title(), bm.URL)
-		return openURL(bm.URL)
-	}
-
-	if f := safari.FolderForUID(uid); f != nil {
-
-		errs := []error{}
-
-		for _, bm := range f.Bookmarks {
-			log.Printf("Opening \"%s\" (%s) ...", bm.Title(), bm.URL)
-			if err := openURL(bm.URL); err != nil {
-				log.Printf("Error opening bookmark: %v", err)
-				errs = append(errs, err)
-			}
-		}
-
-		if len(errs) > 0 {
-			return errs[0]
-		}
-
-		return nil
-	}
-
-	return fmt.Errorf("Not found: %s", uid)
-}
-
-// Filter tabs and output Alfred results.
-func doFilterTabs() error {
-
-	log.Printf("query=%s", query)
-
-	wins, err := loadWindows()
-	if err != nil {
-		return err
-	}
-
-	for _, w := range wins {
-		for _, t := range w.Tabs {
-
-			it := wf.NewItem(t.Title).
-				Subtitle(t.URL).
-				Valid(true).
-				Match(fmt.Sprintf("%s %s", t.Title, urlKeywords(t.URL)))
-
-			if t.Active {
-				it.Icon(IconActive)
-			} else {
-				it.Icon(IconTab)
-			}
-
-			it.Var("ALSF_WINDOW", fmt.Sprintf("%d", t.WindowIndex)).
-				Var("ALSF_TAB", fmt.Sprintf("%d", t.Index)).
-				Var("ALSF_URL", t.URL).
-				Var("action", "activate")
-
-			it.NewModifier("cmd").
-				Subtitle("Other actions…").
-				Var("action", "actions")
-
-		}
-	}
-
-	if query != "" {
-		res := wf.Filter(query)
-		log.Printf("%d results for `%s`", len(res), query)
-	}
-	wf.WarnEmpty("No tabs found", "Try a different query?")
-	wf.SendFeedback()
-
-	return nil
-}
-
-// Filters all bookmark folders and output Alfred results.
-func doFilterAllFolders() error {
-
-	log.Printf("query=%s", query)
-
-	sf := safari.Folders()
-
-	// Send results
-	// log.Printf("Sending %d results to Alfred ...", len(ff))
-	for _, f := range sf {
-		folderItem(f)
-	}
-
-	if query != "" {
-		res := wf.Filter(query)
-		log.Printf("%d folders match `%s`", len(res), query)
-	}
-
-	wf.WarnEmpty("No folders found", "Try a different query?")
-	wf.SendFeedback()
-	return nil
-}
-
-// Filters the contents of a specific folder and output Alfred results.
-func doFilterFolder() error {
-
-	log.Printf("query=%s, uid=%s", query, uid)
-
-	// ----------------------------------------------------------------
-	// Gather results
-
-	f := safari.FolderForUID(uid)
-	if f == nil {
-		return fmt.Errorf("No folder found with UID: %s", uid)
-	}
-
-	log.Printf("%d folders, %d bookmarks in \"%s\"", len(f.Folders), len(f.Bookmarks), f.Title())
-
-	// ----------------------------------------------------------------
-	// Show "Back" options if query is empty
-	if query == "" {
-
-		if len(f.Ancestors) > 0 {
-
-			p := f.Ancestors[len(f.Ancestors)-1]
-
-			it := wf.NewItem(fmt.Sprintf("Up to \"%s\"", p.Title())).
-				Icon(IconUp).
-				Valid(true).
-				Var("ALSF_UID", p.UID())
-
-			// Alternate action: Go to All Folders
-			it.NewModifier("cmd").
-				Subtitle("Go back to All Folders").
-				Var("action", "top")
-
-			// Default only
-			it.Var("action", "browse")
-			// it.SetVar("browse_folder", "1")
-		} else if uid != "" { // One of the top-level items, e.g. Favorites
-			wf.NewItem("Back to All Folders").
-				Valid(true).
-				Icon(IconHome).
-				Var("action", "top")
-		}
-	}
-
-	// ----------------------------------------------------------------
-	// Sort Folders and Bookmarks
-	items := []safari.Item{}
-
-	for _, f2 := range f.Folders {
-		items = append(items, f2)
-	}
-	for _, bm := range f.Bookmarks {
-		items = append(items, bm)
-	}
-	log.Printf("%d items in folder `%s`", len(items), f.Title())
-
-	for _, it := range items {
-		if bm, ok := it.(*safari.Bookmark); ok {
-			bookmarkItem(bm)
-		} else if f2, ok := it.(*safari.Folder); ok {
-			folderItem(f2)
-		} else {
-			log.Printf("Could't cast item: %v", it)
-		}
-	}
-	if query != "" {
-		res := wf.Filter(query)
-		log.Printf("%d results for `%s`", len(res), query)
-	} else {
-		// TODO: sort items
-	}
-
-	wf.WarnEmpty("No bookmarks or folders found", "Try a different query?")
-	wf.SendFeedback()
-
-	return nil
-}
-
-// Filter bookmarks and output Alfred results.
-func doFilterBookmarks() error {
-	return filterBookmarks(safari.FilterBookmarks(func(bm *safari.Bookmark) bool {
-		if includeBookmarklets {
-			return true
-		}
-		return !bm.IsBookmarklet()
-	}))
-}
-
-// Filter bookmarklets and output Alfred results.
-func doFilterBookmarklets() error {
-	return filterBookmarks(safari.FilterBookmarks(func(bm *safari.Bookmark) bool {
-		return bm.IsBookmarklet()
-	}))
-}
-
-// Filter Safari's Reading List and sends results to Alfred.
-func doFilterReadingList() error { return filterBookmarks(safari.ReadingList().Bookmarks) }
-
-// filterBookmarks filters bookmarks and outputs Alfred results.
-func filterBookmarks(bookmarks []*safari.Bookmark) error {
-
-	log.Printf("query=%s", query)
-
-	log.Printf("Loaded %d bookmarks", len(bookmarks))
-
-	for _, bm := range bookmarks {
-		bookmarkItem(bm)
-	}
-
-	if query != "" {
-		res := wf.Filter(query)
-		log.Printf("%d bookmarks for `%s`", len(res), query)
-		for i, r := range res {
-			log.Printf("#%02d %5.2f `%s`", i+1, r.Score, r.SortKey)
-		}
-	}
-
-	wf.WarnEmpty("No bookmarks found", "Try a different query?")
-	wf.SendFeedback()
-	return nil
-}
-
-// doClose closes the specified tab(s).
-// TODO: Activate tab after closing to left or right?
-func doClose() error {
-
-	if !left && !right { // Close current tab
-		log.Printf("Closing tab %d of window %d ...", tab, window)
-		return safari.CloseTab(window, tab)
-	}
-
-	if left && right { // Close all other tabs
-		log.Printf("Closing all tabs in window %d except %d ...", window, tab)
-		return safari.CloseTabsOther(window, tab)
-	}
-
-	if left {
-		log.Printf("Closing all tabs in window %d to left of %d ...", window, tab)
-		return safari.CloseTabsLeft(window, tab)
-	}
-
-	if right {
-		log.Printf("Closing all tabs in window %d to right of %d ...", window, tab)
-		return safari.CloseTabsRight(window, tab)
-	}
-
-	return nil
-}
 
 func doFilterURLActions() error {
 	log.Printf("URL=%s", actionURL)
@@ -454,6 +225,8 @@ func doFilterURLActions() error {
 
 // doURLAction performs an action on a URL.
 func doURLAction() error {
+	wf.TextErrors = true
+
 	log.Printf("URL=%s, action=%s", actionURL, action)
 
 	LoadScripts(scriptDirs...)
@@ -463,85 +236,6 @@ func doURLAction() error {
 		return fmt.Errorf("Unknown action : %s", action)
 	}
 	return a.Run(actionURL)
-}
-
-// doFilterTabActions is a Script Filter for tab actions.
-func doFilterTabActions() error {
-
-	log.Printf("url=%s, scheme=%s", actionURL, actionURL.Scheme)
-
-	LoadScripts(scriptDirs...)
-	acts := []Actionable{}
-	for _, a := range TabActions() {
-		acts = append(acts, a)
-	}
-
-	// No URL actions for favorites:// and bookmarks:// etc.
-	if actionURL.Scheme == "http" || actionURL.Scheme == "https" {
-		for _, a := range URLActions() {
-			acts = append(acts, a)
-		}
-	}
-	return listActions(acts)
-}
-
-// doTabAction performs an action on a tab.
-func doTabAction() error {
-	log.Printf("window=%d, tab=%d, action=%s", window, tab, action)
-
-	LoadScripts(scriptDirs...)
-	var ta TabActionable
-	var ua URLActionable
-	ta = TabAction(action)
-	if ta == nil {
-		ua = URLAction(action)
-		if ua == nil {
-			return fmt.Errorf("Unknown action : %s", action)
-		}
-	}
-	// log.Printf("action=%v", a)
-	wins, err := loadWindows()
-	if err != nil {
-		return err
-	}
-	for _, w := range wins {
-		if w.Index == window {
-			for _, t := range w.Tabs {
-				if t.Index == tab {
-					if ta != nil {
-						return ta.Run(t)
-					}
-					u, err := url.Parse(t.URL)
-					if err != nil {
-						return err
-					}
-					return ua.Run(u)
-				}
-			}
-		}
-	}
-	return fmt.Errorf("Tab not found : %02dx%02d", window, tab)
-}
-
-// doCurrentTab outputs workflow variables for the current tab.
-func doCurrentTab() error {
-	tab, err := safari.ActiveTab()
-	if err != nil {
-		return fmt.Errorf("Couldn't get active tab: %s", err)
-	}
-	log.Printf("%v", tab)
-	av := aw.NewArgVars()
-	av.Var("ALSF_WINDOW", "1").
-		Var("ALSF_TAB", fmt.Sprintf("%d", tab.Index)).
-		Var("ALSF_URL", tab.URL)
-
-	s, err := av.String()
-	if err != nil {
-		return err
-	}
-
-	_, err = fmt.Println(s)
-	return err
 }
 
 // doDistname prints the filename of the .alfredworkflow file to STDOUT.
@@ -601,23 +295,6 @@ func openURL(URL string) error {
 	return nil
 }
 
-// runBookmarklet executes a bookmarklet in the current tab.
-func runBookmarklet(URL string) error {
-	tab, err := safari.ActiveTab()
-	if err != nil {
-		return err
-	}
-	// Extract JavaScript from URL
-	js, err := url.PathUnescape(URL[11:])
-	if err != nil {
-		return err
-	}
-
-	log.Printf("tab=%#v", tab)
-	log.Printf("JS=%s", js)
-	return tab.RunJS(js)
-}
-
 // listActions sends a list of actions to Alfred.
 func listActions(actions []Actionable) error {
 	log.Printf("query=%s", query)
@@ -628,12 +305,13 @@ func listActions(actions []Actionable) error {
 			Icon(a.Icon()).
 			Copytext(a.Title()).
 			Valid(true).
+			Var("action", "tab-action").
 			Var("ALSF_ACTION", a.Title())
 
 		if _, ok := a.(TabActionable); ok {
-			it.Var("ACTION_TYPE", "tab")
+			it.Var("ALSF_ACTION_TYPE", "tab")
 		} else if _, ok := a.(URLActionable); ok {
-			it.Var("ACTION_TYPE", "url")
+			it.Var("ALSF_ACTION_TYPE", "url")
 		}
 	}
 
@@ -644,89 +322,6 @@ func listActions(actions []Actionable) error {
 	wf.WarnEmpty("No actions found", "Try a different query?")
 	wf.SendFeedback()
 	return nil
-}
-
-// bookmarkItem returns a feedback Item for Safari Bookmark.
-func bookmarkItem(bm *safari.Bookmark) *aw.Item {
-
-	it := wf.NewItem(bm.Title()).
-		Subtitle(bm.URL).
-		UID(bm.UID()).
-		Valid(true).
-		Copytext(bm.URL).
-		Var("ALSF_UID", bm.UID()).
-		Var("ALSF_URL", bm.URL).
-		Var("action", "open")
-
-	if bm.IsBookmarklet() {
-		it.Copytext("bkm:" + bm.UID())
-	}
-
-	if bm.InReadingList() {
-		it.Largetype(bm.Preview)
-	}
-
-	// Set actions
-	if !bm.IsBookmarklet() {
-		it.NewModifier("cmd").
-			Subtitle("Other actions…").
-			Var("action", "actions")
-	}
-
-	// Icon
-	if bm.IsBookmarklet() {
-		it.Icon(IconBookmarklet)
-	} else if bm.InReadingList() {
-		it.Icon(IconReadingList)
-	} else {
-		it.Icon(IconBookmark)
-	}
-
-	return it
-}
-
-// folderSubtitle generates a subtitle for a Folder.
-func folderSubtitle(f *safari.Folder) string {
-	s := []string{}
-	for _, f2 := range f.Ancestors {
-		s = append(s, f2.Title())
-	}
-	return strings.Join(s, " / ")
-}
-
-// folderTitle generates a title for a Folder.
-func folderTitle(f *safari.Folder) string {
-	return fmt.Sprintf("%s (%d bookmarks)", f.Title(), len(f.Bookmarks))
-}
-
-// folderItem returns a feedback Item for Safari Folder.
-func folderItem(f *safari.Folder) *aw.Item {
-
-	it := wf.NewItem(folderTitle(f)).
-		Subtitle(folderSubtitle(f)).
-		Icon(IconFolder)
-
-	// Make folder actionable if it isn't empty
-	if len(f.Bookmarks)+len(f.Folders) > 0 {
-		it.Valid(true).
-			Var("ALSF_UID", f.UID())
-
-		// Allow opening folder if it contains bookmarks
-		m := it.NewModifier("cmd")
-
-		if len(f.Bookmarks) > 0 {
-
-			m.Subtitle(fmt.Sprintf("Open %d bookmark(s)", len(f.Bookmarks)))
-			m.Var("action", "open")
-
-		} else {
-			m.Valid(false)
-		}
-		// Default only
-		it.Var("action", "browse")
-	}
-
-	return it
 }
 
 // run is the main script entry point. It's called from main.
