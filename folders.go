@@ -98,7 +98,7 @@ func doFilterFolder() error {
 
 	for _, it := range items {
 		if bm, ok := it.(*safari.Bookmark); ok {
-			bookmarkItem(bm)
+			URLerItem(&uidLess{&bmURLer{bm}})
 		} else if f2, ok := it.(*safari.Folder); ok {
 			folderItem(f2)
 		} else {
@@ -108,8 +108,6 @@ func doFilterFolder() error {
 	if query != "" {
 		res := wf.Filter(query)
 		log.Printf("%d results for `%s`", len(res), query)
-	} else {
-		// TODO: sort items
 	}
 
 	wf.WarnEmpty("No bookmarks or folders found", "Try a different query?")

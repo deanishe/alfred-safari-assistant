@@ -9,8 +9,10 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"log"
+	"net/url"
 
 	safari "git.deanishe.net/deanishe/go-safari"
 	aw "github.com/deanishe/awgo"
@@ -20,10 +22,16 @@ import (
 func doOpen() error {
 
 	if uid == "" {
-		log.Println("No UID specified")
-		return nil
+		return errors.New("No UID specified")
 	}
 
+	// If UID is a URL (i.e. History item), open it
+	u, err := url.Parse(uid)
+	if err == nil && (u.Scheme == "http" || u.Scheme == "https") {
+		return openURL(uid)
+	}
+
+	// Find item with UID
 	log.Printf("Searching for %v ...", uid)
 
 	if bm := safari.BookmarkForUID(uid); bm != nil {
@@ -104,71 +112,43 @@ func filterBookmarks(bookmarks []*safari.Bookmark) error {
 // --------------------------------------------------------------------
 // Helpers
 
-// bookmarkItem returns a feedback Item for Safari Bookmark.
-func bookmarkItem(bm *safari.Bookmark) *aw.Item {
-
-	it := wf.NewItem(bm.Title()).
-		Subtitle(bm.URL).
-		UID(bm.UID()).
-		Valid(true).
-		Copytext(bm.URL).
-		Var("ALSF_UID", bm.UID()).
-		Var("ALSF_URL", bm.URL).
-		Var("action", "open")
-
-	if bm.IsBookmarklet() {
-		it.Copytext("bkm:" + bm.UID())
-	}
-
-	if bm.InReadingList() {
-		it.Largetype(bm.Preview)
-	}
-
-	// Set actions
-	if !bm.IsBookmarklet() {
-		it.NewModifier("cmd").
-			Subtitle("Other actions…").
-			Var("action", "actions")
-
-		// Custom actions
-		if bkmActionCtrl != "" {
-			it.NewModifier("ctrl").
-				Subtitle(bkmActionCtrl).
-				Var("action", "url-action").
-				Var("ALSF_URL", bm.URL).
-				Var("ALSF_ACTION", bkmActionCtrl)
-		}
-		if bkmActionOpt != "" {
-			it.NewModifier("alt").
-				Subtitle(bkmActionOpt).
-				Var("action", "url-action").
-				Var("ALSF_URL", bm.URL).
-				Var("ALSF_ACTION", bkmActionOpt)
-		}
-		if bkmActionFn != "" {
-			it.NewModifier("fn").
-				Subtitle(bkmActionFn).
-				Var("action", "url-action").
-				Var("ALSF_URL", bm.URL).
-				Var("ALSF_ACTION", bkmActionFn)
-		}
-		if bkmActionShift != "" {
-			it.NewModifier("shift").
-				Subtitle(bkmActionShift).
-				Var("action", "url-action").
-				Var("ALSF_URL", bm.URL).
-				Var("ALSF_ACTION", bkmActionShift)
-		}
-	}
-
-	// Icon
-	if bm.IsBookmarklet() {
-		it.Icon(IconBookmarklet)
-	} else if bm.InReadingList() {
-		it.Icon(IconReadingList)
-	} else {
-		it.Icon(IconBookmark)
-	}
-
-	return it
+// bmURLer implements URLer for a Bookmark.
+type bmURLer struct {
+	bm *safari.Bookmark
 }
+
+// Implement URLer
+func (b *bmURLer) Title() string { return b.bm.Title() }
+func (b *bmURLer) URL() string   { return b.bm.URL }
+func (b *bmURLer) UID() string   { return b.bm.UID() }
+func (b *bmURLer) Copytext() string {
+	if b.bm.IsBookmarklet() {
+		return "bkm:" + b.bm.UID()
+	}
+	return b.bm.URL
+}
+func (b *bmURLer) Largetype() string {
+	if b.bm.InReadingList() {
+		return b.bm.Preview
+	}
+	return b.bm.URL
+}
+func (b *bmURLer) Icon() *aw.Icon {
+	if b.bm.IsBookmarklet() {
+		return IconBookmarklet
+	}
+	if b.bm.InReadingList() {
+		return IconReadingList
+	}
+	return IconBookmark
+}
+
+// uidLess removes the UID from a URLer
+type uidLess struct {
+	URLer
+}
+
+func (u *uidLess) UID() string { return "" }
+
+// bookmarkItem returns a feedback Item for Safari Bookmark.
+func bookmarkItem(bm *safari.Bookmark) *aw.Item { return URLerItem(&bmURLer{bm}) }

@@ -13,11 +13,6 @@ iconfile="${icondir}/icons.txt"
 
 prog="$( basename "$0" )"
 
-# main workflow icon
-iconsrc="${icondir}/icon.png"
-icondest="${root}/icon.png"
-# maskdir="${here}/masks"
-
 force=false
 verbose=false
 vopt=
@@ -135,12 +130,6 @@ for (( i=1; i<${#icons}; i=i+4 )); do
   }
 
 done
-
-# copy main workflow icon to root
-test -s "$iconsrc" && {
-  command cp -f $vopt "$iconsrc" "$icondest"
-  success "copied icon.png to workflow root"
-}
 
 verbose=true
 success "downloaded $fetched icons"

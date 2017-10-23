@@ -41,6 +41,7 @@ var (
 	IconReadingList = &aw.Icon{Value: "icons/reading-list.png"}
 	IconBookmark    = &aw.Icon{Value: "icons/bookmark.png"}
 	IconBookmarklet = &aw.Icon{Value: "icons/bookmarklet.png"}
+	IconHistory     = &aw.Icon{Value: "icons/history.png"}
 	IconURL         = &aw.Icon{Value: "icons/url.png"}
 	IconFolder      = &aw.Icon{Value: "icons/folder.png"}
 	IconUp          = &aw.Icon{Value: "icons/up.png"}
@@ -54,12 +55,15 @@ var (
 	app *kingpin.Application
 
 	// Application commands
-	activateCmd, filterBookmarksCmd, filterBookmarkletsCmd      *kingpin.CmdClause
-	filterFolderCmd, filterAllFoldersCmd, filterReadingListCmd  *kingpin.CmdClause
-	openCmd, closeCmd, filterTabsCmd                            *kingpin.CmdClause
-	distnameCmd, runActionCmd, runTabActionCmd, runURLActionCmd *kingpin.CmdClause
-	filterActionsCmd, filterTabActionsCmd, filterURLActionsCmd  *kingpin.CmdClause
-	activeTabCmd                                                *kingpin.CmdClause
+	activateCmd, filterBookmarksCmd           *kingpin.CmdClause
+	filterBookmarkletsCmd, filterFolderCmd    *kingpin.CmdClause
+	filterAllFoldersCmd, filterReadingListCmd *kingpin.CmdClause
+	openCmd, closeCmd, filterTabsCmd          *kingpin.CmdClause
+	distnameCmd, runActionCmd, searchCmd      *kingpin.CmdClause
+	runTabActionCmd, runURLActionCmd          *kingpin.CmdClause
+	filterActionsCmd, filterTabActionsCmd     *kingpin.CmdClause
+	filterURLActionsCmd, activeTabCmd         *kingpin.CmdClause
+	filterHistoryCmd                          *kingpin.CmdClause
 
 	// Script options (populated by Kingpin application)
 	query                       string
@@ -69,10 +73,13 @@ var (
 	includeBookmarklets         bool
 	actionURL                   *url.URL
 	maxResults                  int
+	recentHistoryEntries        int
 	tabActionOpt, tabActionCtrl string
 	tabActionFn, tabActionShift string
-	bkmActionOpt, bkmActionCtrl string
-	bkmActionFn, bkmActionShift string
+	urlActionOpt, urlActionCtrl string
+	urlActionFn, urlActionShift string
+	// historyLimit                int
+	// historyFuzzy                bool
 
 	// Workflow stuff
 	wf         *aw.Workflow
@@ -151,15 +158,20 @@ func init() {
 
 	// ---------------------------------------------------------------
 	// Commands using query etc.
+	searchCmd = app.Command("search", "Filter your bookmarks and recent history.").Alias("s")
 	filterBookmarksCmd = app.Command("bookmarks", "Filter your bookmarks.").Alias("b")
 	filterBookmarkletsCmd = app.Command("bookmarklets", "Filter your bookmarklets.").Alias("B")
 	filterAllFoldersCmd = app.Command("folders", "Filter your bookmark folders.").Alias("f")
 	filterReadingListCmd = app.Command("reading-list", "Filter your Reading List.").Alias("r")
 	filterTabsCmd = app.Command("tabs", "Filter your tabs.").Alias("t")
+	filterHistoryCmd = app.Command("history", "Filter your history.").Alias("h")
+
 	// Common options
 	for _, cmd := range []*kingpin.CmdClause{
-		filterBookmarksCmd, filterBookmarkletsCmd, filterFolderCmd, filterAllFoldersCmd,
-		filterReadingListCmd, filterTabsCmd, filterTabActionsCmd, filterURLActionsCmd,
+		filterBookmarksCmd, filterBookmarkletsCmd, filterFolderCmd,
+		filterAllFoldersCmd, filterReadingListCmd, filterTabsCmd,
+		filterTabActionsCmd, filterURLActionsCmd, filterHistoryCmd,
+		searchCmd,
 	} {
 		cmd.Flag("query", "Search query.").Short('q').StringVar(&query)
 		cmd.Flag("max-results", "Maximum number of results to send to Alfred.").
@@ -171,21 +183,32 @@ func init() {
 	filterBookmarksCmd.Flag("include-bookmarklets", "Include bookmarklets with bookmarks.").
 		BoolVar(&includeBookmarklets)
 
-	for _, cmd := range []*kingpin.CmdClause{filterBookmarksCmd, filterReadingListCmd} {
+	// filterHistoryCmd.Flag("fuzzy-history-limit", "The maximum number of history items to load.").
+	// 	PlaceHolder("NUMBER").
+	// 	IntVar(&historyLimit)
+	// filterHistoryCmd.Flag("fuzzy-history-search", "Use fuzzy search for history.").
+	// 	BoolVar(&historyFuzzy)
+	searchCmd.Flag("history-entries", "Number of recent history entries to load.").
+		IntVar(&recentHistoryEntries)
+
+	for _, cmd := range []*kingpin.CmdClause{
+		filterBookmarksCmd, filterReadingListCmd,
+		filterHistoryCmd, searchCmd,
+	} {
 
 		// Alternate URL actions
-		cmd.Flag("bkm-ctrl", "Action to run for CTRL key.").
+		cmd.Flag("url-ctrl", "Action to run for CTRL key.").
 			PlaceHolder("SCRIPT_NAME").
-			StringVar(&bkmActionCtrl)
-		cmd.Flag("bkm-opt", "Action to run for OPT (ALT) key.").
+			StringVar(&urlActionCtrl)
+		cmd.Flag("url-opt", "Action to run for OPT (ALT) key.").
 			PlaceHolder("SCRIPT_NAME").
-			StringVar(&bkmActionOpt)
-		cmd.Flag("bkm-fn", "Action to run for FN key.").
+			StringVar(&urlActionOpt)
+		cmd.Flag("url-fn", "Action to run for FN key.").
 			PlaceHolder("SCRIPT_NAME").
-			StringVar(&bkmActionFn)
-		cmd.Flag("bkm-shift", "Action to run for SHIFT key.").
+			StringVar(&urlActionFn)
+		cmd.Flag("url-shift", "Action to run for SHIFT key.").
 			PlaceHolder("SCRIPT_NAME").
-			StringVar(&bkmActionShift)
+			StringVar(&urlActionShift)
 	}
 	// Alternate tab actions
 	filterTabsCmd.Flag("tab-ctrl", "Action/bookmarklet to run for CTRL key.").
@@ -271,7 +294,7 @@ func loadWindows() ([]*safari.Window, error) {
 		return safari.Windows()
 	}
 
-	if err := wf.Session.LoadOrStoreJSON("windows", 0, getWins, &wins); err != nil {
+	if err := wf.Session.LoadOrStoreJSON("windows", getWins, &wins); err != nil {
 		return nil, err
 	}
 	return wins, nil
@@ -352,20 +375,32 @@ func run() {
 	case filterFolderCmd.FullCommand():
 		err = doFilterFolder()
 
-	case closeCmd.FullCommand():
-		err = doClose()
-
 	case filterAllFoldersCmd.FullCommand():
 		err = doFilterAllFolders()
 
-	case openCmd.FullCommand():
-		err = doOpen()
+	case filterHistoryCmd.FullCommand():
+		err = doFilterHistory()
 
 	case filterReadingListCmd.FullCommand():
 		err = doFilterReadingList()
 
 	case filterTabsCmd.FullCommand():
 		err = doFilterTabs()
+
+	case filterTabActionsCmd.FullCommand():
+		err = doFilterTabActions()
+
+	case filterURLActionsCmd.FullCommand():
+		err = doFilterURLActions()
+
+	case searchCmd.FullCommand():
+		err = doSearch()
+
+	case closeCmd.FullCommand():
+		err = doClose()
+
+	case openCmd.FullCommand():
+		err = doOpen()
 
 	case distnameCmd.FullCommand():
 		err = doDistname()
@@ -376,12 +411,6 @@ func run() {
 	case runTabActionCmd.FullCommand():
 		wf.TextErrors = true
 		err = doTabAction()
-
-	case filterTabActionsCmd.FullCommand():
-		err = doFilterTabActions()
-
-	case filterURLActionsCmd.FullCommand():
-		err = doFilterURLActions()
 
 	case activeTabCmd.FullCommand():
 		err = doCurrentTab()

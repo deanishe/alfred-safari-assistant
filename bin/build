@@ -88,11 +88,13 @@ outpath="${root}/${zipname}"
 log "Hardlinking assets to build directory ..."
 # mkdir -vp "$builddir"
 mkdir -vp "${builddir}/scripts/"{tab,url}
+mkdir -vp "${builddir}/icons"
 ln -v *.png "${builddir}/"
 ln -v info.plist  "${builddir}/"
 ln -v alsf "${builddir}/"
 ln -v README.md "${builddir}/"
 ln -v LICENCE.txt "${builddir}/"
+ln -v icons/*.png "${builddir}/icons/"
 ln -v scripts/tab/* "${builddir}/scripts/tab/"
 ln -v scripts/url/* "${builddir}/scripts/url/"
 
@@ -109,7 +111,7 @@ test "$devmode" -eq 0 && {
   }
   log "Building .alfredworkflow file ..."
   pushd "$builddir" &> /dev/null
-  zip "${outpath}" ./*
+  zip -r "${outpath}" ./*
   ST_ZIP=$?
   test "$ST_ZIP" -ne 0 && {
     log "Error creating .alfredworkflow file."
