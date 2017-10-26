@@ -12,4 +12,4 @@ getvar() {
 export alfred_workflow_bundleid=$( getvar "bundleid" )
 export alfred_workflow_version=$( getvar "version" )
 export alfred_workflow_name=$( getvar "name" )
-
+export ALSF_HISTORY_ENTRIES=$( getvar "variables:ALSF_HISTORY_ENTRIES" )

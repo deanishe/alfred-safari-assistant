@@ -93,6 +93,7 @@ ln -v *.png "${builddir}/"
 ln -v info.plist  "${builddir}/"
 ln -v alsf "${builddir}/"
 ln -v README.md "${builddir}/"
+ln -v README.html "${builddir}/"
 ln -v LICENCE.txt "${builddir}/"
 ln -v icons/*.png "${builddir}/icons/"
 ln -v scripts/tab/* "${builddir}/scripts/tab/"
@@ -111,7 +112,7 @@ test "$devmode" -eq 0 && {
   }
   log "Building .alfredworkflow file ..."
   pushd "$builddir" &> /dev/null
-  zip -r "${outpath}" ./*
+  zip -9 -r "${outpath}" ./*
   ST_ZIP=$?
   test "$ST_ZIP" -ne 0 && {
     log "Error creating .alfredworkflow file."
