@@ -154,6 +154,7 @@ func doFilterTabs() error {
 
 			it := wf.NewItem(t.Title).
 				Subtitle(t.URL).
+				Copytext(t.URL).
 				Valid(true).
 				Match(fmt.Sprintf("%s %s", t.Title, urlKeywords(t.URL)))
 
