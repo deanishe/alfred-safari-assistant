@@ -3911,7 +3911,7 @@ Filter all bookmark folders</string>
 		<string></string>
 	</dict>
 	<key>version</key>
-	<string>0.2.2</string>
+	<string>0.2.3</string>
 	<key>webaddress</key>
 	<string></string>
 </dict>
