@@ -71,9 +71,9 @@ The following settings assign actions or bookmarklets to modifier keys:
 
 The `ALSF_TAB_*` variables assign custom actions or bookmarklets available when browsing Safari tabs. The `ALSF_URL_*` variables assign custom actions (*not* bookmarklets) to bookmarks and history entries.
 
-To assign an action, enter the corresponding script's name (without extension) as the value for the variable. To assign a bookmarklet, use `bkm:<UID>` where `<UID>` is the bookmarklet's UID.
+To assign a script action, enter the corresponding script's name (without extension) as the value for the variable. To assign a bookmarklet, use `bkm:<UID>` where `<UID>` is the bookmarklet's UID.
 
-In either case, press `⌘C` on an action or bookmarklet in Alfred's UI to copy the corresponding value, then paste it in the configuration sheet.
+In either case, press `⌘C` on an action or bookmarklet in Alfred's UI to copy the corresponding value, then paste it into the configuration sheet as the value for the appropriate variable.
 
 
 <a name="action-scripts"></a>
