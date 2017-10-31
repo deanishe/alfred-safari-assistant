@@ -1,8 +1,8 @@
 
 <img src="./icons/icon.png" width="128" height="128">
 
-Alfred Safari
-=============
+Safari Assistant for Alfred 3
+=============================
 
 Search and open/activate your Safari bookmark(let)s and tabs from Alfred 3.
 
