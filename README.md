@@ -17,6 +17,7 @@ Includes several actions for tabs/bookmarks and allows you to add your own via s
     - [Script icons](#script-icons)
     - [Built-in actions](#built-in-actions)
 - [History](#history)
+- [Licensing & thanks](#licensing--thanks)
 
 <!-- /MarkdownTOC -->
 
@@ -149,3 +150,24 @@ The combined bookmark and recent history search (keyword `bh`) does use fuzzy se
 
 Depending on the speed of your Mac and your own tolerance for slowness, you may be able to increase this number significantly.
 
+
+<a name="licensing--thanks"></a>
+Licensing & thanks
+------------------
+
+This workflow is released under the [MIT Licence][mit].
+
+It is heavily based on the [Kingpin][kingpin] and [AwGo][awgo] libraries (both also [MIT][mit]).
+
+The icons are from [Elusive Icons][elusive], [Font Awesome][awesome], [Material Icons][material] (all [SIL][sil]) and [Octicons][octicons] ([MIT][mit]), via the [workflow icon generator][icongen].
+
+
+[kingpin]: https://github.com/alecthomas/kingpin
+[awgo]: https://github.com/deanishe/awgo
+[sil]: http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
+[mit]: https://opensource.org/licenses/MIT
+[elusive]: https://github.com/aristath/elusive-iconfont
+[awesome]: http://fortawesome.github.io/Font-Awesome/
+[material]: http://zavoloklom.github.io/material-design-iconic-font/
+[octicons]: https://octicons.github.com/
+[icongen]: http://icons.deanishe.net
