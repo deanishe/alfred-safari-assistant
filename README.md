@@ -1,10 +1,12 @@
 
+<img src="./icon.png" width="128" height="128">
+
 Alfred Safari
 =============
 
 Search and open/activate your Safari bookmark(let)s and tabs from Alfred 3.
 
-Includes several actions for tabs/bookmarks and allows you to add your own via scripts.
+Includes several actions for tabs/bookmarks and allows you to add your own via scripts. Assign your favourite actions (and bookmarklets) to hotkeys.
 
 <!-- MarkdownTOC autolink="true" bracket="round" depth="2" autoanchor="true" -->
 

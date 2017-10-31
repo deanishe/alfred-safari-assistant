@@ -16,8 +16,8 @@ import (
 	"os/exec"
 	"path/filepath"
 
-	"git.deanishe.net/deanishe/go-safari"
 	"github.com/deanishe/awgo"
+	"github.com/deanishe/go-safari"
 )
 
 var (

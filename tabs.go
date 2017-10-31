@@ -14,8 +14,8 @@ import (
 	"net/url"
 	"strings"
 
-	safari "git.deanishe.net/deanishe/go-safari"
-	aw "github.com/deanishe/awgo"
+	"github.com/deanishe/awgo"
+	"github.com/deanishe/go-safari"
 )
 
 // Activate the specified window (and tab).
@@ -141,6 +141,8 @@ func doCurrentTab() error {
 
 // Filter tabs and output Alfred results.
 func doFilterTabs() error {
+
+	showUpdateStatus()
 
 	log.Printf("query=%s", query)
 

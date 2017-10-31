@@ -14,8 +14,8 @@ import (
 	"log"
 	"net/url"
 
-	safari "git.deanishe.net/deanishe/go-safari"
-	aw "github.com/deanishe/awgo"
+	"github.com/deanishe/awgo"
+	"github.com/deanishe/go-safari"
 )
 
 // Open the bookmark(s)/folder(s) with the specified UIDs.
@@ -87,6 +87,8 @@ func doFilterReadingList() error { return filterBookmarks(safari.ReadingList().B
 
 // filterBookmarks filters bookmarks and outputs Alfred results.
 func filterBookmarks(bookmarks []*safari.Bookmark) error {
+
+	showUpdateStatus()
 
 	log.Printf("query=%s", query)
 

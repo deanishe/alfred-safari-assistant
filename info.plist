@@ -3911,8 +3911,8 @@ Filter all bookmark folders</string>
 		<string></string>
 	</dict>
 	<key>version</key>
-	<string>0.2.3</string>
+	<string>0.3</string>
 	<key>webaddress</key>
-	<string></string>
+	<string>https://github.com/deanishe/alfred-safari-assistant</string>
 </dict>
 </plist>

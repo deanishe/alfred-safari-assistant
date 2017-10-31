@@ -12,12 +12,14 @@ import (
 	"log"
 	"time"
 
-	safari "git.deanishe.net/deanishe/go-safari"
-	"git.deanishe.net/deanishe/go-safari/history"
+	"github.com/deanishe/go-safari"
+	"github.com/deanishe/go-safari/history"
 )
 
 // doSearch searches bookmarks and recent history.
 func doSearch() error {
+
+	showUpdateStatus()
 
 	var (
 		bms     []*safari.Bookmark
