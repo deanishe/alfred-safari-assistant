@@ -139,11 +139,11 @@ These actions are available for bookmarks and tabs (that have URLs).
 History
 -------
 
-In Sierra and earlier, it was possible to search Safari's history with a File Filter. Unfortunately, the exported history files were removed in High Sierra, so it's now necessary to search Safari's sqlite3 History database instead.
+In Sierra and earlier, it was possible to search Safari's history with a File Filter. Unfortunately, the exported history files were removed in High Sierra, so it's now necessary to search Safari's SQLite History database instead.
 
 The workflow accesses this database in two different ways.
 
-The history search (keyword `hi`) uses sqlite3's own search function, as there are too many entries to load and/or fuzzy search. As a result, the history search does *not* use fuzzy search.
+The history search (keyword `hi`) uses SQLite's own search function, as there are too many entries to load and/or fuzzy search. As a result, the history search does *not* use fuzzy search.
 
 The combined bookmark and recent history search (keyword `bh`) does use fuzzy search, but the trade-off is that it only reads a limited number of the most recent entries from the history database (specified by the `ALSF_HISTORY_ENTRIES` configuration option; 1000 by default).
 
