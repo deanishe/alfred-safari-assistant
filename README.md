@@ -1,5 +1,5 @@
 
-<img src="./icon.png" width="128" height="128">
+<img src="./icons/icon.png" width="128" height="128">
 
 Alfred Safari
 =============
