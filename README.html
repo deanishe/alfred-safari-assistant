@@ -654,9 +654,9 @@ html,body,#wrapper{font-size:10pt!important}
 
 
 </head>
-<body class="normal firstload">
+<body class="normal">
   <div id="wrapper">
-      <p><img src="./icon.png" width="128" height="128"></p>
+      <p><img src="./icons/icon.png" width="128" height="128"></p>
 
 <h1 id="alfredsafari">Alfred Safari</h1>
 
@@ -860,11 +860,11 @@ html,body,#wrapper{font-size:10pt!important}
 
 <h2 id="history">History</h2>
 
-<p>In Sierra and earlier, it was possible to search Safari&#8217;s history with a File Filter. Unfortunately, the exported history files were removed in High Sierra, so it&#8217;s now necessary to search Safari&#8217;s sqlite3 History database instead.</p>
+<p>In Sierra and earlier, it was possible to search Safari&#8217;s history with a File Filter. Unfortunately, the exported history files were removed in High Sierra, so it&#8217;s now necessary to search Safari&#8217;s SQLite History database instead.</p>
 
 <p>The workflow accesses this database in two different ways.</p>
 
-<p>The history search (keyword <code>hi</code>) uses sqlite3&#8217;s own search function, as there are too many entries to load and/or fuzzy search. As a result, the history search does <em>not</em> use fuzzy search.</p>
+<p>The history search (keyword <code>hi</code>) uses SQLite&#8217;s own search function, as there are too many entries to load and/or fuzzy search. As a result, the history search does <em>not</em> use fuzzy search.</p>
 
 <p>The combined bookmark and recent history search (keyword <code>bh</code>) does use fuzzy search, but the trade-off is that it only reads a limited number of the most recent entries from the history database (specified by the <code>ALSF_HISTORY_ENTRIES</code> configuration option; 1000 by default).</p>
 
