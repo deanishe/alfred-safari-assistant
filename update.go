@@ -39,6 +39,7 @@ func showUpdateStatus() {
 	}
 
 	if wf.UpdateAvailable() {
+		wf.Configure(aw.SuppressUIDs(true))
 		log.Println("Update available!")
 		wf.NewItem("An update is available!").
 			Subtitle("⇥ or ↩ to install update").
