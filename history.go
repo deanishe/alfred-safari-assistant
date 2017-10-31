@@ -11,12 +11,15 @@ package main
 import (
 	"log"
 
-	"git.deanishe.net/deanishe/go-safari/history"
-	aw "github.com/deanishe/awgo"
+	"github.com/deanishe/awgo"
+	"github.com/deanishe/go-safari/history"
 )
 
 // doFilterHistory searches Safari history.
 func doFilterHistory() error {
+
+	showUpdateStatus()
+
 	history.MaxSearchResults = maxResults * 10 // allow for lots of duplicates
 	wf.MaxResults = maxResults
 

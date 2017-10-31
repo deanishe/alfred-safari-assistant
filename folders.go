@@ -13,12 +13,14 @@ import (
 	"log"
 	"strings"
 
-	safari "git.deanishe.net/deanishe/go-safari"
-	aw "github.com/deanishe/awgo"
+	"github.com/deanishe/awgo"
+	"github.com/deanishe/go-safari"
 )
 
 // Filters all bookmark folders and output Alfred results.
 func doFilterAllFolders() error {
+
+	showUpdateStatus()
 
 	log.Printf("query=%s", query)
 

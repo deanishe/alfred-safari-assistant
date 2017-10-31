@@ -6,12 +6,12 @@
 // Created on 2016-05-30
 //
 
-// TODO: Allow user to configure URL/tab actions for other modifiers
-// TODO: URL actions for history items
-// TODO: Script: Open Bookmark/URL in Private Mode
 // TODO: iCloud tabs (~/Library/SyncedPreferences/com.apple.Safari.plist)
 
-package main // import "git.deanishe.net/deanishe/alfred-safari-assistant"
+// Command alsf is an Alfred 3 workflow for interacting with Safari bookmarks and tabs.
+//
+// See https://github.com/deanishe/alfred-safari-assistant for usage instructions.
+package main
 
 import (
 	"fmt"
@@ -21,9 +21,10 @@ import (
 	"path/filepath"
 	"strings"
 
-	"git.deanishe.net/deanishe/go-safari"
 	"github.com/deanishe/awgo"
+	"github.com/deanishe/awgo/update"
 	"github.com/deanishe/awgo/util"
+	"github.com/deanishe/go-safari"
 	"github.com/juju/deputy"
 	"gopkg.in/alecthomas/kingpin.v2"
 )
@@ -42,6 +43,7 @@ var (
 	IconBookmark    = &aw.Icon{Value: "icons/bookmark.png"}
 	IconBookmarklet = &aw.Icon{Value: "icons/bookmarklet.png"}
 	IconHistory     = &aw.Icon{Value: "icons/history.png"}
+	IconUpdate      = &aw.Icon{Value: "icons/update-available.png"}
 	IconURL         = &aw.Icon{Value: "icons/url.png"}
 	IconFolder      = &aw.Icon{Value: "icons/folder.png"}
 	IconUp          = &aw.Icon{Value: "icons/up.png"}
@@ -63,7 +65,7 @@ var (
 	runTabActionCmd, runURLActionCmd          *kingpin.CmdClause
 	filterActionsCmd, filterTabActionsCmd     *kingpin.CmdClause
 	filterURLActionsCmd, activeTabCmd         *kingpin.CmdClause
-	filterHistoryCmd                          *kingpin.CmdClause
+	filterHistoryCmd, updateCmd               *kingpin.CmdClause
 
 	// Script options (populated by Kingpin application)
 	query                       string
@@ -78,8 +80,6 @@ var (
 	tabActionFn, tabActionShift string
 	urlActionOpt, urlActionCtrl string
 	urlActionFn, urlActionShift string
-	// historyLimit                int
-	// historyFuzzy                bool
 
 	// Workflow stuff
 	wf         *aw.Workflow
@@ -91,12 +91,13 @@ var (
 // Mostly sets up kingpin commands
 func init() {
 
-	// safari.Configure(safari.IgnoreBookmarklets(true))
 	// Override default icons
-	// aw.IconError = IconError
 	aw.IconWarning = IconWarning
+	// aw.IconError = IconError
 
-	wf = aw.New()
+	wf = aw.New(update.GitHub("deanishe/alfred-safari-assistant"),
+		aw.HelpURL("https://github.com/deanishe/alfred-safari-assistant/issues"))
+
 	scriptDirs = []string{
 		filepath.Join(wf.Dir(), "scripts", "tab"),
 		filepath.Join(wf.Dir(), "scripts", "url"),
@@ -107,6 +108,10 @@ func init() {
 	app = kingpin.New("alsf", "Safari bookmarks, windows and tabs in Alfred.")
 	app.HelpFlag.Short('h')
 	app.Version(wf.Version())
+
+	// ---------------------------------------------------------------
+	// Update command
+	updateCmd = app.Command("update", "Check for new workflow version.").Alias("u")
 
 	// ---------------------------------------------------------------
 	// List action commands
@@ -183,11 +188,6 @@ func init() {
 	filterBookmarksCmd.Flag("include-bookmarklets", "Include bookmarklets with bookmarks.").
 		BoolVar(&includeBookmarklets)
 
-	// filterHistoryCmd.Flag("fuzzy-history-limit", "The maximum number of history items to load.").
-	// 	PlaceHolder("NUMBER").
-	// 	IntVar(&historyLimit)
-	// filterHistoryCmd.Flag("fuzzy-history-search", "Use fuzzy search for history.").
-	// 	BoolVar(&historyFuzzy)
 	searchCmd.Flag("history-entries", "Number of recent history entries to load.").
 		IntVar(&recentHistoryEntries)
 
@@ -415,9 +415,17 @@ func run() {
 	case activeTabCmd.FullCommand():
 		err = doCurrentTab()
 
+	case updateCmd.FullCommand():
+		err = doUpdate()
+
 	default:
 		err = fmt.Errorf("Unknown command: %s", cmd)
 
+	}
+
+	// Check for update
+	if err == nil && cmd != updateCmd.FullCommand() {
+		err = checkForUpdate()
 	}
 
 	if err != nil {
