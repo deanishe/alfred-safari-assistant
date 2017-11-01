@@ -7,3 +7,8 @@ New features:
 
 	- Action "blacklist" to hide unwanted actions?
 		⌘↩ on an action to ignore it
+	- Also load iCloud tabs?
+		Obviously a different type to Safari tabs. Could these be treated like
+		URLs, or is a 3rd type necessary?
+
+#  vim: set ft=taskpaper ts=2 sw=2 tw=100 noet :

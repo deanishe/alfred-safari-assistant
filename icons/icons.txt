@@ -22,9 +22,11 @@ history           fontawesome   00E756    history
 folder            fontawesome   00A1DE    folder
 bookmarklet       fontawesome   00E756    asterisk
 url               fontawesome   00A1DE    globe
-reading-list      elusive       00A1DE    glasses
 tab				  octicons      00A1DE    browser
 tab-active 		  octicons      F8AC30    browser
+# Apparently, this one looks like Bill Gates' glasses.
+# Use Vítor's Jobsian specs instead
+# reading-list      elusive       00A1DE    glasses
 
 # Navigation
 home              fontawesome   C92441    home

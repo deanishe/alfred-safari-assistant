@@ -10,6 +10,14 @@
 
 // Command alsf is an Alfred 3 workflow for interacting with Safari bookmarks and tabs.
 //
+// With it, you can filter and perform actions on Safari tabs, bookmarks
+// (incl. bookmarklets) and reading list entries. There are several
+// built-in and bundled actions, but you can add more of your own via
+// scripts. Both action scripts and bookmarklets can be assigned to
+// alternative actions (^↩, ⌥↩ etc.) in Alfred's UI by editing the
+// ALSF_TAB_* and ALSF_URL_* variables in the workflow's configuration
+// sheet in Alfred Preferences.
+//
 // See https://github.com/deanishe/alfred-safari-assistant for usage instructions.
 package main
 
@@ -237,7 +245,9 @@ func init() {
 
 func doFilterURLActions() error {
 	log.Printf("URL=%s", actionURL)
-	LoadScripts(scriptDirs...)
+	if err := LoadScripts(scriptDirs...); err != nil {
+		return err
+	}
 	ua := URLActions()
 	acts := make([]Actionable, len(ua))
 	for i, a := range ua {
@@ -252,7 +262,9 @@ func doURLAction() error {
 
 	log.Printf("URL=%s, action=%s", actionURL, action)
 
-	LoadScripts(scriptDirs...)
+	if err := LoadScripts(scriptDirs...); err != nil {
+		return err
+	}
 
 	a := URLAction(action)
 	if a == nil {

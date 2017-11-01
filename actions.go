@@ -17,12 +17,27 @@ import (
 	"path/filepath"
 
 	"github.com/deanishe/awgo"
+	"github.com/deanishe/awgo/util"
 	"github.com/deanishe/go-safari"
 )
 
 var (
-	tabActions map[string]TabActionable
-	urlActions map[string]URLActionable
+	blacklist         = map[string]bool{} // Names of actions user has deactivated
+	blacklistFilename = "blacklist.txt"
+	blacklistTemplate = `# Action blacklist
+	# Add the names of action scripts to ignore to this file,
+	# one per line without any file extensions, e.g. add
+	#     Open in Firefox
+	# to prevent the "Open in Firefox" action from being shown in
+	# any list of actions.
+	#
+	# NOTE: This doesn't prevent an action from being called: it only
+	# prevents it from being shown in any action lists in Alfred's UI.
+	# That means you can blacklist actions here that you've assigned
+	# as alterate actions via the workflow configuration sheet.
+	`
+	tabActions = map[string]TabActionable{}
+	urlActions = map[string]URLActionable{}
 	// Extensions of files that need to be run via /usr/bin/osascript
 	osaExts = map[string]bool{
 		".scpt":        true,
@@ -34,8 +49,6 @@ var (
 )
 
 func init() {
-	tabActions = map[string]TabActionable{}
-	urlActions = map[string]URLActionable{}
 	// Built-in actions
 	for _, a := range []Actionable{
 		&closeTab{},
@@ -50,6 +63,11 @@ func init() {
 		}
 	}
 }
+
+// Blacklist instructs registry to ignore scripts with the given name.
+// This only applies to lists of all actions; if an action is requested
+// by name, e.g. via URLAction(), it will still be returned.
+func Blacklist(actionName string) { blacklist[actionName] = true }
 
 // Register an action.
 func Register(action Actionable) error {
@@ -66,13 +84,11 @@ func Register(action Actionable) error {
 
 // URLActions returns registered URLActions
 func URLActions() []URLActionable {
-	var (
-		i    int
-		acts = make([]URLActionable, len(urlActions))
-	)
+	acts := []URLActionable{}
 	for _, a := range urlActions {
-		acts[i] = a
-		i++
+		if !blacklist[a.Title()] {
+			acts = append(acts, a)
+		}
 	}
 	return acts
 }
@@ -90,13 +106,11 @@ func URLAction(title string) URLActionable {
 
 // TabActions returns registered TabActions
 func TabActions() []TabActionable {
-	var (
-		i    int
-		acts = make([]TabActionable, len(tabActions))
-	)
+	acts := []TabActionable{}
 	for _, a := range tabActions {
-		acts[i] = a
-		i++
+		if !blacklist[a.Title()] {
+			acts = append(acts, a)
+		}
 	}
 	return acts
 }
@@ -294,9 +308,8 @@ func LoadScripts(dirs ...string) error {
 				return nil
 			}
 
-			typ := filepath.Base(dp)
+			typ := filepath.Base(dp) // Type is based on parent directory
 			if isOSAScript(p) || isExecutable(p) {
-				// Type is based on parent directory
 				s := newScript(p, typ)
 				switch typ {
 				case "tab":
@@ -319,6 +332,26 @@ func LoadScripts(dirs ...string) error {
 
 	if len(errs) > 0 {
 		return errs[0]
+	}
+
+	return loadBlacklist()
+}
+
+// Return path to initialised blacklist.
+func initBlacklist() (path string, err error) {
+	path = filepath.Join(wf.DataDir(), blacklistFilename)
+	if !util.PathExists(path) {
+
+	}
+	return
+}
+
+// loadBlacklist loads user-blacklisted action names.
+// TODO: implement loading/saving of blacklist
+func loadBlacklist() error {
+	_, err := initBlacklist()
+	if err != nil {
+		return err
 	}
 	return nil
 }
