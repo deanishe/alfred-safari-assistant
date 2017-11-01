@@ -1,0 +1,9 @@
+
+New features:
+	- Add settings command
+		- Open help file
+		- Open user scripts directory
+		- Open list of ignored actions (if implemented)
+
+	- Action "blacklist" to hide unwanted actions?
+		⌘↩ on an action to ignore it

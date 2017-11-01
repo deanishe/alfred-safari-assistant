@@ -654,11 +654,11 @@ html,body,#wrapper{font-size:10pt!important}
 
 
 </head>
-<body class="normal">
+<body class="normal firstload">
   <div id="wrapper">
       <p><img src="./icons/icon.png" width="128" height="128"></p>
 
-<h1 id="alfredsafari">Alfred Safari</h1>
+<h1 id="safariassistantforalfred3">Safari Assistant for Alfred 3</h1>
 
 <p>Search and open/activate your Safari bookmark(let)s and tabs from Alfred 3.</p>
 
@@ -805,7 +805,7 @@ html,body,#wrapper{font-size:10pt!important}
 
 <p>Much of the workflow&#8217;s functionality is implemented via built-in scripts. You can also add your own scripts to provide additional tab and/or URL actions.</p>
 
-<p>Add your own to the workflow&#8217;s data directory. Use the magic command <code>workflow:data</code> to open the data directory, e.g. <code>bm workflow:data</code>.</p>
+<p>Add your own to the workflow&#8217;s data directory. Use the magic command <code>workflow:data</code> as a query to one of the Script Filters to open the data directory, e.g. <code>bm workflow:data</code>.</p>
 
 <p>Scripts go in a subdirectory of the <code>scripts</code> directory depending on the type. Tab scripts go in <code>scripts/tab</code>, URL scripts in <code>scripts/url</code>.</p>
 
@@ -816,6 +816,8 @@ html,body,#wrapper{font-size:10pt!important}
 <p>URL scripts are called with the URL of the selected bookmark or tab as <code>$1</code>, e.g. <code>/path/to/script http://www.example.com</code>.</p>
 
 <p>See the built-in scripts (in the <code>scripts</code> subdirectory of the workflow) for examples of how to implement them.</p>
+
+<p>If you create a script with the same name (minus extension) as one of the built-ins, it will override the built-in script.</p>
 
 <p><a name="supported-languages"></a> </p>
 

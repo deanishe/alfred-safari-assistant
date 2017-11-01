@@ -85,7 +85,7 @@ Action scripts
 
 Much of the workflow's functionality is implemented via built-in scripts. You can also add your own scripts to provide additional tab and/or URL actions.
 
-Add your own to the workflow's data directory. Use the magic command `workflow:data` to open the data directory, e.g. `bm workflow:data`.
+Add your own to the workflow's data directory. Use the magic command `workflow:data` as a query to one of the Script Filters to open the data directory, e.g. `bm workflow:data`.
 
 Scripts go in a subdirectory of the `scripts` directory depending on the type. Tab scripts go in `scripts/tab`, URL scripts in `scripts/url`.
 
@@ -96,6 +96,8 @@ Tab scripts are called with the indices of the selected window and tab as `$1` a
 URL scripts are called with the URL of the selected bookmark or tab as `$1`, e.g. `/path/to/script http://www.example.com`.
 
 See the built-in scripts (in the `scripts` subdirectory of the workflow) for examples of how to implement them.
+
+If you create a script with the same name (minus extension) as one of the built-ins, it will override the built-in script.
 
 
 <a name="supported-languages"></a>
