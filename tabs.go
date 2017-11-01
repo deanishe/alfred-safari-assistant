@@ -33,7 +33,9 @@ func doFilterTabActions() error {
 
 	log.Printf("url=%s, scheme=%s", actionURL, actionURL.Scheme)
 
-	LoadScripts(scriptDirs...)
+	if err := LoadScripts(scriptDirs...); err != nil {
+		return err
+	}
 	acts := []Actionable{}
 	for _, a := range TabActions() {
 		acts = append(acts, a)
@@ -98,7 +100,9 @@ func doTabAction() error {
 		return tab.RunJS(js)
 	}
 
-	LoadScripts(scriptDirs...)
+	if err := LoadScripts(scriptDirs...); err != nil {
+		return err
+	}
 	if actionType == "tab" {
 		ta := TabAction(action)
 		if ta == nil {
