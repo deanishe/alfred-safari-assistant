@@ -654,11 +654,11 @@ html,body,#wrapper{font-size:10pt!important}
 
 
 </head>
-<body class="normal firstload">
+<body class="normal">
   <div id="wrapper">
       <p><img src="./icons/icon.png" width="128" height="128"></p>
 
-<h1 id="safariassistantforalfred3">Safari Assistant for Alfred 3</h1>
+<h1 id="safari-assistant-for-alfred-3--">Safari Assistant for Alfred 3  </h1>
 
 <p>Search and open/activate your Safari bookmark(let)s and tabs from Alfred 3.</p>
 
@@ -666,146 +666,189 @@ html,body,#wrapper{font-size:10pt!important}
 
 <!-- MarkdownTOC autolink="true" bracket="round" depth="2" autoanchor="true" -->
 
+
 <ul>
 <li><a href="#usage">Usage</a></li>
-<li><a href="#configuration">Configuration</a></li>
+<li><a href="#configuration">Configuration</a>
+
+<ul>
+<li><a href="#blacklist">Blacklist</a></li>
+</ul>
+</li>
 <li><a href="#action-scripts">Action scripts</a>
 
 <ul>
 <li><a href="#supported-languages">Supported languages</a></li>
 <li><a href="#script-icons">Script icons</a></li>
 <li><a href="#built-in-actions">Built-in actions</a></li>
-</ul></li>
+</ul>
+</li>
 <li><a href="#history">History</a></li>
 <li><a href="#licensing--thanks">Licensing &amp; thanks</a></li>
 </ul>
 
+
 <!-- /MarkdownTOC -->
 
-<p><a name="usage"></a> </p>
 
-<h2 id="usage">Usage</h2>
+<p><a name="usage"></a></p>
+
+<h2 id="usage--">Usage  </h2>
 
 <ul>
 <li><code>bh [&lt;query&gt;]</code> — Search and open/action bookmarks and recent history. (See <a href="#history">History</a> section below.)
 
 <ul>
 <li><code>↩</code> — Open item in browser.</li>
-<li><code>⌘↩</code> — Show URL actions for selected item.</li>
+<li><code>⌘↩</code> — Show actions for selected item.
+
+<ul>
+<li><code>↩</code> — Run selected action.</li>
+<li><code>⌘↩</code> — Add selected action to blacklist.</li>
+<li><code>⌘C</code> — Copy name of action to clipboard (for setting custom actions).</li>
+</ul>
+</li>
 <li><code>⌥↩</code> — Run custom action on selected item.</li>
 <li><code>^↩</code> — Run custom action on selected item.</li>
 <li><code>fn↩</code> — Run custom action on selected item.</li>
 <li><code>⇧↩</code> — Run custom action on selected item.</li>
-</ul></li>
+</ul>
+</li>
 <li><code>bm [&lt;query&gt;]</code> — Search and open/action bookmarks.
 
 <ul>
 <li><code>↩</code>, <code>⌘↩</code>, <code>⌥↩</code>, <code>^↩</code>, <code>fn↩</code>, <code>⇧↩</code> — As above.</li>
-</ul></li>
+</ul>
+</li>
 <li><code>bml [&lt;query&gt;]</code> — Search and run bookmarklets.
 
 <ul>
 <li><code>↩</code> — Run bookmarklet in active tab.</li>
-</ul></li>
+<li><code>⌘C</code> — Copy bookmarklet ID to clipboard (for setting custom URL actions).</li>
+</ul>
+</li>
 <li><code>bmf [&lt;query&gt;]</code> — Search bookmark folders.
 
 <ul>
 <li><code>↩</code> — Enter folder/open bookmark.</li>
 <li><code>⌘↩</code> — Open all bookmarks in folder/show URL actions for bookmark.</li>
-</ul></li>
+</ul>
+</li>
 <li><code>hi [&lt;query&gt;]</code> — Search and open/action history entries. (See <a href="#history">History</a> section below.)
 
 <ul>
 <li><code>↩</code>, <code>⌘↩</code>, <code>⌥↩</code>, <code>^↩</code>, <code>fn↩</code>, <code>⇧↩</code> — As above.</li>
-</ul></li>
+</ul>
+</li>
 <li><code>rl [&lt;query&gt;]</code> — Search and open/action Reading List entries.
 
 <ul>
 <li><code>↩</code>, <code>⌘↩</code>, <code>⌥↩</code>, <code>^↩</code>, <code>fn↩</code>, <code>⇧↩</code> — As above.</li>
-</ul></li>
+</ul>
+</li>
 <li><code>tab [&lt;query&gt;]</code> — Search and activate/action Safari tabs.
 
 <ul>
 <li><code>↩</code> — Activate the selected tab.</li>
 <li><code>⌘↩</code>, <code>⌥↩</code>, <code>^↩</code>, <code>fn↩</code>, <code>⇧↩</code> — As above.</li>
-</ul></li>
+</ul>
+</li>
+<li><code>safass</code> — Show help and configuration options.
+
+<ul>
+<li><code>View Help File</code> — Open the workflow help file.</li>
+<li><code>Edit Action Blacklist</code> — Add/remove actions to blacklist.</li>
+<li><code>Check for Update</code> — Force manual check for update.</li>
+<li><code>Report Problem on GitHub</code> — Open GitHub issue tracker in your browser.</li>
+<li><code>Visit Forum Thread</code> — Open the <a href="https://www.alfredforum.com/topic/10921-safari-assistant/">workflow&rsquo;s thread</a> on <a href="https://www.alfredforum.com/">alfredforum.com</a>.</li>
+</ul>
+</li>
 </ul>
 
-<p><a name="configuration"></a> </p>
 
-<h2 id="configuration">Configuration</h2>
+<p><a name="configuration"></a></p>
 
-<p>There are several settings in the workflow&#8217;s configuration sheet:</p>
+<h2 id="configuration--">Configuration  </h2>
+
+<p>There are several settings in the workflow&rsquo;s configuration sheet:</p>
 
 <ul>
 <li><code>ALSF_HISTORY_ENTRIES</code>. Number of recent history entries to load for <code>bh</code> action (search bookmarks and recent history).</li>
 <li><code>ALSF_INCLUDE_BOOKMARKLETS</code>. Set this to <code>1</code> to include bookmarklets in the normal bookmark search (<code>bm</code>).</li>
 </ul>
 
+
 <p>The following settings assign actions or bookmarklets to modifier keys:</p>
 
 <table>
-<colgroup>
-<col style="text-align:left;"/>
-<col style="text-align:left;"/>
-</colgroup>
-
 <thead>
 <tr>
-	<th style="text-align:left;">Key</th>
-	<th style="text-align:left;">Action</th>
+<th> Key                </th>
+<th> Action                                         </th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
-	<td style="text-align:left;"><code>ALSF_TAB_CTRL</code></td>
-	<td style="text-align:left;"><code>^↩</code> custom action/bookmarklet for tab</td>
+<td> <code>ALSF_TAB_CTRL</code>    </td>
+<td> <code>^↩</code> custom action/bookmarklet for tab         </td>
 </tr>
 <tr>
-	<td style="text-align:left;"><code>ALSF_TAB_OPT</code></td>
-	<td style="text-align:left;"><code>⌥↩</code> custom action/bookmarklet for tab</td>
+<td> <code>ALSF_TAB_OPT</code>     </td>
+<td> <code>⌥↩</code> custom action/bookmarklet for tab         </td>
 </tr>
 <tr>
-	<td style="text-align:left;"><code>ALSF_TAB_FN</code></td>
-	<td style="text-align:left;"><code>fn↩</code> custom action/bookmarklet for tab</td>
+<td> <code>ALSF_TAB_FN</code>      </td>
+<td> <code>fn↩</code> custom action/bookmarklet for tab        </td>
 </tr>
 <tr>
-	<td style="text-align:left;"><code>ALSF_TAB_SHIFT</code></td>
-	<td style="text-align:left;"><code>⇧↩</code> custom action/bookmarklet for tab</td>
+<td> <code>ALSF_TAB_SHIFT</code>   </td>
+<td> <code>⇧↩</code> custom action/bookmarklet for tab         </td>
 </tr>
 <tr>
-	<td style="text-align:left;"><code>ALSF_URL_CTRL</code></td>
-	<td style="text-align:left;"><code>^↩</code> custom action for bookmark/history entry</td>
+<td> <code>ALSF_URL_CTRL</code>    </td>
+<td> <code>^↩</code> custom action for bookmark/history entry  </td>
 </tr>
 <tr>
-	<td style="text-align:left;"><code>ALSF_URL_OPT</code></td>
-	<td style="text-align:left;"><code>⌥↩</code> custom action for bookmark/history entry</td>
+<td> <code>ALSF_URL_OPT</code>     </td>
+<td> <code>⌥↩</code> custom action for bookmark/history entry  </td>
 </tr>
 <tr>
-	<td style="text-align:left;"><code>ALSF_URL_FN</code></td>
-	<td style="text-align:left;"><code>fn↩</code> custom action for bookmark/history entry</td>
+<td> <code>ALSF_URL_FN</code>      </td>
+<td> <code>fn↩</code> custom action for bookmark/history entry </td>
 </tr>
 <tr>
-	<td style="text-align:left;"><code>ALSF_URL_SHIFT</code></td>
-	<td style="text-align:left;"><code>⇧↩</code> custom action for bookmark/history entry</td>
+<td> <code>ALSF_URL_SHIFT</code>   </td>
+<td> <code>⇧↩</code> custom action for bookmark/history entry  </td>
 </tr>
 </tbody>
 </table>
 
+
 <p>The <code>ALSF_TAB_*</code> variables assign custom actions or bookmarklets available when browsing Safari tabs. The <code>ALSF_URL_*</code> variables assign custom actions (<em>not</em> bookmarklets) to bookmarks and history entries.</p>
 
-<p>To assign a script action, enter the corresponding script&#8217;s name (without extension) as the value for the variable. To assign a bookmarklet, use <code>bkm:&lt;UID&gt;</code> where <code>&lt;UID&gt;</code> is the bookmarklet&#8217;s UID.</p>
+<p>To assign a script action, enter the corresponding script&rsquo;s name (without extension) as the value for the variable. To assign a bookmarklet, use <code>bkm:&lt;UID&gt;</code> where <code>&lt;UID&gt;</code> is the bookmarklet&rsquo;s UID.</p>
 
-<p>In either case, press <code>⌘C</code> on an action or bookmarklet in Alfred&#8217;s UI to copy the corresponding value, then paste it into the configuration sheet as the value for the appropriate variable.</p>
+<p>In either case, press <code>⌘C</code> on an action or bookmarklet in Alfred&rsquo;s UI to copy the corresponding value, then paste it into the configuration sheet as the value for the appropriate variable.</p>
 
-<p><a name="action-scripts"></a> </p>
+<p><a name="blacklist"></a></p>
 
-<h2 id="actionscripts">Action scripts</h2>
+<h3 id="blacklist">Blacklist</h3>
 
-<p>Much of the workflow&#8217;s functionality is implemented via built-in scripts. You can also add your own scripts to provide additional tab and/or URL actions.</p>
+<p>As some of the built-in actions may not be of any interest to some users (e.g. you don&rsquo;t have/use Firefox), they can be blacklisted so they are no longer shown in the list of actions.</p>
 
-<p>Add your own to the workflow&#8217;s data directory. Use the magic command <code>workflow:data</code> as a query to one of the Script Filters to open the data directory, e.g. <code>bm workflow:data</code>.</p>
+<p>You can blacklist an action directly from Alfred by pressing <code>⌘↩</code> on an action in the action list.</p>
+
+<p>To remove an action from the blacklist, you must edit the <code>blacklist.txt</code> file directly. To do this, enter keyword <code>safass</code> in Alfred and choose <code>Edit Action Blacklist</code> from the list. This will open <code>blacklist.txt</code> in your default text-file editor.</p>
+
+<p>If you add any actions to the blacklist manually, add one action (file)name per line, not including the file extension.</p>
+
+<p><a name="action-scripts"></a></p>
+
+<h2 id="action-scripts--">Action scripts  </h2>
+
+<p>Much of the workflow&rsquo;s functionality is implemented via built-in scripts. You can also add your own scripts to provide additional tab and/or URL actions.</p>
+
+<p>Add your own to the workflow&rsquo;s data directory. Use the magic command <code>workflow:data</code> as a query to one of the Script Filters to open the data directory, e.g. <code>bm workflow:data</code>.</p>
 
 <p>Scripts go in a subdirectory of the <code>scripts</code> directory depending on the type. Tab scripts go in <code>scripts/tab</code>, URL scripts in <code>scripts/url</code>.</p>
 
@@ -819,25 +862,25 @@ html,body,#wrapper{font-size:10pt!important}
 
 <p>If you create a script with the same name (minus extension) as one of the built-ins, it will override the built-in script.</p>
 
-<p><a name="supported-languages"></a> </p>
+<p><a name="supported-languages"></a></p>
 
-<h3 id="supportedlanguages">Supported languages</h3>
+<h3 id="supported-languages">Supported languages</h3>
 
 <p>The workflow knows to run <code>.scpt</code>, <code>.js</code>, <code>.applescript</code> and <code>.scptd</code> scripts via <code>/usr/bin/osascript</code>. It can also run any script/program with its executable bit set (it will call these directly).</p>
 
-<p><a name="script-icons"></a> </p>
+<p><a name="script-icons"></a></p>
 
-<h3 id="scripticons">Script icons</h3>
+<h3 id="script-icons">Script icons</h3>
 
 <p>By default, tab scripts get a tab icon and URL scripts a URL one. You can supply a custom icon for any script by saving the icon alongside the script with the same basename (i.e. the same name as the script, only with a different file extension). Supported icon extensions are <code>.png</code>, <code>.icns</code>, <code>.jpg</code>, <code>.jpeg</code> and <code>.gif</code>.</p>
 
-<p><a name="built-in-actions"></a> </p>
+<p><a name="built-in-actions"></a></p>
 
-<h3 id="built-inactions">Built-in actions</h3>
+<h3 id="built-in-actions">Built-in actions</h3>
 
 <p>The following actions are built into the workflow, either hard-coded or as bundled scripts (in the <code>scripts</code> subdirectory of the workflow).</p>
 
-<h4 id="tabactions">Tab actions</h4>
+<h4 id="tab-actions">Tab actions</h4>
 
 <p>These actions are available for tabs only.</p>
 
@@ -848,7 +891,8 @@ html,body,#wrapper{font-size:10pt!important}
 <li>Close Tabs to Right</li>
 </ul>
 
-<h4 id="urlactions">URL actions</h4>
+
+<h4 id="url-actions">URL actions</h4>
 
 <p>These actions are available for bookmarks and tabs (that have URLs).</p>
 
@@ -859,23 +903,24 @@ html,body,#wrapper{font-size:10pt!important}
 <li>Open in Private Window</li>
 </ul>
 
-<p><a name="history"></a> </p>
 
-<h2 id="history">History</h2>
+<p><a name="history"></a></p>
 
-<p>In Sierra and earlier, it was possible to search Safari&#8217;s history with a File Filter. Unfortunately, the exported history files were removed in High Sierra, so it&#8217;s now necessary to search Safari&#8217;s SQLite History database instead.</p>
+<h2 id="history--">History  </h2>
+
+<p>In Sierra and earlier, it was possible to search Safari&rsquo;s history with a File Filter. Unfortunately, the exported history files were removed in High Sierra, so it&rsquo;s now necessary to search Safari&rsquo;s SQLite History database instead.</p>
 
 <p>The workflow accesses this database in two different ways.</p>
 
-<p>The history search (keyword <code>hi</code>) uses SQLite&#8217;s own search function, as there are too many entries to load and/or fuzzy search. As a result, the history search does <em>not</em> use fuzzy search.</p>
+<p>The history search (keyword <code>hi</code>) uses SQLite&rsquo;s own search function, as there are too many entries to load and/or fuzzy search. As a result, the history search does <em>not</em> use fuzzy search.</p>
 
 <p>The combined bookmark and recent history search (keyword <code>bh</code>) does use fuzzy search, but the trade-off is that it only reads a limited number of the most recent entries from the history database (specified by the <code>ALSF_HISTORY_ENTRIES</code> configuration option; 1000 by default).</p>
 
 <p>Depending on the speed of your Mac and your own tolerance for slowness, you may be able to increase this number significantly.</p>
 
-<p><a name="licensing--thanks"></a> </p>
+<p><a name="licensing--thanks"></a></p>
 
-<h2 id="licensingthanks">Licensing &amp; thanks</h2>
+<h2 id="licensing--amp--thanks--">Licensing &amp; thanks  </h2>
 
 <p>This workflow is released under the <a href="https://opensource.org/licenses/MIT">MIT Licence</a>.</p>
 

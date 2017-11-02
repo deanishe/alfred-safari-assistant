@@ -12,6 +12,7 @@ Includes several actions for tabs/bookmarks and allows you to add your own via s
 
 - [Usage](#usage)
 - [Configuration](#configuration)
+    - [Blacklist](#blacklist)
 - [Action scripts](#action-scripts)
     - [Supported languages](#supported-languages)
     - [Script icons](#script-icons)
@@ -28,7 +29,10 @@ Usage
 
 - `bh [<query>]` — Search and open/action bookmarks and recent history. (See [History](#history) section below.)
     - `↩` — Open item in browser.
-    - `⌘↩` — Show URL actions for selected item.
+    - `⌘↩` — Show actions for selected item.
+        - `↩` — Run selected action.
+        - `⌘↩` — Add selected action to blacklist.
+        - `⌘C` — Copy name of action to clipboard (for setting custom actions).
     - `⌥↩` — Run custom action on selected item.
     - `^↩` — Run custom action on selected item.
     - `fn↩` — Run custom action on selected item.
@@ -37,6 +41,7 @@ Usage
     - `↩`, `⌘↩`, `⌥↩`, `^↩`, `fn↩`, `⇧↩` — As above.
 - `bml [<query>]` — Search and run bookmarklets.
     - `↩` — Run bookmarklet in active tab.
+    - `⌘C` — Copy bookmarklet ID to clipboard (for setting custom URL actions).
 - `bmf [<query>]` — Search bookmark folders.
     - `↩` — Enter folder/open bookmark.
     - `⌘↩` — Open all bookmarks in folder/show URL actions for bookmark.
@@ -47,8 +52,12 @@ Usage
 - `tab [<query>]` — Search and activate/action Safari tabs.
     - `↩` — Activate the selected tab.
     - `⌘↩`, `⌥↩`, `^↩`, `fn↩`, `⇧↩` — As above.
-
-
+- `safass` — Show help and configuration options.
+    - `View Help File` — Open the workflow help file.
+    - `Edit Action Blacklist` — Add/remove actions to blacklist.
+    - `Check for Update` — Force manual check for update.
+    - `Report Problem on GitHub` — Open GitHub issue tracker in your browser.
+    - `Visit Forum Thread` — Open the [workflow's thread][forum-thread] on [alfredforum.com](https://www.alfredforum.com/).
 
 <a name="configuration"></a>
 Configuration
@@ -77,6 +86,18 @@ The `ALSF_TAB_*` variables assign custom actions or bookmarklets available when 
 To assign a script action, enter the corresponding script's name (without extension) as the value for the variable. To assign a bookmarklet, use `bkm:<UID>` where `<UID>` is the bookmarklet's UID.
 
 In either case, press `⌘C` on an action or bookmarklet in Alfred's UI to copy the corresponding value, then paste it into the configuration sheet as the value for the appropriate variable.
+
+
+<a name="blacklist"></a>
+### Blacklist ###
+
+As some of the built-in actions may not be of any interest to some users (e.g. you don't have/use Firefox), they can be blacklisted so they are no longer shown in the list of actions.
+
+You can blacklist an action directly from Alfred by pressing `⌘↩` on an action in the action list.
+
+To remove an action from the blacklist, you must edit the `blacklist.txt` file directly. To do this, enter keyword `safass` in Alfred and choose `Edit Action Blacklist` from the list. This will open `blacklist.txt` in your default text-file editor.
+
+If you add any actions to the blacklist manually, add one action (file)name per line, not including the file extension.
 
 
 <a name="action-scripts"></a>
@@ -173,3 +194,4 @@ The icons are from [Elusive Icons][elusive], [Font Awesome][awesome], [Material 
 [material]: http://zavoloklom.github.io/material-design-iconic-font/
 [octicons]: https://octicons.github.com/
 [icongen]: http://icons.deanishe.net
+[forum-thread]: https://www.alfredforum.com/topic/10921-safari-assistant/

@@ -9,12 +9,15 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net/url"
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strings"
 
 	"github.com/deanishe/awgo"
 	"github.com/deanishe/awgo/util"
@@ -24,18 +27,27 @@ import (
 var (
 	blacklist         = map[string]bool{} // Names of actions user has deactivated
 	blacklistFilename = "blacklist.txt"
-	blacklistTemplate = `# Action blacklist
-	# Add the names of action scripts to ignore to this file,
-	# one per line without any file extensions, e.g. add
-	#     Open in Firefox
-	# to prevent the "Open in Firefox" action from being shown in
-	# any list of actions.
-	#
-	# NOTE: This doesn't prevent an action from being called: it only
-	# prevents it from being shown in any action lists in Alfred's UI.
-	# That means you can blacklist actions here that you've assigned
-	# as alterate actions via the workflow configuration sheet.
-	`
+	blacklistTemplate = `#
+# Action blacklist
+# ----------------
+#
+# Add the names of action scripts to ignore to this file,
+# one per line without any file extensions, e.g. add
+#
+# Open in Firefox
+#
+# to prevent the "Open in Firefox" action from being shown in
+# any list of actions.
+#
+# NOTE: This doesn't prevent an action from being called: it only
+# prevents it from being shown in any action lists in Alfred's UI.
+# That means you can blacklist actions here that you've assigned
+# as alterate actions via the workflow configuration sheet.
+#
+# Empty lines and lines beginning with # are ignored.
+#
+
+`
 	tabActions = map[string]TabActionable{}
 	urlActions = map[string]URLActionable{}
 	// Extensions of files that need to be run via /usr/bin/osascript
@@ -62,6 +74,12 @@ func init() {
 			panic(err)
 		}
 	}
+}
+
+// doBlacklist adds the specified action names to the blacklist.
+func doBlacklist() error {
+	wf.TextErrors = true
+	return addToBlacklist(scriptNames...)
 }
 
 // Blacklist instructs registry to ignore scripts with the given name.
@@ -203,7 +221,7 @@ type openURLAction struct {
 }
 
 // Implement Actionable.
-func (a *openURLAction) Title() string { return "Open URL in Default Browser" }
+func (a *openURLAction) Title() string { return "Open in Default Browser" }
 func (a *openURLAction) Run(u *url.URL) error {
 	cmd := exec.Command("/usr/bin/open", u.String())
 	return cmd.Run()
@@ -338,22 +356,59 @@ func LoadScripts(dirs ...string) error {
 }
 
 // Return path to initialised blacklist.
-func initBlacklist() (path string, err error) {
-	path = filepath.Join(wf.DataDir(), blacklistFilename)
+func initBlacklist() (string, error) {
+	path := filepath.Join(wf.DataDir(), blacklistFilename)
 	if !util.PathExists(path) {
-
+		if err := ioutil.WriteFile(path, []byte(blacklistTemplate), 0600); err != nil {
+			return "", err
+		}
 	}
-	return
+	return path, nil
+}
+
+// Append given script names to blacklist.
+func addToBlacklist(names ...string) error {
+	path, err := initBlacklist()
+	if err != nil {
+		return err
+	}
+
+	file, err := os.OpenFile(path, os.O_APPEND|os.O_WRONLY, 0600)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	for _, s := range names {
+		if _, err := file.WriteString(s + "\n"); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 // loadBlacklist loads user-blacklisted action names.
 // TODO: implement loading/saving of blacklist
 func loadBlacklist() error {
-	_, err := initBlacklist()
+	path, err := initBlacklist()
 	if err != nil {
 		return err
 	}
-	return nil
+	file, err := os.Open(path)
+	if err != nil {
+		return err
+	}
+
+	// Treat each non-empty line that doesn't start with # as a script name
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		line := strings.TrimSpace(scanner.Text())
+		if line == "" || strings.HasPrefix(line, "#") {
+			continue
+		}
+		Blacklist(line)
+	}
+	return scanner.Err()
 }
 
 // scriptTitle returns the basename of a path without the extension.
