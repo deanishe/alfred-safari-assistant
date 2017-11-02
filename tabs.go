@@ -236,7 +236,9 @@ func customTabActions(it *aw.Item) *aw.Item {
 		bkms[bm.UID()] = bm.Title()
 	}
 
-	LoadScripts(scriptDirs...)
+	if err := LoadScripts(scriptDirs...); err != nil {
+		wf.FatalError(err)
+	}
 	for _, a := range TabActions() {
 		actions[a.Title()] = "tab"
 	}

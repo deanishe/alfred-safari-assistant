@@ -15,6 +15,10 @@
 # Workflow icons
 icon			  fontawesome   00A1DE    compass
 update-available  material      F8AC30    cloud-download
+update-check      material      00E756    cloud-download
+blacklist-edit    material      F8AC30    view-list
+blacklist-add     elusive       C92441    remove-sign
+help              material      00A1DE    help
 
 # Types
 bookmark          fontawesome   00A1DE    bookmark

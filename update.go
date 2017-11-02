@@ -45,6 +45,6 @@ func showUpdateStatus() {
 			Subtitle("⇥ or ↩ to install update").
 			Valid(false).
 			Autocomplete("workflow:update").
-			Icon(IconUpdate)
+			Icon(IconUpdateAvailable)
 	}
 }

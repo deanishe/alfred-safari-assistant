@@ -44,19 +44,24 @@ const (
 
 // Icons
 var (
-	IconDefault     = &aw.Icon{Value: "icon.png"}
-	IconTab         = &aw.Icon{Value: "icons/tab.png"}
-	IconActive      = &aw.Icon{Value: "icons/tab-active.png"}
-	IconReadingList = &aw.Icon{Value: "icons/reading-list.png"}
-	IconBookmark    = &aw.Icon{Value: "icons/bookmark.png"}
-	IconBookmarklet = &aw.Icon{Value: "icons/bookmarklet.png"}
-	IconHistory     = &aw.Icon{Value: "icons/history.png"}
-	IconUpdate      = &aw.Icon{Value: "icons/update-available.png"}
-	IconURL         = &aw.Icon{Value: "icons/url.png"}
-	IconFolder      = &aw.Icon{Value: "icons/folder.png"}
-	IconUp          = &aw.Icon{Value: "icons/up.png"}
-	IconHome        = &aw.Icon{Value: "icons/home.png"}
-	IconWarning     = &aw.Icon{Value: "icons/warning.png"}
+	IconDefault         = &aw.Icon{Value: "icon.png"}
+	IconTab             = &aw.Icon{Value: "icons/tab.png"}
+	IconActive          = &aw.Icon{Value: "icons/tab-active.png"}
+	IconReadingList     = &aw.Icon{Value: "icons/reading-list.png"}
+	IconBookmark        = &aw.Icon{Value: "icons/bookmark.png"}
+	IconBookmarklet     = &aw.Icon{Value: "icons/bookmarklet.png"}
+	IconHistory         = &aw.Icon{Value: "icons/history.png"}
+	IconURL             = &aw.Icon{Value: "icons/url.png"}
+	IconFolder          = &aw.Icon{Value: "icons/folder.png"}
+	IconUp              = &aw.Icon{Value: "icons/up.png"}
+	IconHome            = &aw.Icon{Value: "icons/home.png"}
+	IconWarning         = &aw.Icon{Value: "icons/warning.png"}
+	IconHelp            = &aw.Icon{Value: "icons/help.png"}
+	IconBlacklistEdit   = &aw.Icon{Value: "icons/blacklist-edit.png"}
+	IconBlacklistAdd    = &aw.Icon{Value: "icons/blacklist-add.png"}
+	IconGitHub          = &aw.Icon{Value: "icons/github.png"}
+	IconUpdateCheck     = &aw.Icon{Value: "icons/update-check.png"}
+	IconUpdateAvailable = &aw.Icon{Value: "icons/update-available.png"}
 	// IconError       = &aw.Icon{Value: "icons/error.png"}
 )
 
@@ -73,7 +78,8 @@ var (
 	runTabActionCmd, runURLActionCmd          *kingpin.CmdClause
 	filterActionsCmd, filterTabActionsCmd     *kingpin.CmdClause
 	filterURLActionsCmd, activeTabCmd         *kingpin.CmdClause
-	filterHistoryCmd, updateCmd               *kingpin.CmdClause
+	filterHistoryCmd, updateCmd, blacklistCmd *kingpin.CmdClause
+	configCmd                                 *kingpin.CmdClause
 
 	// Script options (populated by Kingpin application)
 	query                       string
@@ -84,6 +90,7 @@ var (
 	actionURL                   *url.URL
 	maxResults                  int
 	recentHistoryEntries        int
+	scriptNames                 []string
 	tabActionOpt, tabActionCtrl string
 	tabActionFn, tabActionShift string
 	urlActionOpt, urlActionCtrl string
@@ -116,10 +123,6 @@ func init() {
 	app = kingpin.New("alsf", "Safari bookmarks, windows and tabs in Alfred.")
 	app.HelpFlag.Short('h')
 	app.Version(wf.Version())
-
-	// ---------------------------------------------------------------
-	// Update command
-	updateCmd = app.Command("update", "Check for new workflow version.").Alias("u")
 
 	// ---------------------------------------------------------------
 	// List action commands
@@ -178,13 +181,14 @@ func init() {
 	filterReadingListCmd = app.Command("reading-list", "Filter your Reading List.").Alias("r")
 	filterTabsCmd = app.Command("tabs", "Filter your tabs.").Alias("t")
 	filterHistoryCmd = app.Command("history", "Filter your history.").Alias("h")
+	configCmd = app.Command("config", "View configuration options.").Alias("c")
 
 	// Common options
 	for _, cmd := range []*kingpin.CmdClause{
 		filterBookmarksCmd, filterBookmarkletsCmd, filterFolderCmd,
 		filterAllFoldersCmd, filterReadingListCmd, filterTabsCmd,
 		filterTabActionsCmd, filterURLActionsCmd, filterHistoryCmd,
-		searchCmd,
+		searchCmd, configCmd,
 	} {
 		cmd.Flag("query", "Search query.").Short('q').StringVar(&query)
 		cmd.Flag("max-results", "Maximum number of results to send to Alfred.").
@@ -236,6 +240,10 @@ func init() {
 	// Other commands
 	activeTabCmd = app.Command("active-tab", "Generate workflow variables for active tab.").Alias("at")
 	distnameCmd = app.Command("distname", "Print name for .alfredworkflow file.").Alias("dn")
+	updateCmd = app.Command("update", "Check for new workflow version.").Alias("u")
+	blacklistCmd = app.Command("blacklist", "Add script name(s) to blacklist").Alias("b")
+	blacklistCmd.Arg("scripts", "Names of scripts (without extensions).").
+		StringsVar(&scriptNames)
 
 	app.DefaultEnvars()
 }
@@ -343,6 +351,13 @@ func listActions(actions []Actionable) error {
 			Var("action", "tab-action").
 			Var("ALSF_ACTION", a.Title())
 
+		it.NewModifier("cmd").
+			Subtitle("Blacklist action").
+			Arg(a.Title()).
+			Valid(true).
+			Icon(IconBlacklistAdd).
+			Var("action", "blacklist")
+
 		if _, ok := a.(TabActionable); ok {
 			it.Var("ALSF_ACTION_TYPE", "tab")
 		} else if _, ok := a.(URLActionable); ok {
@@ -429,6 +444,12 @@ func run() {
 
 	case updateCmd.FullCommand():
 		err = doUpdate()
+
+	case blacklistCmd.FullCommand():
+		err = doBlacklist()
+
+	case configCmd.FullCommand():
+		err = doConfig()
 
 	default:
 		err = fmt.Errorf("Unknown command: %s", cmd)
