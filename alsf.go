@@ -348,7 +348,6 @@ func listActions(actions []Actionable) error {
 			Icon(a.Icon()).
 			Copytext(a.Title()).
 			Valid(true).
-			Var("action", "tab-action").
 			Var("ALSF_ACTION", a.Title())
 
 		it.NewModifier("cmd").
@@ -359,9 +358,11 @@ func listActions(actions []Actionable) error {
 			Var("action", "blacklist")
 
 		if _, ok := a.(TabActionable); ok {
-			it.Var("ALSF_ACTION_TYPE", "tab")
+			it.Var("ALSF_ACTION_TYPE", "tab").
+				Var("action", "tab-action")
 		} else if _, ok := a.(URLActionable); ok {
-			it.Var("ALSF_ACTION_TYPE", "url")
+			it.Var("ALSF_ACTION_TYPE", "url").
+				Var("action", "url-action")
 		}
 	}
 

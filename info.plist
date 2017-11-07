@@ -2151,27 +2151,6 @@ variables={allvars}
 			<dict>
 				<key>argument</key>
 				<string>.
-/--- DISPATCH IN ---\
-query={query}
-variables={allvars}
-\-------------------/</string>
-				<key>cleardebuggertext</key>
-				<false/>
-				<key>processoutputs</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.debug</string>
-			<key>uid</key>
-			<string>D09FFBBC-0405-4F55-BC74-5B34AA873FB1</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argument</key>
-				<string>.
 /--- DISPATCH OUT ---\
 query={query}
 variables={allvars}
@@ -2185,6 +2164,27 @@ variables={allvars}
 			<string>alfred.workflow.utility.debug</string>
 			<key>uid</key>
 			<string>0F1CFAC5-E975-422B-9C4D-BA2F38FA3062</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>.
+/--- DISPATCH IN ---\
+query={query}
+variables={allvars}
+\-------------------/</string>
+				<key>cleardebuggertext</key>
+				<false/>
+				<key>processoutputs</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.debug</string>
+			<key>uid</key>
+			<string>D09FFBBC-0405-4F55-BC74-5B34AA873FB1</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -4428,7 +4428,7 @@ Filter all bookmark folders</string>
 		<string></string>
 	</dict>
 	<key>version</key>
-	<string>0.4</string>
+	<string>0.4.1</string>
 	<key>webaddress</key>
 	<string>https://github.com/deanishe/alfred-safari-assistant/blob/master/README.md</string>
 </dict>
