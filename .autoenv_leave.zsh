@@ -1,4 +1,0 @@
-unset alfred_workflow_name
-unset alfred_workflow_bundleid
-unset alfred_workflow_version
-
