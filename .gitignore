@@ -1,3 +1,5 @@
+.autoenv.zsh
+.autoenv_leave.zsh
 
 # Created by https://www.gitignore.io/api/vim,go,atom,sublimetext
 

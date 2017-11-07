@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Source this file to export expected Alfred variables to environment
-# Needed to run modd or ./bin/build-workflow.zsh.
+# When sourced, creates an Alfred-like environment needed by modd
+# and ./bin/build (which sources the file itself)
 
 # getvar <name> | Read a value from info.plist
 getvar() {
@@ -13,3 +13,4 @@ export alfred_workflow_bundleid=$( getvar "bundleid" )
 export alfred_workflow_version=$( getvar "version" )
 export alfred_workflow_name=$( getvar "name" )
 export ALSF_HISTORY_ENTRIES=$( getvar "variables:ALSF_HISTORY_ENTRIES" )
+
