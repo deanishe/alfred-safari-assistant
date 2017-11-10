@@ -67,6 +67,7 @@ There are several settings in the workflow's configuration sheet:
 
 - `ALSF_HISTORY_ENTRIES`. Number of recent history entries to load for `bh` action (search bookmarks and recent history).
 - `ALSF_INCLUDE_BOOKMARKLETS`. Set this to `1` to include bookmarklets in the normal bookmark search (`bm`).
+- `ALSF_SEARCH_HOSTNAMES`. Set this to `1` to also search URL/tab hostnames in addition to titles.
 
 The following settings assign actions or bookmarklets to modifier keys:
 
