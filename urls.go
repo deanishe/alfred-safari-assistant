@@ -40,6 +40,12 @@ func URLerItem(u URLer) *aw.Item {
 
 	URL, err := url.Parse(u.URL())
 	if err == nil {
+
+		if searchHostnames {
+			// Add hostname to search keys
+			it.Match(u.Title() + " " + URL.Hostname())
+		}
+
 		if URL.Scheme == "http" || URL.Scheme == "https" {
 
 			it.NewModifier("cmd").

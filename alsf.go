@@ -87,6 +87,7 @@ var (
 	winIdx, tabIdx              int
 	action, actionType, uid     string
 	includeBookmarklets         bool
+	searchHostnames             bool
 	actionURL                   *url.URL
 	maxResults                  int
 	recentHistoryEntries        int
@@ -193,6 +194,8 @@ func init() {
 		cmd.Flag("query", "Search query.").Short('q').StringVar(&query)
 		cmd.Flag("max-results", "Maximum number of results to send to Alfred.").
 			Short('r').Default(defaultMaxResults).IntVar(&maxResults)
+		cmd.Flag("search-hostnames", "Also search hostnames as well as titles.").
+			Default("0").BoolVar(&searchHostnames)
 	}
 
 	// ---------------------------------------------------------------

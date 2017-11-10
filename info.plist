@@ -4410,6 +4410,8 @@ Filter all bookmark folders</string>
 		<string>1000</string>
 		<key>ALSF_INCLUDE_BOOKMARKLETS</key>
 		<string>0</string>
+		<key>ALSF_SEARCH_HOSTNAMES</key>
+		<string>1</string>
 		<key>ALSF_TAB_CTRL</key>
 		<string>Close Tabs to Left</string>
 		<key>ALSF_TAB_FN</key>
@@ -4428,7 +4430,7 @@ Filter all bookmark folders</string>
 		<string></string>
 	</dict>
 	<key>version</key>
-	<string>0.4.1</string>
+	<string>0.4.2</string>
 	<key>webaddress</key>
 	<string>https://github.com/deanishe/alfred-safari-assistant/blob/master/README.md</string>
 </dict>
