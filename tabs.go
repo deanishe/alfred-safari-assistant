@@ -260,7 +260,8 @@ func customTabActions(it *aw.Item) *aw.Item {
 	}
 
 	altActions := []struct {
-		action, key string
+		action string
+		key    aw.ModKey
 	}{
 		{tabActionCtrl, "ctrl"},
 		{tabActionShift, "shift"},
