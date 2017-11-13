@@ -8,6 +8,8 @@
 
 package main
 
+import "path/filepath"
+
 var (
 	issuesURL = "https://github.com/deanishe/alfred-safari-assistant/issues"
 	forumURL  = "https://www.alfredforum.com/topic/10921-safari-assistant/"
@@ -33,6 +35,13 @@ func doConfig() error {
 		Arg(blPath).
 		Valid(true).
 		Icon(IconBlacklistEdit).
+		Var("action", "open")
+
+	wf.NewItem("User Scripts").
+		Subtitle("Open user scripts directory in Finder").
+		Arg(filepath.Join(wf.DataDir(), "scripts")).
+		Valid(true).
+		Icon(IconFolder).
 		Var("action", "open")
 
 	wf.NewItem("Check for Update").

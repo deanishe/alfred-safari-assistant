@@ -53,7 +53,10 @@ func URLerItem(u URLer) *aw.Item {
 				Var("action", "actions")
 
 			// Custom actions
-			actions := []struct{ action, key string }{
+			actions := []struct {
+				action string
+				key    aw.ModKey
+			}{
 				{urlActionFn, "fn"},
 				{urlActionCtrl, "ctrl"},
 				{urlActionOpt, "alt"},
