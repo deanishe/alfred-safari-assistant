@@ -647,16 +647,21 @@ sub {
 #wrapper #generated-toc-clone,#wrapper #mkreplaced-toc,#wrapper #generated-toc-clone ul,#wrapper #mkreplaced-toc ul{list-style-position:inside}#wrapper #generated-toc-clone li.missing,#wrapper #mkreplaced-toc li.missing{list-style-type: none!important}#wrapper #generated-toc-clone,#wrapper #mkreplaced-toc{list-style-type: upper-roman}#wrapper #generated-toc-clone>li>ul,#wrapper #mkreplaced-toc>li>ul {list-style-type: decimal}#wrapper #generated-toc-clone>li>ul>li>ul,#wrapper #mkreplaced-toc>li>ul>li>ul{list-style-type: decimal-leading-zero}#wrapper #generated-toc-clone>li>ul>li>ul>li>ul,#wrapper #mkreplaced-toc>li>ul>li>ul>li>ul{list-style-type: lower-greek}#wrapper #generated-toc-clone>li>ul>li>ul>li>ul>li>ul,#wrapper #mkreplaced-toc>li>ul>li>ul>li>ul>li>ul{list-style-type: disc}#wrapper #generated-toc-clone>li>ul>li>ul>li>ul>li>ul>li>ul,#wrapper #mkreplaced-toc>li>ul>li>ul>li>ul>li>ul>li>ul{list-style-type: square}#wrapper #generated-toc-clone,#wrapper #mkreplaced-toc{list-style-position:outside!important;margin-left:2rem;}
 </style>
 
-<style id="mkprintstyles">@media print{#wrapper #generated-toc-clone,#generated-toc{display:none!important}
+<style id="mkprintstyles">@media print{#wrapper #generated-toc-clone,#generated-toc{display:none!important}hr{border:none!important;page-break-after:always!important;background:none!important}
 html,body,#wrapper{font-size:10pt!important}
 }
 </style>
 
 
 </head>
-<body class="normal firstload">
+<body class="normal">
   <div id="wrapper">
-      <p><img src="./icons/icon.png" width="128" height="128"></p>
+      
+
+<p align="center">  
+    <img src="./icons/icon.png" width="128" height="128">  
+</p>
+
 
 <h1 id="safari-assistant-for-alfred-3--">Safari Assistant for Alfred 3  </h1>
 
@@ -664,7 +669,7 @@ html,body,#wrapper{font-size:10pt!important}
 
 <p>Includes several actions for tabs/bookmarks and allows you to add your own via scripts. Assign your favourite actions (and bookmarklets) to hotkeys.</p>
 
-<!-- MarkdownTOC autolink="true" bracket="round" depth="2" autoanchor="true" -->
+<!-- MarkdownTOC autolink="true" bracket="round" depth="3" autoanchor="true" -->
 
 
 <ul>
@@ -680,7 +685,13 @@ html,body,#wrapper{font-size:10pt!important}
 <ul>
 <li><a href="#supported-languages">Supported languages</a></li>
 <li><a href="#script-icons">Script icons</a></li>
-<li><a href="#built-in-actions">Built-in actions</a></li>
+<li><a href="#built-in-actions">Built-in actions</a>
+
+<ul>
+<li><a href="#tab-actions">Tab actions</a></li>
+<li><a href="#url-actions">URL actions</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#history">History</a></li>
@@ -847,13 +858,13 @@ html,body,#wrapper{font-size:10pt!important}
 
 <h2 id="action-scripts--">Action scripts  </h2>
 
-<p>Much of the workflow&rsquo;s functionality is implemented via built-in scripts. You can also add your own scripts to provide additional tab and/or URL actions.</p>
+<p>Much of the workflow&rsquo;s functionality is implemented via built-in scripts. You can also add your own scripts to provide additional tab and/or URL actions by placing the scripts in the appropriate directories.</p>
 
-<p>Add your own to the workflow&rsquo;s data directory. Use the magic command <code>workflow:data</code> as a query to one of the Script Filters to open the data directory, e.g. <code>bm workflow:data</code>.</p>
+<p>To open the user script directory, enter the <code>safass</code> keyword into Alfred and choose the <code>User Scripts</code> option, which will reveal the <code>scripts</code> directory in Finder.</p>
 
 <p>Scripts go in a subdirectory of the <code>scripts</code> directory depending on the type. Tab scripts go in <code>scripts/tab</code>, URL scripts in <code>scripts/url</code>.</p>
 
-<p>When you view actions for a Safari tab, both tab and URL actions are listed. When you action a bookmark, only URL actions are listed.</p>
+<p>When you view actions for a Safari tab, both tab and URL actions are listed (provided the tab has a valid URL). When you action a bookmark, only URL actions are listed.</p>
 
 <p>Tab scripts are called with the indices of the selected window and tab as <code>$1</code> and <code>$2</code>. So if the third tab of the second Safari window is active, your script is called as <code>/path/to/script 2 3</code>.</p>
 
@@ -881,6 +892,8 @@ html,body,#wrapper{font-size:10pt!important}
 
 <p>The following actions are built into the workflow, either hard-coded or as bundled scripts (in the <code>scripts</code> subdirectory of the workflow).</p>
 
+<p><a name="tab-actions"></a></p>
+
 <h4 id="tab-actions">Tab actions</h4>
 
 <p>These actions are available for tabs only.</p>
@@ -892,6 +905,8 @@ html,body,#wrapper{font-size:10pt!important}
 <li>Close Tabs to Right</li>
 </ul>
 
+
+<p><a name="url-actions"></a></p>
 
 <h4 id="url-actions">URL actions</h4>
 
