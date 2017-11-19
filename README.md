@@ -1,5 +1,7 @@
 
-<img src="./icons/icon.png" width="128" height="128">
+<p align="center">
+    <img src="./icons/icon.png" width="128" height="128">
+</p>
 
 Safari Assistant for Alfred 3
 =============================
@@ -8,7 +10,7 @@ Search and open/activate your Safari bookmark(let)s and tabs from Alfred 3.
 
 Includes several actions for tabs/bookmarks and allows you to add your own via scripts. Assign your favourite actions (and bookmarklets) to hotkeys.
 
-<!-- MarkdownTOC autolink="true" bracket="round" depth="2" autoanchor="true" -->
+<!-- MarkdownTOC autolink="true" bracket="round" depth="3" autoanchor="true" -->
 
 - [Usage](#usage)
 - [Configuration](#configuration)
@@ -17,6 +19,8 @@ Includes several actions for tabs/bookmarks and allows you to add your own via s
     - [Supported languages](#supported-languages)
     - [Script icons](#script-icons)
     - [Built-in actions](#built-in-actions)
+        - [Tab actions](#tab-actions)
+        - [URL actions](#url-actions)
 - [History](#history)
 - [Licensing & thanks](#licensing--thanks)
 
@@ -105,13 +109,13 @@ If you add any actions to the blacklist manually, add one action (file)name per 
 Action scripts
 --------------
 
-Much of the workflow's functionality is implemented via built-in scripts. You can also add your own scripts to provide additional tab and/or URL actions.
+Much of the workflow's functionality is implemented via built-in scripts. You can also add your own scripts to provide additional tab and/or URL actions by placing the scripts in the appropriate directories.
 
-Add your own to the workflow's data directory. Use the magic command `workflow:data` as a query to one of the Script Filters to open the data directory, e.g. `bm workflow:data`.
+To open the user script directory, enter the `safass` keyword into Alfred and choose the `User Scripts` option, which will reveal the `scripts` directory in Finder.
 
 Scripts go in a subdirectory of the `scripts` directory depending on the type. Tab scripts go in `scripts/tab`, URL scripts in `scripts/url`.
 
-When you view actions for a Safari tab, both tab and URL actions are listed. When you action a bookmark, only URL actions are listed.
+When you view actions for a Safari tab, both tab and URL actions are listed (provided the tab has a valid URL). When you action a bookmark, only URL actions are listed.
 
 Tab scripts are called with the indices of the selected window and tab as `$1` and `$2`. So if the third tab of the second Safari window is active, your script is called as `/path/to/script 2 3`.
 
@@ -140,6 +144,7 @@ By default, tab scripts get a tab icon and URL scripts a URL one. You can supply
 The following actions are built into the workflow, either hard-coded or as bundled scripts (in the `scripts` subdirectory of the workflow).
 
 
+<a name="tab-actions"></a>
 #### Tab actions
 
 These actions are available for tabs only.
@@ -150,6 +155,7 @@ These actions are available for tabs only.
 - Close Tabs to Right
 
 
+<a name="url-actions"></a>
 #### URL actions
 
 These actions are available for bookmarks and tabs (that have URLs).
