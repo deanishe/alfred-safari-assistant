@@ -12,6 +12,7 @@ Includes several actions for tabs/bookmarks and allows you to add your own via s
 
 <!-- MarkdownTOC autolink="true" bracket="round" depth="3" autoanchor="true" -->
 
+- [Download & installation](#download--installation)
 - [Usage](#usage)
 - [Configuration](#configuration)
     - [Blacklist](#blacklist)
@@ -25,6 +26,13 @@ Includes several actions for tabs/bookmarks and allows you to add your own via s
 - [Licensing & thanks](#licensing--thanks)
 
 <!-- /MarkdownTOC -->
+
+
+<a name="download--installation"></a>
+Download & installation
+-----------------------
+
+Grab the workflow from [GitHub releases][download]. Download the `Safari-Assistant-X.X.alfredworkflow` file and double-click it to install.
 
 
 <a name="usage"></a>
@@ -192,6 +200,7 @@ It is heavily based on the [Kingpin][kingpin] and [AwGo][awgo] libraries (both a
 The icons are from [Elusive Icons][elusive], [Font Awesome][awesome], [Material Icons][material] (all [SIL][sil]) and [Octicons][octicons] ([MIT][mit]), via the [workflow icon generator][icongen].
 
 
+[download]: https://github.com/deanishe/alfred-safari-assistant/releases/latest
 [kingpin]: https://github.com/alecthomas/kingpin
 [awgo]: https://github.com/deanishe/awgo
 [sil]: http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
