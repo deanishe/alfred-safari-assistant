@@ -100,7 +100,7 @@ func doFilterFolder() error {
 
 	for _, it := range items {
 		if bm, ok := it.(*safari.Bookmark); ok {
-			URLerItem(&uidLess{&bmURLer{bm}})
+			URLerItem(&bmURLer{bm}, true)
 		} else if f2, ok := it.(*safari.Folder); ok {
 			folderItem(f2)
 		} else {
