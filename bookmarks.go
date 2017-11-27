@@ -145,12 +145,5 @@ func (b *bmURLer) Icon() *aw.Icon {
 	return IconBookmark
 }
 
-// uidLess removes the UID from a URLer
-type uidLess struct {
-	URLer
-}
-
-func (u *uidLess) UID() string { return "" }
-
 // bookmarkItem returns a feedback Item for Safari Bookmark.
 func bookmarkItem(bm *safari.Bookmark) *aw.Item { return URLerItem(&bmURLer{bm}) }

@@ -486,19 +486,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>579B46DD-D411-485F-947D-8B7C9126549E</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>E1234DFD-ECAC-43B7-B745-895441AE9D51</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>5AC563A6-AD3A-4740-942F-24C0BCD5468E</key>
 		<array/>
 		<key>5B315855-6C66-4A15-BD93-1E711B82CCEB</key>
@@ -597,19 +584,6 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>46664B5A-ED55-4E91-8C23-5151645FF07A</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>70ADDBDC-3466-471F-8FC0-0D08CBB6639C</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>7A20C945-1F59-4C0C-8694-F37BF0F52D5B</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -988,23 +962,13 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>579B46DD-D411-485F-947D-8B7C9126549E</string>
-				<key>modifiers</key>
-				<integer>1048576</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<true/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>70ADDBDC-3466-471F-8FC0-0D08CBB6639C</string>
+				<string>D09FFBBC-0405-4F55-BC74-5B34AA873FB1</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
 				<key>vitoclose</key>
-				<true/>
+				<false/>
 			</dict>
 		</array>
 		<key>D94FFE88-0A1C-49FE-9F45-8DDAAEECD0C8</key>
@@ -1479,25 +1443,6 @@ variables={allvars}
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>externaltriggerid</key>
-				<string>open-uid</string>
-				<key>passinputasargument</key>
-				<true/>
-				<key>passvariables</key>
-				<true/>
-				<key>workflowbundleid</key>
-				<string>self</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.callexternaltrigger</string>
-			<key>uid</key>
-			<string>E1234DFD-ECAC-43B7-B745-895441AE9D51</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>triggerid</key>
 				<string>all-folders</string>
 			</dict>
@@ -1558,27 +1503,6 @@ variables={allvars}
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argument</key>
-				<string>.
-/--- OPEN UID IN ---\
-query={query}
-variables={allvars}
-\-------------------/</string>
-				<key>cleardebuggertext</key>
-				<false/>
-				<key>processoutputs</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.debug</string>
-			<key>uid</key>
-			<string>579B46DD-D411-485F-947D-8B7C9126549E</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>externaltriggerid</key>
 				<string>browse-folder</string>
 				<key>passinputasargument</key>
@@ -1632,46 +1556,6 @@ variables={allvars}
 			<string>alfred.workflow.utility.debug</string>
 			<key>uid</key>
 			<string>1CC27177-DF0A-4468-B358-54AB7047DB95</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>externaltriggerid</key>
-				<string>browse-folder</string>
-				<key>passinputasargument</key>
-				<true/>
-				<key>passvariables</key>
-				<true/>
-				<key>workflowbundleid</key>
-				<string>self</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.callexternaltrigger</string>
-			<key>uid</key>
-			<string>7A20C945-1F59-4C0C-8694-F37BF0F52D5B</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argument</key>
-				<string>.
-/--- BROWSE FOLDERS IN ---\
-query={query}
-variables={allvars}
-\-------------------------/</string>
-				<key>cleardebuggertext</key>
-				<false/>
-				<key>processoutputs</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.debug</string>
-			<key>uid</key>
-			<string>70ADDBDC-3466-471F-8FC0-0D08CBB6639C</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -3738,15 +3622,6 @@ In either case, use ⌘C on a script/bookmarklet to copy the appropriate value t
 			<key>ypos</key>
 			<integer>2630</integer>
 		</dict>
-		<key>579B46DD-D411-485F-947D-8B7C9126549E</key>
-		<dict>
-			<key>colorindex</key>
-			<integer>11</integer>
-			<key>xpos</key>
-			<integer>590</integer>
-			<key>ypos</key>
-			<integer>610</integer>
-		</dict>
 		<key>5AC563A6-AD3A-4740-942F-24C0BCD5468E</key>
 		<dict>
 			<key>colorindex</key>
@@ -3840,15 +3715,6 @@ In either case, use ⌘C on a script/bookmarklet to copy the appropriate value t
 			<key>ypos</key>
 			<integer>2470</integer>
 		</dict>
-		<key>70ADDBDC-3466-471F-8FC0-0D08CBB6639C</key>
-		<dict>
-			<key>colorindex</key>
-			<integer>5</integer>
-			<key>xpos</key>
-			<integer>590</integer>
-			<key>ypos</key>
-			<integer>750</integer>
-		</dict>
 		<key>721AAE10-9173-47C9-98B0-B673CFBD37B2</key>
 		<dict>
 			<key>colorindex</key>
@@ -3923,15 +3789,6 @@ Filter within a specific bookmarks folder</string>
 			<integer>1630</integer>
 			<key>ypos</key>
 			<integer>770</integer>
-		</dict>
-		<key>7A20C945-1F59-4C0C-8694-F37BF0F52D5B</key>
-		<dict>
-			<key>colorindex</key>
-			<integer>5</integer>
-			<key>xpos</key>
-			<integer>700</integer>
-			<key>ypos</key>
-			<integer>720</integer>
 		</dict>
 		<key>7A8B3A1B-D512-42D5-BD53-917CE2DF84FE</key>
 		<dict>
@@ -4332,15 +4189,6 @@ Filter all bookmark folders</string>
 			<key>ypos</key>
 			<integer>2150</integer>
 		</dict>
-		<key>E1234DFD-ECAC-43B7-B745-895441AE9D51</key>
-		<dict>
-			<key>colorindex</key>
-			<integer>11</integer>
-			<key>xpos</key>
-			<integer>700</integer>
-			<key>ypos</key>
-			<integer>580</integer>
-		</dict>
 		<key>E157FBA9-1D2B-413A-A321-3DCD07AF51CA</key>
 		<dict>
 			<key>colorindex</key>
@@ -4430,7 +4278,7 @@ Filter all bookmark folders</string>
 		<string></string>
 	</dict>
 	<key>version</key>
-	<string>0.4.3</string>
+	<string>0.4.4</string>
 	<key>webaddress</key>
 	<string>https://github.com/deanishe/alfred-safari-assistant/blob/master/README.md</string>
 </dict>
