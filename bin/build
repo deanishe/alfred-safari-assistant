@@ -7,9 +7,11 @@ builddir="${root}/build"
 
 source "${root}/alfred_env.sh"
 
-devmode=1
-runtests=0
-force=0
+build=true
+devmode=true
+runtests=false
+force=false
+verbose=
 
 # log <arg>... | Echo args to STDERR
 log() {
@@ -18,46 +20,54 @@ log() {
 
 # cleanup | Delete temporary build files
 cleanup() {
-  log "Cleaning up ..."
-  test -d "$builddir" && rm -vrf "${builddir}/"*
+  log "cleaning build directory ..."
+  test -d "$builddir" && rm $verbose -rf "${builddir}/"*
 }
 
 # usage | Show usage message
 usage() {
   cat <<EOS
-build-workflow.sh [-h] [-d] [-t]
+build-workflow.sh [-h] [-d] [-t] [-v] [-x]
 
 Build workflow from source code in ./build directory.
 Use -d to also build an .alfredworkflow file.
 
 Usage:
-  build-workflow.sh [-d] [-t] [-f]
+  build-workflow.sh [-d] [-t] [-f] [-v] [-x]
   build-workflow.sh -h
 
 Options:
   -d  Distribution. Also build .alfredworkflow file.
   -f  Force. Overwrite existing files.
   -t  Also run unit tests.
+  -v  Be verbose.
+  -x  Don't build executable.
   -h  Show this message and exit.
 EOS
 }
 
 # -------------------------------------------------------
 # CLI options
-while getopts ":dfht" opt; do
+while getopts ":dfhtvx" opt; do
   case $opt in
     d)
-      devmode=0
+      devmode=false
       ;;
     f)
-      force=1
+      force=true
       ;;
     h)
       usage
       exit 0
       ;;
     t)
-      runtests=1
+      runtests=true
+      ;;
+    v)
+      verbose="-v"
+      ;;
+    x)
+      build=false
       ;;
     \?)
       log "Invalid option: -$OPTARG"
@@ -70,60 +80,85 @@ shift $((OPTIND-1))
 test -z "$root" && { log "Couldn't find workflow directory"; exit 1 }
 
 
-pushd "$root" &> /dev/null
+pushd "$root" &>/dev/null
 # -------------------------------------------------------
 # Run unit tests
-test "$runtests" -eq 1 && {
-  log "Running unit tests ..."
+$runtests && {
+  log "running unit tests ..."
   go test -v . || exit 1
 }
 
 # -------------------------------------------------------
 # Build
-test -d "${builddir}" && { log "Cleaning build directory ..."; cleanup }
-
-log "Building executable(s) ..."
-go build -v -o ./alsf .
+$build && {
+  log "building executable(s) ..."
+  go build $verbose -o ./alsf .
+}
 zipname="$( ./alsf distname 2>/dev/null )"
 outpath="${root}/${zipname}"
 
-log "Hardlinking assets to build directory ..."
+test -d "${builddir}" && cleanup
+
+log "hardlinking assets to build directory ..."
 # mkdir -vp "$builddir"
-mkdir -vp "${builddir}/scripts/"{tab,url}
-mkdir -vp "${builddir}/icons"
-ln -v *.png "${builddir}/"
-ln -v info.plist  "${builddir}/"
-ln -v alsf "${builddir}/"
-ln -v README.md "${builddir}/"
-ln -v README.html "${builddir}/"
-ln -v LICENCE.txt "${builddir}/"
-ln -v icons/*.png "${builddir}/icons/"
-ln -v scripts/tab/* "${builddir}/scripts/tab/"
-ln -v scripts/url/* "${builddir}/scripts/url/"
+mkdir $verbose -p "${builddir}/scripts/"{tab,url}
+mkdir $verbose -p "${builddir}/icons"
+
+pushd "$builddir" &>/dev/null
+
+ln $verbose ../*.png .
+ln $verbose ../info.plist .
+ln $verbose ../alsf .
+ln $verbose ../README.* .
+ln $verbose ../LICENCE.txt .
+
+pushd ./icons &>/dev/null
+ln $verbose ../../icons/*.png .
+popd &>/dev/null
+
+pushd ./scripts/tab &>/dev/null
+ln $verbose ../../../scripts/tab/* .
+popd &>/dev/null
+
+pushd ./scripts/url &>/dev/null
+ln $verbose ../../../scripts/url/* .
+popd &>/dev/null
+
+# ln -v *.png "${builddir}/"
+# ln -v info.plist  "${builddir}/"
+# ln -v alsf "${builddir}/"
+# ln -v README.md "${builddir}/"
+# ln -v README.html "${builddir}/"
+# ln -v LICENCE.txt "${builddir}/"
+# ln -v icons/*.png "${builddir}/icons/"
+# ln -v scripts/tab/* "${builddir}/scripts/tab/"
+# ln -v scripts/url/* "${builddir}/scripts/url/"
+
+popd &>/dev/null
 
 # -------------------------------------------------------
 # Build .alfredworkflow file
-test "$devmode" -eq 0 && {
+$devmode || {
   test -f "${outpath}" && {
-    test "$force" -ne 1 && {
-      log "Destination file already exists. Use -f to overwrite."
-      exit 1
+    $force && {
+      rm $verbose "${outpath}"
     } || {
-      rm -v "${outpath}"
+      log "destination file already exists. Use -f to overwrite."
+      exit 1
     }
   }
-  log "Building .alfredworkflow file ..."
-  pushd "$builddir" &> /dev/null
+  log "building .alfredworkflow file ..."
+  pushd "$builddir" &>/dev/null
   zip -9 -r "${outpath}" ./*
   ST_ZIP=$?
   test "$ST_ZIP" -ne 0 && {
-    log "Error creating .alfredworkflow file."
-    popd &> /dev/null
-    popd &> /dev/null
+    log "error creating .alfredworkflow file."
+    popd &>/dev/null
+    popd &>/dev/null
     exit $ST_ZIP
   }
-  popd &> /dev/null
-  log "Wrote '${zipname}' file in '$( pwd )'"
+  popd &>/dev/null
+  log "wrote '${zipname}' file in '$( pwd )'"
 }
 
-popd &> /dev/null
+popd &>/dev/null
