@@ -667,7 +667,7 @@
 				<key>modifiersubtext</key>
 				<string></string>
 				<key>vitoclose</key>
-				<false/>
+				<true/>
 			</dict>
 		</array>
 		<key>7D7286B3-5B8D-48F6-AC86-9A27D83EF3A2</key>
@@ -968,7 +968,7 @@
 				<key>modifiersubtext</key>
 				<string></string>
 				<key>vitoclose</key>
-				<false/>
+				<true/>
 			</dict>
 		</array>
 		<key>D94FFE88-0A1C-49FE-9F45-8DDAAEECD0C8</key>
@@ -4278,7 +4278,7 @@ Filter all bookmark folders</string>
 		<string></string>
 	</dict>
 	<key>version</key>
-	<string>0.4.5</string>
+	<string>0.4.6</string>
 	<key>webaddress</key>
 	<string>https://github.com/deanishe/alfred-safari-assistant/blob/master/README.md</string>
 </dict>
