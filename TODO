@@ -1,14 +1,15 @@
 
 New features:
-	- Add settings command
-		- Open help file
-		- Open user scripts directory
-		- Open list of ignored actions (if implemented)
+	- Add settings command @done(17-11-30 22:35)
+		- Open help file @done(17-11-30 22:35)
+		- Open user scripts directory @done(17-11-30 22:35)
+		- Open list of ignored actions (if implemented) @done(17-11-30 22:35)
 
-	- Action "blacklist" to hide unwanted actions?
+	- Action "blacklist" to hide unwanted actions? @done(17-11-30 22:35)
 		⌘↩ on an action to ignore it
 	- Also load iCloud tabs?
 		Obviously a different type to Safari tabs. Could these be treated like
 		URLs, or is a 3rd type necessary?
+		NOTE: In Sierra and later, the data are stored in an SQLite database, not a PList :(
 
 #  vim: set ft=taskpaper ts=2 sw=2 tw=100 noet :
