@@ -61,6 +61,8 @@ func doFilterFolder() error {
 	// Show "Back" options if query is empty
 	if query == "" {
 
+		wf.Configure(aw.SuppressUIDs(true))
+
 		if len(f.Ancestors) > 0 {
 
 			p := f.Ancestors[len(f.Ancestors)-1]
@@ -100,7 +102,7 @@ func doFilterFolder() error {
 
 	for _, it := range items {
 		if bm, ok := it.(*safari.Bookmark); ok {
-			URLerItem(&bmURLer{bm}, true)
+			URLerItem(&bmURLer{bm})
 		} else if f2, ok := it.(*safari.Folder); ok {
 			folderItem(f2)
 		} else {
@@ -140,6 +142,7 @@ func folderItem(f *safari.Folder) *aw.Item {
 
 	it := wf.NewItem(folderTitle(f)).
 		Subtitle(folderSubtitle(f)).
+		UID(f.UID()).
 		Icon(IconFolder)
 
 	// Make folder actionable if it isn't empty

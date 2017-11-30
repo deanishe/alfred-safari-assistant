@@ -25,10 +25,11 @@ type URLer interface {
 }
 
 // URLerItem returns a feedback Item for a URLer.
-func URLerItem(u URLer, noUID ...bool) *aw.Item {
+func URLerItem(u URLer) *aw.Item {
 
 	it := wf.NewItem(u.Title()).
 		Subtitle(u.URL()).
+		UID(u.UID()).
 		Valid(true).
 		Copytext(u.Copytext()).
 		Largetype(u.Largetype()).
@@ -36,15 +37,6 @@ func URLerItem(u URLer, noUID ...bool) *aw.Item {
 		Var("ALSF_UID", u.UID()).
 		Var("ALSF_URL", u.URL()).
 		Var("action", "open")
-
-	var b bool
-	if len(noUID) > 0 {
-		b = noUID[0]
-	}
-
-	if !b {
-		it.UID(u.UID())
-	}
 
 	URL, err := url.Parse(u.URL())
 	if err == nil {
