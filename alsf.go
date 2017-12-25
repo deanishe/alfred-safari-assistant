@@ -350,6 +350,7 @@ func listActions(actions []Actionable) error {
 			Arg(a.Title()).
 			Icon(a.Icon()).
 			Copytext(a.Title()).
+			UID(a.Title()).
 			Valid(true).
 			Var("ALSF_ACTION", a.Title())
 
