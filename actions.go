@@ -113,8 +113,7 @@ func URLActions() []URLActionable {
 
 // URLAction returns the first registered URLActionable with the matching title.
 func URLAction(title string) URLActionable {
-	acts := URLActions()
-	for _, a := range acts {
+	for _, a := range URLActions() {
 		if a.Title() == title {
 			return a
 		}
@@ -315,6 +314,10 @@ func (a *urlRunner) Run(u *url.URL) error {
 
 // LoadScripts finds scripts in directories and registers them.
 func LoadScripts(dirs ...string) error {
+	if err := loadBlacklist(); err != nil {
+		return err
+	}
+
 	errs := []error{}
 
 	for _, dp := range dirs {
@@ -331,11 +334,23 @@ func LoadScripts(dirs ...string) error {
 				s := newScript(p, typ)
 				switch typ {
 				case "tab":
-					Register(&tabRunner{scriptRunner{s}})
-					log.Printf("Tab Script `%s` from `%s`", scriptTitle(p), p)
+					r := &tabRunner{scriptRunner{s}}
+					if blacklist[r.Title()] {
+						log.Printf("blacklisted: %s", r.Title())
+					} else {
+						Register(r)
+						log.Printf("Tab Script `%s` from `%s`", scriptTitle(p), p)
+					}
+
 				case "url":
-					Register(&urlRunner{scriptRunner{s}})
-					log.Printf("URL Script `%s` from `%s`", scriptTitle(p), p)
+					r := &urlRunner{scriptRunner{s}}
+					if blacklist[r.Title()] {
+						log.Printf("blacklisted: %s", r.Title())
+
+					} else {
+						Register(r)
+						log.Printf("URL Script `%s` from `%s`", scriptTitle(p), p)
+					}
 					// default:
 					// 	log.Printf("I (%s) : %s", filepath.Base(dp))
 				}
@@ -352,7 +367,7 @@ func LoadScripts(dirs ...string) error {
 		return errs[0]
 	}
 
-	return loadBlacklist()
+	return nil
 }
 
 // Return path to initialised blacklist.
@@ -388,7 +403,6 @@ func addToBlacklist(names ...string) error {
 }
 
 // loadBlacklist loads user-blacklisted action names.
-// TODO: implement loading/saving of blacklist
 func loadBlacklist() error {
 	path, err := initBlacklist()
 	if err != nil {

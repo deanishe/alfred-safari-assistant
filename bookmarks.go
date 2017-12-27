@@ -90,6 +90,11 @@ func filterBookmarks(bookmarks []*safari.Bookmark) error {
 
 	showUpdateStatus()
 
+	// Load scripts so we can show their icons
+	if err := LoadScripts(scriptDirs...); err != nil {
+		return err
+	}
+
 	log.Printf("query=%s", query)
 
 	log.Printf("Loaded %d bookmarks", len(bookmarks))

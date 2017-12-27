@@ -44,6 +44,7 @@ const (
 
 // Icons
 var (
+	IconActions         = &aw.Icon{Value: "icons/actions.png"}
 	IconDefault         = &aw.Icon{Value: "icon.png"}
 	IconTab             = &aw.Icon{Value: "icons/tab.png"}
 	IconActive          = &aw.Icon{Value: "icons/tab-active.png"}

@@ -4275,10 +4275,10 @@ Filter all bookmark folders</string>
 		<key>ALSF_URL_OPT</key>
 		<string>Open in Firefox</string>
 		<key>ALSF_URL_SHIFT</key>
-		<string></string>
+		<string>Open in Current Tab</string>
 	</dict>
 	<key>version</key>
-	<string>0.4.7</string>
+	<string>0.5</string>
 	<key>webaddress</key>
 	<string>https://github.com/deanishe/alfred-safari-assistant/blob/master/README.md</string>
 </dict>

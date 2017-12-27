@@ -50,7 +50,8 @@ func URLerItem(u URLer) *aw.Item {
 
 			it.NewModifier("cmd").
 				Subtitle("Other actions…").
-				Var("action", "actions")
+				Var("action", "actions").
+				Icon(IconActions)
 
 			// Custom actions
 			actions := []struct {
@@ -67,10 +68,19 @@ func URLerItem(u URLer) *aw.Item {
 				if a.action == "" { // unset
 					continue
 				}
+
+				// Validate action
+				action := URLAction(a.action)
+				if action == nil {
+					continue
+				}
+
 				it.NewModifier(a.key).
 					Subtitle(a.action).
 					Var("action", "url-action").
-					Var("ALSF_ACTION", a.action)
+					Var("ALSF_ACTION", a.action).
+					Icon(action.Icon())
+
 			}
 		}
 	}
