@@ -34,6 +34,8 @@ Download & installation
 
 Grab the workflow from [GitHub releases][download]. Download the `Safari-Assistant-X.X.alfredworkflow` file and double-click it to install.
 
+__Note:__ Under Mojave, make sure Alfred is added under `Full Disk Access` in Security & Privacy -> Privacy.
+
 
 <a name="usage"></a>
 Usage
