@@ -21,7 +21,7 @@ import (
 // Activate the specified window (and tab).
 func doActivate() error {
 
-	wf.TextErrors = true
+	wf.Configure(aw.TextErrors(true))
 
 	log.Printf("Activating %dx%d", winIdx, tabIdx)
 
@@ -52,7 +52,7 @@ func doFilterTabActions() error {
 
 // doTabAction performs an action on a tab.
 func doTabAction() error {
-	wf.TextErrors = true
+	wf.Configure(aw.TextErrors(true))
 
 	var (
 		err error

@@ -19,7 +19,7 @@
 // sheet in Alfred Preferences.
 //
 // See https://github.com/deanishe/alfred-safari-assistant for usage instructions.
-package main
+package main // import "github.com/deanishe/alfred-safari-assistant"
 
 import (
 	"fmt"
@@ -270,7 +270,7 @@ func doFilterURLActions() error {
 
 // doURLAction performs an action on a URL.
 func doURLAction() error {
-	wf.TextErrors = true
+	wf.Configure(aw.TextErrors(true))
 
 	log.Printf("URL=%s, action=%s", actionURL, action)
 
@@ -388,7 +388,7 @@ func run() {
 	if err != nil {
 		wf.FatalError(err)
 	}
-	wf.MaxResults = maxResults
+	wf.Configure(aw.MaxResults(maxResults))
 
 	// Create user script directories
 	util.MustExist(filepath.Join(wf.DataDir(), "scripts", "tab"))
@@ -442,7 +442,7 @@ func run() {
 		err = doURLAction()
 
 	case runTabActionCmd.FullCommand():
-		wf.TextErrors = true
+		wf.Configure(aw.TextErrors(true))
 		err = doTabAction()
 
 	case activeTabCmd.FullCommand():

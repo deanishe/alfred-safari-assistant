@@ -21,7 +21,7 @@ func doFilterHistory() error {
 	showUpdateStatus()
 
 	history.MaxSearchResults = maxResults * 10 // allow for lots of duplicates
-	wf.MaxResults = maxResults
+	wf.Configure(aw.MaxResults(maxResults))
 
 	entries, err := history.Search(query)
 	if err != nil {

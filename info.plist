@@ -3276,6 +3276,8 @@ Configuration
 
 `ALSF_INCLUDE_BOOKMARKLETS`: Set to `1` to include bookmarklets in the default bookmark search.
 
+`ALSF_SEARCH_HOSTNAMES`: Set to `1` to also search bookmark/history/tab hostnames in addition to titles.
+
 `ALSF_TAB_*`: Bind an action (script)/bookmarklet to a modifier key. Use MOD+↩ to run this action/bookmarklet on a tab.
 
 For a script, use the name (minus extension). For a bookmarklet, use `bkm:UID` where `UID` is the UID of the bookmarklet.
@@ -4278,7 +4280,7 @@ Filter all bookmark folders</string>
 		<string>Open in Current Tab</string>
 	</dict>
 	<key>version</key>
-	<string>0.5</string>
+	<string>0.5.1</string>
 	<key>webaddress</key>
 	<string>https://github.com/deanishe/alfred-safari-assistant/blob/master/README.md</string>
 </dict>

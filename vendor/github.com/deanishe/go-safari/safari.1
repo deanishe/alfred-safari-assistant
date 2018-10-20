@@ -1,0 +1,39 @@
+.TH safari 1 0.1.0 ""
+.SH "NAME"
+safari
+.SH "SYNOPSIS"
+.TP
+\fBsafari [<flags>] <command> [<args> ...]\fR
+
+.SH "DESCRIPTION"
+Manipulate Safari and search its data.
+.SH "OPTIONS"
+.TP
+\fB-h, --help\fR
+Show context-sensitive help (also try --help-long and --help-man).
+.TP
+\fB--version\fR
+Show application version.
+.TP
+\fB--colour\fR
+Turn colourised output on/off (default=on).
+.SH "COMMANDS"
+.SS
+\fBhelp [<command>...]\fR
+.PP
+Show help.
+.SS
+\fBactivate <window> [<tab>]\fR
+.PP
+Active a Safari window or tab.
+.SS
+\fBlist [<flags>] <type>\fR
+.PP
+List Safari bookmarks, folders or tabs.
+.TP
+\fB-j, --json\fR
+Output JSON, not text.
+.SS
+\fBclose <what> [<window*>] [<tab>]\fR
+.PP
+Close Safari windows and/or tabs.

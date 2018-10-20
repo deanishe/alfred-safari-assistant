@@ -78,7 +78,7 @@ func init() {
 
 // doBlacklist adds the specified action names to the blacklist.
 func doBlacklist() error {
-	wf.TextErrors = true
+	wf.Configure(aw.TextErrors(true))
 	return addToBlacklist(scriptNames...)
 }
 
