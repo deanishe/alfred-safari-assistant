@@ -155,7 +155,7 @@ $devmode || {
   }
 
   popd &>/dev/null
-  log "wrote '${zipname}' file in '$( pwd )'"
+  log "wrote '${zipname}' file in '${distdir}'"
 }
 
 popd &>/dev/null

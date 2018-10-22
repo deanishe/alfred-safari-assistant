@@ -1,6 +1,9 @@
 # Built workflows
 /dist/
 
+# Built workflow file
+*.alfredworkflow
+
 # Autoenv files
 .autoenv.zsh
 .autoenv_leave.zsh
