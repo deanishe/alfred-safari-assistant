@@ -880,6 +880,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>B8B5975F-6B09-47E2-B3A2-45A4736A18DC</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E7C9EB62-33E3-497F-83AF-47702D848406</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>BA115AD6-EFBB-46E5-9DFA-E842BEF68AC4</key>
 		<array>
 			<dict>
@@ -1073,6 +1086,19 @@
 				<string></string>
 				<key>vitoclose</key>
 				<false/>
+			</dict>
+		</array>
+		<key>E7C9EB62-33E3-497F-83AF-47702D848406</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>7BB45208-5419-4C02-BCAE-153D620B6DD5</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<true/>
 			</dict>
 		</array>
 		<key>E87B43A8-2AA2-4DCF-AE39-689352ECA442</key>
@@ -1439,6 +1465,107 @@ variables={allvars}
 			<string>052405D0-212B-42D3-9E79-C4310040EAF6</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>0</integer>
+				<key>hotmod</key>
+				<integer>0</integer>
+				<key>hotstring</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>2</integer>
+				<key>relatedApps</key>
+				<array>
+					<string>com.apple.Safari</string>
+				</array>
+				<key>relatedAppsMode</key>
+				<integer>1</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>B8B5975F-6B09-47E2-B3A2-45A4736A18DC</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>itab</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Loading tabs…</string>
+				<key>script</key>
+				<string>./alsf icloud -q "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Search Cloud Tabs</string>
+				<key>title</key>
+				<string>Safari Cloud Tabs</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>E7C9EB62-33E3-497F-83AF-47702D848406</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>dispatch</string>
+				<key>passinputasargument</key>
+				<true/>
+				<key>passvariables</key>
+				<true/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>7BB45208-5419-4C02-BCAE-153D620B6DD5</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -3292,9 +3419,9 @@ In either case, use ⌘C on a script/bookmarklet to copy the appropriate value t
 			<key>colorindex</key>
 			<integer>3</integer>
 			<key>xpos</key>
-			<integer>1430</integer>
+			<integer>1440</integer>
 			<key>ypos</key>
-			<integer>1730</integer>
+			<integer>1910</integer>
 		</dict>
 		<key>0380DE17-734F-47D8-8D4B-C9D499F0A82B</key>
 		<dict>
@@ -3303,9 +3430,9 @@ In either case, use ⌘C on a script/bookmarklet to copy the appropriate value t
 			<key>note</key>
 			<string>action == bookmarklet</string>
 			<key>xpos</key>
-			<integer>1330</integer>
+			<integer>1340</integer>
 			<key>ypos</key>
-			<integer>1890</integer>
+			<integer>2070</integer>
 		</dict>
 		<key>052405D0-212B-42D3-9E79-C4310040EAF6</key>
 		<dict>
@@ -3314,9 +3441,9 @@ In either case, use ⌘C on a script/bookmarklet to copy the appropriate value t
 			<key>note</key>
 			<string>View Safari tabs</string>
 			<key>xpos</key>
-			<integer>40</integer>
+			<integer>50</integer>
 			<key>ypos</key>
-			<integer>400</integer>
+			<integer>410</integer>
 		</dict>
 		<key>0A9A6198-DB8E-4F73-90F3-12A2A96C018D</key>
 		<dict>
@@ -3325,27 +3452,27 @@ In either case, use ⌘C on a script/bookmarklet to copy the appropriate value t
 			<key>note</key>
 			<string>Activate tab</string>
 			<key>xpos</key>
-			<integer>300</integer>
+			<integer>310</integer>
 			<key>ypos</key>
-			<integer>1830</integer>
+			<integer>2010</integer>
 		</dict>
 		<key>0F1CFAC5-E975-422B-9C4D-BA2F38FA3062</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>4</integer>
 			<key>xpos</key>
-			<integer>1040</integer>
+			<integer>1050</integer>
 			<key>ypos</key>
-			<integer>1250</integer>
+			<integer>1430</integer>
 		</dict>
 		<key>0F8110E8-8871-42C6-9C45-BDB6A320370B</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>6</integer>
 			<key>xpos</key>
-			<integer>210</integer>
+			<integer>220</integer>
 			<key>ypos</key>
-			<integer>2020</integer>
+			<integer>2200</integer>
 		</dict>
 		<key>1138EA0F-2809-48B0-9298-241D356FFB79</key>
 		<dict>
@@ -3354,9 +3481,9 @@ In either case, use ⌘C on a script/bookmarklet to copy the appropriate value t
 			<key>note</key>
 			<string>Run a bookmarklet</string>
 			<key>xpos</key>
-			<integer>40</integer>
+			<integer>50</integer>
 			<key>ypos</key>
-			<integer>2310</integer>
+			<integer>2490</integer>
 		</dict>
 		<key>13C04350-8420-4F8D-947E-FB3C5EDF1849</key>
 		<dict>
@@ -3365,9 +3492,9 @@ In either case, use ⌘C on a script/bookmarklet to copy the appropriate value t
 			<key>note</key>
 			<string>View Safari bookmarks &amp; history</string>
 			<key>xpos</key>
-			<integer>40</integer>
+			<integer>50</integer>
 			<key>ypos</key>
-			<integer>780</integer>
+			<integer>960</integer>
 		</dict>
 		<key>140AAF25-222F-4941-BAE9-66355068413A</key>
 		<dict>
@@ -3376,9 +3503,9 @@ In either case, use ⌘C on a script/bookmarklet to copy the appropriate value t
 			<key>note</key>
 			<string>Show Actions for current tab</string>
 			<key>xpos</key>
-			<integer>40</integer>
+			<integer>50</integer>
 			<key>ypos</key>
-			<integer>210</integer>
+			<integer>220</integer>
 		</dict>
 		<key>1C9AC767-AC40-4CD6-A0C9-5D7E10196EC0</key>
 		<dict>
@@ -3387,18 +3514,18 @@ In either case, use ⌘C on a script/bookmarklet to copy the appropriate value t
 			<key>note</key>
 			<string>Hide Alfred</string>
 			<key>xpos</key>
-			<integer>340</integer>
+			<integer>350</integer>
 			<key>ypos</key>
-			<integer>2970</integer>
+			<integer>3150</integer>
 		</dict>
 		<key>1CC27177-DF0A-4468-B358-54AB7047DB95</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>5</integer>
 			<key>xpos</key>
-			<integer>1430</integer>
+			<integer>1440</integer>
 			<key>ypos</key>
-			<integer>650</integer>
+			<integer>830</integer>
 		</dict>
 		<key>1E460E54-AE7A-4040-8B7A-B7A6A0A47268</key>
 		<dict>
@@ -3407,34 +3534,34 @@ In either case, use ⌘C on a script/bookmarklet to copy the appropriate value t
 			<key>note</key>
 			<string>action == tab-action</string>
 			<key>xpos</key>
-			<integer>1330</integer>
+			<integer>1340</integer>
 			<key>ypos</key>
-			<integer>1730</integer>
+			<integer>1910</integer>
 		</dict>
 		<key>21FE9A2C-DD29-4D8F-B6E9-72FD617E1CAC</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>5</integer>
 			<key>xpos</key>
-			<integer>1430</integer>
+			<integer>1440</integer>
 			<key>ypos</key>
-			<integer>2050</integer>
+			<integer>2230</integer>
 		</dict>
 		<key>23B78D1A-5E3A-4F49-B517-60BB4542189A</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>3</integer>
 			<key>xpos</key>
-			<integer>1530</integer>
+			<integer>1540</integer>
 			<key>ypos</key>
-			<integer>1730</integer>
+			<integer>1910</integer>
 		</dict>
 		<key>269544DC-8CA1-4B79-B8F9-EB9EF78FD416</key>
 		<dict>
 			<key>xpos</key>
-			<integer>700</integer>
+			<integer>710</integer>
 			<key>ypos</key>
-			<integer>2150</integer>
+			<integer>2330</integer>
 		</dict>
 		<key>28484670-F0F8-45A1-BE66-2414CD285135</key>
 		<dict>
@@ -3443,9 +3570,9 @@ In either case, use ⌘C on a script/bookmarklet to copy the appropriate value t
 			<key>note</key>
 			<string>action == actions</string>
 			<key>xpos</key>
-			<integer>1330</integer>
+			<integer>1340</integer>
 			<key>ypos</key>
-			<integer>800</integer>
+			<integer>980</integer>
 		</dict>
 		<key>28FFC9A0-33E0-416F-AE04-58EF662D1C03</key>
 		<dict>
@@ -3454,9 +3581,9 @@ In either case, use ⌘C on a script/bookmarklet to copy the appropriate value t
 			<key>note</key>
 			<string>Search and run bookmarklets</string>
 			<key>xpos</key>
-			<integer>300</integer>
+			<integer>310</integer>
 			<key>ypos</key>
-			<integer>1120</integer>
+			<integer>1300</integer>
 		</dict>
 		<key>2B2FA0E3-4771-4FA3-B9E9-AFF6CF4B768F</key>
 		<dict>
@@ -3465,9 +3592,9 @@ In either case, use ⌘C on a script/bookmarklet to copy the appropriate value t
 			<key>note</key>
 			<string>Show URL actions</string>
 			<key>xpos</key>
-			<integer>40</integer>
+			<integer>50</integer>
 			<key>ypos</key>
-			<integer>2630</integer>
+			<integer>2810</integer>
 		</dict>
 		<key>2CB41475-54F4-4C7F-A060-24CB4AFADC1E</key>
 		<dict>
@@ -3476,18 +3603,18 @@ In either case, use ⌘C on a script/bookmarklet to copy the appropriate value t
 			<key>note</key>
 			<string>action == open</string>
 			<key>xpos</key>
-			<integer>590</integer>
+			<integer>600</integer>
 			<key>ypos</key>
-			<integer>60</integer>
+			<integer>70</integer>
 		</dict>
 		<key>30F1BD1C-1746-40D0-931B-37818C793463</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>5</integer>
 			<key>xpos</key>
-			<integer>210</integer>
+			<integer>220</integer>
 			<key>ypos</key>
-			<integer>1660</integer>
+			<integer>1840</integer>
 		</dict>
 		<key>323EA158-3C85-45C9-8702-F4750AD40233</key>
 		<dict>
@@ -3496,9 +3623,9 @@ In either case, use ⌘C on a script/bookmarklet to copy the appropriate value t
 			<key>note</key>
 			<string>Open specified bookmark/folder</string>
 			<key>xpos</key>
-			<integer>470</integer>
+			<integer>480</integer>
 			<key>ypos</key>
-			<integer>2940</integer>
+			<integer>3120</integer>
 		</dict>
 		<key>329B5936-B26C-49BC-8ED1-53A0E11D913B</key>
 		<dict>
@@ -3507,9 +3634,9 @@ In either case, use ⌘C on a script/bookmarklet to copy the appropriate value t
 			<key>note</key>
 			<string>View Safari bookmarks</string>
 			<key>xpos</key>
-			<integer>40</integer>
+			<integer>50</integer>
 			<key>ypos</key>
-			<integer>950</integer>
+			<integer>1130</integer>
 		</dict>
 		<key>32B60ABE-74B8-4CD4-B7BE-20F5AC2A27FB</key>
 		<dict>
@@ -3518,18 +3645,18 @@ In either case, use ⌘C on a script/bookmarklet to copy the appropriate value t
 			<key>note</key>
 			<string>Show configuration options</string>
 			<key>xpos</key>
-			<integer>300</integer>
+			<integer>310</integer>
 			<key>ypos</key>
-			<integer>30</integer>
+			<integer>40</integer>
 		</dict>
 		<key>356B391D-D91D-46CD-82B9-B30A76C9ADEF</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>11</integer>
 			<key>xpos</key>
-			<integer>210</integer>
+			<integer>220</integer>
 			<key>ypos</key>
-			<integer>2970</integer>
+			<integer>3150</integer>
 		</dict>
 		<key>3810E7C3-8090-4111-AECE-F78625F2C81E</key>
 		<dict>
@@ -3538,9 +3665,9 @@ In either case, use ⌘C on a script/bookmarklet to copy the appropriate value t
 			<key>note</key>
 			<string>View Safari Reading List</string>
 			<key>xpos</key>
-			<integer>40</integer>
+			<integer>50</integer>
 			<key>ypos</key>
-			<integer>1290</integer>
+			<integer>1470</integer>
 		</dict>
 		<key>382EA310-BC65-42FA-9B9B-CD962F883D3A</key>
 		<dict>
@@ -3549,9 +3676,9 @@ In either case, use ⌘C on a script/bookmarklet to copy the appropriate value t
 			<key>note</key>
 			<string>Search and open Bookmarks</string>
 			<key>xpos</key>
-			<integer>300</integer>
+			<integer>310</integer>
 			<key>ypos</key>
-			<integer>950</integer>
+			<integer>1130</integer>
 		</dict>
 		<key>4054C8DB-767E-43E2-853B-99AF76AF8C67</key>
 		<dict>
@@ -3560,9 +3687,9 @@ In either case, use ⌘C on a script/bookmarklet to copy the appropriate value t
 			<key>note</key>
 			<string>Set window and tab variables to current active tab</string>
 			<key>xpos</key>
-			<integer>300</integer>
+			<integer>310</integer>
 			<key>ypos</key>
-			<integer>210</integer>
+			<integer>220</integer>
 		</dict>
 		<key>41723B25-4411-4D15-811C-6EB22BF8E347</key>
 		<dict>
@@ -3571,36 +3698,36 @@ In either case, use ⌘C on a script/bookmarklet to copy the appropriate value t
 			<key>note</key>
 			<string>Show all folders</string>
 			<key>xpos</key>
-			<integer>1630</integer>
+			<integer>1640</integer>
 			<key>ypos</key>
-			<integer>1070</integer>
+			<integer>1250</integer>
 		</dict>
 		<key>425A464A-92AD-487B-815B-EEF3F783B7DE</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>9</integer>
 			<key>xpos</key>
-			<integer>210</integer>
+			<integer>220</integer>
 			<key>ypos</key>
-			<integer>1860</integer>
+			<integer>2040</integer>
 		</dict>
 		<key>42D01BD0-03F3-4E8E-B75C-79ABA3D025F2</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>3</integer>
 			<key>xpos</key>
-			<integer>1430</integer>
+			<integer>1440</integer>
 			<key>ypos</key>
-			<integer>1410</integer>
+			<integer>1590</integer>
 		</dict>
 		<key>46664B5A-ED55-4E91-8C23-5151645FF07A</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>5</integer>
 			<key>xpos</key>
-			<integer>210</integer>
+			<integer>220</integer>
 			<key>ypos</key>
-			<integer>2500</integer>
+			<integer>2680</integer>
 		</dict>
 		<key>531FEF57-7248-4CB7-B93D-1B1195CC3EF3</key>
 		<dict>
@@ -3609,9 +3736,9 @@ In either case, use ⌘C on a script/bookmarklet to copy the appropriate value t
 			<key>note</key>
 			<string>Activate tab</string>
 			<key>xpos</key>
-			<integer>40</integer>
+			<integer>50</integer>
 			<key>ypos</key>
-			<integer>1830</integer>
+			<integer>2010</integer>
 		</dict>
 		<key>568D7820-F839-4E7A-B5B7-9C2D7DC0515B</key>
 		<dict>
@@ -3620,9 +3747,9 @@ In either case, use ⌘C on a script/bookmarklet to copy the appropriate value t
 			<key>note</key>
 			<string>Filter URL actions</string>
 			<key>xpos</key>
-			<integer>300</integer>
+			<integer>310</integer>
 			<key>ypos</key>
-			<integer>2630</integer>
+			<integer>2810</integer>
 		</dict>
 		<key>5AC563A6-AD3A-4740-942F-24C0BCD5468E</key>
 		<dict>
@@ -3631,9 +3758,9 @@ In either case, use ⌘C on a script/bookmarklet to copy the appropriate value t
 			<key>note</key>
 			<string>Open folder/bookmark</string>
 			<key>xpos</key>
-			<integer>1630</integer>
+			<integer>1640</integer>
 			<key>ypos</key>
-			<integer>920</integer>
+			<integer>1100</integer>
 		</dict>
 		<key>5B315855-6C66-4A15-BD93-1E711B82CCEB</key>
 		<dict>
@@ -3642,18 +3769,18 @@ In either case, use ⌘C on a script/bookmarklet to copy the appropriate value t
 			<key>note</key>
 			<string>action == blacklist</string>
 			<key>xpos</key>
-			<integer>1330</integer>
+			<integer>1340</integer>
 			<key>ypos</key>
-			<integer>2050</integer>
+			<integer>2230</integer>
 		</dict>
 		<key>5D3D14E4-F4AE-4F8E-8B98-ADA2FF5AE651</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>11</integer>
 			<key>xpos</key>
-			<integer>1430</integer>
+			<integer>1440</integer>
 			<key>ypos</key>
-			<integer>950</integer>
+			<integer>1130</integer>
 		</dict>
 		<key>5FD5E746-B22D-44E1-89BC-ED2617F9BB7B</key>
 		<dict>
@@ -3662,27 +3789,27 @@ In either case, use ⌘C on a script/bookmarklet to copy the appropriate value t
 			<key>note</key>
 			<string>Re-entry point for self and the "browse-folder" External Trigger below</string>
 			<key>xpos</key>
-			<integer>40</integer>
+			<integer>50</integer>
 			<key>ypos</key>
-			<integer>580</integer>
+			<integer>760</integer>
 		</dict>
 		<key>653E20AF-BF4B-43A1-911F-56F8F4C5A8F2</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>3</integer>
 			<key>xpos</key>
-			<integer>460</integer>
+			<integer>470</integer>
 			<key>ypos</key>
-			<integer>240</integer>
+			<integer>250</integer>
 		</dict>
 		<key>65A23B83-8C51-40A7-AA28-9E37BC98EAE8</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>5</integer>
 			<key>xpos</key>
-			<integer>40</integer>
+			<integer>50</integer>
 			<key>ypos</key>
-			<integer>1630</integer>
+			<integer>1810</integer>
 		</dict>
 		<key>6610C516-6069-4841-AE4A-418E00E6E59E</key>
 		<dict>
@@ -3691,9 +3818,9 @@ In either case, use ⌘C on a script/bookmarklet to copy the appropriate value t
 			<key>note</key>
 			<string>action == top</string>
 			<key>xpos</key>
-			<integer>1330</integer>
+			<integer>1340</integer>
 			<key>ypos</key>
-			<integer>1100</integer>
+			<integer>1280</integer>
 		</dict>
 		<key>6AD034BA-6776-460D-A548-5134AA48BF23</key>
 		<dict>
@@ -3702,9 +3829,9 @@ In either case, use ⌘C on a script/bookmarklet to copy the appropriate value t
 			<key>note</key>
 			<string>Run URL action</string>
 			<key>xpos</key>
-			<integer>300</integer>
+			<integer>310</integer>
 			<key>ypos</key>
-			<integer>1990</integer>
+			<integer>2170</integer>
 		</dict>
 		<key>70374605-5971-419E-89DD-D81D48C9F155</key>
 		<dict>
@@ -3713,9 +3840,9 @@ In either case, use ⌘C on a script/bookmarklet to copy the appropriate value t
 			<key>note</key>
 			<string>Run a bookmarklet</string>
 			<key>xpos</key>
-			<integer>40</integer>
+			<integer>50</integer>
 			<key>ypos</key>
-			<integer>2470</integer>
+			<integer>2650</integer>
 		</dict>
 		<key>721AAE10-9173-47C9-98B0-B673CFBD37B2</key>
 		<dict>
@@ -3726,9 +3853,9 @@ In either case, use ⌘C on a script/bookmarklet to copy the appropriate value t
 
 Filter within a specific bookmarks folder</string>
 			<key>xpos</key>
-			<integer>300</integer>
+			<integer>310</integer>
 			<key>ypos</key>
-			<integer>1630</integer>
+			<integer>1810</integer>
 		</dict>
 		<key>7341F452-292A-430A-B133-FF905D045454</key>
 		<dict>
@@ -3737,18 +3864,18 @@ Filter within a specific bookmarks folder</string>
 			<key>note</key>
 			<string>Run a bookmarklet</string>
 			<key>xpos</key>
-			<integer>1630</integer>
+			<integer>1640</integer>
 			<key>ypos</key>
-			<integer>1860</integer>
+			<integer>2040</integer>
 		</dict>
 		<key>7573F326-F8C0-43DD-A33F-13188EC76588</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>7</integer>
 			<key>xpos</key>
-			<integer>210</integer>
+			<integer>220</integer>
 			<key>ypos</key>
-			<integer>2340</integer>
+			<integer>2520</integer>
 		</dict>
 		<key>7619DB99-62C5-4D27-BC76-AB6ACB0E54DE</key>
 		<dict>
@@ -3757,18 +3884,18 @@ Filter within a specific bookmarks folder</string>
 			<key>note</key>
 			<string>Run bookmarlet</string>
 			<key>xpos</key>
-			<integer>300</integer>
+			<integer>310</integer>
 			<key>ypos</key>
-			<integer>2310</integer>
+			<integer>2490</integer>
 		</dict>
 		<key>764E3758-AD69-4FE2-929E-C3CBD511D286</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>5</integer>
 			<key>xpos</key>
-			<integer>1530</integer>
+			<integer>1540</integer>
 			<key>ypos</key>
-			<integer>2050</integer>
+			<integer>2230</integer>
 		</dict>
 		<key>76F03F1E-15FC-4B9D-9B00-98F12EF5B136</key>
 		<dict>
@@ -3777,9 +3904,9 @@ Filter within a specific bookmarks folder</string>
 			<key>note</key>
 			<string>Search and manipulate Tabs</string>
 			<key>xpos</key>
-			<integer>300</integer>
+			<integer>310</integer>
 			<key>ypos</key>
-			<integer>400</integer>
+			<integer>410</integer>
 		</dict>
 		<key>79A1CFFD-2081-4E25-A0FA-35AD64B6648C</key>
 		<dict>
@@ -3788,9 +3915,9 @@ Filter within a specific bookmarks folder</string>
 			<key>note</key>
 			<string>URL actions</string>
 			<key>xpos</key>
-			<integer>1630</integer>
+			<integer>1640</integer>
 			<key>ypos</key>
-			<integer>770</integer>
+			<integer>950</integer>
 		</dict>
 		<key>7A8B3A1B-D512-42D5-BD53-917CE2DF84FE</key>
 		<dict>
@@ -3799,9 +3926,9 @@ Filter within a specific bookmarks folder</string>
 			<key>note</key>
 			<string>View settings</string>
 			<key>xpos</key>
-			<integer>40</integer>
+			<integer>50</integer>
 			<key>ypos</key>
-			<integer>30</integer>
+			<integer>40</integer>
 		</dict>
 		<key>7B947B9D-BCCE-40AD-8F10-614A4F627F0D</key>
 		<dict>
@@ -3810,54 +3937,63 @@ Filter within a specific bookmarks folder</string>
 			<key>note</key>
 			<string>Run a tab action</string>
 			<key>xpos</key>
-			<integer>1630</integer>
+			<integer>1640</integer>
 			<key>ypos</key>
-			<integer>1700</integer>
+			<integer>1880</integer>
+		</dict>
+		<key>7BB45208-5419-4C02-BCAE-153D620B6DD5</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>5</integer>
+			<key>xpos</key>
+			<integer>560</integer>
+			<key>ypos</key>
+			<integer>580</integer>
 		</dict>
 		<key>7D7286B3-5B8D-48F6-AC86-9A27D83EF3A2</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>7</integer>
 			<key>xpos</key>
-			<integer>1430</integer>
+			<integer>1440</integer>
 			<key>ypos</key>
-			<integer>1890</integer>
+			<integer>2070</integer>
 		</dict>
 		<key>7F3CB6EC-EC81-4581-9828-E8B16977D72D</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>2</integer>
 			<key>xpos</key>
-			<integer>210</integer>
+			<integer>220</integer>
 			<key>ypos</key>
-			<integer>2660</integer>
+			<integer>2840</integer>
 		</dict>
 		<key>84DB3789-346A-4833-A576-49CEE1C8EF04</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>8</integer>
 			<key>xpos</key>
-			<integer>1430</integer>
+			<integer>1440</integer>
 			<key>ypos</key>
-			<integer>1100</integer>
+			<integer>1280</integer>
 		</dict>
 		<key>84EE03F2-779A-428B-AF51-DAFDBA6E0558</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>8</integer>
 			<key>xpos</key>
-			<integer>460</integer>
+			<integer>470</integer>
 			<key>ypos</key>
-			<integer>60</integer>
+			<integer>70</integer>
 		</dict>
 		<key>8C141BD4-3D04-4F7B-AB36-11A7A615F20B</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>7</integer>
 			<key>xpos</key>
-			<integer>1530</integer>
+			<integer>1540</integer>
 			<key>ypos</key>
-			<integer>1890</integer>
+			<integer>2070</integer>
 		</dict>
 		<key>953F68B0-09F5-4763-B07F-920B65C3D25A</key>
 		<dict>
@@ -3866,27 +4002,27 @@ Filter within a specific bookmarks folder</string>
 			<key>note</key>
 			<string>Search tab actions</string>
 			<key>xpos</key>
-			<integer>1630</integer>
+			<integer>1640</integer>
 			<key>ypos</key>
-			<integer>1380</integer>
+			<integer>1560</integer>
 		</dict>
 		<key>971D7A70-415F-420A-9DCD-C8B80F0ECD41</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>3</integer>
 			<key>xpos</key>
-			<integer>210</integer>
+			<integer>220</integer>
 			<key>ypos</key>
-			<integer>2820</integer>
+			<integer>3000</integer>
 		</dict>
 		<key>98504B87-6B7B-48FB-B26F-23AA8CC22AFE</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>4</integer>
 			<key>xpos</key>
-			<integer>860</integer>
+			<integer>870</integer>
 			<key>ypos</key>
-			<integer>1220</integer>
+			<integer>1400</integer>
 		</dict>
 		<key>9908308D-81EC-45D6-91BC-45A6385411D5</key>
 		<dict>
@@ -3895,9 +4031,9 @@ Filter within a specific bookmarks folder</string>
 			<key>note</key>
 			<string>Run a bookmarklet</string>
 			<key>xpos</key>
-			<integer>1630</integer>
+			<integer>1640</integer>
 			<key>ypos</key>
-			<integer>2020</integer>
+			<integer>2200</integer>
 		</dict>
 		<key>9F7D7B1A-6B81-41F3-B7DD-08D2DAA28142</key>
 		<dict>
@@ -3906,9 +4042,9 @@ Filter within a specific bookmarks folder</string>
 			<key>note</key>
 			<string>View Safari bookmarks &amp; history</string>
 			<key>xpos</key>
-			<integer>300</integer>
+			<integer>310</integer>
 			<key>ypos</key>
-			<integer>780</integer>
+			<integer>960</integer>
 		</dict>
 		<key>A2E2F0E6-CDE8-4871-87F8-56EBF3533B5C</key>
 		<dict>
@@ -3917,9 +4053,9 @@ Filter within a specific bookmarks folder</string>
 			<key>note</key>
 			<string>Show available Tab Actions</string>
 			<key>xpos</key>
-			<integer>550</integer>
+			<integer>560</integer>
 			<key>ypos</key>
-			<integer>210</integer>
+			<integer>220</integer>
 		</dict>
 		<key>A44FC9A2-6ED7-4F7F-A33E-9621496E4EFE</key>
 		<dict>
@@ -3928,18 +4064,18 @@ Filter within a specific bookmarks folder</string>
 			<key>note</key>
 			<string>Run a URL action</string>
 			<key>xpos</key>
-			<integer>40</integer>
+			<integer>50</integer>
 			<key>ypos</key>
-			<integer>1990</integer>
+			<integer>2170</integer>
 		</dict>
 		<key>A8F5D575-3439-4D7A-A074-013B7C9F7BAF</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>9</integer>
 			<key>xpos</key>
-			<integer>1430</integer>
+			<integer>1440</integer>
 			<key>ypos</key>
-			<integer>1570</integer>
+			<integer>1750</integer>
 		</dict>
 		<key>AB1538F1-21FC-4175-8A7D-FFB65F43A455</key>
 		<dict>
@@ -3948,9 +4084,9 @@ Filter within a specific bookmarks folder</string>
 			<key>note</key>
 			<string>action == open</string>
 			<key>xpos</key>
-			<integer>1330</integer>
+			<integer>1340</integer>
 			<key>ypos</key>
-			<integer>950</integer>
+			<integer>1130</integer>
 		</dict>
 		<key>AE42EE07-31E3-4A76-AAB3-D99D72B36731</key>
 		<dict>
@@ -3959,9 +4095,9 @@ Filter within a specific bookmarks folder</string>
 			<key>note</key>
 			<string>Show tab actions</string>
 			<key>xpos</key>
-			<integer>40</integer>
+			<integer>50</integer>
 			<key>ypos</key>
-			<integer>2790</integer>
+			<integer>2970</integer>
 		</dict>
 		<key>AEEA665B-2053-4555-8563-3F22B7063C98</key>
 		<dict>
@@ -3970,27 +4106,27 @@ Filter within a specific bookmarks folder</string>
 			<key>note</key>
 			<string>View Safari Bookmarklets</string>
 			<key>xpos</key>
-			<integer>40</integer>
+			<integer>50</integer>
 			<key>ypos</key>
-			<integer>1120</integer>
+			<integer>1300</integer>
 		</dict>
 		<key>B1A997B1-7D24-4D2A-9B0C-7F926BA979A3</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>9</integer>
 			<key>xpos</key>
-			<integer>550</integer>
+			<integer>560</integer>
 			<key>ypos</key>
-			<integer>400</integer>
+			<integer>410</integer>
 		</dict>
 		<key>B398AB9B-2F47-4DE0-92B9-C726B8765DEC</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>2</integer>
 			<key>xpos</key>
-			<integer>1430</integer>
+			<integer>1440</integer>
 			<key>ypos</key>
-			<integer>800</integer>
+			<integer>980</integer>
 		</dict>
 		<key>B453A97F-17B0-4884-81DC-832310A0DA4A</key>
 		<dict>
@@ -3999,9 +4135,9 @@ Filter within a specific bookmarks folder</string>
 			<key>note</key>
 			<string>Search history</string>
 			<key>xpos</key>
-			<integer>300</integer>
+			<integer>310</integer>
 			<key>ypos</key>
-			<integer>1470</integer>
+			<integer>1650</integer>
 		</dict>
 		<key>B660BEDA-95EA-4AA3-98C5-82ACB3DB1319</key>
 		<dict>
@@ -4010,18 +4146,29 @@ Filter within a specific bookmarks folder</string>
 			<key>note</key>
 			<string>action == url-action</string>
 			<key>xpos</key>
-			<integer>1330</integer>
+			<integer>1340</integer>
 			<key>ypos</key>
-			<integer>1250</integer>
+			<integer>1430</integer>
+		</dict>
+		<key>B8B5975F-6B09-47E2-B3A2-45A4736A18DC</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>5</integer>
+			<key>note</key>
+			<string>View Cloud tabs</string>
+			<key>xpos</key>
+			<integer>50</integer>
+			<key>ypos</key>
+			<integer>580</integer>
 		</dict>
 		<key>BA115AD6-EFBB-46E5-9DFA-E842BEF68AC4</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>6</integer>
 			<key>xpos</key>
-			<integer>1530</integer>
+			<integer>1540</integer>
 			<key>ypos</key>
-			<integer>1250</integer>
+			<integer>1430</integer>
 		</dict>
 		<key>BC0EC6A3-641B-48C5-B785-620943E268EF</key>
 		<dict>
@@ -4030,9 +4177,9 @@ Filter within a specific bookmarks folder</string>
 			<key>note</key>
 			<string>action == browse</string>
 			<key>xpos</key>
-			<integer>1330</integer>
+			<integer>1340</integer>
 			<key>ypos</key>
-			<integer>650</integer>
+			<integer>830</integer>
 		</dict>
 		<key>BFC77136-20C8-4AB6-B2DF-002AD153C290</key>
 		<dict>
@@ -4041,9 +4188,9 @@ Filter within a specific bookmarks folder</string>
 			<key>note</key>
 			<string>Pass {query} to `open`</string>
 			<key>xpos</key>
-			<integer>720</integer>
+			<integer>730</integer>
 			<key>ypos</key>
-			<integer>30</integer>
+			<integer>40</integer>
 		</dict>
 		<key>C2686AF6-DE0A-4293-A60B-106F60AADF0F</key>
 		<dict>
@@ -4052,18 +4199,18 @@ Filter within a specific bookmarks folder</string>
 			<key>note</key>
 			<string>Run a URL action</string>
 			<key>xpos</key>
-			<integer>1630</integer>
+			<integer>1640</integer>
 			<key>ypos</key>
-			<integer>1220</integer>
+			<integer>1400</integer>
 		</dict>
 		<key>CDDA2051-6A68-46D9-8012-2263FE755D8D</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>9</integer>
 			<key>xpos</key>
-			<integer>1530</integer>
+			<integer>1540</integer>
 			<key>ypos</key>
-			<integer>1570</integer>
+			<integer>1750</integer>
 		</dict>
 		<key>CF062854-129C-46B6-99DF-EBADF8E50876</key>
 		<dict>
@@ -4072,18 +4219,18 @@ Filter within a specific bookmarks folder</string>
 			<key>note</key>
 			<string>Activate tab</string>
 			<key>xpos</key>
-			<integer>1630</integer>
+			<integer>1640</integer>
 			<key>ypos</key>
-			<integer>1540</integer>
+			<integer>1720</integer>
 		</dict>
 		<key>D09FFBBC-0405-4F55-BC74-5B34AA873FB1</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>4</integer>
 			<key>xpos</key>
-			<integer>590</integer>
+			<integer>600</integer>
 			<key>ypos</key>
-			<integer>1250</integer>
+			<integer>1430</integer>
 		</dict>
 		<key>D48EDBCB-6253-4E50-9B40-DFA25EACFBFC</key>
 		<dict>
@@ -4092,9 +4239,9 @@ Filter within a specific bookmarks folder</string>
 			<key>note</key>
 			<string>Run bookmarlet</string>
 			<key>xpos</key>
-			<integer>300</integer>
+			<integer>310</integer>
 			<key>ypos</key>
-			<integer>2470</integer>
+			<integer>2650</integer>
 		</dict>
 		<key>D6E84120-6093-469C-AEA6-F458A1F1F3BC</key>
 		<dict>
@@ -4103,9 +4250,9 @@ Filter within a specific bookmarks folder</string>
 			<key>note</key>
 			<string>View Safari history</string>
 			<key>xpos</key>
-			<integer>40</integer>
+			<integer>50</integer>
 			<key>ypos</key>
-			<integer>1470</integer>
+			<integer>1650</integer>
 		</dict>
 		<key>D7905209-D36C-475A-A7EC-BE304519C6FA</key>
 		<dict>
@@ -4116,9 +4263,9 @@ Filter within a specific bookmarks folder</string>
 
 Filter all bookmark folders</string>
 			<key>xpos</key>
-			<integer>300</integer>
+			<integer>310</integer>
 			<key>ypos</key>
-			<integer>580</integer>
+			<integer>760</integer>
 		</dict>
 		<key>D94FFE88-0A1C-49FE-9F45-8DDAAEECD0C8</key>
 		<dict>
@@ -4127,9 +4274,9 @@ Filter all bookmark folders</string>
 			<key>note</key>
 			<string>Search and open Reading List bookmarks</string>
 			<key>xpos</key>
-			<integer>300</integer>
+			<integer>310</integer>
 			<key>ypos</key>
-			<integer>1290</integer>
+			<integer>1470</integer>
 		</dict>
 		<key>DB50908D-263A-4D0F-AF65-7762566F8EE7</key>
 		<dict>
@@ -4138,27 +4285,27 @@ Filter all bookmark folders</string>
 			<key>note</key>
 			<string>Run a tab action</string>
 			<key>xpos</key>
-			<integer>40</integer>
+			<integer>50</integer>
 			<key>ypos</key>
-			<integer>2150</integer>
+			<integer>2330</integer>
 		</dict>
 		<key>DC250584-B71B-4F56-8D5F-CBC8F6BEA5C7</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>6</integer>
 			<key>xpos</key>
-			<integer>1430</integer>
+			<integer>1440</integer>
 			<key>ypos</key>
-			<integer>1250</integer>
+			<integer>1430</integer>
 		</dict>
 		<key>DD67856C-3F95-4359-A679-FB3B5112D537</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>3</integer>
 			<key>xpos</key>
-			<integer>210</integer>
+			<integer>220</integer>
 			<key>ypos</key>
-			<integer>2180</integer>
+			<integer>2360</integer>
 		</dict>
 		<key>DE1C9785-A59F-4478-99BD-09A9CE0B38AD</key>
 		<dict>
@@ -4167,18 +4314,18 @@ Filter all bookmark folders</string>
 			<key>note</key>
 			<string>Filter tab actions</string>
 			<key>xpos</key>
-			<integer>300</integer>
+			<integer>310</integer>
 			<key>ypos</key>
-			<integer>2790</integer>
+			<integer>2970</integer>
 		</dict>
 		<key>E0D1CB9F-58AC-4D9D-8BA4-D57859953296</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>4</integer>
 			<key>xpos</key>
-			<integer>700</integer>
+			<integer>710</integer>
 			<key>ypos</key>
-			<integer>1220</integer>
+			<integer>1400</integer>
 		</dict>
 		<key>E0ED9E3A-4E43-4FB3-94DD-7116FE5A5052</key>
 		<dict>
@@ -4187,9 +4334,9 @@ Filter all bookmark folders</string>
 			<key>note</key>
 			<string>Run tab action</string>
 			<key>xpos</key>
-			<integer>300</integer>
+			<integer>310</integer>
 			<key>ypos</key>
-			<integer>2150</integer>
+			<integer>2330</integer>
 		</dict>
 		<key>E157FBA9-1D2B-413A-A321-3DCD07AF51CA</key>
 		<dict>
@@ -4198,9 +4345,9 @@ Filter all bookmark folders</string>
 			<key>note</key>
 			<string>action == activate</string>
 			<key>xpos</key>
-			<integer>1330</integer>
+			<integer>1340</integer>
 			<key>ypos</key>
-			<integer>1570</integer>
+			<integer>1750</integer>
 		</dict>
 		<key>E173AA90-52DB-457C-94A2-77A17258ED5D</key>
 		<dict>
@@ -4209,18 +4356,29 @@ Filter all bookmark folders</string>
 			<key>note</key>
 			<string>action == tab-actions</string>
 			<key>xpos</key>
-			<integer>1330</integer>
+			<integer>1340</integer>
 			<key>ypos</key>
-			<integer>1410</integer>
+			<integer>1590</integer>
+		</dict>
+		<key>E7C9EB62-33E3-497F-83AF-47702D848406</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>5</integer>
+			<key>note</key>
+			<string>Search and manipulate Tabs</string>
+			<key>xpos</key>
+			<integer>310</integer>
+			<key>ypos</key>
+			<integer>580</integer>
 		</dict>
 		<key>E87B43A8-2AA2-4DCF-AE39-689352ECA442</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>4</integer>
 			<key>xpos</key>
-			<integer>580</integer>
+			<integer>590</integer>
 			<key>ypos</key>
-			<integer>2750</integer>
+			<integer>2930</integer>
 		</dict>
 		<key>F033671B-391D-4E9D-A71C-55CC1AA3E22A</key>
 		<dict>
@@ -4229,18 +4387,18 @@ Filter all bookmark folders</string>
 			<key>note</key>
 			<string>Browse bookmark folder</string>
 			<key>xpos</key>
-			<integer>1630</integer>
+			<integer>1640</integer>
 			<key>ypos</key>
-			<integer>620</integer>
+			<integer>800</integer>
 		</dict>
 		<key>F7AFF063-9507-4241-BC62-E3EA1CAC28AA</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>4</integer>
 			<key>xpos</key>
-			<integer>700</integer>
+			<integer>710</integer>
 			<key>ypos</key>
-			<integer>2720</integer>
+			<integer>2900</integer>
 		</dict>
 		<key>FA5F16AF-40C3-4EC6-9F70-32B47E4A5BBC</key>
 		<dict>
@@ -4249,9 +4407,9 @@ Filter all bookmark folders</string>
 			<key>note</key>
 			<string>Opens a bookmark or all bookmarks within a folder</string>
 			<key>xpos</key>
-			<integer>40</integer>
+			<integer>50</integer>
 			<key>ypos</key>
-			<integer>2940</integer>
+			<integer>3120</integer>
 		</dict>
 	</dict>
 	<key>variables</key>
@@ -4280,7 +4438,7 @@ Filter all bookmark folders</string>
 		<string>Open in Current Tab</string>
 	</dict>
 	<key>version</key>
-	<string>0.5.1</string>
+	<string>0.6</string>
 	<key>webaddress</key>
 	<string>https://github.com/deanishe/alfred-safari-assistant/blob/master/README.md</string>
 </dict>

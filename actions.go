@@ -97,7 +97,7 @@ func Register(action Actionable) error {
 		urlActions[a.Title()] = a
 		return nil
 	}
-	return fmt.Errorf("Unknown action type : %+v", action)
+	return fmt.Errorf("unknown action type : %+v", action)
 }
 
 // URLActions returns registered URLActions

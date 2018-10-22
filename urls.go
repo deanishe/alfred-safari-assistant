@@ -54,15 +54,18 @@ func URLerItem(u URLer) *aw.Item {
 				Icon(IconActions)
 
 			// Custom actions
-			actions := []struct {
-				action string
-				key    aw.ModKey
-			}{
-				{urlActionFn, "fn"},
-				{urlActionCtrl, "ctrl"},
-				{urlActionOpt, "alt"},
-				{urlActionShift, "shift"},
-			}
+			var (
+				action  URLActionable
+				actions = []struct {
+					action string
+					key    aw.ModKey
+				}{
+					{urlActionFn, "fn"},
+					{urlActionCtrl, "ctrl"},
+					{urlActionOpt, "alt"},
+					{urlActionShift, "shift"},
+				}
+			)
 
 			for _, a := range actions {
 				if a.action == "" { // unset
@@ -70,8 +73,7 @@ func URLerItem(u URLer) *aw.Item {
 				}
 
 				// Validate action
-				action := URLAction(a.action)
-				if action == nil {
+				if action = URLAction(a.action); action == nil {
 					continue
 				}
 

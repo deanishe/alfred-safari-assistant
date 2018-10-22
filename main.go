@@ -51,6 +51,7 @@ var (
 	IconReadingList     = &aw.Icon{Value: "icons/reading-list.png"}
 	IconBookmark        = &aw.Icon{Value: "icons/bookmark.png"}
 	IconBookmarklet     = &aw.Icon{Value: "icons/bookmarklet.png"}
+	IconCloud           = &aw.Icon{Value: "icons/cloud.png"}
 	IconHistory         = &aw.Icon{Value: "icons/history.png"}
 	IconURL             = &aw.Icon{Value: "icons/url.png"}
 	IconFolder          = &aw.Icon{Value: "icons/folder.png"}
@@ -75,6 +76,7 @@ var (
 	filterBookmarkletsCmd, filterFolderCmd    *kingpin.CmdClause
 	filterAllFoldersCmd, filterReadingListCmd *kingpin.CmdClause
 	openCmd, closeCmd, filterTabsCmd          *kingpin.CmdClause
+	filterCloudTabsCmd                        *kingpin.CmdClause
 	distnameCmd, runActionCmd, searchCmd      *kingpin.CmdClause
 	runTabActionCmd, runURLActionCmd          *kingpin.CmdClause
 	filterActionsCmd, filterTabActionsCmd     *kingpin.CmdClause
@@ -182,6 +184,7 @@ func init() {
 	filterAllFoldersCmd = app.Command("folders", "Filter your bookmark folders.").Alias("f")
 	filterReadingListCmd = app.Command("reading-list", "Filter your Reading List.").Alias("r")
 	filterTabsCmd = app.Command("tabs", "Filter your tabs.").Alias("t")
+	filterCloudTabsCmd = app.Command("icloud", "Filter your cloud tabs.").Alias("i")
 	filterHistoryCmd = app.Command("history", "Filter your history.").Alias("h")
 	configCmd = app.Command("config", "View configuration options.").Alias("c")
 
@@ -190,7 +193,7 @@ func init() {
 		filterBookmarksCmd, filterBookmarkletsCmd, filterFolderCmd,
 		filterAllFoldersCmd, filterReadingListCmd, filterTabsCmd,
 		filterTabActionsCmd, filterURLActionsCmd, filterHistoryCmd,
-		searchCmd, configCmd,
+		filterCloudTabsCmd, searchCmd, configCmd,
 	} {
 		cmd.Flag("query", "Search query.").Short('q').StringVar(&query)
 		cmd.Flag("max-results", "Maximum number of results to send to Alfred.").
@@ -209,7 +212,7 @@ func init() {
 
 	for _, cmd := range []*kingpin.CmdClause{
 		filterBookmarksCmd, filterReadingListCmd,
-		filterHistoryCmd, searchCmd,
+		filterCloudTabsCmd, filterHistoryCmd, searchCmd,
 	} {
 
 		// Alternate URL actions
@@ -425,6 +428,9 @@ func run() {
 
 	case filterURLActionsCmd.FullCommand():
 		err = doFilterURLActions()
+
+	case filterCloudTabsCmd.FullCommand():
+		err = doFilterCloudTabs()
 
 	case searchCmd.FullCommand():
 		err = doSearch()
