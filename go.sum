@@ -8,8 +8,6 @@ github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/deanishe/awgo v0.0.0-20180708154148-fda4e59dbe69 h1:Kmt/ire64P+C3szOGa7DJ+NaF1fR9bOIZrOQ4kFgjTI=
 github.com/deanishe/awgo v0.0.0-20180708154148-fda4e59dbe69/go.mod h1:iS04UkOlaot9B69n8pPeXb804n4vxgDGl3QjXybu4nM=
-github.com/deanishe/go-safari v0.0.0-20181022171711-b11c3bee9322 h1:Zbp4ftrMJMx5NqOWcWaH6Fs0V7AqbsQdlUGguTbdiJU=
-github.com/deanishe/go-safari v0.0.0-20181022171711-b11c3bee9322/go.mod h1:EKPpW10YX70yPv6pCvxUH2xHxbkd+EXR010J943NicE=
 github.com/deanishe/go-safari v0.3.1 h1:2ASV07uLgTtBwLBMEP43Joff+QfgdNy3BYm2H35x+5Q=
 github.com/deanishe/go-safari v0.3.1/go.mod h1:EKPpW10YX70yPv6pCvxUH2xHxbkd+EXR010J943NicE=
 github.com/juju/deputy v0.0.0-20161007041147-5e10e7deaf1c h1:P2DJ4J0PCWYIiNLjNY/Iq6sk1m/HcvAgVWGyVYRxLns=

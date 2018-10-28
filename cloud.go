@@ -29,6 +29,14 @@ func doFilterCloudTabs() error {
 		URLerItem(&cloudTabURLer{t})
 	}
 
+	if query != "" {
+		res := wf.Filter(query)
+		log.Printf("%d cloud tab(s) for %q", len(res), query)
+		for i, r := range res {
+			log.Printf("#%02d %5.2f %q", i+1, r.Score, r.SortKey)
+		}
+	}
+
 	wf.WarnEmpty("No matching tabs found", "Try a different query?")
 	wf.SendFeedback()
 

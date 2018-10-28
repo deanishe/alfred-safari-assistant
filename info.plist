@@ -566,6 +566,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>697CE58D-11A8-4256-BBB5-4D5BA171C13A</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>7BB45208-5419-4C02-BCAE-153D620B6DD5</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<true/>
+			</dict>
+		</array>
 		<key>6AD034BA-6776-460D-A548-5134AA48BF23</key>
 		<array>
 			<dict>
@@ -884,7 +897,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>E7C9EB62-33E3-497F-83AF-47702D848406</string>
+				<string>697CE58D-11A8-4256-BBB5-4D5BA171C13A</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -1086,19 +1099,6 @@
 				<string></string>
 				<key>vitoclose</key>
 				<false/>
-			</dict>
-		</array>
-		<key>E7C9EB62-33E3-497F-83AF-47702D848406</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>7BB45208-5419-4C02-BCAE-153D620B6DD5</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<true/>
 			</dict>
 		</array>
 		<key>E87B43A8-2AA2-4DCF-AE39-689352ECA442</key>
@@ -1533,18 +1533,18 @@ variables={allvars}
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string>Search Cloud Tabs</string>
+				<string>Search Safari cloud tabs</string>
 				<key>title</key>
 				<string>Safari Cloud Tabs</string>
 				<key>type</key>
-				<integer>0</integer>
+				<integer>5</integer>
 				<key>withspace</key>
 				<true/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>E7C9EB62-33E3-497F-83AF-47702D848406</string>
+			<string>697CE58D-11A8-4256-BBB5-4D5BA171C13A</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -3822,6 +3822,17 @@ In either case, use ⌘C on a script/bookmarklet to copy the appropriate value t
 			<key>ypos</key>
 			<integer>1280</integer>
 		</dict>
+		<key>697CE58D-11A8-4256-BBB5-4D5BA171C13A</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>5</integer>
+			<key>note</key>
+			<string>Search and open Cloud Tabs</string>
+			<key>xpos</key>
+			<integer>310</integer>
+			<key>ypos</key>
+			<integer>580</integer>
+		</dict>
 		<key>6AD034BA-6776-460D-A548-5134AA48BF23</key>
 		<dict>
 			<key>colorindex</key>
@@ -4360,17 +4371,6 @@ Filter all bookmark folders</string>
 			<key>ypos</key>
 			<integer>1590</integer>
 		</dict>
-		<key>E7C9EB62-33E3-497F-83AF-47702D848406</key>
-		<dict>
-			<key>colorindex</key>
-			<integer>5</integer>
-			<key>note</key>
-			<string>Search and manipulate Tabs</string>
-			<key>xpos</key>
-			<integer>310</integer>
-			<key>ypos</key>
-			<integer>580</integer>
-		</dict>
 		<key>E87B43A8-2AA2-4DCF-AE39-689352ECA442</key>
 		<dict>
 			<key>colorindex</key>
@@ -4438,7 +4438,7 @@ Filter all bookmark folders</string>
 		<string>Open in Current Tab</string>
 	</dict>
 	<key>version</key>
-	<string>0.6</string>
+	<string>0.6.1</string>
 	<key>webaddress</key>
 	<string>https://github.com/deanishe/alfred-safari-assistant/blob/master/README.md</string>
 </dict>

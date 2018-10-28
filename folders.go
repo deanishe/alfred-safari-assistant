@@ -34,7 +34,10 @@ func doFilterAllFolders() error {
 
 	if query != "" {
 		res := wf.Filter(query)
-		log.Printf("%d folders match `%s`", len(res), query)
+		log.Printf("%d folder(s) match %q", len(res), query)
+		for i, r := range res {
+			log.Printf("#%02d %5.2f %q", i+1, r.Score, r.SortKey)
+		}
 	}
 
 	wf.WarnEmpty("No folders found", "Try a different query?")
@@ -98,7 +101,7 @@ func doFilterFolder() error {
 	for _, bm := range f.Bookmarks {
 		items = append(items, bm)
 	}
-	log.Printf("%d items in folder `%s`", len(items), f.Title())
+	log.Printf("%d item(s) in folder %q", len(items), f.Title())
 
 	for _, it := range items {
 		if bm, ok := it.(*safari.Bookmark); ok {
@@ -111,7 +114,10 @@ func doFilterFolder() error {
 	}
 	if query != "" {
 		res := wf.Filter(query)
-		log.Printf("%d results for `%s`", len(res), query)
+		log.Printf("%d result(s) for %q", len(res), query)
+		for i, r := range res {
+			log.Printf("#%02d %5.2f %q", i+1, r.Score, r.SortKey)
+		}
 	}
 
 	wf.WarnEmpty("No bookmarks or folders found", "Try a different query?")
@@ -142,6 +148,7 @@ func folderItem(f *safari.Folder) *aw.Item {
 
 	it := wf.NewItem(folderTitle(f)).
 		Subtitle(folderSubtitle(f)).
+		Match(f.Title()).
 		UID(f.UID()).
 		Icon(IconFolder)
 

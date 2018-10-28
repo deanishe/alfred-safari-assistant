@@ -77,10 +77,10 @@ func doSearch() error {
 
 	if query != "" {
 		res := wf.Filter(query)
-		log.Printf("%d results for `%s`", len(res), query)
-		// for i, r := range res {
-		// 	log.Printf("#%02d %5.2f `%s`", i+1, r.Score, r.SortKey)
-		// }
+		log.Printf("%d result(s) for %q", len(res), query)
+		for i, r := range res {
+			log.Printf("#%02d %5.2f %q", i+1, r.Score, r.SortKey)
+		}
 	}
 
 	wf.WarnEmpty("No matches found", "Try a different query?")

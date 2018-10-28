@@ -339,7 +339,7 @@ func LoadScripts(dirs ...string) error {
 						log.Printf("blacklisted: %s", r.Title())
 					} else {
 						Register(r)
-						log.Printf("Tab Script `%s` from `%s`", scriptTitle(p), p)
+						log.Printf("Tab Script %q from %q", scriptTitle(p), p)
 					}
 
 				case "url":
@@ -349,7 +349,7 @@ func LoadScripts(dirs ...string) error {
 
 					} else {
 						Register(r)
-						log.Printf("URL Script `%s` from `%s`", scriptTitle(p), p)
+						log.Printf("URL Script %q from %q", scriptTitle(p), p)
 					}
 					// default:
 					// 	log.Printf("I (%s) : %s", filepath.Base(dp))

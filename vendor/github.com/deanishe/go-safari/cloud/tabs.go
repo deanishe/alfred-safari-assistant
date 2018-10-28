@@ -54,6 +54,9 @@ func New(filename string) (*CloudTabs, error) {
 }
 
 // Tabs returns all Cloud Tabs. Tabs for the current device are ignored.
+func Tabs() ([]*Tab, error) { return tabs.Tabs() }
+
+// Tabs returns all Cloud Tabs. Tabs for the current device are ignored.
 func (c *CloudTabs) Tabs() ([]*Tab, error) {
 	var (
 		q = `
@@ -88,8 +91,4 @@ type Tab struct {
 	Title  string // Tab title
 	URL    string // URL
 	Device string // Computer/phone/tablet name
-}
-
-func main() {
-	fmt.Println("vim-go")
 }

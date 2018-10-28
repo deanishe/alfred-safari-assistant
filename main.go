@@ -376,7 +376,7 @@ func listActions(actions []Actionable) error {
 
 	if query != "" {
 		res := wf.Filter(query)
-		log.Printf("%d actions for `%s`", len(res), query)
+		log.Printf("%d action(s) for %q", len(res), query)
 	}
 	wf.WarnEmpty("No actions found", "Try a different query?")
 	wf.SendFeedback()

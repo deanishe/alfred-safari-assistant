@@ -10,7 +10,7 @@ github.com/deanishe/awgo
 github.com/deanishe/awgo/update
 github.com/deanishe/awgo/util
 github.com/deanishe/awgo/fuzzy
-# github.com/deanishe/go-safari v0.0.0-20181022171711-b11c3bee9322
+# github.com/deanishe/go-safari v0.3.1
 github.com/deanishe/go-safari
 github.com/deanishe/go-safari/cloud
 github.com/deanishe/go-safari/history
