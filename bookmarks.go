@@ -99,8 +99,15 @@ func filterBookmarks(bookmarks []*safari.Bookmark) error {
 
 	log.Printf("Loaded %d bookmarks", len(bookmarks))
 
+	// Filter out duplicates (same title + URL)
+	seen := map[string]bool{}
+
 	for _, bm := range bookmarks {
-		bookmarkItem(bm)
+		k := fmt.Sprintf("%s-%s", bm.Title(), bm.URL)
+		if _, dupe := seen[k]; !dupe {
+			bookmarkItem(bm)
+			seen[k] = true
+		}
 	}
 
 	if query != "" {
