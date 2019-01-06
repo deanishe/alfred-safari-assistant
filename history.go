@@ -59,6 +59,7 @@ type hURLer struct {
 }
 
 func (u *hURLer) Title() string     { return u.e.Title }
+func (u *hURLer) Subtitle() string  { return u.e.URL }
 func (u *hURLer) URL() string       { return u.e.URL }
 func (u *hURLer) UID() string       { return u.e.URL }
 func (u *hURLer) Copytext() string  { return u.e.URL }

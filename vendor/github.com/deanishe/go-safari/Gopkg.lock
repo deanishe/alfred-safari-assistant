@@ -3,14 +3,6 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:cefe687c5b27365f87dff523c85266408415c62a2915cc6148e9c26861274984"
-  name = "github.com/DHowett/go-plist"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "500bd5b9081b5957ac10389f86e069869f00c348"
-
-[[projects]]
-  branch = "master"
   digest = "1:315c5f2f60c76d89b871c73f9bd5fe689cad96597afd50fb9992228ef80bdd34"
   name = "github.com/alecthomas/template"
   packages = [
@@ -84,15 +76,23 @@
   revision = "947dcec5ba9c011838740e680966fd7087a71d0d"
   version = "v2.2.6"
 
+[[projects]]
+  branch = "master"
+  digest = "1:c10265d5a71326618d37e97169eddb3582f78e8ac7dcf87403b4cf619efd519a"
+  name = "howett.net/plist"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "591f970eefbbeb04d7b37f334a0c4c3256e32876"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
-    "github.com/DHowett/go-plist",
     "github.com/fatih/color",
     "github.com/juju/deputy",
     "github.com/mattn/go-sqlite3",
     "gopkg.in/alecthomas/kingpin.v2",
+    "howett.net/plist",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1

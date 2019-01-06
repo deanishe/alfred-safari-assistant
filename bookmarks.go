@@ -95,7 +95,7 @@ func filterBookmarks(bookmarks []*safari.Bookmark) error {
 		return err
 	}
 
-	log.Printf("query=%s", query)
+	log.Printf("query=%q", query)
 
 	log.Printf("Loaded %d bookmarks", len(bookmarks))
 
@@ -132,9 +132,10 @@ type bmURLer struct {
 }
 
 // Implement URLer
-func (b *bmURLer) Title() string { return b.bm.Title() }
-func (b *bmURLer) URL() string   { return b.bm.URL }
-func (b *bmURLer) UID() string   { return b.bm.UID() }
+func (b *bmURLer) Title() string    { return b.bm.Title() }
+func (b *bmURLer) Subtitle() string { return b.bm.URL }
+func (b *bmURLer) URL() string      { return b.bm.URL }
+func (b *bmURLer) UID() string      { return b.bm.UID() }
 func (b *bmURLer) Copytext() string {
 	if b.bm.IsBookmarklet() {
 		return "bkm:" + b.bm.UID()

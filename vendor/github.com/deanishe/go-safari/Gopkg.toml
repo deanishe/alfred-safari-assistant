@@ -27,7 +27,7 @@
 
 [[constraint]]
   branch = "master"
-  name = "github.com/DHowett/go-plist"
+  name = "howett.net/plist"
 
 [[constraint]]
   name = "github.com/fatih/color"

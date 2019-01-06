@@ -17,6 +17,7 @@ import (
 // URLer is an item with a URL.
 type URLer interface {
 	Title() string
+	Subtitle() string
 	URL() string
 	UID() string
 	Copytext() string
@@ -28,7 +29,7 @@ type URLer interface {
 func URLerItem(u URLer) *aw.Item {
 
 	it := wf.NewItem(u.Title()).
-		Subtitle(u.URL()).
+		Subtitle(u.Subtitle()).
 		UID(u.UID()).
 		Valid(true).
 		Copytext(u.Copytext()).

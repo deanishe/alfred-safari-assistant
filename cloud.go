@@ -4,6 +4,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 
 	aw "github.com/deanishe/awgo"
@@ -48,6 +49,7 @@ type cloudTabURLer struct {
 }
 
 func (u *cloudTabURLer) Title() string     { return u.tab.Title }
+func (u *cloudTabURLer) Subtitle() string  { return fmt.Sprintf("%s // %s", u.tab.Device, u.tab.URL) }
 func (u *cloudTabURLer) URL() string       { return u.tab.URL }
 func (u *cloudTabURLer) UID() string       { return u.tab.URL }
 func (u *cloudTabURLer) Copytext() string  { return u.tab.URL }

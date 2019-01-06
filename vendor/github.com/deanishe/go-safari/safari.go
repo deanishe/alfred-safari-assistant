@@ -32,7 +32,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/DHowett/go-plist"
+	"howett.net/plist"
 )
 
 // Types of entries in Bookmarks.plist.

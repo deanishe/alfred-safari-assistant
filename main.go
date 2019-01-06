@@ -327,7 +327,7 @@ func loadWindows() ([]*safari.Window, error) {
 	return wins, nil
 }
 
-// openURL opens URL in user's default browser.
+// openURL opens URL in Safari.
 func openURL(URL string) error {
 
 	d := deputy.Deputy{
@@ -336,7 +336,7 @@ func openURL(URL string) error {
 	}
 
 	cmd := "open"
-	args := []string{URL}
+	args := []string{"-a", "Safari", URL}
 
 	if err := d.Run(exec.Command(cmd, args...)); err != nil {
 		return err
