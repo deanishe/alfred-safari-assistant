@@ -3,7 +3,7 @@ github.com/alecthomas/template
 github.com/alecthomas/template/parse
 # github.com/alecthomas/units v0.0.0-20151022065526-2efee857e7cf
 github.com/alecthomas/units
-# github.com/deanishe/awgo v0.0.0-20180708154148-fda4e59dbe69
+# github.com/deanishe/awgo v0.15.0
 github.com/deanishe/awgo
 github.com/deanishe/awgo/update
 github.com/deanishe/awgo/util
