@@ -94,18 +94,21 @@ There are several settings in the workflow's configuration sheet:
 - `ALSF_INCLUDE_BOOKMARKLETS`. Set this to `1` to include bookmarklets in the normal bookmark search (`bm`).
 - `ALSF_SEARCH_HOSTNAMES`. Set this to `1` to also search URL/tab hostnames in addition to titles.
 
-The following settings assign actions or bookmarklets to modifier keys:
+The following settings assign actions for tabs/URLs:
 
-| Key                | Action                                         |
-| ------------------ | ---------------------------------------------- |
+|        Key         |                     Action                     |
+|--------------------|------------------------------------------------|
 | `ALSF_TAB_CTRL`    | `^↩` custom action/bookmarklet for tab         |
 | `ALSF_TAB_OPT`     | `⌥↩` custom action/bookmarklet for tab         |
 | `ALSF_TAB_FN`      | `fn↩` custom action/bookmarklet for tab        |
 | `ALSF_TAB_SHIFT`   | `⇧↩` custom action/bookmarklet for tab         |
+| `ALSF_URL_DEFAULT` | `↩` default action for bookmark/history entry  |
 | `ALSF_URL_CTRL`    | `^↩` custom action for bookmark/history entry  |
 | `ALSF_URL_OPT`     | `⌥↩` custom action for bookmark/history entry  |
 | `ALSF_URL_FN`      | `fn↩` custom action for bookmark/history entry |
 | `ALSF_URL_SHIFT`   | `⇧↩` custom action for bookmark/history entry  |
+
+`ALSF_URL_DEFAULT` is the default script used to open URLs. The default setting is `Open in Safari`.
 
 The `ALSF_TAB_*` variables assign custom actions or bookmarklets available when browsing Safari tabs. The `ALSF_URL_*` variables assign custom actions (*not* bookmarklets) to bookmarks and history entries.
 
