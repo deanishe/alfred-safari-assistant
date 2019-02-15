@@ -13,8 +13,8 @@ import (
 	"log"
 	"strings"
 
-	"github.com/deanishe/awgo"
-	"github.com/deanishe/go-safari"
+	aw "github.com/deanishe/awgo"
+	safari "github.com/deanishe/go-safari"
 )
 
 // Filters all bookmark folders and output Alfred results.
@@ -155,7 +155,8 @@ func folderItem(f *safari.Folder) *aw.Item {
 	// Make folder actionable if it isn't empty
 	if len(f.Bookmarks)+len(f.Folders) > 0 {
 		it.Valid(true).
-			Var("ALSF_UID", f.UID())
+			Var("ALSF_UID", f.UID()).
+			Var("ALSF_ACTION", urlActionDefault)
 
 		// Allow opening folder if it contains bookmarks
 		m := it.NewModifier("cmd")

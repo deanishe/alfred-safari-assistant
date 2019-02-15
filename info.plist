@@ -3411,7 +3411,9 @@ For a script, use the name (minus extension). For a bookmarklet, use `bkm:UID` w
 
 In either case, use ⌘C on a script/bookmarklet to copy the appropriate value to the clipboard.
 
-`ALSF_URL_*`: Bind an action (script) to a modifier key. Use MOD+↩ to run this action on a bookmark.</string>
+`ALSF_URL_*`: Bind an action (script) to a modifier key. Use MOD+↩ to run this action on a bookmark.
+
+`ALSF_URL_DEFAULT`: The default script for opening URLs</string>
 	<key>uidata</key>
 	<dict>
 		<key>010D3C06-D67F-4E4B-98A4-4EE5CE5EBFE2</key>
@@ -4430,6 +4432,8 @@ Filter all bookmark folders</string>
 		<string></string>
 		<key>ALSF_URL_CTRL</key>
 		<string>Open in Chrome</string>
+		<key>ALSF_URL_DEFAULT</key>
+		<string>Open in Safari</string>
 		<key>ALSF_URL_FN</key>
 		<string>Open in Private Window</string>
 		<key>ALSF_URL_OPT</key>

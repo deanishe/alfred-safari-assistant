@@ -37,6 +37,7 @@ func URLerItem(u URLer) *aw.Item {
 		Icon(u.Icon()).
 		Var("ALSF_UID", u.UID()).
 		Var("ALSF_URL", u.URL()).
+		Var("ALSF_ACTION", urlActionDefault).
 		Var("action", "open")
 
 	URL, err := url.Parse(u.URL())

@@ -25,16 +25,14 @@ import (
 	"fmt"
 	"log"
 	"net/url"
-	"os/exec"
 	"path/filepath"
 	"strings"
 
-	"github.com/deanishe/awgo"
+	aw "github.com/deanishe/awgo"
 	"github.com/deanishe/awgo/update"
 	"github.com/deanishe/awgo/util"
-	"github.com/deanishe/go-safari"
-	"github.com/juju/deputy"
-	"gopkg.in/alecthomas/kingpin.v2"
+	safari "github.com/deanishe/go-safari"
+	kingpin "gopkg.in/alecthomas/kingpin.v2"
 )
 
 // Defaults for Kingpin flags
@@ -99,6 +97,7 @@ var (
 	tabActionFn, tabActionShift string
 	urlActionOpt, urlActionCtrl string
 	urlActionFn, urlActionShift string
+	urlActionDefault            string
 
 	// Workflow stuff
 	wf         *aw.Workflow
@@ -129,6 +128,39 @@ func init() {
 	app.Version(wf.Version())
 
 	// ---------------------------------------------------------------
+	// Global flags
+
+	// URL actions
+	app.Flag("url-ctrl", "Action to run for CTRL key.").
+		PlaceHolder("SCRIPT_NAME").
+		StringVar(&urlActionCtrl)
+	app.Flag("url-opt", "Action to run for OPT (ALT) key.").
+		PlaceHolder("SCRIPT_NAME").
+		StringVar(&urlActionOpt)
+	app.Flag("url-fn", "Action to run for FN key.").
+		PlaceHolder("SCRIPT_NAME").
+		StringVar(&urlActionFn)
+	app.Flag("url-shift", "Action to run for SHIFT key.").
+		PlaceHolder("SCRIPT_NAME").
+		StringVar(&urlActionShift)
+	app.Flag("url-default", "Default action for opening URLs.").
+		PlaceHolder("SCRIPT_NAME").
+		StringVar(&urlActionDefault)
+	// Tab actions
+	app.Flag("tab-ctrl", "Action/bookmarklet to run for CTRL key.").
+		PlaceHolder("SCRIPT_NAME").
+		StringVar(&tabActionCtrl)
+	app.Flag("tab-opt", "Action/bookmarklet to run for OPT (ALT) key.").
+		PlaceHolder("SCRIPT_NAME").
+		StringVar(&tabActionOpt)
+	app.Flag("tab-fn", "Action/bookmarklet to run for FN key").
+		PlaceHolder("SCRIPT_NAME").
+		StringVar(&tabActionFn)
+	app.Flag("tab-shift", "Action/bookmarklet to run for SHIFT key.").
+		PlaceHolder("SCRIPT_NAME").
+		StringVar(&tabActionShift)
+
+	// ---------------------------------------------------------------
 	// List action commands
 	filterActionsCmd = app.Command("actions", "List actions.").Alias("la")
 	filterTabActionsCmd = filterActionsCmd.Command("tab", "List tab actions.").Alias("lta")
@@ -142,10 +174,6 @@ func init() {
 	// Common URL options
 	for _, cmd := range []*kingpin.CmdClause{runURLActionCmd, filterURLActionsCmd, filterTabActionsCmd} {
 		cmd.Flag("url", "URL to action.").Short('u').Required().URLVar(&actionURL)
-	}
-	// Common action options
-	for _, cmd := range []*kingpin.CmdClause{runTabActionCmd, runURLActionCmd} {
-		cmd.Flag("action", "Action name.").Short('a').PlaceHolder("NAME").Required().StringVar(&action)
 	}
 
 	runTabActionCmd.Flag("action-type", "Action type.").PlaceHolder("TYPE").Required().StringVar(&actionType)
@@ -210,38 +238,13 @@ func init() {
 	searchCmd.Flag("history-entries", "Number of recent history entries to load.").
 		IntVar(&recentHistoryEntries)
 
+	// Commands that require an action
 	for _, cmd := range []*kingpin.CmdClause{
-		filterBookmarksCmd, filterReadingListCmd,
-		filterCloudTabsCmd, filterHistoryCmd, searchCmd,
+		openCmd, runTabActionCmd, runURLActionCmd,
 	} {
 
-		// Alternate URL actions
-		cmd.Flag("url-ctrl", "Action to run for CTRL key.").
-			PlaceHolder("SCRIPT_NAME").
-			StringVar(&urlActionCtrl)
-		cmd.Flag("url-opt", "Action to run for OPT (ALT) key.").
-			PlaceHolder("SCRIPT_NAME").
-			StringVar(&urlActionOpt)
-		cmd.Flag("url-fn", "Action to run for FN key.").
-			PlaceHolder("SCRIPT_NAME").
-			StringVar(&urlActionFn)
-		cmd.Flag("url-shift", "Action to run for SHIFT key.").
-			PlaceHolder("SCRIPT_NAME").
-			StringVar(&urlActionShift)
+		cmd.Flag("action", "Action name.").Short('a').PlaceHolder("NAME").Required().StringVar(&action)
 	}
-	// Alternate tab actions
-	filterTabsCmd.Flag("tab-ctrl", "Action/bookmarklet to run for CTRL key.").
-		PlaceHolder("SCRIPT_NAME").
-		StringVar(&tabActionCtrl)
-	filterTabsCmd.Flag("tab-opt", "Action/bookmarklet to run for OPT (ALT) key.").
-		PlaceHolder("SCRIPT_NAME").
-		StringVar(&tabActionOpt)
-	filterTabsCmd.Flag("tab-fn", "Action/bookmarklet to run for FN key").
-		PlaceHolder("SCRIPT_NAME").
-		StringVar(&tabActionFn)
-	filterTabsCmd.Flag("tab-shift", "Action/bookmarklet to run for SHIFT key.").
-		PlaceHolder("SCRIPT_NAME").
-		StringVar(&tabActionShift)
 
 	// ---------------------------------------------------------------
 	// Other commands
@@ -325,24 +328,6 @@ func loadWindows() ([]*safari.Window, error) {
 		return nil, err
 	}
 	return wins, nil
-}
-
-// openURL opens URL in Safari.
-func openURL(URL string) error {
-
-	d := deputy.Deputy{
-		Errors:    deputy.FromStderr,
-		StdoutLog: func(b []byte) {},
-	}
-
-	cmd := "open"
-	args := []string{"-a", "Safari", URL}
-
-	if err := d.Run(exec.Command(cmd, args...)); err != nil {
-		return err
-	}
-
-	return nil
 }
 
 // listActions sends a list of actions to Alfred.

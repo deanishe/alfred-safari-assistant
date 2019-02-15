@@ -25,10 +25,20 @@ func doOpen() error {
 		return errors.New("No UID specified")
 	}
 
+	if err := LoadScripts(scriptDirs...); err != nil {
+		return err
+	}
+
+	a := URLAction(action)
+	if a == nil {
+		return fmt.Errorf("Unknown action : %s", action)
+	}
+
 	// If UID is a URL (i.e. History item), open it
 	u, err := url.Parse(uid)
 	if err == nil && (u.Scheme == "http" || u.Scheme == "https") {
-		return openURL(uid)
+		return a.Run(u)
+		// return openURL(uid)
 	}
 
 	// Find item with UID
@@ -40,7 +50,11 @@ func doOpen() error {
 			return runBookmarklet(bm)
 		}
 		log.Printf("Opening \"%s\" (%s) ...", bm.Title(), bm.URL)
-		return openURL(bm.URL)
+		u, err := url.Parse(bm.URL)
+		if err != nil {
+			return err
+		}
+		return a.Run(u)
 	}
 
 	if f := safari.FolderForUID(uid); f != nil {
@@ -49,7 +63,13 @@ func doOpen() error {
 
 		for _, bm := range f.Bookmarks {
 			log.Printf("Opening \"%s\" (%s) ...", bm.Title(), bm.URL)
-			if err := openURL(bm.URL); err != nil {
+			u, err := url.Parse(bm.URL)
+			if err != nil {
+				log.Printf("Invalid URL: %s: %v", bm.URL, err)
+				errs = append(errs, err)
+				continue
+			}
+			if err := a.Run(u); err != nil {
 				log.Printf("Error opening bookmark: %v", err)
 				errs = append(errs, err)
 			}
