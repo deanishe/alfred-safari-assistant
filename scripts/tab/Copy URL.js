@@ -9,10 +9,11 @@
 //
 
 /***************************************************************
-  Reopen URL in a new window and close active tab
+  Copy tab's title & URL to pasteboard
 ***************************************************************/
 
 ObjC.import('stdlib');
+ObjC.import('AppKit');
 
 var safari = Application('Safari');
 safari.includeStandardAdditions = true;
@@ -52,13 +53,13 @@ function getTab(winIdx, tabIdx) {
   return tab;
 }
 
-// reopenTab <tab> | Close tab and open its URL in a new window.
-function reopenTab(tab) {
-  var url = tab.url(),
-      doc = safari.Document().make();
+// copyToPasteboard <tab> | Copy tab's URL to pasteboard.
+function copyToPasteboard(tab) {
+  var pboard = $.NSPasteboard.generalPasteboard;
 
-  tab.close();
-  doc.url = url;
+  pboard.clearContents;
+  pboard.setStringForType($(tab.url()), 'public.url');
+  pboard.setStringForType($(tab.name()), 'public.url-name');
 }
 
 // run | CLI entry point
@@ -67,5 +68,5 @@ function run(argv) {
       tabIdx = parseInt(argv[1], 10),
       tab = getTab(winIdx, tabIdx);
 
-  reopenTab(tab);
+  copyToPasteboard(tab);
 }

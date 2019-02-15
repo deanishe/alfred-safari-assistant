@@ -30,8 +30,6 @@ cloud             material      00A1DE    cloud
 url               fontawesome   00A1DE    globe
 tab               octicons      00A1DE    browser
 tab-active        octicons      F8AC30    browser
-# tab               material      00A1DE    square-o
-# tab-active        material      F8AC30    square-o
 tab-reopen        material      00A1DE    open-in-new
 
 # Apparently, this one looks like Bill Gates' glasses.
@@ -46,4 +44,5 @@ warning           fontawesome   F8AC30    warning
 
 # Script icons
 private           elusive       C92441    eye-close
-
+copy              open-iconic   00A1DE    clipboard
+markdown          octicons      00A1DE    markdown
