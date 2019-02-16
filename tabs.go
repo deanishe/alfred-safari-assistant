@@ -14,8 +14,8 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/deanishe/awgo"
-	"github.com/deanishe/go-safari"
+	aw "github.com/deanishe/awgo"
+	safari "github.com/deanishe/go-safari"
 )
 
 // Activate the specified window (and tab).
@@ -33,9 +33,6 @@ func doFilterTabActions() error {
 
 	log.Printf("url=%s, scheme=%s", actionURL, actionURL.Scheme)
 
-	if err := LoadScripts(scriptDirs...); err != nil {
-		return err
-	}
 	acts := []Actionable{}
 	for _, a := range TabActions() {
 		acts = append(acts, a)
@@ -100,9 +97,6 @@ func doTabAction() error {
 		return tab.RunJS(js)
 	}
 
-	if err := LoadScripts(scriptDirs...); err != nil {
-		return err
-	}
 	if actionType == "tab" {
 		ta := TabAction(action)
 		if ta == nil {
@@ -239,9 +233,6 @@ func customTabActions(it *aw.Item) *aw.Item {
 		bkms[bm.UID()] = bm.Title()
 	}
 
-	if err := LoadScripts(scriptDirs...); err != nil {
-		wf.FatalError(err)
-	}
 	for _, a := range TabActions() {
 		actions[a.Title()] = "tab"
 	}

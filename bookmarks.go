@@ -14,8 +14,8 @@ import (
 	"log"
 	"net/url"
 
-	"github.com/deanishe/awgo"
-	"github.com/deanishe/go-safari"
+	aw "github.com/deanishe/awgo"
+	safari "github.com/deanishe/go-safari"
 )
 
 // Open the bookmark(s)/folder(s) with the specified UIDs.
@@ -23,10 +23,6 @@ func doOpen() error {
 
 	if uid == "" {
 		return errors.New("No UID specified")
-	}
-
-	if err := LoadScripts(scriptDirs...); err != nil {
-		return err
 	}
 
 	a := URLAction(action)
@@ -109,11 +105,6 @@ func doFilterReadingList() error { return filterBookmarks(safari.ReadingList().B
 func filterBookmarks(bookmarks []*safari.Bookmark) error {
 
 	showUpdateStatus()
-
-	// Load scripts so we can show their icons
-	if err := LoadScripts(scriptDirs...); err != nil {
-		return err
-	}
 
 	log.Printf("query=%q", query)
 

@@ -15,10 +15,6 @@ func doFilterCloudTabs() error {
 
 	showUpdateStatus()
 
-	if err := LoadScripts(scriptDirs...); err != nil {
-		return err
-	}
-
 	tabs, err := cloud.Tabs()
 	if err != nil {
 		return err

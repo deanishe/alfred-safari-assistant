@@ -32,6 +32,7 @@ import (
 	"github.com/deanishe/awgo/update"
 	"github.com/deanishe/awgo/util"
 	safari "github.com/deanishe/go-safari"
+	"github.com/pkg/errors"
 	kingpin "gopkg.in/alecthomas/kingpin.v2"
 )
 
@@ -43,25 +44,25 @@ const (
 // Icons
 var (
 	IconActions         = &aw.Icon{Value: "icons/actions.png"}
-	IconDefault         = &aw.Icon{Value: "icon.png"}
-	IconTab             = &aw.Icon{Value: "icons/tab.png"}
 	IconActive          = &aw.Icon{Value: "icons/tab-active.png"}
-	IconReadingList     = &aw.Icon{Value: "icons/reading-list.png"}
+	IconBlacklistAdd    = &aw.Icon{Value: "icons/blacklist-add.png"}
+	IconBlacklistEdit   = &aw.Icon{Value: "icons/blacklist-edit.png"}
 	IconBookmark        = &aw.Icon{Value: "icons/bookmark.png"}
 	IconBookmarklet     = &aw.Icon{Value: "icons/bookmarklet.png"}
 	IconCloud           = &aw.Icon{Value: "icons/cloud.png"}
-	IconHistory         = &aw.Icon{Value: "icons/history.png"}
-	IconURL             = &aw.Icon{Value: "icons/url.png"}
+	IconDefault         = &aw.Icon{Value: "icon.png"}
 	IconFolder          = &aw.Icon{Value: "icons/folder.png"}
-	IconUp              = &aw.Icon{Value: "icons/up.png"}
-	IconHome            = &aw.Icon{Value: "icons/home.png"}
-	IconWarning         = &aw.Icon{Value: "icons/warning.png"}
-	IconHelp            = &aw.Icon{Value: "icons/help.png"}
-	IconBlacklistEdit   = &aw.Icon{Value: "icons/blacklist-edit.png"}
-	IconBlacklistAdd    = &aw.Icon{Value: "icons/blacklist-add.png"}
 	IconGitHub          = &aw.Icon{Value: "icons/github.png"}
-	IconUpdateCheck     = &aw.Icon{Value: "icons/update-check.png"}
+	IconHelp            = &aw.Icon{Value: "icons/help.png"}
+	IconHistory         = &aw.Icon{Value: "icons/history.png"}
+	IconHome            = &aw.Icon{Value: "icons/home.png"}
+	IconReadingList     = &aw.Icon{Value: "icons/reading-list.png"}
+	IconTab             = &aw.Icon{Value: "icons/tab.png"}
+	IconURL             = &aw.Icon{Value: "icons/url.png"}
+	IconUp              = &aw.Icon{Value: "icons/up.png"}
 	IconUpdateAvailable = &aw.Icon{Value: "icons/update-available.png"}
+	IconUpdateCheck     = &aw.Icon{Value: "icons/update-check.png"}
+	IconWarning         = &aw.Icon{Value: "icons/warning.png"}
 	// IconError       = &aw.Icon{Value: "icons/error.png"}
 )
 
@@ -255,6 +256,20 @@ func init() {
 	blacklistCmd.Arg("scripts", "Names of scripts (without extensions).").
 		StringsVar(&scriptNames)
 
+	// Load action scripts via pre-action
+	// for _, cmd := range []*kingpin.CmdClause{
+	// 	filterCloudTabsCmd, filterTabsCmd, filterTabActionsCmd, filterActionsCmd,
+	// 	filterFolderCmd, filterAllFoldersCmd,
+	// }{
+	// 	cmd.PreAction(loadScripts)
+	// }
+
+	app.PreAction(func(ctx *kingpin.ParseContext) error {
+		if err := LoadScripts(scriptDirs...); err != nil {
+			return errors.Wrap(err, "load scripts")
+		}
+		return nil
+	})
 	app.DefaultEnvars()
 }
 
@@ -263,9 +278,6 @@ func init() {
 
 func doFilterURLActions() error {
 	log.Printf("URL=%s", actionURL)
-	if err := LoadScripts(scriptDirs...); err != nil {
-		return err
-	}
 	ua := URLActions()
 	acts := make([]Actionable, len(ua))
 	for i, a := range ua {
@@ -279,10 +291,6 @@ func doURLAction() error {
 	wf.Configure(aw.TextErrors(true))
 
 	log.Printf("URL=%s, action=%s", actionURL, action)
-
-	if err := LoadScripts(scriptDirs...); err != nil {
-		return err
-	}
 
 	a := URLAction(action)
 	if a == nil {
@@ -370,13 +378,17 @@ func listActions(actions []Actionable) error {
 
 // run is the main script entry point. It's called from main.
 func run() {
-	var err error
 
-	cmd, err := app.Parse(wf.Args())
-	if err != nil {
+	wf.Configure(aw.MaxResults(maxResults))
+
+	var (
+		cmd string
+		err error
+	)
+
+	if cmd, err = app.Parse(wf.Args()); err != nil {
 		wf.FatalError(err)
 	}
-	wf.Configure(aw.MaxResults(maxResults))
 
 	// Create user script directories
 	util.MustExist(filepath.Join(wf.DataDir(), "scripts", "tab"))
@@ -449,7 +461,7 @@ func run() {
 		err = doConfig()
 
 	default:
-		err = fmt.Errorf("Unknown command: %s", cmd)
+		err = fmt.Errorf("unknown command: %s", cmd)
 
 	}
 
