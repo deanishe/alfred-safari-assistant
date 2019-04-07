@@ -45,25 +45,24 @@ const (
 var (
 	IconActions         = &aw.Icon{Value: "icons/actions.png"}
 	IconActive          = &aw.Icon{Value: "icons/tab-active.png"}
-	IconBlacklistAdd    = &aw.Icon{Value: "icons/blacklist-add.png"}
-	IconBlacklistEdit   = &aw.Icon{Value: "icons/blacklist-edit.png"}
+	IconBlacklist       = &aw.Icon{Value: "icons/blacklist.png"}
 	IconBookmark        = &aw.Icon{Value: "icons/bookmark.png"}
 	IconBookmarklet     = &aw.Icon{Value: "icons/bookmarklet.png"}
 	IconCloud           = &aw.Icon{Value: "icons/cloud.png"}
 	IconDefault         = &aw.Icon{Value: "icon.png"}
+	IconError           = &aw.Icon{Value: "icons/error.png"}
 	IconFolder          = &aw.Icon{Value: "icons/folder.png"}
-	IconGitHub          = &aw.Icon{Value: "icons/github.png"}
 	IconHelp            = &aw.Icon{Value: "icons/help.png"}
 	IconHistory         = &aw.Icon{Value: "icons/history.png"}
 	IconHome            = &aw.Icon{Value: "icons/home.png"}
+	IconIssue           = &aw.Icon{Value: "icons/issue.png"}
 	IconReadingList     = &aw.Icon{Value: "icons/reading-list.png"}
 	IconTab             = &aw.Icon{Value: "icons/tab.png"}
-	IconURL             = &aw.Icon{Value: "icons/url.png"}
 	IconUp              = &aw.Icon{Value: "icons/up.png"}
 	IconUpdateAvailable = &aw.Icon{Value: "icons/update-available.png"}
 	IconUpdateCheck     = &aw.Icon{Value: "icons/update-check.png"}
+	IconURL             = &aw.Icon{Value: "icons/url.png"}
 	IconWarning         = &aw.Icon{Value: "icons/warning.png"}
-	// IconError       = &aw.Icon{Value: "icons/error.png"}
 )
 
 var (
@@ -111,8 +110,8 @@ var (
 func init() {
 
 	// Override default icons
+	aw.IconError = IconError
 	aw.IconWarning = IconWarning
-	// aw.IconError = IconError
 
 	wf = aw.New(update.GitHub("deanishe/alfred-safari-assistant"),
 		aw.HelpURL("https://github.com/deanishe/alfred-safari-assistant/issues"))
@@ -256,14 +255,6 @@ func init() {
 	blacklistCmd.Arg("scripts", "Names of scripts (without extensions).").
 		StringsVar(&scriptNames)
 
-	// Load action scripts via pre-action
-	// for _, cmd := range []*kingpin.CmdClause{
-	// 	filterCloudTabsCmd, filterTabsCmd, filterTabActionsCmd, filterActionsCmd,
-	// 	filterFolderCmd, filterAllFoldersCmd,
-	// }{
-	// 	cmd.PreAction(loadScripts)
-	// }
-
 	app.PreAction(func(ctx *kingpin.ParseContext) error {
 		if err := LoadScripts(scriptDirs...); err != nil {
 			return errors.Wrap(err, "load scripts")
@@ -355,7 +346,7 @@ func listActions(actions []Actionable) error {
 			Subtitle("Blacklist action").
 			Arg(a.Title()).
 			Valid(true).
-			Icon(IconBlacklistAdd).
+			Icon(IconBlacklist).
 			Var("action", "blacklist")
 
 		if _, ok := a.(TabActionable); ok {

@@ -34,7 +34,7 @@ func doConfig() error {
 		Subtitle("Open action blacklist in your editor").
 		Arg(blPath).
 		Valid(true).
-		Icon(IconBlacklistEdit).
+		Icon(IconBlacklist).
 		Var("action", "open")
 
 	wf.NewItem("User Scripts").
@@ -54,7 +54,7 @@ func doConfig() error {
 		Subtitle("Open the workflow's issue tracker in your browser").
 		Arg(issuesURL).
 		Valid(true).
-		Icon(IconGitHub).
+		Icon(IconIssue).
 		Var("action", "open")
 
 	wf.NewItem("Visit Forum Thread").

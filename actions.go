@@ -19,9 +19,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/deanishe/awgo"
+	aw "github.com/deanishe/awgo"
 	"github.com/deanishe/awgo/util"
-	"github.com/deanishe/go-safari"
+	safari "github.com/deanishe/go-safari"
 )
 
 var (
@@ -321,6 +321,7 @@ func LoadScripts(dirs ...string) error {
 	errs := []error{}
 
 	for _, dp := range dirs {
+		util.MustExist(dp)
 		err := filepath.Walk(dp, func(p string, info os.FileInfo, err error) error {
 			if err != nil {
 				return err
@@ -338,8 +339,11 @@ func LoadScripts(dirs ...string) error {
 					if blacklist[r.Title()] {
 						log.Printf("blacklisted: %s", r.Title())
 					} else {
-						Register(r)
-						log.Printf("Tab Script %q from %q", scriptTitle(p), p)
+						if err := Register(r); err != nil {
+							log.Println(err)
+						} else {
+							log.Printf("Tab Script %q from %q", scriptTitle(p), p)
+						}
 					}
 
 				case "url":
@@ -348,8 +352,11 @@ func LoadScripts(dirs ...string) error {
 						log.Printf("blacklisted: %s", r.Title())
 
 					} else {
-						Register(r)
-						log.Printf("URL Script %q from %q", scriptTitle(p), p)
+						if err := Register(r); err != nil {
+							log.Println(err)
+						} else {
+							log.Printf("URL Script %q from %q", scriptTitle(p), p)
+						}
 					}
 					// default:
 					// 	log.Printf("I (%s) : %s", filepath.Base(dp))
