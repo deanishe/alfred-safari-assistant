@@ -1189,8 +1189,6 @@
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -1227,7 +1225,7 @@
 			<key>uid</key>
 			<string>32B60ABE-74B8-4CD4-B7BE-20F5AC2A27FB</string>
 			<key>version</key>
-			<integer>3</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1374,8 +1372,6 @@ variables={allvars}
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -1414,7 +1410,7 @@ variables={allvars}
 			<key>uid</key>
 			<string>76F03F1E-15FC-4B9D-9B00-98F12EF5B136</string>
 			<key>version</key>
-			<integer>3</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1450,6 +1446,8 @@ variables={allvars}
 				<integer>0</integer>
 				<key>hotmod</key>
 				<integer>0</integer>
+				<key>hotstring</key>
+				<string></string>
 				<key>leftcursor</key>
 				<false/>
 				<key>modsmode</key>
@@ -1483,6 +1481,8 @@ variables={allvars}
 				<integer>0</integer>
 				<key>hotmod</key>
 				<integer>0</integer>
+				<key>hotstring</key>
+				<string></string>
 				<key>leftcursor</key>
 				<false/>
 				<key>modsmode</key>
@@ -1508,8 +1508,6 @@ variables={allvars}
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -1548,7 +1546,7 @@ variables={allvars}
 			<key>uid</key>
 			<string>697CE58D-11A8-4256-BBB5-4D5BA171C13A</string>
 			<key>version</key>
-			<integer>3</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1589,8 +1587,6 @@ variables={allvars}
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -1629,7 +1625,7 @@ variables={allvars}
 			<key>uid</key>
 			<string>D7905209-D36C-475A-A7EC-BE304519C6FA</string>
 			<key>version</key>
-			<integer>3</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1724,6 +1720,8 @@ variables={allvars}
 				<integer>0</integer>
 				<key>hotmod</key>
 				<integer>0</integer>
+				<key>hotstring</key>
+				<string></string>
 				<key>leftcursor</key>
 				<false/>
 				<key>modsmode</key>
@@ -1745,8 +1743,6 @@ variables={allvars}
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -1786,7 +1782,7 @@ variables={allvars}
 			<key>uid</key>
 			<string>9F7D7B1A-6B81-41F3-B7DD-08D2DAA28142</string>
 			<key>version</key>
-			<integer>3</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1881,6 +1877,8 @@ variables={allvars}
 				<integer>0</integer>
 				<key>hotmod</key>
 				<integer>0</integer>
+				<key>hotstring</key>
+				<string></string>
 				<key>leftcursor</key>
 				<false/>
 				<key>modsmode</key>
@@ -1927,8 +1925,6 @@ variables={allvars}
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -1967,7 +1963,7 @@ variables={allvars}
 			<key>uid</key>
 			<string>382EA310-BC65-42FA-9B9B-CD962F883D3A</string>
 			<key>version</key>
-			<integer>3</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -2043,6 +2039,8 @@ variables={allvars}
 				<integer>0</integer>
 				<key>hotmod</key>
 				<integer>0</integer>
+				<key>hotstring</key>
+				<string></string>
 				<key>leftcursor</key>
 				<false/>
 				<key>modsmode</key>
@@ -2068,8 +2066,6 @@ variables={allvars}
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -2108,7 +2104,7 @@ variables={allvars}
 			<key>uid</key>
 			<string>28FFC9A0-33E0-416F-AE04-58EF662D1C03</string>
 			<key>version</key>
-			<integer>3</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -2266,6 +2262,8 @@ variables={allvars}
 				<integer>0</integer>
 				<key>hotmod</key>
 				<integer>0</integer>
+				<key>hotstring</key>
+				<string></string>
 				<key>leftcursor</key>
 				<false/>
 				<key>modsmode</key>
@@ -2291,8 +2289,6 @@ variables={allvars}
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -2331,7 +2327,7 @@ variables={allvars}
 			<key>uid</key>
 			<string>D94FFE88-0A1C-49FE-9F45-8DDAAEECD0C8</string>
 			<key>version</key>
-			<integer>3</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -2399,8 +2395,6 @@ variables={allvars}
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -2439,7 +2433,7 @@ variables={allvars}
 			<key>uid</key>
 			<string>B453A97F-17B0-4884-81DC-832310A0DA4A</string>
 			<key>version</key>
-			<integer>3</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -2456,6 +2450,8 @@ variables={allvars}
 				<integer>0</integer>
 				<key>hotmod</key>
 				<integer>0</integer>
+				<key>hotstring</key>
+				<string></string>
 				<key>leftcursor</key>
 				<false/>
 				<key>modsmode</key>
@@ -2548,8 +2544,6 @@ variables={allvars}
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -2589,7 +2583,7 @@ variables={allvars}
 			<key>uid</key>
 			<string>721AAE10-9173-47C9-98B0-B673CFBD37B2</string>
 			<key>version</key>
-			<integer>3</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -3153,8 +3147,6 @@ variables={allvars}
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -3191,7 +3183,7 @@ variables={allvars}
 			<key>uid</key>
 			<string>568D7820-F839-4E7A-B5B7-9C2D7DC0515B</string>
 			<key>version</key>
-			<integer>3</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -3261,8 +3253,6 @@ variables={allvars}
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -3299,7 +3289,7 @@ variables={allvars}
 			<key>uid</key>
 			<string>DE1C9785-A59F-4478-99BD-09A9CE0B38AD</string>
 			<key>version</key>
-			<integer>3</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
