@@ -30,7 +30,6 @@ Includes several actions for tabs/bookmarks and allows you to add your own via s
 <!-- /MarkdownTOC -->
 
 
-<a name="download--installation"></a>
 <a id="download--installation"></a>
 Download & installation
 -----------------------
@@ -44,7 +43,6 @@ Grab the workflow from [GitHub releases][download]. Download the `Safari-Assista
 If you're running macOS 10.14 (Mojave), you must [grant Alfred "Full Disk Access"][mojave-tips].
 
 
-<a name="usage"></a>
 <a id="usage"></a>
 Usage
 -----
@@ -84,7 +82,7 @@ Usage
     - `Report Problem on GitHub` — Open GitHub issue tracker in your browser.
     - `Visit Forum Thread` — Open the [workflow's thread][forum-thread] on [alfredforum.com](https://www.alfredforum.com/).
 
-<a name="configuration"></a>
+
 <a id="configuration"></a>
 Configuration
 -------------
@@ -118,7 +116,6 @@ To assign a script action, enter the corresponding script's name (without extens
 In either case, press `⌘C` on an action or bookmarklet in Alfred's UI to copy the corresponding value, then paste it into the configuration sheet as the value for the appropriate variable.
 
 
-<a name="blacklist"></a>
 <a id="blacklist"></a>
 ### Blacklist ###
 
@@ -131,7 +128,6 @@ To remove an action from the blacklist, you must edit the `blacklist.txt` file d
 If you add any actions to the blacklist manually, add one action (file)name per line, not including the file extension.
 
 
-<a name="action-scripts"></a>
 <a id="action-scripts"></a>
 Action scripts
 --------------
@@ -153,28 +149,24 @@ See the built-in scripts (in the `scripts` subdirectory of the workflow) for exa
 If you create a script with the same name (minus extension) as one of the built-ins, it will override the built-in script.
 
 
-<a name="supported-languages"></a>
 <a id="supported-languages"></a>
 ### Supported languages
 
 The workflow knows to run `.scpt`, `.js`, `.applescript` and `.scptd` scripts via `/usr/bin/osascript`. It can also run any script/program with its executable bit set (it will call these directly).
 
 
-<a name="script-icons"></a>
 <a id="script-icons"></a>
 ### Script icons
 
 By default, tab scripts get a tab icon and URL scripts a URL one. You can supply a custom icon for any script by saving the icon alongside the script with the same basename (i.e. the same name as the script, only with a different file extension). Supported icon extensions are `.png`, `.icns`, `.jpg`, `.jpeg` and `.gif`.
 
 
-<a name="built-in-actions"></a>
 <a id="built-in-actions"></a>
 ### Built-in actions
 
 The following actions are built into the workflow, either hard-coded or as bundled scripts (in the `scripts` subdirectory of the workflow).
 
 
-<a name="tab-actions"></a>
 <a id="tab-actions"></a>
 #### Tab actions
 
@@ -186,7 +178,6 @@ These actions are available for tabs only.
 - Close Tabs to Right
 
 
-<a name="url-actions"></a>
 <a id="url-actions"></a>
 #### URL actions
 
@@ -198,7 +189,6 @@ These actions are available for bookmarks and tabs (that have URLs).
 - Open in Private Window
 
 
-<a name="history"></a>
 <a id="history"></a>
 History
 -------
@@ -214,7 +204,6 @@ The combined bookmark and recent history search (keyword `bh`) does use fuzzy se
 Depending on the speed of your Mac and your own tolerance for slowness, you may be able to increase this number significantly.
 
 
-<a name="licensing--thanks"></a>
 <a id="licensing--thanks"></a>
 Licensing & thanks
 ------------------
