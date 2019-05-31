@@ -1,9 +1,9 @@
 ---
-name: 
-about: 
-title: Bug report
-labels: 
-assignees: 
+name: Bug Report
+about: Workflow not working as it should
+title: 'Bug: XXX'
+labels: bug
+assignees: deanishe
 
 ---
 
