@@ -45,19 +45,17 @@ func init() {
 	Version = ip.Version
 	Name = ip.Name
 
-	PrefsFile = filepath.Join(Library, "Preferences/com.runningwithcrayons.Alfred.plist")
+	PrefsFile = filepath.Join(Library, "Preferences/com.runningwithcrayons.Alfred-Preferences.plist")
 	if _, err := os.Stat(PrefsFile); err == nil {
 		CacheDir = filepath.Join(Library, "Caches/com.runningwithcrayons.Alfred/Workflow Data", ip.BundleID)
 		DataDir = filepath.Join(Library, "Application Support/Alfred/Workflow Data", ip.BundleID)
 		defaultSyncFolder = filepath.Join(Library, "Application Support/Alfred")
-
 	} else {
 		AppVersion = "3.8.1"
 		PrefsFile = filepath.Join(Library, "Preferences/com.runningwithcrayons.Alfred-Preferences-3.plist")
 		CacheDir = filepath.Join(Library, "Caches/com.runningwithcrayons.Alfred-3/Workflow Data", ip.BundleID)
 		DataDir = filepath.Join(Library, "Application Support/Alfred 3/Workflow Data", ip.BundleID)
 		defaultSyncFolder = filepath.Join(Library, "Application Support/Alfred 3")
-
 	}
 	SyncFolder = syncFolder()
 	WorkflowDir = filepath.Join(SyncFolder, "Alfred.alfredpreferences/workflows")
