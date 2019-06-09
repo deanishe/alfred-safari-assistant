@@ -1,21 +1,17 @@
 module github.com/deanishe/alfred-safari-assistant
 
 require (
-	github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc // indirect
-	github.com/alecthomas/units v0.0.0-20151022065526-2efee857e7cf // indirect
 	github.com/bmatcuk/doublestar v1.1.1
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/deanishe/awgo v0.16.0-beta
-	github.com/deanishe/go-safari v0.4.0
+	github.com/deanishe/awgo v0.19.0
+	github.com/deanishe/deputy v0.0.0-20190609190004-280466ab6a27 // indirect
+	github.com/deanishe/go-safari v0.4.1
 	github.com/disintegration/imaging v1.6.0
-	github.com/juju/deputy v0.0.0-20161007041147-5e10e7deaf1c // indirect
 	github.com/magefile/mage v1.8.0
-	github.com/mattn/go-sqlite3 v1.9.0 // indirect
+	github.com/mattn/go-sqlite3 v1.10.0 // indirect
 	github.com/pkg/errors v0.8.1
-	github.com/pmezard/go-difflib v1.0.0 // indirect
-	github.com/stretchr/testify v1.2.2 // indirect
-	golang.org/x/text v0.3.0
+	golang.org/x/image v0.0.0-20190523035834-f03afa92d3ff // indirect
+	golang.org/x/text v0.3.2
 	gopkg.in/alecthomas/kingpin.v2 v2.2.6
 	howett.net/plist v0.0.0-20181124034731-591f970eefbb
-	npf.io/deputy v0.0.0-20161007041147-5e10e7deaf1c // indirect
 )
