@@ -1,7 +1,7 @@
 module github.com/deanishe/alfred-safari-assistant
 
 require (
-	github.com/bmatcuk/doublestar v1.1.1
+	github.com/bmatcuk/doublestar v1.1.2
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/deanishe/awgo v0.19.0
 	github.com/deanishe/deputy v0.0.0-20190609190004-280466ab6a27 // indirect
