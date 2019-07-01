@@ -10,6 +10,8 @@ github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/deanishe/awgo v0.19.0 h1:iAI6qqQh7KPyq/s3IUfdIdtQoSwY6QuIR07Nbe1sR7c=
 github.com/deanishe/awgo v0.19.0/go.mod h1:rtdbFKArLgBakX2b2YMXTYcar6Dv/o4zm+E99J+SihU=
+github.com/deanishe/awgo v0.20.1 h1:IiUlMfKUMtnOH5U0WULM2t2P0xoVpPHtV7L9MDgGOWY=
+github.com/deanishe/awgo v0.20.1/go.mod h1:2cRIRY+pgEcNHNAXzRyrrIiCpSHpvebc5dyDzeH5bV8=
 github.com/deanishe/deputy v0.0.0-20170917165928-fc4e11170384 h1:UOBhCeFl+qYpzgyINZ8tTn/icAX7O2ykm6kPe1nwGf0=
 github.com/deanishe/deputy v0.0.0-20170917165928-fc4e11170384/go.mod h1:Jz7XNLxEifblPvFmFU9dy4tGyHRRMgj9YKyIhAcSGTQ=
 github.com/deanishe/deputy v0.0.0-20190609190004-280466ab6a27 h1:4vPLTOSKIikpozQb/JSUT1pa3mI0fVYcIl+JtAUPLGY=
