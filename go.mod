@@ -5,7 +5,7 @@ require (
 	github.com/deanishe/awgo v0.20.2
 	github.com/deanishe/deputy v0.0.0-20190609190004-280466ab6a27 // indirect
 	github.com/deanishe/go-safari v0.4.1
-	github.com/disintegration/imaging v1.6.0
+	github.com/disintegration/imaging v1.6.1
 	github.com/kr/pty v1.1.8 // indirect
 	github.com/magefile/mage v1.8.0
 	github.com/mattn/go-colorable v0.1.2 // indirect
