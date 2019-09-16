@@ -7,7 +7,7 @@ require (
 	github.com/deanishe/go-safari v0.4.1
 	github.com/disintegration/imaging v1.6.0
 	github.com/kr/pty v1.1.8 // indirect
-	github.com/magefile/mage v1.8.0
+	github.com/magefile/mage v1.9.0
 	github.com/mattn/go-colorable v0.1.2 // indirect
 	github.com/mattn/go-sqlite3 v1.10.0 // indirect
 	github.com/pkg/errors v0.8.1
