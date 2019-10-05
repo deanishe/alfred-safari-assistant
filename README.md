@@ -3,29 +3,28 @@
     <img src="https://raw.githubusercontent.com/deanishe/alfred-safari-assistant/master/icons/icon.png" width="128" height="128">
 </p>
 
-Safari Assistant for Alfred 3
-=============================
+Safari Assistant for Alfred 3/4
+===============================
 
-Search and open/activate your Safari bookmark(let)s and (iCloud) tabs from Alfred 3.
+Search and open/activate your Safari bookmark(let)s and (iCloud) tabs from Alfred 3/4.
 
 Includes several actions for tabs/bookmarks and allows you to add your own via scripts. Assign your favourite actions (and bookmarklets) to hotkeys.
 
 <!-- MarkdownTOC autolink="true" bracket="round" levels="2,3,4" autoanchor="true" -->
 
-- [Safari Assistant for Alfred 3](#safari-assistant-for-alfred-3)
-  - [Download & installation](#download--installation)
-    - [macOS Mojave](#macos-mojave)
-  - [Usage](#usage)
-  - [Configuration](#configuration)
-    - [Blacklist](#blacklist)
-  - [Action scripts](#action-scripts)
-    - [Supported languages](#supported-languages)
-    - [Script icons](#script-icons)
-    - [Built-in actions](#built-in-actions)
-      - [Tab actions](#tab-actions)
-      - [URL actions](#url-actions)
-  - [History](#history)
-  - [Licensing & thanks](#licensing--thanks)
+- [Download & installation](#download--installation)
+  - [macOS Mojave](#macos-mojave)
+- [Usage](#usage)
+- [Configuration](#configuration)
+  - [Blacklist](#blacklist)
+- [Action scripts](#action-scripts)
+  - [Supported languages](#supported-languages)
+  - [Script icons](#script-icons)
+  - [Built-in actions](#built-in-actions)
+    - [Tab actions](#tab-actions)
+    - [URL actions](#url-actions)
+- [History](#history)
+- [Licensing & thanks](#licensing--thanks)
 
 <!-- /MarkdownTOC -->
 
