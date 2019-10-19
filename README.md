@@ -10,7 +10,6 @@
 
 Safari Assistant for Alfred 3/4
 ===============================
->>>>>>> 561861f... Update supported Alfred versions
 
 Search and open/activate your Safari bookmark(let)s and (iCloud) tabs from Alfred 3/4.
 
