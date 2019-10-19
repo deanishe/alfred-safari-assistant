@@ -1,31 +1,36 @@
+<p align="center" style="background-color: #fcc; padding: 5px;">
+  <strong>
+    This workflow is no longer developed because Apple crippled Safari into pointlessness in v13.
+  </strong>
+</p>
 
 <p align="center">
     <img src="https://raw.githubusercontent.com/deanishe/alfred-safari-assistant/master/icons/icon.png" width="128" height="128">
 </p>
 
-Safari Assistant for Alfred 3
-=============================
+Safari Assistant for Alfred 3/4
+===============================
+>>>>>>> 561861f... Update supported Alfred versions
 
-Search and open/activate your Safari bookmark(let)s and (iCloud) tabs from Alfred 3.
+Search and open/activate your Safari bookmark(let)s and (iCloud) tabs from Alfred 3/4.
 
 Includes several actions for tabs/bookmarks and allows you to add your own via scripts. Assign your favourite actions (and bookmarklets) to hotkeys.
 
 <!-- MarkdownTOC autolink="true" bracket="round" levels="2,3,4" autoanchor="true" -->
 
-- [Safari Assistant for Alfred 3](#safari-assistant-for-alfred-3)
-  - [Download & installation](#download--installation)
-    - [macOS Mojave](#macos-mojave)
-  - [Usage](#usage)
-  - [Configuration](#configuration)
-    - [Blacklist](#blacklist)
-  - [Action scripts](#action-scripts)
-    - [Supported languages](#supported-languages)
-    - [Script icons](#script-icons)
-    - [Built-in actions](#built-in-actions)
-      - [Tab actions](#tab-actions)
-      - [URL actions](#url-actions)
-  - [History](#history)
-  - [Licensing & thanks](#licensing--thanks)
+- [Download & installation](#download--installation)
+  - [macOS Mojave](#macos-mojave)
+- [Usage](#usage)
+- [Configuration](#configuration)
+  - [Blacklist](#blacklist)
+- [Action scripts](#action-scripts)
+  - [Supported languages](#supported-languages)
+  - [Script icons](#script-icons)
+  - [Built-in actions](#built-in-actions)
+    - [Tab actions](#tab-actions)
+    - [URL actions](#url-actions)
+- [History](#history)
+- [Licensing & thanks](#licensing--thanks)
 
 <!-- /MarkdownTOC -->
 

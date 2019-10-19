@@ -22,7 +22,6 @@ import (
 )
 
 func rotateIcon(path string, angles []int) error {
-
 	var (
 		dir  = filepath.Dir(path)
 		ext  = filepath.Ext(path)
@@ -72,7 +71,6 @@ func rotateIcon(path string, angles []int) error {
 // Copy image src to dest. If colour is non-empty, src is re-coloured.
 // Colour should be an HTML hex, e.g. "ff33ba".
 func copyImage(src, dest, colour string) error {
-
 	if colour == "" {
 		return sh.Copy(src, dest)
 	}
